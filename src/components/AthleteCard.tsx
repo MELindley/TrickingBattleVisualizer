@@ -1,6 +1,6 @@
 import type { KeyboardEvent, ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
-import type { IFruit } from 'types'
+import type { IAthlete } from 'types'
 import { useMediaQuery } from 'utils'
 import ImageAttribution from './ImageAttribution'
 
@@ -11,17 +11,20 @@ const ASPECT_RATIO_HEIGHT = 9
 const IMAGE_INDEX_BELOW_THE_FOLD = 3
 
 interface Properties {
-	fruit: IFruit
+	athlete: IAthlete
 	index: number
 }
 
-export default function Fruit({ fruit, index }: Properties): ReactElement {
+export default function AthleteCard({
+	athlete,
+	index
+}: Properties): ReactElement {
 	const isTabletAndUp = useMediaQuery('(min-width: 600px)')
 
 	const navigate = useNavigate()
 	function onClick(): void {
 		window.scrollTo(0, 0)
-		navigate(fruit.name.toLowerCase())
+		navigate(athlete.name.toLowerCase())
 	}
 
 	function onKeyDown(event: KeyboardEvent): void {
@@ -38,7 +41,7 @@ export default function Fruit({ fruit, index }: Properties): ReactElement {
 
 	return (
 		<div
-			data-testid='FruitCard'
+			data-testid='AthleteCard'
 			className='cursor-pointer select-none overflow-hidden rounded-lg shadow-lg focus:border-gray-300 focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-50 dark:shadow-2xl'
 			role='button'
 			tabIndex={0}
@@ -47,7 +50,7 @@ export default function Fruit({ fruit, index }: Properties): ReactElement {
 		>
 			<div className='relative'>
 				<img
-					data-testid='FruitCardImage'
+					data-testid='AthleteCardImage'
 					loading={
 						!isTabletAndUp && index >= IMAGE_INDEX_BELOW_THE_FOLD
 							? 'lazy'
@@ -61,17 +64,17 @@ export default function Fruit({ fruit, index }: Properties): ReactElement {
 					width={imageWidth}
 					height={imageHeight}
 					style={{
-						backgroundColor: fruit.image.color
+						backgroundColor: athlete.image.color
 					}}
-					src={`${fruit.image.url}&w=${
+					src={`${athlete.image.url}&w=${
 						imageWidth * window.devicePixelRatio
 					}&h=${imageHeight * window.devicePixelRatio}`}
-					alt={fruit.name}
+					alt={athlete.name}
 				/>
-				<ImageAttribution author={fruit.image.author} />
+				<ImageAttribution author={athlete.image.author} />
 			</div>
-			<h3 data-testid='FruitCardName' className='p-6 text-xl font-bold'>
-				{fruit.name}
+			<h3 data-testid='AthleteCardName' className='p-6 text-xl font-bold'>
+				{athlete.name} {athlete.surname}
 			</h3>
 		</div>
 	)
