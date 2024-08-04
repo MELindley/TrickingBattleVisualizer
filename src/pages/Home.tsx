@@ -5,7 +5,7 @@ import Head from 'components/Head'
 import LoadingOrError from 'components/LoadingOrError'
 import type { ReactElement } from 'react'
 
-export default function GalleryPage(): ReactElement {
+export default function HomePage(): ReactElement {
 	const { isPending, isError, error, data } = useQuery({
 		queryKey: ['fruits'],
 		queryFn: getFruits
