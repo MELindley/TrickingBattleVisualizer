@@ -6,6 +6,8 @@ import type { ReactElement } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useMediaQuery } from 'utils'
 import getAthletes from '../api/getAthletes'
+import NavBar from '../components/Navbar'
+import { mainNavigation } from './Home'
 
 const DESKTOP_IMAGE_WIDTH_PERCENTAGE = 0.4
 const MOBILE_IMAGE_HEIGHT_PERCENTAGE = 0.3
@@ -42,6 +44,7 @@ export default function DetailsPage(): ReactElement {
 	return (
 		<>
 			<Head title={athlete.name} />
+			<NavBar navigation={mainNavigation} />
 			<div className='flex min-h-screen flex-col items-center sm:flex-row'>
 				<div className='relative'>
 					<img

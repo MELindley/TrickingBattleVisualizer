@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import type { IAthlete } from 'types'
 import { useMediaQuery } from 'utils'
 import ImageAttribution from './ImageAttribution'
+import { Button } from '@mui/material'
 
 const PREFERRED_IMAGE_WIDTH = 384
 const MOBILE_PADDING = 16
@@ -22,14 +23,14 @@ export default function AthleteCard({
 	const isTabletAndUp = useMediaQuery('(min-width: 600px)')
 
 	const navigate = useNavigate()
-	function onClick(): void {
+	function onDetailClick(): void {
 		window.scrollTo(0, 0)
 		navigate(athlete.name.toLowerCase())
 	}
 
 	function onKeyDown(event: KeyboardEvent): void {
 		if (event.key === 'Enter') {
-			onClick()
+			onDetailClick()
 		}
 	}
 
@@ -45,7 +46,7 @@ export default function AthleteCard({
 			className='cursor-pointer select-none overflow-hidden rounded-lg shadow-lg focus:border-gray-300 focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-50 dark:shadow-2xl'
 			role='button'
 			tabIndex={0}
-			onClick={onClick}
+			onClick={onDetailClick}
 			onKeyDown={onKeyDown}
 		>
 			<div className='relative'>
@@ -74,6 +75,9 @@ export default function AthleteCard({
 			<h3 data-testid='AthleteCardName' className='p-6 text-xl font-bold'>
 				{athlete.name} {athlete.surname}
 			</h3>
+			<Button onClick={onDetailClick} variant='outlined'>
+				Details
+			</Button>
 		</div>
 	)
 }
