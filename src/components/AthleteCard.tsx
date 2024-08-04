@@ -66,9 +66,7 @@ export default function AthleteCard({
 					style={{
 						backgroundColor: athlete.image.color
 					}}
-					src={`${athlete.image.url}&w=${
-						imageWidth * window.devicePixelRatio
-					}&h=${imageHeight * window.devicePixelRatio}`}
+					src={athlete.image.url}
 					alt={athlete.name}
 				/>
 				<ImageAttribution author={athlete.image.author} />
