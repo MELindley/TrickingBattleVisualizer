@@ -25,16 +25,6 @@ export default function ImageAttribution({ author }: Properties): ReactElement {
 				>
 					{author.name}
 				</a>
-				<span> on </span>
-				<a
-					href='https://unsplash.com'
-					target='_blank'
-					rel='noreferrer noopener'
-					className='underline'
-					onClick={onClick}
-				>
-					Unsplash
-				</a>
 			</div>
 		</>
 	)
