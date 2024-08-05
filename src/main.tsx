@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { registerSW } from 'virtual:pwa-register'
 import './index.css'
+import { Provider } from 'react-redux'
+import { store } from './app/store'
 
 registerSW()
 
@@ -23,7 +25,9 @@ if (container) {
 	root.render(
 		<StrictMode>
 			<QueryClientProvider client={queryClient}>
-				<App />
+				<Provider store={store}>
+					<App />
+				</Provider>
 			</QueryClientProvider>
 		</StrictMode>
 	)
