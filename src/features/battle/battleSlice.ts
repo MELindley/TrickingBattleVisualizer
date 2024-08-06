@@ -47,9 +47,7 @@ export const { addAthlete, removeAthlete, setAthletes, setWinner, setLoser } =
 	battleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const selectBattle = (state: RootState): BattleState => state.battle
-// eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/explicit-function-return-type,@typescript-eslint/ban-ts-comment
 export const selectBattleAthletes = (state: RootState): IAthlete[] =>
 	state.battle.athletes
 export const selectBattleWinner = (state: RootState): IAthlete | undefined =>

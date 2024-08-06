@@ -14,6 +14,7 @@ export default function BattlePage(): ReactElement {
 	const athletesInBattle = useAppSelector((state: RootState) =>
 		selectBattleAthletes(state)
 	)
+
 	if (athletesInBattle.length === 0) {
 		return <Navigate to='/' replace />
 	}

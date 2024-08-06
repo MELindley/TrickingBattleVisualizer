@@ -8,6 +8,8 @@ import {
 	CardMedia,
 	Typography
 } from '@mui/material'
+import { useAppDispatch } from '../app/hooks'
+import { setWinner } from '../features/battle/battleSlice'
 
 const PREFERRED_IMAGE_WIDTH = 384
 const MOBILE_PADDING = 16
@@ -22,12 +24,14 @@ export default function AthleteBattleCard({
 	athlete
 }: Properties): ReactElement {
 	const [isSelected, setIsSelected] = useState<boolean>(false)
+	const dispatch = useAppDispatch()
 
 	function onCardClick(): void {
 		if (isSelected) {
 			setIsSelected(false)
 		} else {
 			setIsSelected(true)
+			dispatch(setWinner(athlete))
 		}
 	}
 
