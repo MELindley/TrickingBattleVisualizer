@@ -1,19 +1,3 @@
-export interface IFruit {
-	name: string
-	image: {
-		author: {
-			name: string
-			url: string
-		}
-		color: string
-		url: string
-	}
-	metadata: {
-		name: string
-		value: string
-	}[]
-}
-
 export interface IAthlete {
 	name: string
 	surname: string
@@ -29,4 +13,10 @@ export interface IAthlete {
 
 export interface IBattle {
 	athletes: IAthlete[]
+	winner: IAthlete
+	loser: IAthlete
+}
+
+export interface ITournament {
+	battles: IBattle[]
 }
