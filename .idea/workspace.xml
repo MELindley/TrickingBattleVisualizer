@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="First draft of Battle Page">
+      <change afterPath="$PROJECT_DIR$/src/components/AthleteBattleCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AthleteSelectCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ImageAttribution.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,15 +24,32 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MELindley/TrickingBattleVisualizer.git",
-    "accountId": "e493574e-1a5c-4ef5-a7a2-efdcec497fc3"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MELindley&quot;
   }
-}]]></component>
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MELindley/TrickingBattleVisualizer.git&quot;,
+    &quot;accountId&quot;: &quot;e493574e-1a5c-4ef5-a7a2-efdcec497fc3&quot;
+  }
+}</component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -40,6 +68,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/trickbattlevisualiser/src/api&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -54,6 +83,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\trickbattlevisualiser\src\api" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -89,7 +123,10 @@
       <updated>1722769452588</updated>
       <workItem from="1722769455182" duration="5522000" />
       <workItem from="1722787801623" duration="282000" />
-      <workItem from="1722788096575" duration="2719000" />
+      <workItem from="1722788096575" duration="22525000" />
+      <workItem from="1722857914216" duration="2304000" />
+      <workItem from="1722861044854" duration="5942000" />
+      <workItem from="1722893938253" duration="18435000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -99,7 +136,119 @@
       <option name="project" value="LOCAL" />
       <updated>1722790937540</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Renamed Gallery To home">
+      <option name="closed" value="true" />
+      <created>1722791175280</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1722791175280</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added Mock server to serve athletes to frontend">
+      <option name="closed" value="true" />
+      <created>1722793206691</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1722793206691</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Mock server to serve athletes to frontend">
+      <option name="closed" value="true" />
+      <created>1722793663770</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1722793663770</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Mock server to serve athletes to frontend">
+      <option name="closed" value="true" />
+      <created>1722793818071</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722793818071</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Mock server to serve athletes to frontend">
+      <option name="closed" value="true" />
+      <created>1722794913215</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722794913215</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added Mock server to serve athletes to frontend">
+      <option name="closed" value="true" />
+      <created>1722795458535</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722795458535</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Refactored fruits into AthleteCard.tsx">
+      <option name="closed" value="true" />
+      <created>1722802903320</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722802903320</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added MUI for">
+      <option name="closed" value="true" />
+      <created>1722807978770</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722807978771</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added MUI for easier DEV">
+      <option name="closed" value="true" />
+      <created>1722807994926</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722807994926</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Created NavBar Componnt and added it to Home">
+      <option name="closed" value="true" />
+      <created>1722808236207</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1722808236207</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Updted details to work for athletes data type">
+      <option name="closed" value="true" />
+      <created>1722808556306</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722808556306</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added Navbar to details page &amp; added button to access Athlete Details page">
+      <option name="closed" value="true" />
+      <created>1722810720452</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1722810720452</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added redux to start handling stores">
+      <option name="closed" value="true" />
+      <created>1722860540982</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1722860540982</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added redux &amp; created battle slice to handle logic">
+      <option name="closed" value="true" />
+      <created>1722871311110</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1722871311110</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +268,33 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit Default Vitamin Code" />
     <MESSAGE value="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md" />
+    <MESSAGE value="Renamed Gallery To home" />
+    <MESSAGE value="Added Mock server to serve athletes to frontend" />
+    <MESSAGE value="Refactored fruits into AthleteCard.tsx" />
+    <MESSAGE value="Removed image hosting website specific urlparams, update ethan turners urls in athletes.json" />
+    <MESSAGE value="added MUI for easier DEV" />
+    <MESSAGE value="Created NavBar Componnt and added it to Home" />
+    <MESSAGE value="Updted details to work for athletes data type" />
+    <MESSAGE value="Added Navbar to details page &amp; added button to access Athlete Details page" />
+    <MESSAGE value="Added redux to start handling stores" />
+    <MESSAGE value="Added redux &amp; created battle slice to handle logic" />
+    <MESSAGE value="Replaced state handlers with Redux logic" />
+    <MESSAGE value="First draft of Battle Page" />
+    <option name="LAST_COMMIT_MESSAGE" value="First draft of Battle Page" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/mocks/handlers.ts</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

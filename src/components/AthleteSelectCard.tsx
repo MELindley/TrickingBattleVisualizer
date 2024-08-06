@@ -22,7 +22,9 @@ interface Properties {
 	athlete: IAthlete
 }
 
-export default function AthleteCard({ athlete }: Properties): ReactElement {
+export default function AthleteSelectCard({
+	athlete
+}: Properties): ReactElement {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [isSelected, setIsSelected] = useState<boolean>(false)
@@ -72,7 +74,7 @@ export default function AthleteCard({ athlete }: Properties): ReactElement {
 					alt={athlete.name}
 				/>
 				<CardContent>
-					<Typography gutterBottom variant='h3' component='div'>
+					<Typography gutterBottom variant='h3'>
 						{athlete.name} {athlete.surname}
 					</Typography>
 				</CardContent>
