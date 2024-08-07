@@ -5,11 +5,11 @@ import Head from 'components/Head'
 import LoadingOrError from 'components/LoadingOrError'
 import { type ReactElement, useEffect } from 'react'
 import NavBar, { type NavigationItem } from '../components/Navbar'
-import { setAthletes } from '../features/battle/battleSlice'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Button, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../app/hooks'
+import { resetBattle } from '../features/battle/battleSlice'
 
 export const mainNavigation: NavigationItem[] = [{ name: 'Home', href: '/' }]
 
@@ -20,9 +20,10 @@ export default function HomePage(): ReactElement {
 	})
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
+
 	useEffect(() => {
 		// Clean potential leftovers from previous battle
-		dispatch(setAthletes([]))
+		dispatch(resetBattle())
 	})
 
 	const onStartBattleClick = (): void => {

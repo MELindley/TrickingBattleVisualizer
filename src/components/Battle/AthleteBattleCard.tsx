@@ -8,8 +8,8 @@ import {
 	CardMedia,
 	Typography
 } from '@mui/material'
-import { useAppDispatch } from '../app/hooks'
-import { setWinner } from '../features/battle/battleSlice'
+import { useAppDispatch } from '../../app/hooks'
+import { setWinner } from '../../features/battle/battleSlice'
 
 const PREFERRED_IMAGE_WIDTH = 384
 const MOBILE_PADDING = 16

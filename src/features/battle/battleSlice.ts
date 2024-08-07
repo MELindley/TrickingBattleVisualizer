@@ -13,7 +13,9 @@ interface BattleState {
 
 // Define the initial state using that type
 const initialState: BattleState = {
-	athletes: []
+	athletes: [],
+	winner: undefined,
+	loser: undefined
 }
 
 export const battleSlice = createSlice({
@@ -39,12 +41,19 @@ export const battleSlice = createSlice({
 		},
 		setLoser: (state, action: PayloadAction<IAthlete>) => {
 			state.loser = action.payload
-		}
+		},
+		resetBattle: () => initialState
 	}
 })
 
-export const { addAthlete, removeAthlete, setAthletes, setWinner, setLoser } =
-	battleSlice.actions
+export const {
+	addAthlete,
+	removeAthlete,
+	setAthletes,
+	setWinner,
+	setLoser,
+	resetBattle
+} = battleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectBattle = (state: RootState): BattleState => state.battle
