@@ -28,9 +28,7 @@ export const battleSlice = createSlice({
 		},
 		removeAthlete: (state, action: PayloadAction<IAthlete>) => {
 			// eslint-disable-next-line no-param-reassign
-			state.athletes = state.athletes.filter(
-				a => a.surname !== action.payload.surname
-			)
+			state.athletes = state.athletes.filter(a => a.id !== action.payload.id)
 		},
 		setAthletes: (state, action: PayloadAction<IAthlete[]>) => {
 			// eslint-disable-next-line no-param-reassign

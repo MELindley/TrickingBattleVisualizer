@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import battleReducer from '../features/battle/battleSlice'
+import tournamentReducer from '../features/tournament/tournamentSlice'
 
 export const store = configureStore({
 	reducer: {
-		battle: battleReducer
+		battle: battleReducer,
+		tournament: tournamentReducer
 	}
 })
 

@@ -1,4 +1,5 @@
 export interface IAthlete {
+	id: number
 	name: string
 	surname: string
 	image: {
@@ -12,11 +13,14 @@ export interface IAthlete {
 }
 
 export interface IBattle {
+	id: number
 	athletes: IAthlete[]
 	winner: IAthlete
-	loser: IAthlete
+	losers: IAthlete[]
 }
 
 export interface ITournament {
+	id: number
 	battles: IBattle[]
+	winner: IAthlete
 }
