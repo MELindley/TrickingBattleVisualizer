@@ -2,20 +2,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
-import type { IAthlete } from '../../types'
-
-// Define a type for the slice state
-interface BattleState {
-	athletes: IAthlete[]
-	winner?: IAthlete
-	loser?: IAthlete
-}
+import type { IAthlete, IBattle } from '../../types'
 
 // Define the initial state using that type
-const initialState: BattleState = {
+const initialState: IBattle = {
+	id: -1,
 	athletes: [],
 	winner: undefined,
-	loser: undefined
+	losers: undefined
 }
 
 export const battleSlice = createSlice({
@@ -28,7 +22,7 @@ export const battleSlice = createSlice({
 		},
 		removeAthlete: (state, action: PayloadAction<IAthlete>) => {
 			// eslint-disable-next-line no-param-reassign
-			state.athletes = state.athletes.filter(a => a.id !== action.payload.id)
+			state.athletes = state.athletes.filter(a => a?.id !== action.payload.id)
 		},
 		setAthletes: (state, action: PayloadAction<IAthlete[]>) => {
 			// eslint-disable-next-line no-param-reassign
@@ -37,8 +31,8 @@ export const battleSlice = createSlice({
 		setWinner: (state, action: PayloadAction<IAthlete>) => {
 			state.winner = action.payload
 		},
-		setLoser: (state, action: PayloadAction<IAthlete>) => {
-			state.loser = action.payload
+		setLoser: (state, action: PayloadAction<IAthlete[]>) => {
+			state.losers = action.payload
 		},
 		resetBattle: () => initialState
 	}
@@ -54,11 +48,15 @@ export const {
 } = battleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectBattle = (state: RootState): BattleState => state.battle
-export const selectBattleAthletes = (state: RootState): IAthlete[] =>
-	state.battle.athletes
+export const selectBattle = (state: RootState): IBattle => state.battle
+export const selectBattleAthletes = (
+	state: RootState
+): (IAthlete | undefined)[] => state.battle.athletes
 export const selectBattleWinner = (state: RootState): IAthlete | undefined =>
 	state.battle.winner
-export const selectBattleLoser = (state: RootState): IAthlete | undefined =>
-	state.battle.loser
+export const selectBattleLoser = (state: RootState): IAthlete[] | undefined =>
+	state.battle.losers
+export const selectBattleIsReady = (state: RootState): boolean =>
+	!state.battle.athletes.includes(undefined)
+
 export default battleSlice.reducer
