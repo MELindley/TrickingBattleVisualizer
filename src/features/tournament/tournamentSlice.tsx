@@ -1,17 +1,12 @@
 /* eslint no-param-reassign: 0 */
-import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
-import type { IAthlete, IBattle } from '../../types'
-
-// Define a type for the slice state
-interface TournamentState {
-	battles: IBattle[]
-	winner?: IAthlete
-}
+import type { IAthlete, IBattle, ITournament } from '../../types'
 
 // Define the initial state using that type
-const initialState: TournamentState = {
+const initialState: ITournament = {
+	id: -1,
 	battles: [],
 	winner: undefined
 }
@@ -48,8 +43,11 @@ export const {
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectTournament = (state: RootState): TournamentState =>
+export const selectTournament = (state: RootState): ITournament =>
 	state.tournament
 export const selectTournamentAthletes = (state: RootState): IAthlete[] =>
-	state.tournament.battles.flatMap(battle => battle.athletes)
+	state.tournament.battles.flatMap(
+		battle =>
+			battle.athletes.filter(athlete => athlete !== undefined) as IAthlete[]
+	)
 export default tournamentSlice.reducer
