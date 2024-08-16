@@ -1,5 +1,6 @@
 [
 	{
+		"id": 1,
 		"name": "Ethan",
 		"surname": "Turner",
 		"image": {
@@ -7,13 +8,14 @@
 				"name": "Unknown",
 				"url": ""
 			},
-			"color": "#ac8a81",
+			"color": "#061212",
 			"url": "https://ensomovement.com/wp-content/uploads/2021/11/Regeneration-Tricking-Gathering-VI-Ethan-Turner.jpg"
 		}
 	},
 	{
-		"name": "Kojo",
-		"surname": "Sam",
+		"id": 2,
+		"name": "Sam",
+		"surname": "Kojo",
 		"image": {
 			"author": {
 				"name": "Unknown",
@@ -24,6 +26,7 @@
 		}
 	},
 	{
+		"id": 3,
 		"name": "Zen",
 		"surname": "Kajihara",
 		"image": {
@@ -33,6 +36,19 @@
 			},
 			"color": "#c6bac6",
 			"url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3h-mtBEqtzQ400bNM97EXZrCu_aRG6hCboQ&s"
+		}
+	},
+	{
+		"id": 4,
+		"name": "Shosei",
+		"surname": "Iwamoto",
+		"image": {
+			"author": {
+				"name": "Unknown",
+				"url": ""
+			},
+			"color": "#904536",
+			"url": "https://eventsadrenaline.com/wp-content/uploads/2022/06/Shosei-Iwamoto.jpg"
 		}
 	}
 ]
