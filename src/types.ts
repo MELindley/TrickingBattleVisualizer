@@ -14,13 +14,13 @@ export interface IAthlete {
 
 export interface IBattle {
 	id: number
-	athletes: IAthlete[]
-	winner: IAthlete
-	losers: IAthlete[]
+	athletes: (IAthlete | undefined)[]
+	winner?: IAthlete
+	losers?: IAthlete[]
 }
 
 export interface ITournament {
 	id: number
 	battles: IBattle[]
-	winner: IAthlete
+	winner?: IAthlete
 }
