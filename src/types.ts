@@ -10,6 +10,7 @@ export interface IAthlete {
 		color: string
 		url: string
 	}
+	seeding?:number
 }
 
 export interface IBattle {
@@ -23,4 +24,5 @@ export interface ITournament {
 	id: number
 	battles: IBattle[]
 	winner?: IAthlete
+	athletes: IAthlete[]
 }

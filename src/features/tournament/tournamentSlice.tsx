@@ -8,7 +8,8 @@ import type { IAthlete, IBattle, ITournament } from '../../types'
 const initialState: ITournament = {
 	id: -1,
 	battles: [],
-	winner: undefined
+	winner: undefined,
+	athletes:[]
 }
 
 export const tournamentSlice = createSlice({
@@ -30,6 +31,12 @@ export const tournamentSlice = createSlice({
 		setWinner: (state, action: PayloadAction<IAthlete>) => {
 			state.winner = action.payload
 		},
+		setAthletes:(state, action: PayloadAction<IAthlete[]>) => {
+			state.athletes = action.payload
+		},
+		addAthlete:(state, action: PayloadAction<IAthlete>) => {
+			state.athletes.push(action.payload)
+		},
 		resetTournament: () => initialState
 	}
 })
@@ -39,6 +46,8 @@ export const {
 	removeBattle,
 	setBattles,
 	setWinner,
+	setAthletes,
+	addAthlete,
 	resetTournament
 } = tournamentSlice.actions
 
@@ -46,8 +55,9 @@ export const {
 export const selectTournament = (state: RootState): ITournament =>
 	state.tournament
 export const selectTournamentAthletes = (state: RootState): IAthlete[] =>
-	state.tournament.battles.flatMap(
-		battle =>
-			battle.athletes.filter(athlete => athlete !== undefined) as IAthlete[]
-	)
+	state.tournament.athletes
+export const selectTournamentBattles = (state: RootState): IBattle[] =>
+	state.tournament.battles
+export const selectTournamentWinner = (state: RootState): IAthlete|undefined =>
+	state.tournament.winner
 export default tournamentSlice.reducer

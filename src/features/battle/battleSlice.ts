@@ -34,6 +34,9 @@ export const battleSlice = createSlice({
 		setLoser: (state, action: PayloadAction<IAthlete[]>) => {
 			state.losers = action.payload
 		},
+		setBattleId:(state, action:PayloadAction<number>) =>{
+			state.id = action.payload
+		},
 		resetBattle: () => initialState
 	}
 })
@@ -44,7 +47,8 @@ export const {
 	setAthletes,
 	setWinner,
 	setLoser,
-	resetBattle
+	resetBattle,
+	setBattleId
 } = battleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type

@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Clicking on Athlete battle card will select the winner">
-      <change afterPath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Removed redunded TournamentState interface and adjusted for possible undefined athltes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AthleteBattleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/AthleteBattleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AthleteSelectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AthleteSelectCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -127,7 +124,12 @@
       <workItem from="1722788096575" duration="22525000" />
       <workItem from="1722857914216" duration="2304000" />
       <workItem from="1722861044854" duration="5942000" />
-      <workItem from="1722893938253" duration="24457000" />
+      <workItem from="1722893938253" duration="25268000" />
+      <workItem from="1723038545283" duration="4788000" />
+      <workItem from="1723628062115" duration="271000" />
+      <workItem from="1723675632187" duration="394000" />
+      <workItem from="1723797747263" duration="8243000" />
+      <workItem from="1723890186154" duration="4853000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -273,7 +275,55 @@
       <option name="project" value="LOCAL" />
       <updated>1722984581861</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added Winner display logic">
+      <option name="closed" value="true" />
+      <created>1722989033581</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1722989033581</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added id field to interfaces for easier comparison&#10;added tournament type and slice as well as tournament store">
+      <option name="closed" value="true" />
+      <created>1723042238568</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1723042238568</updated>
+    </task>
+    <task id="LOCAL-00021" summary="added extra contestant and ID to athletes.json">
+      <option name="closed" value="true" />
+      <created>1723798285644</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1723798285644</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Removed redunded interface Battle state from battle slice and replaced by original IBattle interface">
+      <option name="closed" value="true" />
+      <created>1723798396989</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1723798396989</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added possibility to have undefined Athletes in a Battle">
+      <option name="closed" value="true" />
+      <created>1723798454774</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1723798454774</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Removed redunded TournamentState interface and adjusted for possible undefined athltes">
+      <option name="closed" value="true" />
+      <created>1723798919278</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1723798919278</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +357,13 @@
     <MESSAGE value="First draft of Battle Page" />
     <MESSAGE value="Added Winner and loosers to battle state and to battle type" />
     <MESSAGE value="Clicking on Athlete battle card will select the winner" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clicking on Athlete battle card will select the winner" />
+    <MESSAGE value="Added Winner display logic" />
+    <MESSAGE value="Added id field to interfaces for easier comparison&#10;added tournament type and slice as well as tournament store" />
+    <MESSAGE value="added extra contestant and ID to athletes.json" />
+    <MESSAGE value="Removed redunded interface Battle state from battle slice and replaced by original IBattle interface" />
+    <MESSAGE value="Added possibility to have undefined Athletes in a Battle" />
+    <MESSAGE value="Removed redunded TournamentState interface and adjusted for possible undefined athltes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed redunded TournamentState interface and adjusted for possible undefined athltes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -318,7 +374,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
