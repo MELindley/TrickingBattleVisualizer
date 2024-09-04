@@ -17,7 +17,7 @@ const ASPECT_RATIO_WIDTH = 16
 const ASPECT_RATIO_HEIGHT = 9
 
 interface Properties {
-	athlete: IAthlete
+	athlete: IAthlete | undefined
 }
 
 export default function AthleteBattleCard({
@@ -31,7 +31,7 @@ export default function AthleteBattleCard({
 			setIsSelected(false)
 		} else {
 			setIsSelected(true)
-			dispatch(setWinner(athlete))
+			if (athlete) dispatch(setWinner(athlete))
 		}
 	}
 
@@ -40,6 +40,7 @@ export default function AthleteBattleCard({
 			onCardClick()
 		}
 	}
+
 	const imageWidth = Math.min(
 		PREFERRED_IMAGE_WIDTH,
 		window.innerWidth - MOBILE_PADDING
@@ -53,22 +54,32 @@ export default function AthleteBattleCard({
 			}}
 		>
 			<CardActionArea onClick={onCardClick} onKeyDown={onKeyDown}>
-				<CardMedia
-					component='img'
-					sx={{
-						width: imageWidth,
-						height: imageHeight,
-						backgroundColor: athlete.image.color
-					}}
-					image={athlete.image.url}
-					title='green iguana'
-					alt={athlete.name}
-				/>
-				<CardContent>
-					<Typography gutterBottom variant='h3'>
-						{athlete.name} {athlete.surname}
-					</Typography>
-				</CardContent>
+				{athlete ? (
+					<>
+						<CardMedia
+							component='img'
+							sx={{
+								width: imageWidth,
+								height: imageHeight,
+								backgroundColor: athlete.image.color
+							}}
+							image={athlete.image.url}
+							title='green iguana'
+							alt={athlete.name}
+						/>
+						<CardContent>
+							<Typography gutterBottom variant='h3'>
+								{athlete.name} {athlete.surname}
+							</Typography>
+						</CardContent>
+					</>
+				) : (
+					<CardContent>
+						<Typography gutterBottom variant='h3'>
+							TBD
+						</Typography>
+					</CardContent>
+				)}
 				<CardActions />
 			</CardActionArea>
 		</Card>

@@ -27,8 +27,8 @@ export default function BattlePage(): ReactElement {
 	const title = athletesInBattle.reduce(
 		(accumulator, athlete, index) =>
 			index === 0
-				? accumulator + athlete.name
-				: `${accumulator} VS ${athlete.name}`,
+				? accumulator + (athlete?.name ?? 'TBD')
+				: `${accumulator} VS ${athlete?.name ?? 'TDB'}`,
 		''
 	)
 

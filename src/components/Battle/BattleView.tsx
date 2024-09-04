@@ -5,7 +5,7 @@ import AthleteBattleCard from './AthleteBattleCard'
 import type { ReactElement } from 'react'
 
 interface Properties {
-	athletes: IAthlete[]
+	athletes: (IAthlete | undefined)[]
 }
 
 export default function BattleView({ athletes }: Properties): ReactElement {
@@ -15,7 +15,7 @@ export default function BattleView({ athletes }: Properties): ReactElement {
 				index === 0 ? (
 					<Grid
 						xs
-						key={`AthleteInBattleCardGrid-${athlete.name}`}
+						key={`AthleteInBattleCardGrid-${athlete?.name}`}
 						display='flex'
 						justifyContent='center'
 						alignItems='center'
@@ -38,7 +38,7 @@ export default function BattleView({ athletes }: Properties): ReactElement {
 						</Grid>
 						<Grid
 							xs
-							key={`AthleteInBattleCardGrid-${athlete.name}`}
+							key={`AthleteInBattleCardGrid-${athlete?.name}`}
 							display='flex'
 							justifyContent='center'
 							alignItems='center'

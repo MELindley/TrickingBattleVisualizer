@@ -3,13 +3,14 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 import type { IAthlete, IBattle, ITournament } from '../../types'
+import { generateTournamentFromAthletes } from '../../app/helpers'
 
 // Define the initial state using that type
 const initialState: ITournament = {
 	id: -1,
 	battles: [],
 	winner: undefined,
-	athletes:[]
+	athletes: []
 }
 
 export const tournamentSlice = createSlice({
@@ -31,13 +32,16 @@ export const tournamentSlice = createSlice({
 		setWinner: (state, action: PayloadAction<IAthlete>) => {
 			state.winner = action.payload
 		},
-		setAthletes:(state, action: PayloadAction<IAthlete[]>) => {
+		setAthletes: (state, action: PayloadAction<IAthlete[]>) => {
 			state.athletes = action.payload
 		},
-		addAthlete:(state, action: PayloadAction<IAthlete>) => {
+		addAthlete: (state, action: PayloadAction<IAthlete>) => {
 			state.athletes.push(action.payload)
 		},
-		resetTournament: () => initialState
+		resetTournament: () => initialState,
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
+		generateFromAthletes: state =>
+			generateTournamentFromAthletes(state.athletes) satisfies ITournament
 	}
 })
 
@@ -48,7 +52,8 @@ export const {
 	setWinner,
 	setAthletes,
 	addAthlete,
-	resetTournament
+	resetTournament,
+	generateFromAthletes
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
@@ -58,6 +63,7 @@ export const selectTournamentAthletes = (state: RootState): IAthlete[] =>
 	state.tournament.athletes
 export const selectTournamentBattles = (state: RootState): IBattle[] =>
 	state.tournament.battles
-export const selectTournamentWinner = (state: RootState): IAthlete|undefined =>
-	state.tournament.winner
+export const selectTournamentWinner = (
+	state: RootState
+): IAthlete | undefined => state.tournament.winner
 export default tournamentSlice.reducer
