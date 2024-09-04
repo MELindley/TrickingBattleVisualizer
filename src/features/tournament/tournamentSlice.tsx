@@ -10,7 +10,8 @@ const initialState: ITournament = {
 	id: -1,
 	battles: [],
 	winner: undefined,
-	athletes: []
+	athletes: [],
+	name: undefined
 }
 
 export const tournamentSlice = createSlice({
@@ -29,8 +30,11 @@ export const tournamentSlice = createSlice({
 			// eslint-disable-next-line no-param-reassign
 			state.battles = action.payload
 		},
-		setWinner: (state, action: PayloadAction<IAthlete>) => {
+		setTournamentWinner: (state, action: PayloadAction<IAthlete>) => {
 			state.winner = action.payload
+		},
+		setTournamentName: (state, action: PayloadAction<string>) => {
+			state.name = action.payload
 		},
 		setAthletes: (state, action: PayloadAction<IAthlete[]>) => {
 			state.athletes = action.payload
@@ -38,10 +42,10 @@ export const tournamentSlice = createSlice({
 		addAthlete: (state, action: PayloadAction<IAthlete>) => {
 			state.athletes.push(action.payload)
 		},
-		resetTournament: () => initialState,
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
+		resetTournament: () => initialState,
 		generateFromAthletes: state =>
-			generateTournamentFromAthletes(state.athletes) satisfies ITournament
+			generateTournamentFromAthletes(state.athletes)
 	}
 })
 
@@ -49,7 +53,8 @@ export const {
 	addBattle,
 	removeBattle,
 	setBattles,
-	setWinner,
+	setTournamentWinner,
+	setTournamentName,
 	setAthletes,
 	addAthlete,
 	resetTournament,
