@@ -1,18 +1,18 @@
-import type { IAthlete } from '../../types'
+import type { IBattle } from '../../types'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Slide, Typography } from '@mui/material'
 import AthleteBattleCard from './AthleteBattleCard'
 import type { ReactElement } from 'react'
 
 interface Properties {
-	athletes: (IAthlete | undefined)[]
+	battle: IBattle
 }
 
-export default function BattleView({ athletes }: Properties): ReactElement {
+export default function BattleView({ battle }: Properties): ReactElement {
 	return (
 		<Grid container sx={{ mt: 4 }}>
-			{athletes.map((athlete, index) =>
-				index === 0 ? (
+			{battle.athletes.map((athlete, index) => (
+				<>
 					<Grid
 						xs
 						key={`AthleteInBattleCardGrid-${athlete?.name}`}
@@ -20,14 +20,18 @@ export default function BattleView({ athletes }: Properties): ReactElement {
 						justifyContent='center'
 						alignItems='center'
 					>
-						<Slide direction='right' in mountOnEnter unmountOnExit>
+						<Slide
+							direction={index % 2 ? 'left' : 'right'}
+							in
+							mountOnEnter
+							unmountOnExit
+						>
 							<div>
-								<AthleteBattleCard athlete={athlete} />
+								<AthleteBattleCard battle={battle} athlete={athlete} />
 							</div>
 						</Slide>
 					</Grid>
-				) : (
-					<>
+					{index !== battle.athletes.length - 1 && (
 						<Grid
 							xs={1}
 							display='flex'
@@ -36,27 +40,9 @@ export default function BattleView({ athletes }: Properties): ReactElement {
 						>
 							<Typography variant='h2'>VS</Typography>
 						</Grid>
-						<Grid
-							xs
-							key={`AthleteInBattleCardGrid-${athlete?.name}`}
-							display='flex'
-							justifyContent='center'
-							alignItems='center'
-						>
-							<Slide
-								direction={index % 2 ? 'left' : 'right'}
-								in
-								mountOnEnter
-								unmountOnExit
-							>
-								<div>
-									<AthleteBattleCard athlete={athlete} />
-								</div>
-							</Slide>
-						</Grid>
-					</>
-				)
-			)}
+					)}
+				</>
+			))}
 		</Grid>
 	)
 }

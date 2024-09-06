@@ -36,11 +36,17 @@ export const tournamentSlice = createSlice({
 		setTournamentName: (state, action: PayloadAction<string>) => {
 			state.name = action.payload
 		},
-		setAthletes: (state, action: PayloadAction<IAthlete[]>) => {
+		setTournamentAthletes: (state, action: PayloadAction<IAthlete[]>) => {
 			state.athletes = action.payload
 		},
-		addAthlete: (state, action: PayloadAction<IAthlete>) => {
+		addAthleteToTournament: (state, action: PayloadAction<IAthlete>) => {
 			state.athletes.push(action.payload)
+		},
+		updateBattleInTournamentByID: (state, action: PayloadAction<IBattle>) => {
+			// find the battle that has the same id as payload and update it with payload value
+			state.battles[
+				state.battles.findIndex(battle => battle.id === action.payload.id)
+			] = action.payload
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
 		resetTournament: () => initialState,
@@ -55,9 +61,10 @@ export const {
 	setBattles,
 	setTournamentWinner,
 	setTournamentName,
-	setAthletes,
-	addAthlete,
+	setTournamentAthletes,
+	addAthleteToTournament,
 	resetTournament,
+	updateBattleInTournamentByID,
 	generateFromAthletes
 } = tournamentSlice.actions
 

@@ -10,8 +10,6 @@ import {
 	CardMedia,
 	Typography
 } from '@mui/material'
-import { useAppDispatch } from 'app/hooks'
-import { addAthlete, removeAthlete } from '../features/battle/battleSlice'
 
 const PREFERRED_IMAGE_WIDTH = 384
 const MOBILE_PADDING = 16
@@ -20,13 +18,14 @@ const ASPECT_RATIO_HEIGHT = 9
 
 interface Properties {
 	athlete: IAthlete
+	onCardClick: (athlete: IAthlete) => void
 }
 
-export default function AthleteSelectCard({
-	athlete
+export default function AthleteCard({
+	athlete,
+	onCardClick
 }: Properties): ReactElement {
 	const navigate = useNavigate()
-	const dispatch = useAppDispatch()
 	const [isSelected, setIsSelected] = useState<boolean>(false)
 
 	function onDetailButtonClick(): void {
@@ -34,19 +33,18 @@ export default function AthleteSelectCard({
 		navigate(athlete.name.toLowerCase())
 	}
 
-	function onCardClick(): void {
+	function onClick(): void {
 		if (isSelected) {
-			dispatch(removeAthlete(athlete))
 			setIsSelected(false)
 		} else {
-			dispatch(addAthlete(athlete))
 			setIsSelected(true)
 		}
+		onCardClick(athlete)
 	}
 
 	function onKeyDown(event: KeyboardEvent): void {
 		if (event.key === 'Enter') {
-			onCardClick()
+			onClick()
 		}
 	}
 	const imageWidth = Math.min(
@@ -61,7 +59,7 @@ export default function AthleteSelectCard({
 				border: isSelected ? 'solid blue' : 'solid transparent'
 			}}
 		>
-			<CardActionArea onClick={onCardClick} onKeyDown={onKeyDown}>
+			<CardActionArea onClick={onClick} onKeyDown={onKeyDown}>
 				<CardMedia
 					component='img'
 					sx={{
