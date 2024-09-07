@@ -6,15 +6,13 @@ import { mainNavigation } from './Home'
 import { Button, Container } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import type { RootState } from '../app/store'
-import {
-	selectActiveBattle,
-	selectActiveBattleWinner
-} from '../features/battle/battleSlice'
+import { selectActiveBattle } from '../features/battle/battleSlice'
 import BattleView from '../components/Battle/BattleView'
 import WinnerView from '../components/Battle/WinnerView'
 import Grid from '@mui/material/Unstable_Grid2'
 import {
 	selectTournament,
+	setNextTournamentBattleAthlete,
 	updateBattleInTournamentByID
 } from '../features/tournament/tournamentSlice'
 
@@ -26,9 +24,6 @@ export default function BattlePage(): ReactElement {
 		selectTournament(state)
 	)
 
-	const winner = useAppSelector((state: RootState) =>
-		selectActiveBattleWinner(state)
-	)
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 
@@ -44,17 +39,22 @@ export default function BattlePage(): ReactElement {
 				: `${accumulator} VS ${athlete?.name ?? 'TDB'}`,
 		''
 	)
+
 	const onContinueClick = (): void => {
 		window.scrollTo(0, 0)
-		dispatch(updateBattleInTournamentByID(activeBattle))
-		// if tournamnt id is
 		if (
 			tournament.id === -1 ||
 			activeBattle.id === -1 ||
 			!tournament.battles.some(b => b.id === activeBattle.id)
 		) {
+			// One shot battle, go back to home screen
 			navigate('/')
 		} else {
+			// Update the battle in Tournament
+			dispatch(updateBattleInTournamentByID(activeBattle))
+			if (activeBattle.winner)
+				dispatch(setNextTournamentBattleAthlete(activeBattle.winner))
+			// Navigate to tournament home page
 			navigate(`/tournament/`)
 		}
 	}
@@ -64,23 +64,25 @@ export default function BattlePage(): ReactElement {
 			<Head title={title} />
 			<NavBar navigation={mainNavigation} />
 			<Container>
-				{winner ? (
-					<WinnerView winner={winner} />
+				{activeBattle.winner ? (
+					<>
+						<WinnerView winner={activeBattle.winner} />
+						<Grid container sx={{ mt: 4 }}>
+							<Grid
+								xs={12}
+								display='flex'
+								justifyContent='center'
+								alignItems='center'
+							>
+								<Button variant='contained' onClick={onContinueClick}>
+									Continue
+								</Button>
+							</Grid>
+						</Grid>
+					</>
 				) : (
 					<BattleView battle={activeBattle} />
 				)}
-				<Grid container>
-					<Grid
-						xs={3}
-						display='flex'
-						justifyContent='center'
-						alignItems='center'
-					>
-						<Button variant='contained' onClick={onContinueClick}>
-							Continue
-						</Button>
-					</Grid>
-				</Grid>
 			</Container>
 		</>
 	)

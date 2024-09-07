@@ -51,7 +51,20 @@ export const tournamentSlice = createSlice({
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
 		resetTournament: () => initialState,
 		generateFromAthletes: state =>
-			generateTournamentFromAthletes(state.athletes)
+			generateTournamentFromAthletes(state.athletes),
+		setNextTournamentBattleAthlete: (
+			state,
+			action: PayloadAction<IAthlete>
+		) => {
+			const nextBattle = state.battles.find(b => b.athletes.includes(undefined))
+			if (nextBattle) {
+				const battleIndex = state.battles.indexOf(nextBattle)
+				// eslint-disable-next-line unicorn/no-useless-undefined
+				const athleteIndex = nextBattle.athletes.indexOf(undefined)
+				nextBattle.athletes[athleteIndex] = action.payload
+				state.battles[battleIndex] = nextBattle
+			}
+		}
 	}
 })
 
@@ -65,7 +78,8 @@ export const {
 	addAthleteToTournament,
 	resetTournament,
 	updateBattleInTournamentByID,
-	generateFromAthletes
+	generateFromAthletes,
+	setNextTournamentBattleAthlete
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
@@ -75,6 +89,10 @@ export const selectTournamentAthletes = (state: RootState): IAthlete[] =>
 	state.tournament.athletes
 export const selectTournamentBattles = (state: RootState): IBattle[] =>
 	state.tournament.battles
+export const selectNextTournamentBattle = (
+	state: RootState
+): IBattle | undefined =>
+	state.tournament.battles.find(b => b.athletes.includes(undefined))
 export const selectTournamentWinner = (
 	state: RootState
 ): IAthlete | undefined => state.tournament.winner

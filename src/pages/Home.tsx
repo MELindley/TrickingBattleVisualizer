@@ -106,7 +106,11 @@ export default function HomePage(): ReactElement {
 							justifyContent='center'
 							alignItems='center'
 						>
-							<AthleteCard athlete={athlete} onCardClick={onAthleteCardClick} />
+							<AthleteCard
+								athlete={athlete}
+								onCardClick={onAthleteCardClick}
+								hasDetailsButton
+							/>
 						</Grid>
 					))}
 				</Grid>

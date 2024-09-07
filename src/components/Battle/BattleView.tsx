@@ -1,14 +1,24 @@
-import type { IBattle } from '../../types'
+import type { IAthlete, IBattle } from '../../types'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Slide, Typography } from '@mui/material'
-import AthleteBattleCard from './AthleteBattleCard'
 import type { ReactElement } from 'react'
+import AthleteCard from '../AthleteCard'
+import { setActiveBattleWinner } from '../../features/battle/battleSlice'
+import { useAppDispatch } from '../../app/hooks'
 
 interface Properties {
 	battle: IBattle
+	hasClickableAthleteCards?: boolean
 }
 
-export default function BattleView({ battle }: Properties): ReactElement {
+export default function BattleView({
+	battle,
+	hasClickableAthleteCards
+}: Properties): ReactElement {
+	const dispatch = useAppDispatch()
+	const onAthleteCardClick = (athlete: IAthlete): void => {
+		dispatch(setActiveBattleWinner(athlete))
+	}
 	return (
 		<Grid container sx={{ mt: 4 }}>
 			{battle.athletes.map((athlete, index) => (
@@ -27,7 +37,11 @@ export default function BattleView({ battle }: Properties): ReactElement {
 							unmountOnExit
 						>
 							<div>
-								<AthleteBattleCard battle={battle} athlete={athlete} />
+								<AthleteCard
+									athlete={athlete}
+									onCardClick={onAthleteCardClick}
+									isClickable={hasClickableAthleteCards}
+								/>
 							</div>
 						</Slide>
 					</Grid>
@@ -45,4 +59,8 @@ export default function BattleView({ battle }: Properties): ReactElement {
 			))}
 		</Grid>
 	)
+}
+
+BattleView.defaultProps = {
+	hasClickableAthleteCards: true
 }
