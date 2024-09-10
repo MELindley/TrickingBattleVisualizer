@@ -21,9 +21,12 @@ import {
 	selectTournament,
 	setTournamentAthletes
 } from '../features/tournament/tournamentSlice'
-import type { IAthlete } from '../types'
+import type { IAthlete } from '../app/types'
 
-export const mainNavigation: NavigationItem[] = [{ name: 'Home', href: '/' }]
+export const mainNavigation: NavigationItem[] = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Login', href: 'login/' }
+]
 
 export default function HomePage(): ReactElement {
 	const { isPending, isError, error, data } = useQuery({

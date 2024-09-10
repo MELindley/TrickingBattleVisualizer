@@ -1,7 +1,7 @@
 import Head from 'components/Head'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
-import NavBar, { type NavigationItem } from '../components/Navbar'
+import NavBar from '../components/Navbar'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Button, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -10,10 +10,9 @@ import { selectTournamentBattles } from '../features/tournament/tournamentSlice'
 import BattleView from '../components/Battle/BattleView'
 import { setActiveBattle } from '../features/battle/battleSlice'
 import WinnerView from '../components/Battle/WinnerView'
+import { mainNavigation } from './Home'
 
-export const mainNavigation: NavigationItem[] = [{ name: 'Home', href: '/' }]
-
-export default function HomePage(): ReactElement {
+export default function TournamentPage(): ReactElement {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const battleList = useAppSelector(state => selectTournamentBattles(state))

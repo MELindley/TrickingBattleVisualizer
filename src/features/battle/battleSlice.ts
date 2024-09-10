@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
-import type { IAthlete, IBattle } from '../../types'
+import type { IAthlete, IBattle } from '../../app/types'
 
 // Define the initial state using that type
 const initialState: IBattle = {

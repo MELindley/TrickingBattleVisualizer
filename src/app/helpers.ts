@@ -1,4 +1,4 @@
-import type { IAthlete, IBattle, ITournament } from '../types'
+import type { IAthlete, IBattle, ITournament } from './types'
 
 export const placeHolderTournament: ITournament = {
 	id: -1,
@@ -34,15 +34,15 @@ export const generateTournamentFromAthletes = (
 			if (pair[1] === null) {
 				nextRoundParticipant.push(pair[0])
 			} else if (pair[0] === null) {
-					nextRoundParticipant.push(pair[1])
-				} else {
-					const battle = {
-						id: battles.length,
-						athletes: [pair[0], pair[1]]
-					} as IBattle
-					nextRoundParticipant.push(battle.winner)
-					battles.push(battle)
-				}
+				nextRoundParticipant.push(pair[1])
+			} else {
+				const battle = {
+					id: battles.length,
+					athletes: [pair[0], pair[1]]
+				} as IBattle
+				nextRoundParticipant.push(battle.winner)
+				battles.push(battle)
+			}
 		}
 		incomingParticipants = nextRoundParticipant
 	}

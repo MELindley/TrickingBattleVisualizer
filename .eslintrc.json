@@ -149,6 +149,7 @@
 		],
 		"unicorn/no-nested-ternary": ["error"]
 	},
+	"ignorePatterns": ["firebaseConfig.ts"],
 	"settings": {
 		"react": {
 			"version": "detect"

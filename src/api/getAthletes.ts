@@ -1,4 +1,4 @@
-import type { IAthlete } from 'types'
+import type { IAthlete } from 'app/types'
 
 export default async function getAthletes(): Promise<IAthlete[]> {
 	const response = await fetch(

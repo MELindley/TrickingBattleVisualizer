@@ -1,4 +1,4 @@
-import type { IAthlete, IBattle } from '../../types'
+import type { IAthlete, IBattle } from '../../app/types'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Slide, Typography } from '@mui/material'
 import type { ReactElement } from 'react'

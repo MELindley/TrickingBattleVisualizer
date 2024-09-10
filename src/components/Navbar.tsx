@@ -20,7 +20,7 @@ export default function NavBar({ navigation }: NavBarProperties): ReactElement {
 							{navigation.map(item => (
 								<div key={`navbar-item-${item.name}`}>
 									<NavLink
-										to='/'
+										to={item.href}
 										className={({ isActive, isPending }) =>
 											`flex h-5 transform items-center justify-center rounded-2xl px-4 py-4 text-sm font-medium uppercase transition duration-300 ease-in-out ${isActive ? 'bg-black text-white' : (isPending ? 'bg-gray-200 text-gray-700' : 'text-gray-500 hover:bg-gray-200 hover:text-gray-700')}`
 										}
