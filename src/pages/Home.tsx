@@ -6,7 +6,7 @@ import LoadingOrError from 'components/LoadingOrError'
 import { type ReactElement, useEffect, useState } from 'react'
 import NavBar, { type NavigationItem } from '../components/Navbar'
 import Grid from '@mui/material/Unstable_Grid2'
-import { Button, Stack } from '@mui/material'
+import { Button, Stack, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import {
@@ -18,8 +18,7 @@ import {
 import {
 	addBattle,
 	generateFromAthletes,
-	selectTournamentAthletes,
-	selectTournamentBattles,
+	selectTournament,
 	setTournamentAthletes
 } from '../features/tournament/tournamentSlice'
 import type { IAthlete } from '../types'
@@ -34,11 +33,8 @@ export default function HomePage(): ReactElement {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
-	const tournamentAthletes = useAppSelector(state =>
-		selectTournamentAthletes(state)
-	)
+	const tournament = useAppSelector(state => selectTournament(state))
 	const activeBattle = useAppSelector(state => selectActiveBattle(state))
-	const battleList = useAppSelector(state => selectTournamentBattles(state))
 
 	useEffect(() => {
 		// Clean potential leftovers from previous battle
@@ -67,7 +63,7 @@ export default function HomePage(): ReactElement {
 
 	const onAddToTournamentClick = (): void => {
 		dispatch(setActiveBattleAthletes(selectedAthletes))
-		dispatch(setActiveBattleId(battleList.length))
+		dispatch(setActiveBattleId(tournament.battles.length))
 		dispatch(addBattle(activeBattle))
 	}
 
@@ -93,14 +89,24 @@ export default function HomePage(): ReactElement {
 	return (
 		<>
 			<Head title='Tricking Battle Visualizer' />
-
-			<Stack spacing={4} justifyContent='center' alignItems='stretch'>
-				<NavBar navigation={mainNavigation} />
-				<Grid container rowSpacing={4}>
-					{tournamentAthletes.map(athlete => (
+			<NavBar navigation={mainNavigation} />
+			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+				<Typography variant='h1'>{tournament.name}</Typography>
+			</Grid>
+			<Stack spacing={4} justifyContent='center' sx={{ p: 4 }}>
+				<Grid container rowSpacing={4} sx={{ boxShadow: 3, borderRadius: 2 }}>
+					<Grid
+						xs={12}
+						display='flex'
+						justifyContent='center'
+						alignItems='center'
+					>
+						<Typography variant='h3'>Athletes</Typography>
+					</Grid>
+					{tournament.athletes.map(athlete => (
 						<Grid
 							xs={6}
-							md={4}
+							md={3}
 							key={`AthleteCardGrid-${athlete.name}`}
 							display='flex'
 							justifyContent='center'

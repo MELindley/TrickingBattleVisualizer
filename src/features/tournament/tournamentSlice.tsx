@@ -11,7 +11,7 @@ const initialState: ITournament = {
 	battles: [],
 	winner: undefined,
 	athletes: [],
-	name: undefined
+	name: 'Temple Gathering'
 }
 
 export const tournamentSlice = createSlice({

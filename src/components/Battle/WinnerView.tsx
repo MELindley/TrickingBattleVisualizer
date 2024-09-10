@@ -12,7 +12,9 @@ export default function WinnerView({ winner }: Properties): ReactElement {
 	return (
 		<Grid container>
 			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
-				<Typography variant='h1'>WINNER</Typography>
+				<Typography variant='h1' component='h2'>
+					WINNER
+				</Typography>
 			</Grid>
 			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
 				<Grow in mountOnEnter unmountOnExit>

@@ -77,7 +77,7 @@ export default function AthleteCard({
 								backgroundColor: athlete.image.color
 							}}
 							image={athlete.image.url}
-							title='green iguana'
+							title={`${athlete.name} ${athlete.surname}`}
 							alt={athlete.name}
 						/>
 						<CardContent>

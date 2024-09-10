@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic&#10;&#10;Implemented logic to plug winner into next tournament battle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AthleteCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Battle/AthleteBattleCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +147,8 @@
       <workItem from="1725622740511" duration="13887000" />
       <workItem from="1725663800080" duration="1052000" />
       <workItem from="1725674058495" duration="619000" />
-      <workItem from="1725715203781" duration="2931000" />
+      <workItem from="1725715203781" duration="3083000" />
+      <workItem from="1725718330913" duration="2265000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -369,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725640180734</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic&#10;&#10;Implemented logic to plug winner into next tournament battle">
+      <option name="closed" value="true" />
+      <created>1725718304988</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1725718304988</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +392,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md" />
     <MESSAGE value="Renamed Gallery To home" />
     <MESSAGE value="Added Mock server to serve athletes to frontend" />
     <MESSAGE value="Refactored fruits into AthleteCard.tsx" />
@@ -412,7 +416,8 @@
     <MESSAGE value="Fixed generateTournament helper function" />
     <MESSAGE value="Added Tournament Page&#10;&#10;Refactored AthleteCard to be more flexible, added a onCardClick Callbackfunction&#10;&#10;Battle.tsx now handles moving to next page from Battle&#10;&#10;Made battleSlice.ts actions and selectors more explicit&#10;&#10;BattleView now takes battle as Prop type and not a simple list of Athletes&#10;&#10;Home now handles the active battle &amp; tournament update logic" />
     <MESSAGE value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic" />
+    <MESSAGE value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic&#10;&#10;Implemented logic to plug winner into next tournament battle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic&#10;&#10;Implemented logic to plug winner into next tournament battle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
