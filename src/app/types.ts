@@ -27,3 +27,7 @@ export interface ITournament {
 	athletes: IAthlete[]
 	name?: string
 }
+
+export interface IFirebaseUserData {
+	role: string
+}

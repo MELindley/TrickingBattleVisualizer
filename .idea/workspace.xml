@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="added login &amp; sign up page &amp; plugged firebase">
-      <change afterPath="$PROJECT_DIR$/firebaseConfig.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/auth/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/auth/authSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebaseConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/firebaseConfig.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getAthletes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getAthletes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AthleteCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +77,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/trickbattlevisualiser/src/api&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marco/IdeaProjects/TrickingBattleVisualizer/src/features/auth&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
@@ -107,6 +96,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\features\auth" />
       <recent name="D:\IdeaProjects\trickbattlevisualiser\src\api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -170,7 +160,11 @@
       <workItem from="1725715203781" duration="3083000" />
       <workItem from="1725718330913" duration="2265000" />
       <workItem from="1725974377533" duration="8324000" />
-      <workItem from="1725987685406" duration="2158000" />
+      <workItem from="1725987685406" duration="7200000" />
+      <workItem from="1726000959906" duration="1881000" />
+      <workItem from="1726050972294" duration="5640000" />
+      <workItem from="1726063031003" duration="1409000" />
+      <workItem from="1726064473844" duration="80000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -404,7 +398,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725974476672</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="added login &amp; sign up page &amp; plugged firebase">
+      <option name="closed" value="true" />
+      <created>1725989961792</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1725989961792</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

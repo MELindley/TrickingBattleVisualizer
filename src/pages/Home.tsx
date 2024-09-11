@@ -22,10 +22,11 @@ import {
 	setTournamentAthletes
 } from '../features/tournament/tournamentSlice'
 import type { IAthlete } from '../app/types'
+import { selectUserRole } from '../features/auth/authSlice'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },
-	{ name: 'Login', href: 'login/' }
+	{ name: 'Login', href: '/login/' }
 ]
 
 export default function HomePage(): ReactElement {
@@ -38,6 +39,7 @@ export default function HomePage(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
 	const tournament = useAppSelector(state => selectTournament(state))
 	const activeBattle = useAppSelector(state => selectActiveBattle(state))
+	const userRole = useAppSelector(state => selectUserRole(state))
 
 	useEffect(() => {
 		// Clean potential leftovers from previous battle
@@ -123,48 +125,50 @@ export default function HomePage(): ReactElement {
 						</Grid>
 					))}
 				</Grid>
-				<Grid container>
-					<Grid
-						xs={3}
-						display='flex'
-						justifyContent='center'
-						alignItems='center'
-					>
-						<Button variant='contained' onClick={onStartBattleClick}>
-							Start Battle
-						</Button>
+				{userRole === 'host' && (
+					<Grid container>
+						<Grid
+							xs={3}
+							display='flex'
+							justifyContent='center'
+							alignItems='center'
+						>
+							<Button variant='contained' onClick={onStartBattleClick}>
+								Start Battle
+							</Button>
+						</Grid>
+						<Grid
+							xs={3}
+							display='flex'
+							justifyContent='center'
+							alignItems='center'
+						>
+							<Button variant='contained' onClick={onAddToTournamentClick}>
+								Add to Tournament
+							</Button>
+						</Grid>
+						<Grid
+							xs={3}
+							display='flex'
+							justifyContent='center'
+							alignItems='center'
+						>
+							<Button variant='contained' onClick={onGenerateTournamentClick}>
+								Generate tournament
+							</Button>
+						</Grid>
+						<Grid
+							xs={3}
+							display='flex'
+							justifyContent='center'
+							alignItems='center'
+						>
+							<Button variant='contained' onClick={onStartTournamentClick}>
+								Start Tournament
+							</Button>
+						</Grid>
 					</Grid>
-					<Grid
-						xs={3}
-						display='flex'
-						justifyContent='center'
-						alignItems='center'
-					>
-						<Button variant='contained' onClick={onAddToTournamentClick}>
-							Add to Tournament
-						</Button>
-					</Grid>
-					<Grid
-						xs={3}
-						display='flex'
-						justifyContent='center'
-						alignItems='center'
-					>
-						<Button variant='contained' onClick={onGenerateTournamentClick}>
-							Generate tournament
-						</Button>
-					</Grid>
-					<Grid
-						xs={3}
-						display='flex'
-						justifyContent='center'
-						alignItems='center'
-					>
-						<Button variant='contained' onClick={onStartTournamentClick}>
-							Start Tournament
-						</Button>
-					</Grid>
-				</Grid>
+				)}
 			</Stack>
 		</>
 	)

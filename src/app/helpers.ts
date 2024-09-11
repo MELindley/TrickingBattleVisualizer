@@ -1,4 +1,8 @@
 import type { IAthlete, IBattle, ITournament } from './types'
+import type { DocumentData } from 'firebase/firestore'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { firestore } from '../../firebaseConfig'
+import type { User } from 'firebase/auth'
 
 export const placeHolderTournament: ITournament = {
 	id: -1,
@@ -52,4 +56,24 @@ export const generateTournamentFromAthletes = (
 		winner: undefined,
 		athletes
 	} as ITournament
+}
+
+export async function firebaseAddUserDocument(
+	user: User,
+	role: string
+): Promise<void> {
+	const userId = user.uid
+	await setDoc(doc(firestore, 'users', userId), { role })
+}
+
+export async function firebaseGetUserDocument(
+	user: User
+): Promise<DocumentData | undefined> {
+	const userId = user.uid
+	const userDocumentReference = doc(firestore, 'users', userId)
+	const userDocumentSnapshot = await getDoc(userDocumentReference)
+	if (userDocumentSnapshot.exists()) {
+		return userDocumentSnapshot.data()
+	}
+	return undefined
 }

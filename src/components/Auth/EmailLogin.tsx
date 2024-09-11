@@ -1,14 +1,19 @@
 // SignIn.js
+import type { ChangeEvent, FormEvent, ReactElement } from 'react'
 import { useState } from 'react'
-import type { ReactElement, ChangeEvent, FormEvent } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom'
+import { firebaseGetUserDocument } from '../../app/helpers'
+import type { IFirebaseUserData } from '../../app/types'
+import { setUserRole } from '../../features/auth/authSlice'
+import { useAppDispatch } from '../../app/hooks'
 
 function EmailLogin(): ReactElement {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const navigate = useNavigate()
+	const dispatch = useAppDispatch()
 
 	// @ts-expect-error Handle function must return void
 	const onFormSubmit = async (event: FormEvent): void => {
@@ -16,7 +21,14 @@ function EmailLogin(): ReactElement {
 		try {
 			await signInWithEmailAndPassword(auth, email, password)
 			// Handle successful sign-in (e.g., redirect to a dashboard)
-			navigate(`/`)
+			const user = auth.currentUser
+			if (user) {
+				const userDocument = (await firebaseGetUserDocument(
+					user
+				)) as IFirebaseUserData
+				dispatch(setUserRole(userDocument.role))
+				navigate(`/`)
+			}
 		} catch {
 			// Handle errors (e.g., display an error message)
 		}
