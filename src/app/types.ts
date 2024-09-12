@@ -18,6 +18,8 @@ export interface IBattle {
 	athletes: (IAthlete | undefined)[]
 	winner?: IAthlete
 	losers?: IAthlete[]
+	hasRound?: number
+	hasTimer?: number
 }
 
 export interface ITournament {

@@ -12,32 +12,32 @@ import { getUniqueArrayElementWithHighestOccurence } from '../../app/helpers'
 interface Properties {
 	battle: IBattle
 	hasClickableAthleteCards?: boolean
-	hasRound?: number
-	hasTimer?: number
 }
 
 export default function BattleView({
 	battle,
-	hasClickableAthleteCards,
-	hasRound,
-	hasTimer
+	hasClickableAthleteCards
 }: Properties): ReactElement {
 	const dispatch = useAppDispatch()
 	const [isTimerFinished, setIsTimerFinished] = useState(false)
 	const [round, setRound] = useState<IAthlete[]>([])
 
 	useEffect(() => {
-		if (hasRound && round.length > Math.floor(hasRound / 2)) {
+		if (battle.hasRound && round.length > Math.floor(battle.hasRound / 2)) {
 			// Start Checking if we have a winner
 			const battleWinner = getUniqueArrayElementWithHighestOccurence(round)
 			if (battleWinner) dispatch(setActiveBattleWinner(battleWinner))
 		}
-	}, [dispatch, hasRound, round])
+	}, [dispatch, battle.hasRound, round])
 
 	const onAthleteCardClick = (athlete: IAthlete): void => {
-		if (isTimerFinished || (hasRound === undefined && hasTimer === undefined))
+		if (
+			isTimerFinished ||
+			(battle.hasRound === undefined && battle.hasTimer === undefined)
+		)
 			dispatch(setActiveBattleWinner(athlete))
-		if (hasRound && round.length < hasRound) setRound([...round, athlete])
+		if (battle.hasRound && round.length < battle.hasRound)
+			setRound([...round, athlete])
 	}
 
 	const onCountDownStop = (): void => {
@@ -69,7 +69,7 @@ export default function BattleView({
 										// Card is clickable if hasClickableCards is true and battle is one shot (no timer & no rounds), round based or the timer has finished
 										isClickable={
 											hasClickableAthleteCards
-												? (hasTimer === undefined
+												? (battle.hasTimer === undefined
 													? true
 													: isTimerFinished)
 												: false
@@ -91,7 +91,7 @@ export default function BattleView({
 					</>
 				))}
 			</Grid>
-			{hasRound ? (
+			{battle.hasRound ? (
 				<>
 					<Grid container>
 						<Grid
@@ -101,7 +101,7 @@ export default function BattleView({
 							alignItems='center'
 						>
 							<Typography variant='h3'>
-								Round {round.length + 1} / {hasRound}
+								Round {round.length + 1} / {battle.hasRound}
 							</Typography>
 						</Grid>
 					</Grid>
@@ -123,7 +123,7 @@ export default function BattleView({
 					</Grid>
 				</>
 			) : undefined}
-			{hasTimer ? (
+			{battle.hasTimer ? (
 				<Grid container>
 					<Grid
 						xs={12}
@@ -135,7 +135,7 @@ export default function BattleView({
 							<Typography variant='h3'>Time !</Typography>
 						) : (
 							<Countdown
-								date={Date.now() + hasTimer}
+								date={Date.now() + battle.hasTimer}
 								onComplete={onCountDownStop}
 							/>
 						)}
@@ -147,7 +147,5 @@ export default function BattleView({
 }
 
 BattleView.defaultProps = {
-	hasClickableAthleteCards: true,
-	hasRound: undefined,
-	hasTimer: undefined
+	hasClickableAthleteCards: true
 }
