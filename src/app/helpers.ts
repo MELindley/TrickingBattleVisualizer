@@ -42,7 +42,8 @@ export const generateTournamentFromAthletes = (
 			} else {
 				const battle = {
 					id: battles.length,
-					athletes: [pair[0], pair[1]]
+					athletes: [pair[0], pair[1]],
+					hasRound: 3
 				} as IBattle
 				nextRoundParticipant.push(battle.winner)
 				battles.push(battle)

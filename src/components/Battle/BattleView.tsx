@@ -91,7 +91,7 @@ export default function BattleView({
 					</>
 				))}
 			</Grid>
-			{battle.hasRound ? (
+			{battle.hasRound && hasClickableAthleteCards ? (
 				<>
 					<Grid container>
 						<Grid
@@ -115,7 +115,7 @@ export default function BattleView({
 								alignItems='center'
 							>
 								<Chip
-									label={`Round ${index + 1} Winner -${athlete.name}`}
+									label={`Round ${index + 1} Winner - 	${athlete.name}`}
 									color='success'
 								/>
 							</Grid>
@@ -123,7 +123,7 @@ export default function BattleView({
 					</Grid>
 				</>
 			) : undefined}
-			{battle.hasTimer ? (
+			{battle.hasTimer && hasClickableAthleteCards ? (
 				<Grid container>
 					<Grid
 						xs={12}

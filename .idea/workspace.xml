@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Added Hadnling of Timed and Round Based Battle">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="refactored the timer and round info into battle type">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +175,7 @@
       <workItem from="1726050972294" duration="5640000" />
       <workItem from="1726063031003" duration="1409000" />
       <workItem from="1726064473844" duration="2971000" />
-      <workItem from="1726144483223" duration="15254000" />
+      <workItem from="1726144483223" duration="15715000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -433,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726158914875</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="refactored the timer and round info into battle type">
+      <option name="closed" value="true" />
+      <created>1726160307061</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1726160307061</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +459,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed image hosting website specific urlparams, update ethan turners urls in athletes.json" />
     <MESSAGE value="added MUI for easier DEV" />
     <MESSAGE value="Created NavBar Componnt and added it to Home" />
     <MESSAGE value="Updted details to work for athletes data type" />
@@ -476,7 +483,8 @@
     <MESSAGE value="Added default value to Tournament title and displayed it on home screen" />
     <MESSAGE value="added login &amp; sign up page &amp; plugged firebase" />
     <MESSAGE value="Added Hadnling of Timed and Round Based Battle" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Hadnling of Timed and Round Based Battle" />
+    <MESSAGE value="refactored the timer and round info into battle type" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored the timer and round info into battle type" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -488,12 +496,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/Tournament.tsx</url>
-          <line>53</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
