@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Refactored code to clean up Home.tsx&#10;&#10;Created folder to hold Home components, Moved buttons to their own component files">
-      <change afterPath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Refactored code to clean up Home.tsx&#10;&#10;Moved Athlete List into it's own component &amp; file">
+      <change beforePath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +173,7 @@
       <workItem from="1726050972294" duration="5640000" />
       <workItem from="1726063031003" duration="1409000" />
       <workItem from="1726064473844" duration="2971000" />
-      <workItem from="1726144483223" duration="18891000" />
+      <workItem from="1726144483223" duration="19102000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -457,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726163035534</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Refactored code to clean up Home.tsx&#10;&#10;Moved Athlete List into it's own component &amp; file">
+      <option name="closed" value="true" />
+      <created>1726163959383</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1726163959383</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +481,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updted details to work for athletes data type" />
     <MESSAGE value="Added Navbar to details page &amp; added button to access Athlete Details page" />
     <MESSAGE value="Added redux to start handling stores" />
     <MESSAGE value="Added redux &amp; created battle slice to handle logic" />
@@ -500,7 +505,8 @@
     <MESSAGE value="refactored the timer and round info into battle type" />
     <MESSAGE value="Fixed dsplaying battle type custom components when athlete cards are not clickable" />
     <MESSAGE value="Refactored code to clean up Home.tsx&#10;&#10;Created folder to hold Home components, Moved buttons to their own component files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored code to clean up Home.tsx&#10;&#10;Created folder to hold Home components, Moved buttons to their own component files" />
+    <MESSAGE value="Refactored code to clean up Home.tsx&#10;&#10;Moved Athlete List into it's own component &amp; file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored code to clean up Home.tsx&#10;&#10;Moved Athlete List into it's own component &amp; file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
