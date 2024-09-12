@@ -6,23 +6,17 @@ import LoadingOrError from 'components/Common/LoadingOrError'
 import { type ReactElement, useEffect, useState } from 'react'
 import NavBar, { type NavigationItem } from '../components/Common/Navbar'
 import Grid from '@mui/material/Unstable_Grid2'
-import { Button, Stack, Typography } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { Stack, Typography } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
+import { resetActiveBattle } from '../features/battle/battleSlice'
 import {
-	resetActiveBattle,
-	selectActiveBattle,
-	setActiveBattleAthletes,
-	setActiveBattleId
-} from '../features/battle/battleSlice'
-import {
-	addBattle,
-	generateFromAthletes,
 	selectTournament,
 	setTournamentAthletes
 } from '../features/tournament/tournamentSlice'
 import type { IAthlete } from '../app/types'
 import { selectUserRole } from '../features/auth/authSlice'
+import TournamentConfig from '../components/Home/Host/TournamentConfig'
+import BattleConfig from '../components/Home/Host/BattleConfig'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },
@@ -34,11 +28,9 @@ export default function HomePage(): ReactElement {
 		queryKey: ['athletes'],
 		queryFn: getAthletes
 	})
-	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
 	const tournament = useAppSelector(state => selectTournament(state))
-	const activeBattle = useAppSelector(state => selectActiveBattle(state))
 	const userRole = useAppSelector(state => selectUserRole(state))
 
 	useEffect(() => {
@@ -52,29 +44,6 @@ export default function HomePage(): ReactElement {
 		if (data) dispatch(setTournamentAthletes(data))
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data])
-
-	const onStartBattleClick = (): void => {
-		dispatch(setActiveBattleAthletes(selectedAthletes))
-		window.scrollTo(0, 0)
-		// eslint-disable-next-line unicorn/no-array-reduce
-		navigate(`/battle/`)
-	}
-
-	const onStartTournamentClick = (): void => {
-		window.scrollTo(0, 0)
-		// eslint-disable-next-line unicorn/no-array-reduce
-		navigate(`/tournament/`)
-	}
-
-	const onAddToTournamentClick = (): void => {
-		dispatch(setActiveBattleAthletes(selectedAthletes))
-		dispatch(setActiveBattleId(tournament.battles.length))
-		dispatch(addBattle(activeBattle))
-	}
-
-	const onGenerateTournamentClick = (): void => {
-		dispatch(generateFromAthletes())
-	}
 
 	const onAthleteCardClick = (athlete: IAthlete): void => {
 		// Check if the athlete is in the array of selected athletes
@@ -126,48 +95,10 @@ export default function HomePage(): ReactElement {
 					))}
 				</Grid>
 				{userRole === 'host' && (
-					<Grid container>
-						<Grid
-							xs={3}
-							display='flex'
-							justifyContent='center'
-							alignItems='center'
-						>
-							<Button variant='contained' onClick={onStartBattleClick}>
-								Start Battle
-							</Button>
-						</Grid>
-						<Grid
-							xs={3}
-							display='flex'
-							justifyContent='center'
-							alignItems='center'
-						>
-							<Button variant='contained' onClick={onAddToTournamentClick}>
-								Add to Tournament
-							</Button>
-						</Grid>
-						<Grid
-							xs={3}
-							display='flex'
-							justifyContent='center'
-							alignItems='center'
-						>
-							<Button variant='contained' onClick={onGenerateTournamentClick}>
-								Generate tournament
-							</Button>
-						</Grid>
-						<Grid
-							xs={3}
-							display='flex'
-							justifyContent='center'
-							alignItems='center'
-						>
-							<Button variant='contained' onClick={onStartTournamentClick}>
-								Start Tournament
-							</Button>
-						</Grid>
-					</Grid>
+					<>
+						<BattleConfig selectedAthletes={selectedAthletes} />
+						<TournamentConfig selectedAthletes={selectedAthletes} />
+					</>
 				)}
 			</Stack>
 		</>
