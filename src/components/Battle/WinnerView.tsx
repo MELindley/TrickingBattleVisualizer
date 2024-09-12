@@ -2,7 +2,7 @@ import Grid from '@mui/material/Unstable_Grid2'
 import { Grow, Typography } from '@mui/material'
 import type { IAthlete } from '../../app/types'
 import type { ReactElement } from 'react'
-import AthleteCard from '../AthleteCard'
+import AthleteCard from '../Athlete/AthleteCard'
 
 interface Properties {
 	winner: IAthlete

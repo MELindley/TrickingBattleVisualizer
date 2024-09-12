@@ -77,3 +77,24 @@ export async function firebaseGetUserDocument(
 	}
 	return undefined
 }
+
+export function getUniqueArrayElementWithHighestOccurence<T>(
+	array: T[]
+): T | undefined {
+	// create array of unique value
+	const arrayUniqueEntries = [...new Set(array)]
+	const entryCount = new Map<T, number>(
+		arrayUniqueEntries.map(entry => [entry, 0])
+	)
+	for (const entry of array) {
+		const count = entryCount.get(entry)
+		if (count) entryCount.set(entry, count + 1)
+		else entryCount.set(entry, 1)
+	}
+	const maxCount = Math.max(...entryCount.values())
+	const entriesWithMaxCount = new Array<T>()
+	for (const [key, value] of entryCount.entries()) {
+		if (value === maxCount) entriesWithMaxCount.push(key)
+	}
+	return entriesWithMaxCount.length === 1 ? entriesWithMaxCount[0] : undefined
+}

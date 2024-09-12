@@ -1,7 +1,7 @@
-import Head from 'components/Head'
+import Head from 'components/Common/Head'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
-import NavBar from '../components/Navbar'
+import NavBar from '../components/Common/Navbar'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Button, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -53,13 +53,15 @@ export default function TournamentPage(): ReactElement {
 				</Grid>
 				<Grid container>
 					<Grid
-						xs={4}
+						xs={12}
 						display='flex'
 						justifyContent='center'
 						alignItems='center'
 					>
 						<Button variant='contained' onClick={onStartBattleClick}>
-							Start Battle
+							{battleList.some(battle => battle.winner === undefined)
+								? 'Next Battle'
+								: 'Back'}
 						</Button>
 					</Grid>
 				</Grid>

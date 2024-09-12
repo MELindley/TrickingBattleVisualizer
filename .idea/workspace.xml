@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="added login &amp; sign up page &amp; plugged firebase">
-      <change afterPath="$PROJECT_DIR$/src/features/auth/authSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebaseConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/firebaseConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/AthleteCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Head.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoadingOrError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/LoadingOrError.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +93,7 @@
     &quot;node.js.selected.package.stylelint&quot;: &quot;D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\stylelint&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.dev host.executor&quot;: &quot;Run&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\prettier&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
@@ -100,11 +107,24 @@
       <recent name="D:\IdeaProjects\trickbattlevisualiser\src\api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Common" />
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Athlete" />
       <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\app" />
       <recent name="D:\IdeaProjects\trickbattlevisualiser\src\components\Battle" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="dev host" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <arguments value="--host" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -115,6 +135,10 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.dev host" />
+      <item itemvalue="npm.dev" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
@@ -164,7 +188,8 @@
       <workItem from="1726000959906" duration="1881000" />
       <workItem from="1726050972294" duration="5640000" />
       <workItem from="1726063031003" duration="1409000" />
-      <workItem from="1726064473844" duration="80000" />
+      <workItem from="1726064473844" duration="2971000" />
+      <workItem from="1726144483223" duration="13861000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -406,7 +431,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725989961792</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="added login &amp; sign up page &amp; plugged firebase">
+      <option name="closed" value="true" />
+      <created>1726064631539</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1726064631540</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,6 +494,12 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/Tournament.tsx</url>
+          <line>53</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -40,14 +40,12 @@ export default function EmailSignUp(): ReactElement {
 
 	return (
 		<form onSubmit={onFormSubmit}>
-			{/* eslint-disable-next-line react/jsx-handler-names */}
 			<input
 				type='email'
 				value={email}
 				onChange={onEmailChange}
 				placeholder='Email'
 			/>
-			{/* eslint-disable-next-line react/jsx-handler-names */}
 			<input
 				type='password'
 				value={password}

@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import Head from '../components/Head'
-import NavBar from '../components/Navbar'
+import Head from '../components/Common/Head'
+import NavBar from '../components/Common/Navbar'
 import { mainNavigation } from './Home'
 import { Button, Container } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
@@ -63,7 +63,7 @@ export default function BattlePage(): ReactElement {
 		<>
 			<Head title={title} />
 			<NavBar navigation={mainNavigation} />
-			<Container>
+			<Container sx={{ p: 4 }}>
 				{activeBattle.winner ? (
 					<>
 						<WinnerView winner={activeBattle.winner} />
