@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
 import getAthletes from 'api/getAthletes'
-import AthleteCard from 'components/Athlete/AthleteCard'
 import Head from 'components/Common/Head'
 import LoadingOrError from 'components/Common/LoadingOrError'
 import { type ReactElement, useEffect, useState } from 'react'
@@ -17,6 +16,7 @@ import type { IAthlete } from '../app/types'
 import { selectUserRole } from '../features/auth/authSlice'
 import TournamentConfig from '../components/Home/Host/TournamentConfig'
 import BattleConfig from '../components/Home/Host/BattleConfig'
+import AthleteList from '../components/Home/AthleteList'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },
@@ -45,18 +45,6 @@ export default function HomePage(): ReactElement {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data])
 
-	const onAthleteCardClick = (athlete: IAthlete): void => {
-		// Check if the athlete is in the array of selected athletes
-		const index = selectedAthletes.indexOf(athlete)
-		if (index >= 0) {
-			// if so remove him
-			setSelectedAthletes(selectedAthletes.toSpliced(index, 1))
-		} else {
-			// Add the athlete to the selected athletes array
-			setSelectedAthletes([...selectedAthletes, athlete])
-		}
-	}
-
 	if (isPending || isError) {
 		return <LoadingOrError error={error as Error} />
 	}
@@ -68,32 +56,11 @@ export default function HomePage(): ReactElement {
 				<Typography variant='h1'>{tournament.name}</Typography>
 			</Grid>
 			<Stack spacing={4} justifyContent='center' sx={{ p: 4 }}>
-				<Grid container rowSpacing={4} sx={{ boxShadow: 3, borderRadius: 2 }}>
-					<Grid
-						xs={12}
-						display='flex'
-						justifyContent='center'
-						alignItems='center'
-					>
-						<Typography variant='h3'>Athletes</Typography>
-					</Grid>
-					{tournament.athletes.map(athlete => (
-						<Grid
-							xs={6}
-							md={3}
-							key={`AthleteCardGrid-${athlete.name}`}
-							display='flex'
-							justifyContent='center'
-							alignItems='center'
-						>
-							<AthleteCard
-								athlete={athlete}
-								onCardClick={onAthleteCardClick}
-								hasDetailsButton
-							/>
-						</Grid>
-					))}
-				</Grid>
+				<AthleteList
+					athletes={tournament.athletes}
+					selectedAthletes={selectedAthletes}
+					setSelectedAthletes={setSelectedAthletes}
+				/>
 				{userRole === 'host' && (
 					<>
 						<BattleConfig selectedAthletes={selectedAthletes} />
