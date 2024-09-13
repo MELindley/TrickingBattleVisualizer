@@ -3,6 +3,7 @@ import type { DocumentData } from 'firebase/firestore'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { firestore } from '../../firebaseConfig'
 import type { User } from 'firebase/auth'
+import type { IRoundProps, ISeedProps } from 'react-brackets'
 
 export const placeHolderTournament: ITournament = {
 	id: -1,
@@ -98,4 +99,61 @@ export function getUniqueArrayElementWithHighestOccurence<T>(
 		if (value === maxCount) entriesWithMaxCount.push(key)
 	}
 	return entriesWithMaxCount.length === 1 ? entriesWithMaxCount[0] : undefined
+}
+
+export function calculateRoundOfBattle(
+	battleIndex: number,
+	totalBattleNumber: number
+): number {
+	/* See https://math.stackexchange.com/questions/2741328/determining-the-round-of-a-match-in-a-knock-out-tournament
+	 * for explanation of formula
+	 */
+	return Math.ceil(
+		Math.log(totalBattleNumber / (totalBattleNumber - battleIndex)) /
+			Math.log(2)
+	)
+}
+
+export function mapBattleListToReactBracketRoundList(
+	battleList: IBattle[]
+): IRoundProps[] {
+	const roundProperties = new Array<IRoundProps>()
+	// See https://math.stackexchange.com/questions/2741328/determining-the-round-of-a-match-in-a-knock-out-tournament
+	const numberOfRounds = Math.ceil(Math.log2(battleList.length))
+	// Get the list of unique athletes from Battle List
+	const athleteSet = new Set<IAthlete>(
+		battleList.flatMap(battle =>
+			battle.athletes.filter((athlete): athlete is IAthlete => !!athlete)
+		)
+	)
+	// Create seeds for each round of the Tournament
+	for (let roundIndex = 0; roundIndex < numberOfRounds; roundIndex += 1) {
+		// Round title is either Final, Semi Final, or Round N
+		const title =
+			roundIndex + 1 === numberOfRounds
+				? 'Final'
+				: (roundIndex + 1 === numberOfRounds - 1
+					? 'Semi Final'
+					: `Round ${roundIndex + 1}`)
+		// The Battles in this round
+		const roundBattles = battleList.slice(
+			(roundIndex * athleteSet.size) / 2,
+			((roundIndex + 1) * athleteSet.size) / 2
+		)
+		// console.log(battleList, 'start index',roundIndex*athleteSet.size/2,'end index',(roundIndex+1)*athleteSet.size/2,'round:',roundIndex+1,'Round Battles:',roundBattles)
+		const seeds: ISeedProps[] = roundBattles.map(
+			battle =>
+				({
+					id: battleList.indexOf(battle),
+					date: new Date().toDateString(),
+					teams: battle.athletes.map(athlete =>
+						athlete
+							? { name: `${athlete.name} ${athlete.surname}` }
+							: { name: '' }
+					)
+				}) as ISeedProps
+		)
+		roundProperties.push({ title, seeds } as IRoundProps)
+	}
+	return roundProperties
 }

@@ -11,6 +11,8 @@ import BattleView from '../components/Battle/BattleView'
 import { setActiveBattle } from '../features/battle/battleSlice'
 import WinnerView from '../components/Battle/WinnerView'
 import { mainNavigation } from './Home'
+import { Bracket } from 'react-brackets'
+import { mapBattleListToReactBracketRoundList } from '../app/helpers'
 
 export default function TournamentPage(): ReactElement {
 	const navigate = useNavigate()
@@ -65,6 +67,7 @@ export default function TournamentPage(): ReactElement {
 						</Button>
 					</Grid>
 				</Grid>
+				<Bracket rounds={mapBattleListToReactBracketRoundList(battleList)} />
 			</Stack>
 		</>
 	)

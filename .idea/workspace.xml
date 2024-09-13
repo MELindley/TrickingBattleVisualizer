@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Imported type directly">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Added Bracket to tournament page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/BattleConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/BattleConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +181,8 @@
       <workItem from="1726144483223" duration="20814000" />
       <workItem from="1726186165492" duration="1065000" />
       <workItem from="1726233630867" duration="432000" />
-      <workItem from="1726234085528" duration="585000" />
+      <workItem from="1726234085528" duration="6602000" />
+      <workItem from="1726248116040" duration="852000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -475,7 +480,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726164101437</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Added ability to remove round winner">
+      <option name="closed" value="true" />
+      <created>1726234789990</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1726234789990</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,8 +506,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added redux to start handling stores" />
-    <MESSAGE value="Added redux &amp; created battle slice to handle logic" />
     <MESSAGE value="Replaced state handlers with Redux logic" />
     <MESSAGE value="First draft of Battle Page" />
     <MESSAGE value="Added Winner and loosers to battle state and to battle type" />
@@ -518,7 +529,9 @@
     <MESSAGE value="Refactored code to clean up Home.tsx&#10;&#10;Created folder to hold Home components, Moved buttons to their own component files" />
     <MESSAGE value="Refactored code to clean up Home.tsx&#10;&#10;Moved Athlete List into it's own component &amp; file" />
     <MESSAGE value="Imported type directly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Imported type directly" />
+    <MESSAGE value="Added ability to remove round winner" />
+    <MESSAGE value="Added Bracket to tournament page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Bracket to tournament page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
