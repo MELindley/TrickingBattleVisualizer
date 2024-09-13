@@ -44,6 +44,10 @@ export default function BattleView({
 		setIsTimerFinished(true)
 	}
 
+	const onChipDelete = (index: number): void => {
+		setRound(round.toSpliced(index, 1))
+	}
+
 	return (
 		<Stack spacing={4} justifyContent='center' alignItems='stretch'>
 			<Grid container sx={{ mt: 4 }}>
@@ -109,7 +113,7 @@ export default function BattleView({
 						{round.map((athlete, index) => (
 							<Grid
 								xs
-								key={`RoundWinnerChip-${athlete.name}`}
+								key={`Round-${index + 1}-WinnerChip-${athlete.name}`}
 								display='flex'
 								justifyContent='center'
 								alignItems='center'
@@ -117,6 +121,7 @@ export default function BattleView({
 								<Chip
 									label={`Round ${index + 1} Winner - 	${athlete.name}`}
 									color='success'
+									onDelete={() => onChipDelete(index)}
 								/>
 							</Grid>
 						))}
