@@ -13,7 +13,9 @@ export const placeHolderTournament: ITournament = {
 }
 
 export const generateTournamentFromAthletes = (
-	athletes: IAthlete[]
+	athletes: IAthlete[],
+	hasRound?: number,
+	hasTimer?: number
 ): ITournament => {
 	if (athletes.length === 0) {
 		return placeHolderTournament
@@ -43,9 +45,14 @@ export const generateTournamentFromAthletes = (
 			} else {
 				const battle = {
 					id: battles.length,
-					athletes: [pair[0], pair[1]],
-					hasRound: 3
+					athletes: [pair[0], pair[1]]
 				} as IBattle
+				if (hasRound) {
+					battle.hasRound = hasRound
+				}
+				if (hasTimer) {
+					battle.hasTimer = hasTimer
+				}
 				nextRoundParticipant.push(battle.winner)
 				battles.push(battle)
 			}

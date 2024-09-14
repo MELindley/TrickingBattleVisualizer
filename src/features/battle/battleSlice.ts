@@ -37,6 +37,18 @@ export const battleSlice = createSlice({
 		setActiveBattleId: (state, action: PayloadAction<number>) => {
 			state.id = action.payload
 		},
+		setActiveBattleHasRound: (state, action: PayloadAction<number>) => {
+			state.hasRound = action.payload
+			state.hasTimer = undefined
+		},
+		setActiveBattleHasTimer: (state, action: PayloadAction<number>) => {
+			state.hasTimer = action.payload
+			state.hasRound = undefined
+		},
+		clearActiveBattleType: state => {
+			state.hasTimer = undefined
+			state.hasRound = undefined
+		},
 		resetActiveBattle: () => initialState,
 		setActiveBattle: (state, action: PayloadAction<IBattle | undefined>) =>
 			action.payload ?? initialState
@@ -51,7 +63,10 @@ export const {
 	setActiveBattleLoser,
 	resetActiveBattle,
 	setActiveBattleId,
-	setActiveBattle
+	setActiveBattle,
+	setActiveBattleHasRound,
+	setActiveBattleHasTimer,
+	clearActiveBattleType
 } = battleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type

@@ -50,8 +50,14 @@ export const tournamentSlice = createSlice({
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
 		resetTournament: () => initialState,
-		generateFromAthletes: state =>
-			generateTournamentFromAthletes(state.athletes),
+		generateFromAthletes: (state, action: PayloadAction<IBattle>) =>
+			action.payload.hasRound ?? action.payload.hasTimer
+				? generateTournamentFromAthletes(
+						state.athletes,
+						action.payload.hasRound,
+						action.payload.hasTimer
+					)
+				: generateTournamentFromAthletes(state.athletes),
 		setNextTournamentBattleAthlete: (
 			state,
 			action: PayloadAction<IAthlete>

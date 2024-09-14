@@ -39,7 +39,7 @@ export default function TournamentConfig({
 	}
 
 	const onGenerateTournamentClick = (): void => {
-		dispatch(generateFromAthletes())
+		dispatch(generateFromAthletes(activeBattle))
 	}
 
 	return (
