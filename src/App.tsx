@@ -1,4 +1,4 @@
-import LoadingOrError from 'components/Common/LoadingOrError'
+import LoadingOrError from 'components/common/LoadingOrError'
 import type { ReactElement } from 'react'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'

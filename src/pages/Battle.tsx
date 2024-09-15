@@ -1,14 +1,14 @@
 import type { ReactElement } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import Head from '../components/Common/Head'
-import NavBar from '../components/Common/Navbar'
+import Head from '../components/common/Head'
+import NavBar from '../components/common/Navbar'
 import { mainNavigation } from './Home'
 import { Button, Container } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import type { RootState } from '../app/store'
 import { selectActiveBattle } from '../features/battle/battleSlice'
-import BattleView from '../components/Battle/BattleView'
-import WinnerView from '../components/Battle/WinnerView'
+import BattleView from '../components/battle/BattleView'
+import WinnerView from '../components/battle/WinnerView'
 import Grid from '@mui/material/Unstable_Grid2'
 import {
 	selectTournament,

@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Added ability to set timer and rounds for generated battles in Tournament">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="refacotred to follow naming convention">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/BattleConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/BattleConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/EmailLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/EmailSignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/GoogleLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/WinnerView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/Head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Head.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/LoadingOrError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/LoadingOrError.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +195,7 @@
       <workItem from="1726234085528" duration="6602000" />
       <workItem from="1726248116040" duration="3166000" />
       <workItem from="1726318253150" duration="3504000" />
-      <workItem from="1726420608353" duration="482000" />
+      <workItem from="1726420608353" duration="1252000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -502,7 +517,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726321264285</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Fixed bug  :)">
+      <option name="closed" value="true" />
+      <created>1726421371943</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1726421371943</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,8 +543,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First draft of Battle Page" />
-    <MESSAGE value="Added Winner and loosers to battle state and to battle type" />
     <MESSAGE value="Clicking on Athlete battle card will select the winner" />
     <MESSAGE value="Added Winner display logic" />
     <MESSAGE value="Added id field to interfaces for easier comparison&#10;added tournament type and slice as well as tournament store" />
@@ -545,7 +566,9 @@
     <MESSAGE value="Added ability to remove round winner" />
     <MESSAGE value="Added Bracket to tournament page" />
     <MESSAGE value="Added ability to set timer and rounds for generated battles in Tournament" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ability to set timer and rounds for generated battles in Tournament" />
+    <MESSAGE value="Fixed bug  :)" />
+    <MESSAGE value="refacotred to follow naming convention" />
+    <option name="LAST_COMMIT_MESSAGE" value="refacotred to follow naming convention" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -557,11 +580,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/Home/Host/BattleConfig.tsx</url>
-          <line>86</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
