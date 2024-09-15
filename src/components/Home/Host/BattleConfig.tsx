@@ -35,9 +35,8 @@ export default function BattleConfig({
 	const onBattleTypeChange = (event: ChangeEvent<HTMLInputElement>): void => {
 		if (event.target.value === 'Open') {
 			dispatch(clearActiveBattleType())
-		} else {
-			setBattleType(event.target.value)
 		}
+		setBattleType(event.target.value)
 	}
 
 	const onStartBattleClick = (): void => {
@@ -69,7 +68,10 @@ export default function BattleConfig({
 			</Grid>
 			<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
 				<FormControl>
-					<FormLabel id='battle-type-radio-buttons-group-label'>
+					<FormLabel
+						id='battle-type-radio-buttons-group-label'
+						sx={{ color: 'white' }}
+					>
 						Battle Type
 					</FormLabel>
 					<RadioGroup
@@ -94,6 +96,8 @@ export default function BattleConfig({
 						id='battleType-TextField'
 						label={`Set ${battleType}`}
 						onChange={onTextFieldChange}
+						InputLabelProps={{ sx: { color: 'white' } }}
+						sx={{ color: 'white' }}
 					/>
 				</Grid>
 			)}
