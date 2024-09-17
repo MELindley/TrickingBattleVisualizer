@@ -2,13 +2,13 @@ import { type KeyboardEvent, type ReactElement, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { IAthlete } from 'app/types'
 import {
-	Box,
 	Button,
 	Card,
 	CardActionArea,
 	CardActions,
 	CardContent,
 	CardMedia,
+	Skeleton,
 	Typography
 } from '@mui/material'
 
@@ -88,30 +88,28 @@ export default function AthleteCard({
 							title={`${athlete.name} ${athlete.surname}`}
 							alt={athlete.name}
 						/>
-						<Box
-							sx={{
-								display: 'flex',
-								flexDirection: 'column',
-								width: imageWidth
-							}}
-						>
-							<CardContent sx={{ margin: 'auto' }}>
-								<Typography gutterBottom variant='h3'>
-									{athlete.name} {athlete.surname}
-								</Typography>
-							</CardContent>
-						</Box>
-					</>
-				) : (
-					<Box
-						sx={{ display: 'flex', flexDirection: 'column', width: imageWidth }}
-					>
 						<CardContent sx={{ margin: 'auto' }}>
 							<Typography gutterBottom variant='h3'>
-								TBD
+								{athlete.name} {athlete.surname}
 							</Typography>
 						</CardContent>
-					</Box>
+					</>
+				) : (
+					<>
+						<Skeleton
+							variant='rectangular'
+							height={imageHeight}
+							width={isInLine ? imageHeight : imageWidth}
+							sx={{ marginRight: 'auto' }}
+						/>
+						<CardContent
+							sx={{ display: 'flex', height: imageHeight, flexGrow: 1 }}
+						>
+							<Typography gutterBottom variant='h3' sx={{ margin: 'auto' }}>
+								TBA
+							</Typography>
+						</CardContent>
+					</>
 				)}
 				{hasDetailsButton ? (
 					<CardActions>

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Added function to get battles in rounds">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Refactor AthleteCard layout and update TournamentPage logic&#10;&#10;1. Adjusted AthleteCard dimensions to improve responsive design.&#10;2. Enhanced TournamentPage:&#10;   - Introduced condition rendering for Bracket and WinnerView components.&#10;   - Simplified button text for better UX.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
@@ -186,7 +186,7 @@
       <workItem from="1726427977068" duration="7000" />
       <workItem from="1726435311754" duration="602000" />
       <workItem from="1726497631695" duration="954000" />
-      <workItem from="1726578258454" duration="13130000" />
+      <workItem from="1726578258454" duration="15120000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -548,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726590455315</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Refactor AthleteCard layout and update TournamentPage logic&#10;&#10;1. Adjusted AthleteCard dimensions to improve responsive design.&#10;2. Enhanced TournamentPage:&#10;   - Introduced condition rendering for Bracket and WinnerView components.&#10;   - Simplified button text for better UX.">
+      <option name="closed" value="true" />
+      <created>1726592133681</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1726592133681</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,7 +574,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added extra contestant and ID to athletes.json" />
     <MESSAGE value="Removed redunded interface Battle state from battle slice and replaced by original IBattle interface" />
     <MESSAGE value="Added possibility to have undefined Athletes in a Battle" />
     <MESSAGE value="Removed redunded TournamentState interface and adjusted for possible undefined athltes" />
@@ -591,7 +598,8 @@
     <MESSAGE value="Fixed inline AthleteCard.tsx display on Tournament.tsx page" />
     <MESSAGE value="Refactored helper function and added AI generated doc" />
     <MESSAGE value="Added function to get battles in rounds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added function to get battles in rounds" />
+    <MESSAGE value="Refactor AthleteCard layout and update TournamentPage logic&#10;&#10;1. Adjusted AthleteCard dimensions to improve responsive design.&#10;2. Enhanced TournamentPage:&#10;   - Introduced condition rendering for Bracket and WinnerView components.&#10;   - Simplified button text for better UX." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor AthleteCard layout and update TournamentPage logic&#10;&#10;1. Adjusted AthleteCard dimensions to improve responsive design.&#10;2. Enhanced TournamentPage:&#10;   - Introduced condition rendering for Bracket and WinnerView components.&#10;   - Simplified button text for better UX." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -603,11 +611,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx</url>
-          <line>72</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

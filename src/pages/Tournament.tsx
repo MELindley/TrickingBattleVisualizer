@@ -53,9 +53,7 @@ export default function TournamentPage(): ReactElement {
 						renderSeedComponent={CustomSeed}
 					/>
 				) : (
-					<WinnerView
-						winner={battleList.at(-1).winner as IAthlete}
-					/>
+					<WinnerView winner={battleList.at(-1)?.winner as IAthlete} />
 				)}
 			</Stack>
 		</>
