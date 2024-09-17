@@ -155,8 +155,8 @@ export function mapBattleListToReactBracketRoundList(
 					date: new Date().toDateString(),
 					teams: battle.athletes.map(athlete =>
 						athlete
-							? { name: `${athlete.name} ${athlete.surname}` }
-							: { name: '' }
+							? { name: `${athlete.name} ${athlete.surname}`, athlete }
+							: { name: '', athlete: undefined }
 					)
 				}) as ISeedProps
 		)

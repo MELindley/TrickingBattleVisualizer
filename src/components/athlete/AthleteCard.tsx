@@ -2,6 +2,7 @@ import { type KeyboardEvent, type ReactElement, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { IAthlete } from 'app/types'
 import {
+	Box,
 	Button,
 	Card,
 	CardActionArea,
@@ -21,13 +22,15 @@ interface Properties {
 	onCardClick?: (athlete: IAthlete) => void
 	hasDetailsButton?: boolean
 	isClickable?: boolean
+	isInLine?: boolean
 }
 
 export default function AthleteCard({
 	athlete,
 	onCardClick,
 	hasDetailsButton,
-	isClickable
+	isClickable,
+	isInLine
 }: Properties): ReactElement {
 	const navigate = useNavigate()
 	const [isSelected, setIsSelected] = useState<boolean>(false)
@@ -62,11 +65,16 @@ export default function AthleteCard({
 	return (
 		<Card
 			sx={{
-				maxWidth: imageWidth,
-				border: isSelected ? 'solid blue' : 'solid transparent'
+				width: isInLine ? imageWidth * 1.5 : imageWidth,
+				border: isSelected ? 'solid blue' : 'solid transparent',
+				display: 'flex'
 			}}
 		>
-			<CardActionArea onClick={onClick} onKeyDown={onKeyDown}>
+			<CardActionArea
+				onClick={onClick}
+				onKeyDown={onKeyDown}
+				sx={{ display: 'flex', flexDirection: isInLine ? 'row' : 'column' }}
+			>
 				{athlete ? (
 					<>
 						<CardMedia
@@ -80,21 +88,33 @@ export default function AthleteCard({
 							title={`${athlete.name} ${athlete.surname}`}
 							alt={athlete.name}
 						/>
-						<CardContent>
-							<Typography gutterBottom variant='h3'>
-								{athlete.name} {athlete.surname}
-							</Typography>
-						</CardContent>
+						<Box
+							sx={{
+								display: 'flex',
+								flexDirection: 'column',
+								width: imageWidth
+							}}
+						>
+							<CardContent sx={{ margin: 'auto' }}>
+								<Typography gutterBottom variant='h3'>
+									{athlete.name} {athlete.surname}
+								</Typography>
+							</CardContent>
+						</Box>
 					</>
 				) : (
-					<CardContent>
-						<Typography gutterBottom variant='h3'>
-							TBD
-						</Typography>
-					</CardContent>
+					<Box
+						sx={{ display: 'flex', flexDirection: 'column', width: imageWidth }}
+					>
+						<CardContent sx={{ margin: 'auto' }}>
+							<Typography gutterBottom variant='h3'>
+								TBD
+							</Typography>
+						</CardContent>
+					</Box>
 				)}
-				<CardActions>
-					{hasDetailsButton ? (
+				{hasDetailsButton ? (
+					<CardActions>
 						<Button
 							onClick={onDetailButtonClick}
 							variant='outlined'
@@ -102,8 +122,8 @@ export default function AthleteCard({
 						>
 							Details
 						</Button>
-					) : undefined}
-				</CardActions>
+					</CardActions>
+				) : undefined}
 			</CardActionArea>
 		</Card>
 	)
@@ -111,5 +131,6 @@ export default function AthleteCard({
 AthleteCard.defaultProps = {
 	hasDetailsButton: false,
 	isClickable: true,
+	isInLine: false,
 	onCardClick: (): void => {}
 }

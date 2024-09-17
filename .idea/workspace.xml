@@ -4,24 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="refacotred to follow naming convention">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Fixed inline AthleteCard.tsx display on Tournament.tsx page">
+      <change afterPath="$PROJECT_DIR$/src/components/reactbracket/CustomSeed.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/EmailLogin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/EmailSignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/GoogleLogin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/WinnerView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common/Head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Head.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common/LoadingOrError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/LoadingOrError.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -195,7 +184,12 @@
       <workItem from="1726234085528" duration="6602000" />
       <workItem from="1726248116040" duration="3166000" />
       <workItem from="1726318253150" duration="3504000" />
-      <workItem from="1726420608353" duration="1252000" />
+      <workItem from="1726420608353" duration="1526000" />
+      <workItem from="1726422203209" duration="3099000" />
+      <workItem from="1726427977068" duration="7000" />
+      <workItem from="1726435311754" duration="602000" />
+      <workItem from="1726497631695" duration="954000" />
+      <workItem from="1726578258454" duration="4783000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -525,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726421371943</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="refacotred to follow naming convention">
+      <option name="closed" value="true" />
+      <created>1726422128009</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1726422128009</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +545,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Clicking on Athlete battle card will select the winner" />
     <MESSAGE value="Added Winner display logic" />
     <MESSAGE value="Added id field to interfaces for easier comparison&#10;added tournament type and slice as well as tournament store" />
     <MESSAGE value="added extra contestant and ID to athletes.json" />
@@ -568,7 +569,8 @@
     <MESSAGE value="Added ability to set timer and rounds for generated battles in Tournament" />
     <MESSAGE value="Fixed bug  :)" />
     <MESSAGE value="refacotred to follow naming convention" />
-    <option name="LAST_COMMIT_MESSAGE" value="refacotred to follow naming convention" />
+    <MESSAGE value="Fixed inline AthleteCard.tsx display on Tournament.tsx page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed inline AthleteCard.tsx display on Tournament.tsx page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -580,6 +582,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx</url>
+          <line>72</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

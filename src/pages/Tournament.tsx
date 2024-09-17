@@ -7,12 +7,11 @@ import { Button, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { selectTournamentBattles } from '../features/tournament/tournamentSlice'
-import BattleView from '../components/battle/BattleView'
 import { setActiveBattle } from '../features/battle/battleSlice'
-import WinnerView from '../components/battle/WinnerView'
 import { mainNavigation } from './Home'
 import { Bracket } from 'react-brackets'
 import { mapBattleListToReactBracketRoundList } from '../app/helpers'
+import CustomSeed from '../components/reactbracket/CustomSeed'
 
 export default function TournamentPage(): ReactElement {
 	const navigate = useNavigate()
@@ -35,24 +34,10 @@ export default function TournamentPage(): ReactElement {
 
 			<Stack spacing={4} justifyContent='center' alignItems='stretch'>
 				<NavBar navigation={mainNavigation} />
-				<Grid container rowSpacing={4}>
-					{battleList.map(battle => (
-						<Grid
-							xs={6}
-							md={4}
-							key={`BattleViewGrid-${battle.id}`}
-							display='flex'
-							justifyContent='center'
-							alignItems='center'
-						>
-							{battle.winner ? (
-								<WinnerView winner={battle.winner} />
-							) : (
-								<BattleView battle={battle} hasClickableAthleteCards={false} />
-							)}
-						</Grid>
-					))}
-				</Grid>
+				<Bracket
+					rounds={mapBattleListToReactBracketRoundList(battleList)}
+					renderSeedComponent={CustomSeed}
+				/>
 				<Grid container>
 					<Grid
 						xs={12}
@@ -67,7 +52,6 @@ export default function TournamentPage(): ReactElement {
 						</Button>
 					</Grid>
 				</Grid>
-				<Bracket rounds={mapBattleListToReactBracketRoundList(battleList)} />
 			</Stack>
 		</>
 	)

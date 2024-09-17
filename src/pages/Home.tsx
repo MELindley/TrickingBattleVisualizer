@@ -14,9 +14,9 @@ import {
 } from '../features/tournament/tournamentSlice'
 import type { IAthlete } from '../app/types'
 import { selectUserRole } from '../features/auth/authSlice'
-import TournamentConfig from '../components/Home/Host/TournamentConfig'
-import BattleConfig from '../components/Home/Host/BattleConfig'
-import AthleteList from '../components/Home/AthleteList'
+import TournamentConfig from '../components/home/host/TournamentConfig'
+import BattleConfig from '../components/home/host/BattleConfig'
+import AthleteList from '../components/home/AthleteList'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },
