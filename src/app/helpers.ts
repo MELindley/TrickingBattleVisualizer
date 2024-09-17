@@ -270,8 +270,11 @@ function getRoundBattles(
 	athleteSetSize: number,
 	roundIndex: number
 ): IBattle[] {
-	const startIndex = (roundIndex * athleteSetSize) / 2
-	const endIndex = ((roundIndex + 1) * athleteSetSize) / 2
+	let startIndex = 0
+	for (let round = 1; round <= roundIndex; round += 1) {
+		startIndex += Math.ceil(athleteSetSize / 2 ** round)
+	}
+	const endIndex = startIndex + athleteSetSize / 2 ** (roundIndex + 1)
 	return battleList.slice(startIndex, endIndex)
 }
 
