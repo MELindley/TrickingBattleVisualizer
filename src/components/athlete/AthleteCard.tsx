@@ -65,7 +65,7 @@ export default function AthleteCard({
 	return (
 		<Card
 			sx={{
-				width: isInLine ? imageWidth * 1.5 : imageWidth,
+				width: isInLine ? imageHeight * 2.25 : imageWidth,
 				border: isSelected ? 'solid blue' : 'solid transparent',
 				display: 'flex'
 			}}
@@ -80,8 +80,8 @@ export default function AthleteCard({
 						<CardMedia
 							component='img'
 							sx={{
-								width: imageWidth,
 								height: imageHeight,
+								width: isInLine ? imageHeight : imageWidth,
 								backgroundColor: athlete.image.color
 							}}
 							image={athlete.image.url}

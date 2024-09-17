@@ -12,6 +12,8 @@ import { mainNavigation } from './Home'
 import { Bracket } from 'react-brackets'
 import { mapBattleListToReactBracketRoundList } from '../app/helpers'
 import CustomSeed from '../components/reactbracket/CustomSeed'
+import WinnerView from '../components/battle/WinnerView'
+import type { IAthlete } from '../app/types'
 
 export default function TournamentPage(): ReactElement {
 	const navigate = useNavigate()
@@ -31,13 +33,8 @@ export default function TournamentPage(): ReactElement {
 	return (
 		<>
 			<Head title='Tricking Battle Visualizer' />
-
 			<Stack spacing={4} justifyContent='center' alignItems='stretch'>
 				<NavBar navigation={mainNavigation} />
-				<Bracket
-					rounds={mapBattleListToReactBracketRoundList(battleList)}
-					renderSeedComponent={CustomSeed}
-				/>
 				<Grid container>
 					<Grid
 						xs={12}
@@ -46,12 +43,20 @@ export default function TournamentPage(): ReactElement {
 						alignItems='center'
 					>
 						<Button variant='contained' onClick={onStartBattleClick}>
-							{battleList.some(battle => battle.winner === undefined)
-								? 'Next Battle'
-								: 'Back'}
+							Next
 						</Button>
 					</Grid>
 				</Grid>
+				{battleList.some(battle => battle.winner === undefined) ? (
+					<Bracket
+						rounds={mapBattleListToReactBracketRoundList(battleList)}
+						renderSeedComponent={CustomSeed}
+					/>
+				) : (
+					<WinnerView
+						winner={battleList.at(-1).winner as IAthlete}
+					/>
+				)}
 			</Stack>
 		</>
 	)
