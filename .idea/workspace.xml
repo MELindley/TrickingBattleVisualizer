@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Fixed inline AthleteCard.tsx display on Tournament.tsx page">
-      <change afterPath="$PROJECT_DIR$/src/components/reactbracket/CustomSeed.tsx" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Refactored helper function and added AI generated doc">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +187,7 @@
       <workItem from="1726427977068" duration="7000" />
       <workItem from="1726435311754" duration="602000" />
       <workItem from="1726497631695" duration="954000" />
-      <workItem from="1726578258454" duration="4783000" />
+      <workItem from="1726578258454" duration="9249000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
       <option name="closed" value="true" />
@@ -527,7 +525,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726422128009</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Fixed inline AthleteCard.tsx display on Tournament.tsx page">
+      <option name="closed" value="true" />
+      <created>1726583152157</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1726583152157</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,7 +551,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Winner display logic" />
     <MESSAGE value="Added id field to interfaces for easier comparison&#10;added tournament type and slice as well as tournament store" />
     <MESSAGE value="added extra contestant and ID to athletes.json" />
     <MESSAGE value="Removed redunded interface Battle state from battle slice and replaced by original IBattle interface" />
@@ -570,7 +575,8 @@
     <MESSAGE value="Fixed bug  :)" />
     <MESSAGE value="refacotred to follow naming convention" />
     <MESSAGE value="Fixed inline AthleteCard.tsx display on Tournament.tsx page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed inline AthleteCard.tsx display on Tournament.tsx page" />
+    <MESSAGE value="Refactored helper function and added AI generated doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored helper function and added AI generated doc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

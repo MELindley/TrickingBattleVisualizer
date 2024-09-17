@@ -7,7 +7,7 @@ import AthleteCard from '../athlete/AthleteCard'
 import { setActiveBattleWinner } from '../../features/battle/battleSlice'
 import { useAppDispatch } from '../../app/hooks'
 import Countdown from 'react-countdown'
-import { getUniqueArrayElementWithHighestOccurence } from '../../app/helpers'
+import { getUniqueArrayElementWithHighestOccurrence } from '../../app/helpers'
 
 interface Properties {
 	battle: IBattle
@@ -25,7 +25,7 @@ export default function BattleView({
 	useEffect(() => {
 		if (battle.hasRound && round.length > Math.floor(battle.hasRound / 2)) {
 			// Start Checking if we have a winner
-			const battleWinner = getUniqueArrayElementWithHighestOccurence(round)
+			const battleWinner = getUniqueArrayElementWithHighestOccurrence(round)
 			if (battleWinner) dispatch(setActiveBattleWinner(battleWinner))
 		}
 	}, [dispatch, battle.hasRound, round])
