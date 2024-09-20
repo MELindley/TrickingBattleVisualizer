@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Introduced constants for role string values">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/authSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/authSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,15 +192,8 @@
       <workItem from="1726701698598" duration="12000" />
       <workItem from="1726757618174" duration="2902000" />
       <workItem from="1726831868249" duration="4823000" />
-      <workItem from="1726851186563" duration="1466000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added Mock server to serve athletes to frontend">
-      <option name="closed" value="true" />
-      <created>1722793206691</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1722793206691</updated>
+      <workItem from="1726851186563" duration="3835000" />
+      <workItem from="1726856131937" duration="4307000" />
     </task>
     <task id="LOCAL-00004" summary="Added Mock server to serve athletes to frontend">
       <option name="closed" value="true" />
@@ -586,7 +579,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726835889365</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Introduced constants for role string values">
+      <option name="closed" value="true" />
+      <created>1726853028498</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1726853028499</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,8 +605,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed generateTournament helper function" />
-    <MESSAGE value="Added Tournament Page&#10;&#10;Refactored AthleteCard to be more flexible, added a onCardClick Callbackfunction&#10;&#10;Battle.tsx now handles moving to next page from Battle&#10;&#10;Made battleSlice.ts actions and selectors more explicit&#10;&#10;BattleView now takes battle as Prop type and not a simple list of Athletes&#10;&#10;Home now handles the active battle &amp; tournament update logic" />
     <MESSAGE value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic" />
     <MESSAGE value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic&#10;&#10;Implemented logic to plug winner into next tournament battle" />
     <MESSAGE value="Added default value to Tournament title and displayed it on home screen" />
@@ -629,7 +628,9 @@
     <MESSAGE value="Udpated some values for inline athlete cards" />
     <MESSAGE value="Changed the generate from athletes to only update battles in tournament store" />
     <MESSAGE value="Introduced constants for role string values" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced constants for role string values" />
+    <MESSAGE value="Athlete Data is now fetched from the firestore athletes collection. &#10;&#10;Updat" />
+    <MESSAGE value="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

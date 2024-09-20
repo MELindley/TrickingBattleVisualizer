@@ -1,12 +1,8 @@
 export interface IAthlete {
-	id: number
+	id: string
 	name: string
 	surname: string
-	image: {
-		author: {
-			name: string
-			url: string
-		}
+	image?: {
 		color: string
 		url: string
 	}
@@ -14,7 +10,7 @@ export interface IAthlete {
 }
 
 export interface IBattle {
-	id: number
+	id: string
 	athletes: (IAthlete | undefined)[]
 	winner?: IAthlete
 	losers?: IAthlete[]
@@ -23,7 +19,7 @@ export interface IBattle {
 }
 
 export interface ITournament {
-	id: number
+	id: string
 	battles: IBattle[]
 	winner?: IAthlete
 	athletes: IAthlete[]

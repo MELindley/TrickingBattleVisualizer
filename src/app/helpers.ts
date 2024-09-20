@@ -1,15 +1,15 @@
 import type { IAthlete, IBattle, ITournament } from './types'
 import type { DocumentData } from 'firebase/firestore'
-import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { firestore } from '../../firebaseConfig'
 import type { User } from 'firebase/auth'
 import type { IRoundProps, ISeedProps } from 'react-brackets'
 
-export const HOSTROLE = 'host'
+export const HOST_ROLE = 'host'
 export const SPECTATOR_ROLE = 'spectator'
 
 export const placeHolderTournament: ITournament = {
-	id: -1,
+	id: '-1',
 	battles: [],
 	winner: undefined,
 	athletes: []
@@ -26,7 +26,7 @@ export const placeHolderTournament: ITournament = {
  * @returns {IBattle} - The created battle object.
  */
 const createBattle = (
-	id: number,
+	id: string,
 	athletes: [IAthlete, IAthlete],
 	hasRound?: number,
 	hasTimer?: number
@@ -92,7 +92,7 @@ const handleBattle = (
 		nextRoundParticipants.push(athlete2)
 	} else {
 		const battle: IBattle = createBattle(
-			battles.length,
+			battles.length.toString(),
 			[athlete1, athlete2],
 			hasRound,
 			hasTimer
@@ -185,8 +185,27 @@ export async function firebaseGetUserDocument(
 	const { uid: userId } = user
 	const userDocumentReference = doc(firestore, 'users', userId)
 	const userDocumentSnapshot = await getDoc(userDocumentReference)
-
 	return userDocumentSnapshot.exists() ? userDocumentSnapshot.data() : undefined
+}
+
+export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {
+	const athletesCollectionReference = collection(firestore, 'athletes')
+	const athletesDocuments = await getDocs(athletesCollectionReference)
+	const imagesPromises = []
+	for (const document of athletesDocuments.docs) {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		imagesPromises.push(getDoc(document.data().image))
+	}
+	const images = await Promise.all(imagesPromises)
+	return athletesDocuments.docs.map(
+		(document, index) =>
+			({
+				id: document.id,
+				name: document.data().name as string,
+				surname: document.data().surname as string,
+				image: images[index].data()
+			}) as IAthlete
+	)
 }
 
 /**

@@ -10,7 +10,7 @@ import { selectTournamentBattles } from '../features/tournament/tournamentSlice'
 import { setActiveBattle } from '../features/battle/battleSlice'
 import { mainNavigation } from './Home'
 import { Bracket } from 'react-brackets'
-import { HOSTROLE, mapBattleListToReactBracketRoundList } from '../app/helpers'
+import { HOST_ROLE, mapBattleListToReactBracketRoundList } from '../app/helpers'
 import CustomSeed from '../components/reactbracket/CustomSeed'
 import WinnerView from '../components/battle/WinnerView'
 import type { IAthlete } from '../app/types'
@@ -38,7 +38,7 @@ export default function TournamentPage(): ReactElement {
 			<Head title='Tricking Battle Visualizer' />
 			<Stack spacing={4} justifyContent='center' alignItems='stretch'>
 				<NavBar navigation={mainNavigation} />
-				{userRole === HOSTROLE && (
+				{userRole === HOST_ROLE && (
 					<Grid container>
 						<Grid
 							xs={12}

@@ -1,7 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
-import getAthletes from 'api/getAthletes'
 import Head from 'components/common/Head'
-import LoadingOrError from 'components/common/LoadingOrError'
 import { type ReactElement, useEffect, useState } from 'react'
 import NavBar, { type NavigationItem } from '../components/common/Navbar'
 import Grid from '@mui/material/Unstable_Grid2'
@@ -16,7 +13,7 @@ import { selectUserRole } from '../features/auth/authSlice'
 import TournamentConfig from '../components/home/host/TournamentConfig'
 import BattleConfig from '../components/home/host/BattleConfig'
 import AthleteList from '../components/home/AthleteList'
-import { HOSTROLE } from '../app/helpers'
+import { firebaseGetAthleteCollection, HOST_ROLE } from '../app/helpers'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },
@@ -24,24 +21,30 @@ export const mainNavigation: NavigationItem[] = [
 ]
 
 export default function HomePage(): ReactElement {
-	const { isPending, isError, error, data } = useQuery({
-		queryKey: ['athletes'],
-		queryFn: getAthletes
-	})
 	const dispatch = useAppDispatch()
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
+	const [loading, setLoading] = useState(false)
 	const tournament = useAppSelector(state => selectTournament(state))
 	const userRole = useAppSelector(state => selectUserRole(state))
 
 	useEffect(() => {
 		// Add Athletes to athletes list
-		if (data) dispatch(setTournamentAthletes(data))
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [data])
+		const fetchAthletes = async (): Promise<void> => {
+			setLoading(true)
+			try {
+				const athletes = await firebaseGetAthleteCollection()
+				dispatch(setTournamentAthletes(athletes))
+			} catch {
+				/* empty */
+			} finally {
+				setLoading(false)
+			}
+		}
+		if (!loading && tournament.athletes.length === 0) {
+			void fetchAthletes()
+		}
+	}, [dispatch, loading, tournament.athletes])
 
-	if (isPending || isError) {
-		return <LoadingOrError error={error as Error} />
-	}
 	return (
 		<>
 			<Head title='Tricking Battle Visualizer' />
@@ -55,7 +58,7 @@ export default function HomePage(): ReactElement {
 					selectedAthletes={selectedAthletes}
 					setSelectedAthletes={setSelectedAthletes}
 				/>
-				{userRole === HOSTROLE && (
+				{userRole === HOST_ROLE && (
 					<>
 						<BattleConfig selectedAthletes={selectedAthletes} />
 						<TournamentConfig selectedAthletes={selectedAthletes} />
