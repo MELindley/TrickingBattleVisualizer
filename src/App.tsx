@@ -15,9 +15,9 @@ export default function App(): ReactElement {
 			<Suspense fallback={<LoadingOrError />}>
 				<Routes>
 					<Route path='/' element={<Home />} />
-					<Route path=':athleteName' element={<Details />} />
+					<Route path=':athleteName/' element={<Details />} />
 					<Route path='/battle/' element={<Battle />} />
-					<Route path='/tournament/' element={<Tournament />} />
+					<Route path='/tournament/:tournamentName/' element={<Tournament />} />
 					<Route path='/login/' element={<Login />} />
 				</Routes>
 			</Suspense>

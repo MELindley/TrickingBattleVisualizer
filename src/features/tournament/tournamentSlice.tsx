@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 import type { IAthlete, IBattle, ITournament } from '../../app/types'
-import { generateTournamentFromAthletes } from '../../app/helpers'
+import { generateTournamentBattlesFromAthletes } from '../../app/helpers'
 
 // Define the initial state using that type
 const initialState: ITournament = {
@@ -50,14 +50,13 @@ export const tournamentSlice = createSlice({
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
 		resetTournament: () => initialState,
-		generateFromAthletes: (state, action: PayloadAction<IBattle>) =>
-			action.payload.hasRound ?? action.payload.hasTimer
-				? generateTournamentFromAthletes(
-						state.athletes,
-						action.payload.hasRound,
-						action.payload.hasTimer
-					)
-				: generateTournamentFromAthletes(state.athletes),
+		generateBattlesFromAthletes: (state, action: PayloadAction<IBattle>) => {
+			state.battles = generateTournamentBattlesFromAthletes(
+				state.athletes,
+				action.payload.hasRound,
+				action.payload.hasTimer
+			)
+		},
 		setNextTournamentBattleAthlete: (
 			state,
 			action: PayloadAction<IAthlete>
@@ -84,7 +83,7 @@ export const {
 	addAthleteToTournament,
 	resetTournament,
 	updateBattleInTournamentByID,
-	generateFromAthletes,
+	generateBattlesFromAthletes,
 	setNextTournamentBattleAthlete
 } = tournamentSlice.actions
 

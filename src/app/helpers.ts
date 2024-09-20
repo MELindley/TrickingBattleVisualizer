@@ -105,13 +105,13 @@ const handleBattle = (
  * @param {number} [hasTimer] - Optional parameter indicating the timer value.
  * @returns {ITournament} Returns the constructed tournament.
  */
-export const generateTournamentFromAthletes = (
+export const generateTournamentBattlesFromAthletes = (
 	athletes: IAthlete[],
 	hasRound?: number,
 	hasTimer?: number
-): ITournament => {
+): IBattle[] => {
 	if (athletes.length === 0) {
-		return placeHolderTournament
+		return []
 	}
 
 	const nextHigherPowerOfTwo = 2 ** Math.ceil(Math.log2(athletes.length))
@@ -146,7 +146,7 @@ export const generateTournamentFromAthletes = (
 		participants = nextRoundParticipants
 	}
 
-	return buildTournament(battles, athletes)
+	return battles
 }
 
 /**
