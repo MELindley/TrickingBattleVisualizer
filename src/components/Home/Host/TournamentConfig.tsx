@@ -8,7 +8,7 @@ import {
 } from '../../../features/battle/battleSlice'
 import {
 	addBattle,
-	generateFromAthletes,
+	generateBattlesFromAthletes,
 	selectTournament
 } from '../../../features/tournament/tournamentSlice'
 import { useNavigate } from 'react-router-dom'
@@ -29,7 +29,7 @@ export default function TournamentConfig({
 	const onStartTournamentClick = (): void => {
 		window.scrollTo(0, 0)
 		// eslint-disable-next-line unicorn/no-array-reduce
-		navigate(`/tournament/`)
+		navigate(`/tournament/${tournament.name}/`)
 	}
 
 	const onAddToTournamentClick = (): void => {
@@ -39,7 +39,7 @@ export default function TournamentConfig({
 	}
 
 	const onGenerateTournamentClick = (): void => {
-		dispatch(generateFromAthletes(activeBattle))
+		dispatch(generateBattlesFromAthletes(activeBattle))
 	}
 
 	return (
