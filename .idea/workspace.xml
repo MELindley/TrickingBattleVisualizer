@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Changed the generate from athletes to only update battles in tournament store" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Introduced constants for role string values">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/authSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/authSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -185,15 +192,7 @@
       <workItem from="1726578258454" duration="15600000" />
       <workItem from="1726701698598" duration="12000" />
       <workItem from="1726757618174" duration="2902000" />
-      <workItem from="1726831868249" duration="3092000" />
-    </task>
-    <task id="LOCAL-00001" summary="First Commit Default Vitamin Code &amp; Clean up recommended by the README.md">
-      <option name="closed" value="true" />
-      <created>1722790937540</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1722790937540</updated>
+      <workItem from="1726831868249" duration="3871000" />
     </task>
     <task id="LOCAL-00002" summary="Renamed Gallery To home">
       <option name="closed" value="true" />
@@ -579,7 +578,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726834963123</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Changed the generate from athletes to only update battles in tournament store">
+      <option name="closed" value="true" />
+      <created>1726835152010</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1726835152012</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,7 +604,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created button to generate tournament&#10;&#10;Implemented Helper to generate initial battles from athlete list&#10;&#10;added generate action to slice" />
     <MESSAGE value="Fixed generateTournament helper function" />
     <MESSAGE value="Added Tournament Page&#10;&#10;Refactored AthleteCard to be more flexible, added a onCardClick Callbackfunction&#10;&#10;Battle.tsx now handles moving to next page from Battle&#10;&#10;Made battleSlice.ts actions and selectors more explicit&#10;&#10;BattleView now takes battle as Prop type and not a simple list of Athletes&#10;&#10;Home now handles the active battle &amp; tournament update logic" />
     <MESSAGE value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic" />
@@ -622,7 +628,8 @@
     <MESSAGE value="Refactor AthleteCard layout and update TournamentPage logic" />
     <MESSAGE value="Udpated some values for inline athlete cards" />
     <MESSAGE value="Changed the generate from athletes to only update battles in tournament store" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the generate from athletes to only update battles in tournament store" />
+    <MESSAGE value="Introduced constants for role string values" />
+    <option name="LAST_COMMIT_MESSAGE" value="Introduced constants for role string values" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

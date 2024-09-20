@@ -17,6 +17,7 @@ import { selectUserRole } from '../features/auth/authSlice'
 import TournamentConfig from '../components/home/host/TournamentConfig'
 import BattleConfig from '../components/home/host/BattleConfig'
 import AthleteList from '../components/home/AthleteList'
+import { HOSTROLE } from '../app/helpers'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },
@@ -61,7 +62,7 @@ export default function HomePage(): ReactElement {
 					selectedAthletes={selectedAthletes}
 					setSelectedAthletes={setSelectedAthletes}
 				/>
-				{userRole === 'host' && (
+				{userRole === HOSTROLE && (
 					<>
 						<BattleConfig selectedAthletes={selectedAthletes} />
 						<TournamentConfig selectedAthletes={selectedAthletes} />

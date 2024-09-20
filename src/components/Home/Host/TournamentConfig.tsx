@@ -26,6 +26,7 @@ export default function TournamentConfig({
 	const dispatch = useAppDispatch()
 	const tournament = useAppSelector(state => selectTournament(state))
 	const activeBattle = useAppSelector(state => selectActiveBattle(state))
+
 	const onStartTournamentClick = (): void => {
 		window.scrollTo(0, 0)
 		// eslint-disable-next-line unicorn/no-array-reduce

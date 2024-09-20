@@ -5,6 +5,9 @@ import { firestore } from '../../firebaseConfig'
 import type { User } from 'firebase/auth'
 import type { IRoundProps, ISeedProps } from 'react-brackets'
 
+export const HOSTROLE = 'host'
+export const PARTICIPANTROLE = 'participant'
+
 export const placeHolderTournament: ITournament = {
 	id: -1,
 	battles: [],
@@ -49,20 +52,22 @@ const createBattle = (
  * @returns {ITournament} The newly created tournament object.
  */
 // eslint-disable-next-line @typescript-eslint/max-params
-function buildTournament(
+/* function buildTournament(
+
 	battles: IBattle[],
 	athletes: IAthlete[],
+	id?:number,
 	winner?: IAthlete,
 	name?: string
 ): ITournament {
 	return {
-		id: 0,
+		id:id??0,
 		battles,
 		winner,
 		athletes,
 		name
 	}
-}
+} */
 
 /**
  * Handles the outcome of a battle between two athletes and updates the relevant lists.

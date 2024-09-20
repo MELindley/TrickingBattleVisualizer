@@ -10,15 +10,18 @@ import { selectTournamentBattles } from '../features/tournament/tournamentSlice'
 import { setActiveBattle } from '../features/battle/battleSlice'
 import { mainNavigation } from './Home'
 import { Bracket } from 'react-brackets'
-import { mapBattleListToReactBracketRoundList } from '../app/helpers'
+import { HOSTROLE, mapBattleListToReactBracketRoundList } from '../app/helpers'
 import CustomSeed from '../components/reactbracket/CustomSeed'
 import WinnerView from '../components/battle/WinnerView'
 import type { IAthlete } from '../app/types'
+import { selectUserRole } from '../features/auth/authSlice'
 
 export default function TournamentPage(): ReactElement {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const battleList = useAppSelector(state => selectTournamentBattles(state))
+	const userRole = useAppSelector(state => selectUserRole(state))
+
 	useEffect(() => {
 		dispatch(
 			setActiveBattle(battleList.find(battle => battle.winner === undefined))
@@ -35,18 +38,20 @@ export default function TournamentPage(): ReactElement {
 			<Head title='Tricking Battle Visualizer' />
 			<Stack spacing={4} justifyContent='center' alignItems='stretch'>
 				<NavBar navigation={mainNavigation} />
-				<Grid container>
-					<Grid
-						xs={12}
-						display='flex'
-						justifyContent='center'
-						alignItems='center'
-					>
-						<Button variant='contained' onClick={onStartBattleClick}>
-							Next
-						</Button>
+				{userRole === HOSTROLE && (
+					<Grid container>
+						<Grid
+							xs={12}
+							display='flex'
+							justifyContent='center'
+							alignItems='center'
+						>
+							<Button variant='contained' onClick={onStartBattleClick}>
+								Next
+							</Button>
+						</Grid>
 					</Grid>
-				</Grid>
+				)}
 				{battleList.some(battle => battle.winner === undefined) ? (
 					<Bracket
 						rounds={mapBattleListToReactBracketRoundList(battleList)}
