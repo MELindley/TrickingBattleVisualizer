@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom' // Import your Firebase configuration
-import { firebaseAddUserDocument } from '../../app/helpers'
+import { firebaseAddUserDocument, SPECTATOR_ROLE } from '../../app/helpers'
 import { setUserRole } from '../../features/auth/authSlice'
 import { useAppDispatch } from '../../app/hooks'
 
@@ -21,7 +21,7 @@ export default function EmailSignUp(): ReactElement {
 			// Handle successful sign-up (e.g., redirect to a dashboard)
 			const user = auth.currentUser
 			if (user) {
-				await firebaseAddUserDocument(user, 'participant')
+				await firebaseAddUserDocument(user, SPECTATOR_ROLE)
 				dispatch(setUserRole('particpant'))
 				navigate(`/`)
 			}

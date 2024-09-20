@@ -4,7 +4,8 @@ import { auth, provider } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom'
 import {
 	firebaseAddUserDocument,
-	firebaseGetUserDocument
+	firebaseGetUserDocument,
+	SPECTATOR_ROLE
 } from '../../app/helpers'
 import type { IFirebaseUserData } from '../../app/types'
 import { useAppDispatch } from '../../app/hooks'
@@ -21,8 +22,8 @@ export default function GoogleLogIn(): ReactElement {
 
 			if (user.metadata.creationTime === user.metadata.lastSignInTime) {
 				// new user create the users database document containing the user role
-				await firebaseAddUserDocument(user, 'participant')
-				dispatch(setUserRole('participant'))
+				await firebaseAddUserDocument(user, SPECTATOR_ROLE)
+				dispatch(setUserRole(SPECTATOR_ROLE))
 			} else {
 				// retrieve userDocument and update user role
 				const userDocument = (await firebaseGetUserDocument(

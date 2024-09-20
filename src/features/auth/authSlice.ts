@@ -3,11 +3,11 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 import type { IFirebaseUserData } from '../../app/types'
-import { PARTICIPANTROLE } from '../../app/helpers'
+import { SPECTATOR_ROLE } from '../../app/helpers'
 
 // Define the initial state using that type
 const initialState: IFirebaseUserData = {
-	role: PARTICIPANTROLE
+	role: SPECTATOR_ROLE
 }
 
 export const authSlice = createSlice({

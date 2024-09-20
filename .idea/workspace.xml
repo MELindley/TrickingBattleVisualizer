@@ -7,10 +7,9 @@
     <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Introduced constants for role string values">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/auth/authSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/authSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,15 +191,8 @@
       <workItem from="1726578258454" duration="15600000" />
       <workItem from="1726701698598" duration="12000" />
       <workItem from="1726757618174" duration="2902000" />
-      <workItem from="1726831868249" duration="3871000" />
-    </task>
-    <task id="LOCAL-00002" summary="Renamed Gallery To home">
-      <option name="closed" value="true" />
-      <created>1722791175280</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1722791175280</updated>
+      <workItem from="1726831868249" duration="4823000" />
+      <workItem from="1726851186563" duration="1466000" />
     </task>
     <task id="LOCAL-00003" summary="Added Mock server to serve athletes to frontend">
       <option name="closed" value="true" />
@@ -586,7 +578,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726835152012</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Introduced constants for role string values">
+      <option name="closed" value="true" />
+      <created>1726835889365</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1726835889365</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

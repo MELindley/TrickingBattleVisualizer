@@ -6,7 +6,7 @@ import type { User } from 'firebase/auth'
 import type { IRoundProps, ISeedProps } from 'react-brackets'
 
 export const HOSTROLE = 'host'
-export const PARTICIPANTROLE = 'participant'
+export const SPECTATOR_ROLE = 'spectator'
 
 export const placeHolderTournament: ITournament = {
 	id: -1,

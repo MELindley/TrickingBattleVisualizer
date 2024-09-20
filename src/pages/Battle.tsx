@@ -6,7 +6,10 @@ import { mainNavigation } from './Home'
 import { Button, Container } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import type { RootState } from '../app/store'
-import { selectActiveBattle } from '../features/battle/battleSlice'
+import {
+	resetActiveBattle,
+	selectActiveBattle
+} from '../features/battle/battleSlice'
 import BattleView from '../components/battle/BattleView'
 import WinnerView from '../components/battle/WinnerView'
 import Grid from '@mui/material/Unstable_Grid2'
@@ -43,11 +46,11 @@ export default function BattlePage(): ReactElement {
 	const onContinueClick = (): void => {
 		window.scrollTo(0, 0)
 		if (
-			tournament.id === -1 ||
 			activeBattle.id === -1 ||
 			!tournament.battles.some(b => b.id === activeBattle.id)
 		) {
 			// One shot battle, go back to home screen
+			dispatch(resetActiveBattle())
 			navigate('/')
 		} else {
 			// Update the battle in Tournament
@@ -55,7 +58,7 @@ export default function BattlePage(): ReactElement {
 			if (activeBattle.winner)
 				dispatch(setNextTournamentBattleAthlete(activeBattle.winner))
 			// Navigate to tournament home page
-			navigate(`/tournament/`)
+			navigate(`/tournament/${tournament.name}/`)
 		}
 	}
 

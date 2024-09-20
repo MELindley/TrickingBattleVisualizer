@@ -7,7 +7,6 @@ import NavBar, { type NavigationItem } from '../components/common/Navbar'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Stack, Typography } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { resetActiveBattle } from '../features/battle/battleSlice'
 import {
 	selectTournament,
 	setTournamentAthletes
@@ -33,12 +32,6 @@ export default function HomePage(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
 	const tournament = useAppSelector(state => selectTournament(state))
 	const userRole = useAppSelector(state => selectUserRole(state))
-
-	useEffect(() => {
-		// Clean potential leftovers from previous battle
-		dispatch(resetActiveBattle())
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
 
 	useEffect(() => {
 		// Add Athletes to athletes list
