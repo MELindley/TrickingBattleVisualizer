@@ -1,6 +1,6 @@
 import { type KeyboardEvent, type ReactElement, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import type { IAthlete } from 'app/types'
+import type { IAthlete } from '../../app/types'
 import {
 	Button,
 	Card,
@@ -12,11 +12,6 @@ import {
 	Typography
 } from '@mui/material'
 
-const PREFERRED_IMAGE_WIDTH = 384
-const MOBILE_PADDING = 16
-const ASPECT_RATIO_WIDTH = 16
-const ASPECT_RATIO_HEIGHT = 9
-
 interface Properties {
 	athlete: IAthlete | undefined
 	onCardClick?: (athlete: IAthlete) => void
@@ -24,8 +19,25 @@ interface Properties {
 	isClickable?: boolean
 	isInLine?: boolean
 }
+const PREFERRED_IMAGE_WIDTH = 384
+const MOBILE_PADDING = 16
+const ASPECT_RATIO_WIDTH = 16
+const ASPECT_RATIO_HEIGHT = 9
 
-export default function AthleteCard({
+const calculateImageDimensions = (
+	isInline?: boolean
+): { imageWidth: number; imageHeight: number } => {
+	const imageWidth = Math.min(
+		PREFERRED_IMAGE_WIDTH,
+		window.innerWidth - MOBILE_PADDING
+	)
+	const imageHeight = imageWidth / (ASPECT_RATIO_WIDTH / ASPECT_RATIO_HEIGHT)
+	if (isInline)
+		return { imageWidth: imageWidth / 2, imageHeight: imageHeight / 2 }
+	return { imageWidth, imageHeight }
+}
+
+function AthleteCard({
 	athlete,
 	onCardClick,
 	hasDetailsButton,
@@ -35,12 +47,12 @@ export default function AthleteCard({
 	const navigate = useNavigate()
 	const [isSelected, setIsSelected] = useState<boolean>(false)
 
-	function onDetailButtonClick(): void {
+	const onDetailButtonClick = (): void => {
 		window.scrollTo(0, 0)
 		if (athlete) navigate(athlete.name.toLowerCase())
 	}
 
-	function onClick(): void {
+	const onActionAreaClick = (): void => {
 		if (isClickable) {
 			if (isSelected) {
 				setIsSelected(false)
@@ -51,17 +63,14 @@ export default function AthleteCard({
 		}
 	}
 
-	function onKeyDown(event: KeyboardEvent): void {
+	const onKeyDown = (event: KeyboardEvent): void => {
 		if (event.key === 'Enter') {
-			onClick()
+			onActionAreaClick()
 		}
 	}
 
-	const imageWidth = Math.min(
-		PREFERRED_IMAGE_WIDTH,
-		window.innerWidth - MOBILE_PADDING
-	)
-	const imageHeight = imageWidth / (ASPECT_RATIO_WIDTH / ASPECT_RATIO_HEIGHT)
+	const { imageWidth, imageHeight } = calculateImageDimensions(isInLine)
+
 	return (
 		<Card
 			sx={{
@@ -71,7 +80,7 @@ export default function AthleteCard({
 			}}
 		>
 			<CardActionArea
-				onClick={onClick}
+				onClick={onActionAreaClick}
 				onKeyDown={onKeyDown}
 				sx={{ display: 'flex', flexDirection: isInLine ? 'row' : 'column' }}
 			>
@@ -89,7 +98,7 @@ export default function AthleteCard({
 							alt={athlete.name}
 						/>
 						<CardContent sx={{ margin: 'auto' }}>
-							<Typography gutterBottom variant='h3'>
+							<Typography gutterBottom variant={isInLine ? 'h5' : 'h3'}>
 								{athlete.name} {athlete.surname}
 							</Typography>
 						</CardContent>
@@ -105,7 +114,11 @@ export default function AthleteCard({
 						<CardContent
 							sx={{ display: 'flex', height: imageHeight, flexGrow: 1 }}
 						>
-							<Typography gutterBottom variant='h3' sx={{ margin: 'auto' }}>
+							<Typography
+								gutterBottom
+								variant={isInLine ? 'h5' : 'h3'}
+								sx={{ margin: 'auto' }}
+							>
 								TBA
 							</Typography>
 						</CardContent>
@@ -126,9 +139,11 @@ export default function AthleteCard({
 		</Card>
 	)
 }
+
 AthleteCard.defaultProps = {
 	hasDetailsButton: false,
 	isClickable: true,
 	isInLine: false,
 	onCardClick: (): void => {}
 }
+export default AthleteCard
