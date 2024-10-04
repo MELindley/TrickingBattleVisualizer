@@ -24,6 +24,8 @@ export interface ITournament {
 	winner?: IAthlete
 	athletes: IAthlete[]
 	name?: string
+	hasThirdPlaceBattle?: boolean
+	isFinalDifferent?: boolean
 }
 
 export interface IFirebaseUserData {

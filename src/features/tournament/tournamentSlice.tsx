@@ -7,11 +7,13 @@ import { generateTournamentBattlesFromAthletes } from '../../app/helpers'
 
 // Define the initial state using that type
 const initialState: ITournament = {
-	id: -1,
+	id: '-1',
 	battles: [],
 	winner: undefined,
 	athletes: [],
-	name: 'Temple Gathering'
+	name: 'Temple Gathering',
+	hasThirdPlaceBattle: false,
+	isFinalDifferent: false
 }
 
 export const tournamentSlice = createSlice({
@@ -50,11 +52,19 @@ export const tournamentSlice = createSlice({
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
 		resetTournament: () => initialState,
-		generateBattlesFromAthletes: (state, action: PayloadAction<IBattle>) => {
+		generateBattlesFromAthletes: (
+			state,
+			action: PayloadAction<{
+				battle: IBattle
+				finalIsDifferent?: number
+			}>
+		) => {
 			state.battles = generateTournamentBattlesFromAthletes(
 				state.athletes,
-				action.payload.hasRound,
-				action.payload.hasTimer
+				action.payload.battle.hasRound,
+				action.payload.battle.hasTimer,
+				action.payload.finalIsDifferent,
+				state.hasThirdPlaceBattle
 			)
 		},
 		setNextTournamentBattleAthlete: (
@@ -69,6 +79,21 @@ export const tournamentSlice = createSlice({
 				nextBattle.athletes[athleteIndex] = action.payload
 				state.battles[battleIndex] = nextBattle
 			}
+		},
+		setFinalBattleAthlete: (state, action: PayloadAction<IAthlete>) => {
+			const finalBattle = state.battles.at(-1)
+			if (finalBattle) {
+				// eslint-disable-next-line unicorn/no-useless-undefined
+				const athleteIndex = finalBattle.athletes.indexOf(undefined)
+				finalBattle.athletes[athleteIndex] = action.payload
+				state.battles[state.battles.length - 1] = finalBattle
+			}
+		},
+		setHasThirdPlaceBattle: (state, action: PayloadAction<boolean>) => {
+			state.hasThirdPlaceBattle = action.payload
+		},
+		setIsFinalDifferent: (state, action: PayloadAction<boolean>) => {
+			state.isFinalDifferent = action.payload
 		}
 	}
 })
@@ -84,7 +109,10 @@ export const {
 	resetTournament,
 	updateBattleInTournamentByID,
 	generateBattlesFromAthletes,
-	setNextTournamentBattleAthlete
+	setNextTournamentBattleAthlete,
+	setFinalBattleAthlete,
+	setIsFinalDifferent,
+	setHasThirdPlaceBattle
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type

@@ -8,8 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +45,9 @@
     &quot;accountId&quot;: &quot;80c51a19-5f2f-4269-abb4-46032f13bbf5&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/.pnpm/@firebase+firestore@4.7.1_@firebase+app@0.10.10/node_modules/@firebase/firestore/dist/index.d.ts" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -193,15 +199,12 @@
       <workItem from="1726757618174" duration="2902000" />
       <workItem from="1726831868249" duration="4823000" />
       <workItem from="1726851186563" duration="3835000" />
-      <workItem from="1726856131937" duration="4307000" />
-    </task>
-    <task id="LOCAL-00004" summary="Added Mock server to serve athletes to frontend">
-      <option name="closed" value="true" />
-      <created>1722793663770</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1722793663770</updated>
+      <workItem from="1726856131937" duration="4630000" />
+      <workItem from="1727143465877" duration="7000" />
+      <workItem from="1727543742824" duration="1210000" />
+      <workItem from="1727909047159" duration="10000" />
+      <workItem from="1728048227302" duration="3851000" />
+      <workItem from="1728053191931" duration="2661000" />
     </task>
     <task id="LOCAL-00005" summary="Added Mock server to serve athletes to frontend">
       <option name="closed" value="true" />
@@ -587,7 +590,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726853028499</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions.">
+      <option name="closed" value="true" />
+      <created>1726860652502</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1726860652503</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

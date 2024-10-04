@@ -27,7 +27,7 @@ export const placeHolderTournament: ITournament = {
  */
 const createBattle = (
 	id: string,
-	athletes: [IAthlete, IAthlete],
+	athletes: [IAthlete | undefined, IAthlete | undefined],
 	hasRound?: number,
 	hasTimer?: number
 	// eslint-disable-next-line @typescript-eslint/max-params
@@ -108,12 +108,17 @@ const handleBattle = (
  * @param {IAthlete[]} athletes - An array of athlete objects participating in the tournament.
  * @param {number} [hasRound] - Optional parameter indicating the round number.
  * @param {number} [hasTimer] - Optional parameter indicating the timer value.
+ * @param finalIsDifferent - Optional parameter indicating that the format of the final is different
+ * @param hasThirdPlaceBattle - Optional parameter indicating that the tournament has a battle for third place
  * @returns {ITournament} Returns the constructed tournament.
  */
 export const generateTournamentBattlesFromAthletes = (
 	athletes: IAthlete[],
 	hasRound?: number,
-	hasTimer?: number
+	hasTimer?: number,
+	finalIsDifferent?: number,
+	hasThirdPlaceBattle?: boolean
+	// eslint-disable-next-line @typescript-eslint/max-params
 ): IBattle[] => {
 	if (athletes.length === 0) {
 		return []
@@ -149,6 +154,27 @@ export const generateTournamentBattlesFromAthletes = (
 		}
 
 		participants = nextRoundParticipants
+	}
+	if (hasThirdPlaceBattle) {
+		// Insert extra battle at the end
+		const battle: IBattle = createBattle(
+			battles.length.toString(),
+			[undefined, undefined],
+			hasRound,
+			hasTimer
+		)
+		battles.push(battle)
+	}
+	if (finalIsDifferent) {
+		const battle = battles.pop() as IBattle
+		if (hasTimer) {
+			battle.hasTimer = finalIsDifferent
+			battles.push(battle)
+		}
+		if (hasRound) {
+			battle.hasRound = finalIsDifferent
+			battles.push(battle)
+		}
 	}
 
 	return battles
