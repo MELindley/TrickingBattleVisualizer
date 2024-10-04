@@ -6,7 +6,7 @@ import type { IAthlete, IBattle } from '../../app/types'
 
 // Define the initial state using that type
 const initialState: IBattle = {
-	id: -1,
+	id: '-1',
 	athletes: [],
 	winner: undefined,
 	losers: undefined
@@ -30,11 +30,14 @@ export const battleSlice = createSlice({
 		},
 		setActiveBattleWinner: (state, action: PayloadAction<IAthlete>) => {
 			state.winner = action.payload
+			state.losers = state.athletes.filter(
+				a => a?.id !== action.payload.id
+			) as IAthlete[]
 		},
 		setActiveBattleLoser: (state, action: PayloadAction<IAthlete[]>) => {
 			state.losers = action.payload
 		},
-		setActiveBattleId: (state, action: PayloadAction<number>) => {
+		setActiveBattleId: (state, action: PayloadAction<string>) => {
 			state.id = action.payload
 		},
 		setActiveBattleHasRound: (state, action: PayloadAction<number>) => {

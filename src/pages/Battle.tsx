@@ -15,6 +15,7 @@ import WinnerView from '../components/battle/WinnerView'
 import Grid from '@mui/material/Unstable_Grid2'
 import {
 	selectTournament,
+	setFinalBattleAthlete,
 	setNextTournamentBattleAthlete,
 	updateBattleInTournamentByID
 } from '../features/tournament/tournamentSlice'
@@ -46,7 +47,7 @@ export default function BattlePage(): ReactElement {
 	const onContinueClick = (): void => {
 		window.scrollTo(0, 0)
 		if (
-			activeBattle.id === -1 ||
+			activeBattle.id === '-1' ||
 			!tournament.battles.some(b => b.id === activeBattle.id)
 		) {
 			// One shot battle, go back to home screen
@@ -55,8 +56,23 @@ export default function BattlePage(): ReactElement {
 		} else {
 			// Update the battle in Tournament
 			dispatch(updateBattleInTournamentByID(activeBattle))
-			if (activeBattle.winner)
-				dispatch(setNextTournamentBattleAthlete(activeBattle.winner))
+			if (activeBattle.winner) {
+				// if this is the semi-finals, loser goes to next battle (3rd place final) and winner goes to final battle (1st Place Final)
+				if (
+					activeBattle.losers &&
+					(tournament.battles.indexOf(activeBattle) ===
+						tournament.battles.length - 2 ||
+						tournament.battles.indexOf(activeBattle) ===
+							tournament.battles.length - 3)
+				) {
+					dispatch(setNextTournamentBattleAthlete(activeBattle.losers[0]))
+					dispatch(setFinalBattleAthlete(activeBattle.winner))
+				} else {
+					// else winner moves on
+					dispatch(setNextTournamentBattleAthlete(activeBattle.winner))
+				}
+			}
+
 			// Navigate to tournament home page
 			navigate(`/tournament/${tournament.name}/`)
 		}
