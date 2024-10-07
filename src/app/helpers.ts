@@ -354,28 +354,36 @@ function mapBattlesToSeeds(
 /**
  * Maps a list of battles to a list of React Bracket round properties.
  *
- * @param {IBattle[]} battleList - The list of battles to be mapped.
+ * @param {ITournament[]} tournament - The tournament to be mapped.
  * @return {IRoundProps[]} - The list of round properties for React Bracket.
  */
+/** TODO: Make this function take into account the third place final battle */
 export function mapBattleListToReactBracketRoundList(
-	battleList: IBattle[]
+	tournament: ITournament
 ): IRoundProps[] {
 	const roundProperties: IRoundProps[] = []
-	const numberOfRounds = Math.ceil(Math.log2(battleList.length))
+	const numberOfRounds = Math.ceil(Math.log2(tournament.battles.length))
 	const athleteSet = new Set<IAthlete>(
-		battleList.flatMap(battle =>
+		tournament.battles.flatMap(battle =>
 			battle.athletes.filter((athlete): athlete is IAthlete => !!athlete)
 		)
 	)
 
 	for (let roundIndex = 0; roundIndex < numberOfRounds; roundIndex += 1) {
 		const title = getRoundTitle(roundIndex, numberOfRounds)
-		const roundBattles = getRoundBattles(
-			battleList,
+		let roundBattles = getRoundBattles(
+			tournament.battles,
 			athleteSet.size,
 			roundIndex
 		)
-		const seeds: ISeedProps[] = mapBattlesToSeeds(roundBattles, battleList)
+		if (roundIndex === numberOfRounds - 1 && tournament.hasThirdPlaceBattle) {
+			// In the final round, include both the final and third place battles
+			roundBattles = [...roundBattles, tournament.battles.at(-1) as IBattle]
+		}
+		const seeds: ISeedProps[] = mapBattlesToSeeds(
+			roundBattles,
+			tournament.battles
+		)
 
 		roundProperties.push({ title, seeds })
 	}

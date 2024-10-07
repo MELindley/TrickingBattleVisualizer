@@ -58,12 +58,12 @@ export default function BattlePage(): ReactElement {
 			dispatch(updateBattleInTournamentByID(activeBattle))
 			if (activeBattle.winner) {
 				// if this is the semi-finals, loser goes to next battle (3rd place final) and winner goes to final battle (1st Place Final)
+				const battleIdArray = tournament.battles.map(b => b.id)
 				if (
 					activeBattle.losers &&
-					(tournament.battles.indexOf(activeBattle) ===
-						tournament.battles.length - 2 ||
-						tournament.battles.indexOf(activeBattle) ===
-							tournament.battles.length - 3)
+					(battleIdArray.indexOf(activeBattle.id) ===
+						battleIdArray.length - 3 ||
+						battleIdArray.indexOf(activeBattle.id) === battleIdArray.length - 4)
 				) {
 					dispatch(setNextTournamentBattleAthlete(activeBattle.losers[0]))
 					dispatch(setFinalBattleAthlete(activeBattle.winner))

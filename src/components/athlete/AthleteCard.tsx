@@ -91,9 +91,9 @@ function AthleteCard({
 							sx={{
 								height: imageHeight,
 								width: isInLine ? imageHeight : imageWidth,
-								backgroundColor: athlete.image.color
+								backgroundColor: athlete.image?.color
 							}}
-							image={athlete.image.url}
+							image={athlete.image?.url}
 							title={`${athlete.name} ${athlete.surname}`}
 							alt={athlete.name}
 						/>

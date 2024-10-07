@@ -6,7 +6,7 @@ import Grid from '@mui/material/Unstable_Grid2'
 import { Button, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { selectTournamentBattles } from '../features/tournament/tournamentSlice'
+import { selectTournament } from '../features/tournament/tournamentSlice'
 import { setActiveBattle } from '../features/battle/battleSlice'
 import { mainNavigation } from './Home'
 import { Bracket } from 'react-brackets'
@@ -19,14 +19,16 @@ import { selectUserRole } from '../features/auth/authSlice'
 export default function TournamentPage(): ReactElement {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
-	const battleList = useAppSelector(state => selectTournamentBattles(state))
+	const tournament = useAppSelector(state => selectTournament(state))
 	const userRole = useAppSelector(state => selectUserRole(state))
 
 	useEffect(() => {
 		dispatch(
-			setActiveBattle(battleList.find(battle => battle.winner === undefined))
+			setActiveBattle(
+				tournament.battles.find(battle => battle.winner === undefined)
+			)
 		)
-	}, [battleList, dispatch])
+	}, [dispatch, tournament.battles])
 
 	const onStartBattleClick = (): void => {
 		window.scrollTo(0, 0)
@@ -52,13 +54,13 @@ export default function TournamentPage(): ReactElement {
 						</Grid>
 					</Grid>
 				)}
-				{battleList.some(battle => battle.winner === undefined) ? (
+				{tournament.battles.some(battle => battle.winner === undefined) ? (
 					<Bracket
-						rounds={mapBattleListToReactBracketRoundList(battleList)}
+						rounds={mapBattleListToReactBracketRoundList(tournament)}
 						renderSeedComponent={CustomSeed}
 					/>
 				) : (
-					<WinnerView winner={battleList.at(-1)?.winner as IAthlete} />
+					<WinnerView winner={tournament.battles.at(-1)?.winner as IAthlete} />
 				)}
 			</Stack>
 		</>

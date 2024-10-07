@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions.">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,23 +201,9 @@
       <workItem from="1727543742824" duration="1210000" />
       <workItem from="1727909047159" duration="10000" />
       <workItem from="1728048227302" duration="3851000" />
-      <workItem from="1728053191931" duration="2661000" />
-    </task>
-    <task id="LOCAL-00005" summary="Added Mock server to serve athletes to frontend">
-      <option name="closed" value="true" />
-      <created>1722793818071</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1722793818071</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added Mock server to serve athletes to frontend">
-      <option name="closed" value="true" />
-      <created>1722794913215</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1722794913215</updated>
+      <workItem from="1728053191931" duration="6607000" />
+      <workItem from="1728249394799" duration="650000" />
+      <workItem from="1728303648427" duration="5425000" />
     </task>
     <task id="LOCAL-00007" summary="Added Mock server to serve athletes to frontend">
       <option name="closed" value="true" />
@@ -598,7 +581,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726860652503</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Updated tournament Data structure to hold last battle &amp; third place battle info&#10;&#10;Added reducers to tournament slice:&#10; - setter for isFinalDifferent&#10; - setter for hasThirdPlaceBattle&#10; - setter for Athletes in Finale Battle&#10; - modified generateBattlesFromAthletes payload to accept a value to set for the final round or timer value&#10; &#10; Tournament Config now offers input to allow for third place battles &amp; final battle specifications&#10; &#10; generateTournamentBattlesFromAthletes now handles adding a battle for the third place and specifying a different round or timer value for the final battle">
+      <option name="closed" value="true" />
+      <created>1728056536729</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1728056536729</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice">
+      <option name="closed" value="true" />
+      <created>1728056740578</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1728056740578</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,8 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic" />
-    <MESSAGE value="Refactored AthleteBattleCard.tsx &amp; AthleteCard.tsx into a single file&#10;&#10;AthleteCard is now controlled by parent components&#10;&#10;Updated Parent components to handle logic&#10;&#10;Implemented logic to plug winner into next tournament battle" />
     <MESSAGE value="Added default value to Tournament title and displayed it on home screen" />
     <MESSAGE value="added login &amp; sign up page &amp; plugged firebase" />
     <MESSAGE value="Added Hadnling of Timed and Round Based Battle" />
@@ -641,7 +638,9 @@
     <MESSAGE value="Introduced constants for role string values" />
     <MESSAGE value="Athlete Data is now fetched from the firestore athletes collection. &#10;&#10;Updat" />
     <MESSAGE value="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions." />
+    <MESSAGE value="Updated tournament Data structure to hold last battle &amp; third place battle info&#10;&#10;Added reducers to tournament slice:&#10; - setter for isFinalDifferent&#10; - setter for hasThirdPlaceBattle&#10; - setter for Athletes in Finale Battle&#10; - modified generateBattlesFromAthletes payload to accept a value to set for the final round or timer value&#10; &#10; Tournament Config now offers input to allow for third place battles &amp; final battle specifications&#10; &#10; generateTournamentBattlesFromAthletes now handles adding a battle for the third place and specifying a different round or timer value for the final battle" />
+    <MESSAGE value="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
