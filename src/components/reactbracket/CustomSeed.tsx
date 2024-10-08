@@ -1,16 +1,18 @@
-import type { IRenderSeedProps } from 'react-brackets'
-import { Seed, SeedItem } from 'react-brackets'
+import type { IRenderSeedProps } from '@sportsgram/brackets'
+import { Seed, SeedItem } from '@sportsgram/brackets'
 import type { ReactElement } from 'react'
 import AthleteCard from '../athlete/AthleteCard'
 import Grid from '@mui/material/Unstable_Grid2'
-import type { ISeedProps } from 'react-brackets/dist/types/Seed'
+import type { ISeedProps } from '@sportsgram/brackets/dist/types/Seed'
 import type { IAthlete } from '../../app/types'
+import { Typography } from '@mui/material'
 
 interface ICustomSeedProperties extends ISeedProps {
 	teams: {
 		name?: string
 		athlete?: IAthlete
 	}[]
+	title?: string
 }
 export default function CustomSeed({
 	seed,
@@ -34,6 +36,9 @@ export default function CustomSeed({
 							/>
 						</Grid>
 					))}
+					<Grid xs={12}>
+						<Typography>{seed.title}</Typography>
+					</Grid>
 				</Grid>
 			</SeedItem>
 		</Seed>

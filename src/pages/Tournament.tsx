@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { selectTournament } from '../features/tournament/tournamentSlice'
 import { setActiveBattle } from '../features/battle/battleSlice'
 import { mainNavigation } from './Home'
-import { Bracket } from 'react-brackets'
+import { Bracket } from '@sportsgram/brackets'
 import { HOST_ROLE, mapBattleListToReactBracketRoundList } from '../app/helpers'
 import CustomSeed from '../components/reactbracket/CustomSeed'
 import WinnerView from '../components/battle/WinnerView'
@@ -58,6 +58,7 @@ export default function TournamentPage(): ReactElement {
 					<Bracket
 						rounds={mapBattleListToReactBracketRoundList(tournament)}
 						renderSeedComponent={CustomSeed}
+						twoSided
 					/>
 				) : (
 					<WinnerView winner={tournament.battles.at(-1)?.winner as IAthlete} />

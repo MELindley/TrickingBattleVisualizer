@@ -3,7 +3,7 @@ import type { DocumentData } from 'firebase/firestore'
 import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { firestore } from '../../firebaseConfig'
 import type { User } from 'firebase/auth'
-import type { IRoundProps, ISeedProps } from 'react-brackets'
+import type { IRoundProps, ISeedProps } from '@sportsgram/brackets'
 
 export const HOST_ROLE = 'host'
 export const SPECTATOR_ROLE = 'spectator'
@@ -334,21 +334,33 @@ function getRoundBattles(
  *
  * @param {IBattle[]} battles - Array of battle objects to be mapped.
  * @param {IBattle[]} battleList - Complete list of battles to find indexes of battles.
+ * @param hasThirdPlaceBattle - Optional parameter indicating that the tournament has a battle for third place
  * @return {ISeedProps[]} - Array of seed properties mapped from the provided battles.
  */
 function mapBattlesToSeeds(
 	battles: IBattle[],
-	battleList: IBattle[]
+	battleList: IBattle[],
+	hasThirdPlaceBattle?: boolean
 ): ISeedProps[] {
-	return battles.map(battle => ({
-		id: battleList.indexOf(battle),
-		date: new Date().toDateString(),
-		teams: battle.athletes.map(athlete =>
-			athlete
-				? { name: `${athlete.name} ${athlete.surname}`, athlete }
-				: { name: '', athlete: undefined }
-		)
-	}))
+	return battles.map(battle => {
+		const id = battleList.indexOf(battle)
+		const title =
+			id === battleList.length - 1
+				? 'Grand Final'
+				: (id === battleList.length - 2 && hasThirdPlaceBattle
+					? 'Third place decider'
+					: `Battle ${id}`)
+		return {
+			id,
+			date: new Date().toDateString(),
+			teams: battle.athletes.map(athlete =>
+				athlete
+					? { name: `${athlete.name} ${athlete.surname}`, athlete }
+					: { name: '', athlete: undefined }
+			),
+			title
+		}
+	})
 }
 
 /**
@@ -357,7 +369,6 @@ function mapBattlesToSeeds(
  * @param {ITournament[]} tournament - The tournament to be mapped.
  * @return {IRoundProps[]} - The list of round properties for React Bracket.
  */
-/** TODO: Make this function take into account the third place final battle */
 export function mapBattleListToReactBracketRoundList(
 	tournament: ITournament
 ): IRoundProps[] {
@@ -382,7 +393,8 @@ export function mapBattleListToReactBracketRoundList(
 		}
 		const seeds: ISeedProps[] = mapBattlesToSeeds(
 			roundBattles,
-			tournament.battles
+			tournament.battles,
+			tournament.hasThirdPlaceBattle
 		)
 
 		roundProperties.push({ title, seeds })

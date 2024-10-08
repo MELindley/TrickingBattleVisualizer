@@ -17,7 +17,8 @@ import { firebaseGetAthleteCollection, HOST_ROLE } from '../app/helpers'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },
-	{ name: 'Login', href: '/login/' }
+	{ name: 'Login', href: '/login/' },
+	{ name: 'Tournament', href: '/tournament/' }
 ]
 
 export default function HomePage(): ReactElement {
