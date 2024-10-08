@@ -74,7 +74,7 @@ function AthleteCard({
 	return (
 		<Card
 			sx={{
-				width: isInLine ? imageHeight * 2.25 : imageWidth,
+				width: isInLine ? imageWidth * 1.7 : imageWidth,
 				border: isSelected ? 'solid blue' : 'solid transparent',
 				display: 'flex'
 			}}

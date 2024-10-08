@@ -349,7 +349,7 @@ function mapBattlesToSeeds(
 				? 'Grand Final'
 				: (id === battleList.length - 2 && hasThirdPlaceBattle
 					? 'Third place decider'
-					: `Battle ${id}`)
+					: `Battle ${id + 1}`)
 		return {
 			id,
 			date: new Date().toDateString(),

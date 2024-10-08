@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Added two sided bracket, &#10;&#10;This breaks the display of the Third place Battle, a custom version of the bracket will need to be created to fix this issue. &#10;&#10;The third place battle is still in the Tournament it just is not displayed by the two sided bracket">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Fixed display of two sided bracket to take full space">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/reactbracket/CustomSeed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reactbracket/CustomSeed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,15 +203,7 @@
       <workItem from="1728249394799" duration="650000" />
       <workItem from="1728303648427" duration="5724000" />
       <workItem from="1728385644538" duration="2903000" />
-      <workItem from="1728388605444" duration="7428000" />
-    </task>
-    <task id="LOCAL-00008" summary="Refactored fruits into AthleteCard.tsx">
-      <option name="closed" value="true" />
-      <created>1722802903320</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1722802903320</updated>
+      <workItem from="1728388605444" duration="9744000" />
     </task>
     <task id="LOCAL-00009" summary="Added MUI for">
       <option name="closed" value="true" />
@@ -601,7 +589,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728321226328</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Added two sided bracket, &#10;&#10;This breaks the display of the Third place Battle, a custom version of the bracket will need to be created to fix this issue. &#10;&#10;The third place battle is still in the Tournament it just is not displayed by the two sided bracket">
+      <option name="closed" value="true" />
+      <created>1728398606467</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1728398606467</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Hadnling of Timed and Round Based Battle" />
     <MESSAGE value="refactored the timer and round info into battle type" />
     <MESSAGE value="Fixed dsplaying battle type custom components when athlete cards are not clickable" />
     <MESSAGE value="Refactored code to clean up Home.tsx&#10;&#10;Created folder to hold Home components, Moved buttons to their own component files" />
@@ -644,7 +639,8 @@
     <MESSAGE value="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice" />
     <MESSAGE value="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice&#10;&#10;Bracekt display works, third place battle is done before actual final, but a better way of displaying this should be found !" />
     <MESSAGE value="Added two sided bracket, &#10;&#10;This breaks the display of the Third place Battle, a custom version of the bracket will need to be created to fix this issue. &#10;&#10;The third place battle is still in the Tournament it just is not displayed by the two sided bracket" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added two sided bracket, &#10;&#10;This breaks the display of the Third place Battle, a custom version of the bracket will need to be created to fix this issue. &#10;&#10;The third place battle is still in the Tournament it just is not displayed by the two sided bracket" />
+    <MESSAGE value="Fixed display of two sided bracket to take full space" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed display of two sided bracket to take full space" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
