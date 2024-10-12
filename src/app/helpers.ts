@@ -1,6 +1,13 @@
 import type { IAthlete, IBattle, ITournament } from './types'
 import type { DocumentData } from 'firebase/firestore'
-import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
+import {
+	addDoc,
+	collection,
+	doc,
+	getDoc,
+	getDocs,
+	setDoc
+} from 'firebase/firestore'
 import { firestore } from '../../firebaseConfig'
 import type { User } from 'firebase/auth'
 import type { IRoundProps, ISeedProps } from '@sportsgram/brackets'
@@ -234,6 +241,151 @@ export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {
 	)
 }
 
+export async function addAthletesToTournament(
+	tournamentId: string,
+	athletes: IAthlete[]
+): Promise<void> {
+	const tournamentDocumentReference = doc(
+		firestore,
+		'tournaments',
+		tournamentId
+	)
+	const athletesCollectionReference = collection(
+		tournamentDocumentReference,
+		'athletes'
+	)
+	const athletePromises = []
+
+	for (const athlete of athletes) {
+		athletePromises.push(addDoc(athletesCollectionReference, athlete))
+	}
+	await Promise.all(athletePromises)
+}
+
+export async function addBattlesToTournament(
+	tournamentId: string,
+	battles: IBattle[]
+): Promise<void> {
+	const tournamentDocumentReference = doc(
+		firestore,
+		'tournaments',
+		tournamentId
+	)
+	const battlesCollectionReference = collection(
+		tournamentDocumentReference,
+		'battles'
+	)
+	const battlePromises = []
+	for (const battle of battles) {
+		battlePromises.push(addDoc(battlesCollectionReference, battle))
+	}
+	await Promise.all(battlePromises)
+}
+
+export async function setBattleInTournament(
+	tournamentId: string,
+	battleId: string,
+	updatedBattle: IBattle
+): Promise<void> {
+	const tournamentDocumentReference = doc(
+		firestore,
+		'tournaments',
+		tournamentId
+	)
+	const battleDocumentReference = doc(
+		tournamentDocumentReference,
+		'battles',
+		battleId
+	)
+
+	try {
+		await setDoc(battleDocumentReference, updatedBattle)
+		console.log('Battle updated successfully!')
+	} catch (error) {
+		console.error('Error updating battle:', error)
+	}
+}
+
+export async function setAthleteInTournament(
+	tournamentId: string,
+	athleteId: string,
+	updatedAthlete: IAthlete
+): Promise<void> {
+	const tournamentDocumentReference = doc(
+		firestore,
+		'tournaments',
+		tournamentId
+	)
+	const athleteDocumentReference = doc(
+		tournamentDocumentReference,
+		'athletes',
+		athleteId
+	)
+
+	try {
+		await setDoc(athleteDocumentReference, updatedAthlete)
+		console.log('Athlete updated successfully!')
+	} catch (error) {
+		console.error('Error updating athlete:', error)
+	}
+}
+
+export async function firebaseAddTournamentDocument(
+	tournament: ITournament
+): Promise<void> {
+	const tournamentsCollectionReference = collection(firestore, 'tournaments')
+	addDoc(tournamentsCollectionReference, tournament)
+		.then(documentReference => {
+			// Now, add athletes and battles to the subcollections
+			void addAthletesToTournament(documentReference.id, tournament.athletes)
+			void addBattlesToTournament(documentReference.id, tournament.battles)
+		})
+		.catch((error: unknown) => {
+			console.error('Error adding document:', error)
+		})
+}
+
+export async function getAthletesInTournament(
+	tournamentId: string
+): Promise<IAthlete[]> {
+	const tournamentDocumentReference = doc(
+		firestore,
+		'tournaments',
+		tournamentId
+	)
+	const athletesCollectionReference = collection(
+		tournamentDocumentReference,
+		'athletes'
+	)
+	const querySnapshot = await getDocs(athletesCollectionReference)
+	const athletes: IAthlete[] = []
+	// eslint-disable-next-line unicorn/no-array-for-each
+	querySnapshot.forEach(athleteDocument => {
+		athletes.push(athleteDocument.data() as IAthlete)
+	})
+	return athletes
+}
+
+export async function getBattlesInTournament(
+	tournamentId: string
+): Promise<IBattle[]> {
+	const tournamentDocumentReference = doc(
+		firestore,
+		'tournaments',
+		tournamentId
+	)
+	const battlesCollectionReference = collection(
+		tournamentDocumentReference,
+		'battles'
+	)
+	const querySnapshot = await getDocs(battlesCollectionReference)
+	const battles: IBattle[] = []
+	// eslint-disable-next-line unicorn/no-array-for-each
+	querySnapshot.forEach(battleDocument => {
+		battles.push(battleDocument.data() as IBattle)
+	})
+	return battles
+}
 /**
  * Finds the unique element in an array with the highest occurrence.
  * If there is a tie for the highest occurrence, returns undefined.
