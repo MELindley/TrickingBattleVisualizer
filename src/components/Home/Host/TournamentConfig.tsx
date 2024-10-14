@@ -3,6 +3,11 @@ import { useState } from 'react'
 import Grid from '@mui/material/Unstable_Grid2'
 import {
 	Button,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
 	FormControlLabel,
 	Switch,
 	TextField,
@@ -37,6 +42,15 @@ export default function TournamentConfig({
 	const tournament = useAppSelector(state => selectTournament(state))
 	const activeBattle = useAppSelector(state => selectActiveBattle(state))
 	const [lastBattleSpec, setLastBattleSpec] = useState<number | undefined>()
+	const [open, setOpen] = useState(false)
+
+	const onClickOpen = (): void => {
+		setOpen(true)
+	}
+
+	const onClickClose = (): void => {
+		setOpen(false)
+	}
 
 	const onStartTournamentClick = (): void => {
 		window.scrollTo(0, 0)
@@ -94,9 +108,28 @@ export default function TournamentConfig({
 				/>
 			</Grid>
 			<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
-				<Button variant='contained' onClick={onStartTournamentClick}>
+				<Button variant='contained' onClick={onClickOpen}>
 					Start Tournament
 				</Button>
+				<Dialog
+					open={open}
+					onClose={onClickClose}
+					aria-labelledby='alert-dialog-title'
+					aria-describedby='alert-dialog-description'
+				>
+					<DialogTitle id='alert-dialog-title'>Start Tournament ?</DialogTitle>
+					<DialogContent>
+						<DialogContentText id='alert-dialog-description'>
+							This will save current options and start the tournament
+						</DialogContentText>
+					</DialogContent>
+					<DialogActions>
+						<Button onClick={onClickClose}>Keep Configuring</Button>
+						<Button onClick={onStartTournamentClick} autoFocus>
+							Agree
+						</Button>
+					</DialogActions>
+				</Dialog>
 			</Grid>
 			<Grid
 				xs={12}
