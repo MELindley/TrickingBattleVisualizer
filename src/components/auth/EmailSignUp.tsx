@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom' // Import your Firebase configuration
 import { firebaseAddUserDocument, SPECTATOR_ROLE } from '../../app/helpers'
-import { setUserRole } from '../../features/auth/authSlice'
+import { setAuth } from '../../features/auth/authSlice'
 import { useAppDispatch } from '../../app/hooks'
 
 export default function EmailSignUp(): ReactElement {
@@ -22,7 +22,7 @@ export default function EmailSignUp(): ReactElement {
 			const user = auth.currentUser
 			if (user) {
 				await firebaseAddUserDocument(user, SPECTATOR_ROLE)
-				dispatch(setUserRole('particpant'))
+				dispatch(setAuth({ id: user.uid, role: SPECTATOR_ROLE }))
 				navigate(`/`)
 			}
 		} catch {

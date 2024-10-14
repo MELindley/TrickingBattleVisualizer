@@ -5,8 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom'
 import { firebaseGetUserDocument } from '../../app/helpers'
-import type { IFirebaseUserData } from '../../app/types'
-import { setUserRole } from '../../features/auth/authSlice'
+import { setAuth } from '../../features/auth/authSlice'
 import { useAppDispatch } from '../../app/hooks'
 
 function EmailLogin(): ReactElement {
@@ -23,10 +22,8 @@ function EmailLogin(): ReactElement {
 			// Handle successful sign-in (e.g., redirect to a dashboard)
 			const user = auth.currentUser
 			if (user) {
-				const userDocument = (await firebaseGetUserDocument(
-					user
-				)) as IFirebaseUserData
-				dispatch(setUserRole(userDocument.role))
+				const userDocument = await firebaseGetUserDocument(user)
+				if (userDocument) dispatch(setAuth(userDocument))
 				navigate(`/`)
 			}
 		} catch {

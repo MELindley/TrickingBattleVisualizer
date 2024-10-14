@@ -1,5 +1,4 @@
-import type { IAthlete, IBattle, ITournament } from './types'
-import type { DocumentData } from 'firebase/firestore'
+import type { IAthlete, IBattle, IFirebaseUserData, ITournament } from './types'
 import {
 	addDoc,
 	collection,
@@ -19,7 +18,8 @@ export const placeHolderTournament: ITournament = {
 	id: '-1',
 	battles: [],
 	winner: undefined,
-	athletes: []
+	athletes: [],
+	hostUID: ''
 }
 
 /**
@@ -214,11 +214,13 @@ export async function firebaseAddUserDocument(
  */
 export async function firebaseGetUserDocument(
 	user: User
-): Promise<DocumentData | undefined> {
+): Promise<IFirebaseUserData | undefined> {
 	const { uid: userId } = user
 	const userDocumentReference = doc(firestore, 'users', userId)
 	const userDocumentSnapshot = await getDoc(userDocumentReference)
-	return userDocumentSnapshot.exists() ? userDocumentSnapshot.data() : undefined
+	return userDocumentSnapshot.exists()
+		? ({ id: userId, ...userDocumentSnapshot.data() } as IFirebaseUserData)
+		: undefined
 }
 
 export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {

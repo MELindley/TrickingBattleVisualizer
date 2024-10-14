@@ -26,8 +26,10 @@ export interface ITournament {
 	name?: string
 	hasThirdPlaceBattle?: boolean
 	isFinalDifferent?: boolean
+	hostUID: string
 }
 
 export interface IFirebaseUserData {
+	id: string
 	role: string
 }
