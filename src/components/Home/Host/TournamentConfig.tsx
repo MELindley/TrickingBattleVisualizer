@@ -18,7 +18,8 @@ import {
 	generateBattlesFromAthletes,
 	selectTournament,
 	setHasThirdPlaceBattle,
-	setIsFinalDifferent
+	setIsFinalDifferent,
+	setTournamentName
 } from '../../../features/tournament/tournamentSlice'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
@@ -70,6 +71,12 @@ export default function TournamentConfig({
 		setLastBattleSpec(Number(event.target.value))
 	}
 
+	const onTournamentNameChange = (
+		event: ChangeEvent<HTMLInputElement>
+	): void => {
+		dispatch(setTournamentName(event.target.value))
+	}
+
 	return (
 		<Grid container rowSpacing={4} sx={{ boxShadow: 3, borderRadius: 2, p: 4 }}>
 			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
@@ -77,57 +84,81 @@ export default function TournamentConfig({
 					Tournament Config
 				</Typography>
 			</Grid>
-			<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
-				<Button variant='contained' onClick={onAddToTournamentClick}>
-					Add to Tournament
-				</Button>
+			<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+				<TextField
+					id='TournamentName-TextField'
+					label='Tournament Name'
+					value={tournament.name}
+					onChange={onTournamentNameChange}
+					sx={{ ml: 4 }}
+				/>
 			</Grid>
-			<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
-				<Button variant='contained' onClick={onGenerateTournamentClick}>
-					Generate tournament
-				</Button>
-			</Grid>
-			<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
+			<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
 				<Button variant='contained' onClick={onStartTournamentClick}>
 					Start Tournament
 				</Button>
 			</Grid>
-			<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
-				<FormControlLabel
-					value='hasThirdPlaceBattle'
-					control={
-						<Switch
-							color='primary'
-							checked={tournament.hasThirdPlaceBattle}
-							onChange={onSwitchThirdPlaceBattle}
-						/>
-					}
-					label='Third Place Battle'
-					labelPlacement='start'
-				/>
-			</Grid>
-			<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
-				<FormControlLabel
-					value='lastBattleIsDifferent'
-					control={
-						<Switch
-							color='primary'
-							checked={tournament.isFinalDifferent}
-							onChange={onSwitchIsFinaleDifferent}
-						/>
-					}
-					label='Final battle is different'
-					labelPlacement='start'
-				/>
-				{tournament.isFinalDifferent ? (
-					<TextField
-						id='battleType-TextField'
-						label='Set last battle'
-						onChange={onLastBattleSetUp}
-						InputLabelProps={{ sx: { color: 'white' } }}
-						sx={{ color: 'white', ml: 4 }}
+			<Grid
+				xs={12}
+				container
+				sx={{ boxShadow: 3, borderRadius: 2, mt: 2, p: 4 }}
+			>
+				<Grid
+					xs={12}
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+				>
+					<Typography variant='h4' sx={{ mb: 2 }}>
+						Battles
+					</Typography>
+				</Grid>
+				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+					<Button variant='contained' onClick={onAddToTournamentClick}>
+						Add selection to tournament
+					</Button>
+				</Grid>
+				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+					<Button variant='contained' onClick={onGenerateTournamentClick}>
+						Generate Battles From Athletes
+					</Button>
+				</Grid>
+				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+					<FormControlLabel
+						value='hasThirdPlaceBattle'
+						control={
+							<Switch
+								color='primary'
+								checked={tournament.hasThirdPlaceBattle}
+								onChange={onSwitchThirdPlaceBattle}
+							/>
+						}
+						label='Third Place Battle'
+						labelPlacement='start'
 					/>
-				) : undefined}
+				</Grid>
+				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+					<FormControlLabel
+						value='lastBattleIsDifferent'
+						control={
+							<Switch
+								color='primary'
+								checked={tournament.isFinalDifferent}
+								onChange={onSwitchIsFinaleDifferent}
+							/>
+						}
+						label='Final battle is different'
+						labelPlacement='start'
+					/>
+					{tournament.isFinalDifferent ? (
+						<TextField
+							id='battleType-TextField'
+							label='Set last battle'
+							onChange={onLastBattleSetUp}
+							sx={{ ml: 4 }}
+						/>
+					) : undefined}
+				</Grid>
 			</Grid>
 		</Grid>
 	)

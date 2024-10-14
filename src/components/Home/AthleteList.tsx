@@ -28,7 +28,7 @@ export default function AthleteList({
 	}
 
 	return (
-		<Grid container rowSpacing={4} sx={{ boxShadow: 3, borderRadius: 2 }}>
+		<Grid container spacing={4}>
 			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
 				<Typography variant='h3'>Athletes</Typography>
 			</Grid>

@@ -98,7 +98,7 @@ function AthleteCard({
 							alt={athlete.name}
 						/>
 						<CardContent sx={{ margin: 'auto' }}>
-							<Typography gutterBottom variant={isInLine ? 'h5' : 'h3'}>
+							<Typography gutterBottom variant={isInLine ? 'h5' : 'h4'}>
 								{athlete.name} {athlete.surname}
 							</Typography>
 						</CardContent>
