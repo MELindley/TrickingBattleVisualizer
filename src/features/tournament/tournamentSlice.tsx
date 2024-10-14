@@ -11,9 +11,10 @@ const initialState: ITournament = {
 	battles: [],
 	winner: undefined,
 	athletes: [],
-	name: 'Temple Gathering',
+	name: '',
 	hasThirdPlaceBattle: false,
-	isFinalDifferent: false
+	isFinalDifferent: false,
+	hostUID: ''
 }
 
 export const tournamentSlice = createSlice({
@@ -38,6 +39,9 @@ export const tournamentSlice = createSlice({
 		setTournamentName: (state, action: PayloadAction<string>) => {
 			state.name = action.payload
 		},
+		setTournamentHostUID: (state, action: PayloadAction<string>) => {
+			state.hostUID = action.payload
+		},
 		setTournamentAthletes: (state, action: PayloadAction<IAthlete[]>) => {
 			state.athletes = action.payload
 		},
@@ -52,6 +56,8 @@ export const tournamentSlice = createSlice({
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
 		resetTournament: () => initialState,
+		setTournament: (state, action: PayloadAction<ITournament>) =>
+			action.payload,
 		generateBattlesFromAthletes: (
 			state,
 			action: PayloadAction<{
@@ -112,7 +118,9 @@ export const {
 	setNextTournamentBattleAthlete,
 	setFinalBattleAthlete,
 	setIsFinalDifferent,
-	setHasThirdPlaceBattle
+	setHasThirdPlaceBattle,
+	setTournamentHostUID,
+	setTournament
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
