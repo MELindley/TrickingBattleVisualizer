@@ -29,6 +29,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import type { IAthlete } from '../../../app/types'
+import { firebaseAddTournamentDocument } from '../../../app/helpers'
 
 interface Properties {
 	selectedAthletes: IAthlete[]
@@ -52,9 +53,11 @@ export default function TournamentConfig({
 		setOpen(false)
 	}
 
-	const onStartTournamentClick = (): void => {
+	// @ts-expect-error Handle function must return void
+	const onStartTournamentClick = async (): void => {
 		window.scrollTo(0, 0)
 		// eslint-disable-next-line unicorn/no-array-reduce
+		await firebaseAddTournamentDocument(tournament)
 		navigate(`/tournament/${tournament.name}/`)
 	}
 

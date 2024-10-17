@@ -13,9 +13,9 @@ export default function LoginPage(): ReactElement {
 			<Head title='Tricking Battle Visualizer' />
 			<Stack spacing={4} justifyContent='center' alignItems='stretch'>
 				<NavBar navigation={mainNavigation} />
+				<EmailSignUp />
 				<EmailLogin />
 				<GoogleLogIn />
-				<EmailSignUp />
 			</Stack>
 		</>
 	)

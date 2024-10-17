@@ -21,8 +21,8 @@ export default function EmailSignUp(): ReactElement {
 			// Handle successful sign-up (e.g., redirect to a dashboard)
 			const user = auth.currentUser
 			if (user) {
-				await firebaseAddUserDocument(user, SPECTATOR_ROLE)
-				dispatch(setAuth({ id: user.uid, role: SPECTATOR_ROLE }))
+				const userDocument = await firebaseAddUserDocument(user, SPECTATOR_ROLE)
+				dispatch(setAuth(userDocument))
 				navigate(`/`)
 			}
 		} catch {

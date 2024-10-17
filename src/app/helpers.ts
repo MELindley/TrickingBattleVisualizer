@@ -187,6 +187,34 @@ export const generateTournamentBattlesFromAthletes = (
 	return battles
 }
 
+// Function to sanitize objects before uploading to Firestore
+const sanitizeObjectForFirestore = (object: object): object =>
+	// Recursively iterate through the object and its nested properties
+	// eslint-disable-next-line unicorn/no-array-reduce
+	Object.entries(object).reduce<object>((accumulator, [key, value]) => {
+		if (typeof value === 'object' && value !== null) {
+			// Recursively sanitize nested objects
+			// @ts-expect-error is any
+			accumulator[key] = sanitizeObjectForFirestore(value as object)
+		} else if (Array.isArray(value)) {
+			// Sanitize array elements
+			// @ts-expect-error is any
+			accumulator[key] = value.map(item =>
+				sanitizeObjectForFirestore(item as object)
+			)
+		} else if (value === undefined || value === null) {
+			// Remove undefined or null values
+			// You can choose to replace them with an empty string or another default value
+			// acc[key] = ''; // Replace with an empty string
+		} else {
+			// Keep other valid values
+			// @ts-expect-error is any
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			accumulator[key] = value
+		}
+		return accumulator
+	}, {})
+
 /**
  * Adds a user document to Firebase Firestore.
  *
@@ -197,13 +225,12 @@ export const generateTournamentBattlesFromAthletes = (
 export async function firebaseAddUserDocument(
 	user: User,
 	role: string
-): Promise<void> {
+): Promise<IFirebaseUserData> {
 	const userId = user.uid
 	const userDocumentReference = doc(firestore, 'users', userId)
-
 	const userData = { role }
-
 	await setDoc(userDocumentReference, userData)
+	return { id: user.uid, role } as IFirebaseUserData
 }
 
 /**
@@ -259,7 +286,9 @@ export async function addAthletesToTournament(
 	const athletePromises = []
 
 	for (const athlete of athletes) {
-		athletePromises.push(addDoc(athletesCollectionReference, athlete))
+		athletePromises.push(
+			addDoc(athletesCollectionReference, sanitizeObjectForFirestore(athlete))
+		)
 	}
 	await Promise.all(athletePromises)
 }
@@ -279,7 +308,9 @@ export async function addBattlesToTournament(
 	)
 	const battlePromises = []
 	for (const battle of battles) {
-		battlePromises.push(addDoc(battlesCollectionReference, battle))
+		battlePromises.push(
+			addDoc(battlesCollectionReference, sanitizeObjectForFirestore(battle))
+		)
 	}
 	await Promise.all(battlePromises)
 }
@@ -301,7 +332,10 @@ export async function setBattleInTournament(
 	)
 
 	try {
-		await setDoc(battleDocumentReference, updatedBattle)
+		await setDoc(
+			battleDocumentReference,
+			sanitizeObjectForFirestore(updatedBattle)
+		)
 		console.log('Battle updated successfully!')
 	} catch (error) {
 		console.error('Error updating battle:', error)
@@ -325,7 +359,10 @@ export async function setAthleteInTournament(
 	)
 
 	try {
-		await setDoc(athleteDocumentReference, updatedAthlete)
+		await setDoc(
+			athleteDocumentReference,
+			sanitizeObjectForFirestore(updatedAthlete)
+		)
 		console.log('Athlete updated successfully!')
 	} catch (error) {
 		console.error('Error updating athlete:', error)
@@ -336,8 +373,10 @@ export async function firebaseAddTournamentDocument(
 	tournament: ITournament
 ): Promise<void> {
 	const tournamentsCollectionReference = collection(firestore, 'tournaments')
-	addDoc(tournamentsCollectionReference, tournament)
+	console.log(tournament)
+	addDoc(tournamentsCollectionReference, sanitizeObjectForFirestore(tournament))
 		.then(documentReference => {
+			console.log(documentReference)
 			// Now, add athletes and battles to the subcollections
 			void addAthletesToTournament(documentReference.id, tournament.athletes)
 			void addBattlesToTournament(documentReference.id, tournament.battles)

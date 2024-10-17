@@ -8,7 +8,7 @@ import {
 	SPECTATOR_ROLE
 } from '../../app/helpers'
 import { useAppDispatch } from '../../app/hooks'
-import { setAuth, setUserRole } from '../../features/auth/authSlice'
+import { setAuth } from '../../features/auth/authSlice'
 
 export default function GoogleLogIn(): ReactElement {
 	const navigate = useNavigate()
@@ -18,17 +18,11 @@ export default function GoogleLogIn(): ReactElement {
 		try {
 			const userCredentials = await signInWithPopup(auth, provider)
 			const { user } = userCredentials
-
-			if (user.metadata.creationTime === user.metadata.lastSignInTime) {
-				// new user create the users database document containing the user role
-				await firebaseAddUserDocument(user, SPECTATOR_ROLE)
-				dispatch(setUserRole(SPECTATOR_ROLE))
-			} else {
-				// retrieve userDocument and update user role
-				const userDocument = await firebaseGetUserDocument(user)
-				if (userDocument) dispatch(setAuth(userDocument))
-			}
-
+			const userDocument =
+				user.metadata.creationTime === user.metadata.lastSignInTime
+					? await firebaseAddUserDocument(user, SPECTATOR_ROLE)
+					: await firebaseGetUserDocument(user)
+			if (userDocument) dispatch(setAuth(userDocument))
 			// Handle successful sign-in (e.g., redirect to a dashboard)
 			navigate(`/`)
 		} catch {
