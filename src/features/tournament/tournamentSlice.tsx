@@ -6,8 +6,8 @@ import type { IAthlete, IBattle, ITournament } from '../../app/types'
 import { generateTournamentBattlesFromAthletes } from '../../app/helpers'
 
 // Define the initial state using that type
-const initialState: ITournament = {
-	id: '-1',
+export const initialState: ITournament = {
+	id: '',
 	battles: [],
 	winner: undefined,
 	athletes: [],

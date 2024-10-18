@@ -13,15 +13,6 @@ import type { IRoundProps, ISeedProps } from '@sportsgram/brackets'
 
 export const HOST_ROLE = 'host'
 export const SPECTATOR_ROLE = 'spectator'
-
-export const placeHolderTournament: ITournament = {
-	id: '-1',
-	battles: [],
-	winner: undefined,
-	athletes: [],
-	hostUID: ''
-}
-
 /**
  * Creates a battle instance with specified id and athletes.
  * Optionally, the battle can have rounds and/or a timer.
@@ -202,10 +193,8 @@ const sanitizeObjectForFirestore = (object: object): object =>
 			accumulator[key] = value.map(item =>
 				sanitizeObjectForFirestore(item as object)
 			)
-		} else if (value === undefined || value === null) {
+		} else if (value === undefined || value === null || value === '') {
 			// Remove undefined or null values
-			// You can choose to replace them with an empty string or another default value
-			// acc[key] = ''; // Replace with an empty string
 		} else {
 			// Keep other valid values
 			// @ts-expect-error is any

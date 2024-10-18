@@ -18,10 +18,10 @@ export default function GoogleLogIn(): ReactElement {
 		try {
 			const userCredentials = await signInWithPopup(auth, provider)
 			const { user } = userCredentials
-			const userDocument =
-				user.metadata.creationTime === user.metadata.lastSignInTime
-					? await firebaseAddUserDocument(user, SPECTATOR_ROLE)
-					: await firebaseGetUserDocument(user)
+			const userDocument = await (user.metadata.creationTime ===
+			user.metadata.lastSignInTime
+				? firebaseAddUserDocument(user, SPECTATOR_ROLE)
+				: firebaseGetUserDocument(user))
 			if (userDocument) dispatch(setAuth(userDocument))
 			// Handle successful sign-in (e.g., redirect to a dashboard)
 			navigate(`/`)

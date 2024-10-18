@@ -6,7 +6,7 @@ import type { IAthlete, IBattle } from '../../app/types'
 
 // Define the initial state using that type
 const initialState: IBattle = {
-	id: '-1',
+	id: '',
 	athletes: [],
 	winner: undefined,
 	losers: undefined
