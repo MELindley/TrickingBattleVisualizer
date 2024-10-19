@@ -264,6 +264,27 @@ export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {
 	)
 }
 
+export async function firebaseGetTournamentsCollection(): Promise<
+	ITournament[]
+> {
+	const tournamentsCollectionReference = collection(firestore, 'tournaments')
+	const tournamentsDocuments = await getDocs(tournamentsCollectionReference)
+	console.log(tournamentsDocuments)
+	return tournamentsDocuments.docs.map(document => {
+		console.log(document)
+		return {
+			battles: document.data().battles as IBattle[],
+			winner: document.data().winner as IAthlete,
+			athletes: document.data().athletes as IAthlete[],
+			hasThirdPlaceBattle: document.data().hasThirdPlaceBattle as boolean,
+			isFinalDifferent: document.data().isFinalDifferent as boolean,
+			hostUID: document.data().hostUID as string,
+			id: document.id,
+			name: document.data().name as string
+		} as ITournament
+	})
+}
+
 export async function addAthletesToTournament(
 	tournamentId: string,
 	athletes: IAthlete[]
@@ -277,7 +298,6 @@ export async function addAthletesToTournament(
 		tournamentDocumentReference,
 		'athletes'
 	)
-	console.log(tournamentDocumentReference)
 	const athletePromises = []
 
 	for (const athlete of athletes) {
