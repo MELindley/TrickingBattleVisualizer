@@ -1,5 +1,5 @@
+import { useEffect, useState } from 'react'
 import type { ChangeEvent, ReactElement } from 'react'
-import { useState } from 'react'
 import Grid from '@mui/material/Unstable_Grid2'
 import {
 	Button,
@@ -24,12 +24,14 @@ import {
 	selectTournament,
 	setHasThirdPlaceBattle,
 	setIsFinalDifferent,
+	setTournamentHostUID,
 	setTournamentName
 } from '../../../features/tournament/tournamentSlice'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import type { IAthlete } from '../../../app/types'
 import { firebaseAddTournamentDocument } from '../../../app/helpers'
+import { selectUID } from '../../../features/auth/authSlice'
 
 interface Properties {
 	selectedAthletes: IAthlete[]
@@ -42,6 +44,7 @@ export default function TournamentConfig({
 	const dispatch = useAppDispatch()
 	const tournament = useAppSelector(state => selectTournament(state))
 	const activeBattle = useAppSelector(state => selectActiveBattle(state))
+	const hostUID = useAppSelector(state => selectUID(state))
 	const [lastBattleSpec, setLastBattleSpec] = useState<number | undefined>()
 	const [open, setOpen] = useState(false)
 
@@ -52,6 +55,11 @@ export default function TournamentConfig({
 	const onClickClose = (): void => {
 		setOpen(false)
 	}
+
+	// Assign the current user UID to the hostID field of the Tournament, to be done only once on mount
+	useEffect(() => {
+		dispatch(setTournamentHostUID(hostUID))
+	}, [dispatch, hostUID])
 
 	// @ts-expect-error Handle function must return void
 	const onStartTournamentClick = async (): void => {

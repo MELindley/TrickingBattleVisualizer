@@ -179,7 +179,7 @@ export const generateTournamentBattlesFromAthletes = (
 }
 
 // Function to sanitize objects before uploading to Firestore
-const sanitizeObjectForFirestore = (object: object): object =>
+const sanitizeObjectForFirestore = (object: object, removeID = false): object =>
 	// Recursively iterate through the object and its nested properties
 	// eslint-disable-next-line unicorn/no-array-reduce
 	Object.entries(object).reduce<object>((accumulator, [key, value]) => {
@@ -187,14 +187,19 @@ const sanitizeObjectForFirestore = (object: object): object =>
 			// Recursively sanitize nested objects
 			// @ts-expect-error is any
 			accumulator[key] = sanitizeObjectForFirestore(value as object)
-		} else if (Array.isArray(value)) {
+		} else if (value && Array.isArray(value)) {
 			// Sanitize array elements
 			// @ts-expect-error is any
 			accumulator[key] = value.map(item =>
 				sanitizeObjectForFirestore(item as object)
 			)
-		} else if (value === undefined || value === null || value === '') {
-			// Remove undefined or null values
+		} else if (
+			value === undefined ||
+			value === null ||
+			value === '' ||
+			(removeID && key === 'id')
+		) {
+			// Remove undefined or null values and optionally id keys
 		} else {
 			// Keep other valid values
 			// @ts-expect-error is any
@@ -272,6 +277,7 @@ export async function addAthletesToTournament(
 		tournamentDocumentReference,
 		'athletes'
 	)
+	console.log(tournamentDocumentReference)
 	const athletePromises = []
 
 	for (const athlete of athletes) {
@@ -298,7 +304,10 @@ export async function addBattlesToTournament(
 	const battlePromises = []
 	for (const battle of battles) {
 		battlePromises.push(
-			addDoc(battlesCollectionReference, sanitizeObjectForFirestore(battle))
+			addDoc(
+				battlesCollectionReference,
+				sanitizeObjectForFirestore(battle, true)
+			)
 		)
 	}
 	await Promise.all(battlePromises)
@@ -362,17 +371,28 @@ export async function firebaseAddTournamentDocument(
 	tournament: ITournament
 ): Promise<void> {
 	const tournamentsCollectionReference = collection(firestore, 'tournaments')
-	console.log(tournament)
-	addDoc(tournamentsCollectionReference, sanitizeObjectForFirestore(tournament))
-		.then(documentReference => {
-			console.log(documentReference)
-			// Now, add athletes and battles to the subcollections
-			void addAthletesToTournament(documentReference.id, tournament.athletes)
-			void addBattlesToTournament(documentReference.id, tournament.battles)
-		})
-		.catch((error: unknown) => {
-			console.error('Error adding document:', error)
-		})
+	try {
+		const tournamentDocumentReference = await addDoc(
+			tournamentsCollectionReference,
+			sanitizeObjectForFirestore({
+				name: tournament.name,
+				hasThirdPlaceBattle: tournament.hasThirdPlaceBattle,
+				isFinalDifferent: tournament.isFinalDifferent,
+				hostUID: tournament.hostUID
+			})
+		)
+		console.log('Tournament created successfully')
+		await addAthletesToTournament(
+			tournamentDocumentReference.id,
+			tournament.athletes
+		)
+		await addBattlesToTournament(
+			tournamentDocumentReference.id,
+			tournament.battles
+		)
+	} catch (error) {
+		console.log('Error creating Tournament', error)
+	}
 }
 
 export async function getAthletesInTournament(
@@ -416,6 +436,7 @@ export async function getBattlesInTournament(
 	})
 	return battles
 }
+
 /**
  * Finds the unique element in an array with the highest occurrence.
  * If there is a tie for the highest occurrence, returns undefined.

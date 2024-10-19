@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Fixed display of two sided bracket to take full space">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="SanitizeObjectForFirebase now has a optional parameter to remove id fields&#10;&#10;FirebaseAddTournament Document properly adds the tournament doc then the sub collection (battles &amp; athletes)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/AthleteList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,33 +63,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cypress.all tests in index.spec.ts.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/marco/IdeaProjects/TrickingBattleVisualizer/src/features/auth",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.dev host.executor": "Run",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "terminal",
-    "ts.external.directory.path": "D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cypress.all tests in index.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marco/IdeaProjects/TrickingBattleVisualizer/src/features/auth&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.dev host.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\features\auth" />
@@ -206,14 +204,7 @@
       <workItem from="1728303648427" duration="5724000" />
       <workItem from="1728385644538" duration="2903000" />
       <workItem from="1728388605444" duration="9744000" />
-    </task>
-    <task id="LOCAL-00009" summary="Added MUI for">
-      <option name="closed" value="true" />
-      <created>1722807978770</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1722807978771</updated>
+      <workItem from="1729261511666" duration="7763000" />
     </task>
     <task id="LOCAL-00010" summary="added MUI for easier DEV">
       <option name="closed" value="true" />
@@ -599,7 +590,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728398606467</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Switched default id values to empty string &#10;Updated Firestore object sanitasation">
+      <option name="closed" value="true" />
+      <created>1729267460358</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1729267460359</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,8 +616,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored the timer and round info into battle type" />
-    <MESSAGE value="Fixed dsplaying battle type custom components when athlete cards are not clickable" />
     <MESSAGE value="Refactored code to clean up Home.tsx&#10;&#10;Created folder to hold Home components, Moved buttons to their own component files" />
     <MESSAGE value="Refactored code to clean up Home.tsx&#10;&#10;Moved Athlete List into it's own component &amp; file" />
     <MESSAGE value="Imported type directly" />
@@ -642,7 +639,9 @@
     <MESSAGE value="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice&#10;&#10;Bracekt display works, third place battle is done before actual final, but a better way of displaying this should be found !" />
     <MESSAGE value="Added two sided bracket, &#10;&#10;This breaks the display of the Third place Battle, a custom version of the bracket will need to be created to fix this issue. &#10;&#10;The third place battle is still in the Tournament it just is not displayed by the two sided bracket" />
     <MESSAGE value="Fixed display of two sided bracket to take full space" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed display of two sided bracket to take full space" />
+    <MESSAGE value="Switched default id values to empty string &#10;Updated Firestore object sanitasation" />
+    <MESSAGE value="SanitizeObjectForFirebase now has a optional parameter to remove id fields&#10;&#10;FirebaseAddTournament Document properly adds the tournament doc then the sub collection (battles &amp; athletes)" />
+    <option name="LAST_COMMIT_MESSAGE" value="SanitizeObjectForFirebase now has a optional parameter to remove id fields&#10;&#10;FirebaseAddTournament Document properly adds the tournament doc then the sub collection (battles &amp; athletes)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -654,11 +653,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/helpers.ts</url>
-          <line>344</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
