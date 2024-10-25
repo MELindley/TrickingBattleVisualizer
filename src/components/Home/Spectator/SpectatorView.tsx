@@ -30,10 +30,16 @@ export default function SpectatorView(): ReactElement {
 				setIsLoading(false)
 			}
 		}
-		if (!isLoading && tournaments.length === 0) {
+		if (!isLoading && !isError && tournaments.length === 0) {
 			void fetchTournaments()
 		}
-	}, [isLoading, tournaments])
+		if (isError) {
+			// Wait 1min  and retry, avoid spamming Firebase
+			setTimeout(() => {
+				setIsError(false)
+			}, 60_000)
+		}
+	}, [isLoading, isError, tournaments])
 
 	if (isLoading || isError) {
 		return <LoadingOrError error={isError as Error} />

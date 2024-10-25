@@ -32,10 +32,16 @@ export default function HostView(): ReactElement {
 				setIsLoading(false)
 			}
 		}
-		if (!isLoading && tournament.athletes.length === 0) {
+		if (!isLoading && !isError && tournament.athletes.length === 0) {
 			void fetchAthletes()
 		}
-	}, [dispatch, isLoading, tournament.athletes])
+		if (isError) {
+			// Wait 1min  and retry, avoid spamming Firebase
+			setTimeout(() => {
+				setIsError(false)
+			}, 60_000)
+		}
+	}, [dispatch, isError, isLoading, tournament.athletes])
 
 	if (isLoading || isError) {
 		return <LoadingOrError error={isError as Error} />

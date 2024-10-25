@@ -297,12 +297,30 @@ export async function firebaseGetTournamentsCollection(): Promise<
 	const battles = battlesSnapshots.map(
 		battlesSnapshot =>
 			battlesSnapshot &&
-			(battlesSnapshot.docs.map(battleDocument =>
-				battleDocument.data()
-			) as IBattle[])
+			battlesSnapshot.docs.map(
+				battleDocument =>
+					({
+						id: battleDocument.id,
+						athletes: Object.values(
+							battleDocument.data().athletes as ArrayLike<IAthlete | undefined>
+						),
+						winner: battleDocument.data().winner
+							? (battleDocument.data().winner as IAthlete)
+							: undefined,
+						losers: battleDocument.data().losers
+							? Object.values(
+									battleDocument.data().losers as ArrayLike<IAthlete>
+								)
+							: undefined,
+						hasRound: battleDocument.data().hasRound as number | undefined,
+						hasTimer: battleDocument.data().hasTimer as number | undefined,
+						order: battleDocument.data().order as number
+					}) as IBattle
+			)
 	)
-	const athltesSnapshots = await Promise.all(athletePromises)
-	const athletes = athltesSnapshots.map(
+
+	const athletesSnapshots = await Promise.all(athletePromises)
+	const athletes = athletesSnapshots.map(
 		athletesSnapshot =>
 			athletesSnapshot &&
 			(athletesSnapshot.docs.map(athleteDocument =>
