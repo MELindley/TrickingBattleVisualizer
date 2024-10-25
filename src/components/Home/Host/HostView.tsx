@@ -10,30 +10,36 @@ import {
 	setTournamentAthletes
 } from '../../../features/tournament/tournamentSlice'
 import { firebaseGetAthleteCollection } from '../../../app/helpers'
+import LoadingOrError from '../../common/LoadingOrError'
 
 export default function HostView(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
 	const tournament = useAppSelector(state => selectTournament(state))
 	const dispatch = useAppDispatch()
-	const [loading, setLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
+	const [isError, setIsError] = useState<unknown>()
 
 	useEffect(() => {
 		// Add Athletes to athletes list
 		const fetchAthletes = async (): Promise<void> => {
-			setLoading(true)
+			setIsLoading(true)
 			try {
 				const athletes = await firebaseGetAthleteCollection()
 				dispatch(setTournamentAthletes(athletes))
-			} catch {
-				/* empty */
+			} catch (error) {
+				setIsError(error)
 			} finally {
-				setLoading(false)
+				setIsLoading(false)
 			}
 		}
-		if (!loading && tournament.athletes.length === 0) {
+		if (!isLoading && tournament.athletes.length === 0) {
 			void fetchAthletes()
 		}
-	}, [dispatch, loading, tournament.athletes])
+	}, [dispatch, isLoading, tournament.athletes])
+
+	if (isLoading || isError) {
+		return <LoadingOrError error={isError as Error} />
+	}
 
 	return (
 		<>

@@ -8,30 +8,36 @@ import Grid from '@mui/material/Unstable_Grid2'
 import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../../app/hooks'
 import { selectTournament } from '../../../features/tournament/tournamentSlice'
+import LoadingOrError from '../../common/LoadingOrError'
 
 export default function SpectatorView(): ReactElement {
-	const [loading, setLoading] = useState(false)
 	const [tournaments, setTournaments] = useState<ITournament[]>([])
 	const navigate = useNavigate()
 	const tournament = useAppSelector(state => selectTournament(state))
+	const [isLoading, setIsLoading] = useState(false)
+	const [isError, setIsError] = useState<unknown>()
 
 	useEffect(() => {
 		// Add tournaments to tournament list
 		const fetchTournaments = async (): Promise<void> => {
-			setLoading(true)
+			setIsLoading(true)
 			try {
 				const tournamentsData = await firebaseGetTournamentsCollection()
 				setTournaments(tournamentsData)
-			} catch {
-				/* empty */
+			} catch (error) {
+				setIsError(error)
 			} finally {
-				setLoading(false)
+				setIsLoading(false)
 			}
 		}
-		if (!loading && tournaments.length === 0) {
+		if (!isLoading && tournaments.length === 0) {
 			void fetchTournaments()
 		}
-	}, [loading, tournaments])
+	}, [isLoading, tournaments])
+
+	if (isLoading || isError) {
+		return <LoadingOrError error={isError as Error} />
+	}
 
 	function onClick(): void {
 		navigate(`/tournament/${tournament.name}/`)
