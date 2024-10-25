@@ -16,6 +16,7 @@ export interface IBattle {
 	losers?: IAthlete[]
 	hasRound?: number
 	hasTimer?: number
+	order: number
 }
 
 export interface ITournament {

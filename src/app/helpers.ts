@@ -19,6 +19,7 @@ export const SPECTATOR_ROLE = 'spectator'
  *
  * @param {number} id - Unique identifier for the battle.
  * @param {[IAthlete, IAthlete]} athletes - Pair of athletes participating in the battle.
+ * @param {number} order - Order of the battle in the tournament, -1 for solo battle
  * @param {number} [hasRound] - Optional number of rounds in the battle.
  * @param {number} [hasTimer] - Optional duration of the timer for the battle.
  * @returns {IBattle} - The created battle object.
@@ -26,11 +27,12 @@ export const SPECTATOR_ROLE = 'spectator'
 const createBattle = (
 	id: string,
 	athletes: [IAthlete | undefined, IAthlete | undefined],
+	order: number,
 	hasRound?: number,
 	hasTimer?: number
 	// eslint-disable-next-line @typescript-eslint/max-params
 ): IBattle => {
-	const battle: IBattle = { id, athletes }
+	const battle: IBattle = { id, athletes, order }
 	if (hasRound !== undefined) {
 		battle.hasRound = hasRound
 	}
@@ -92,6 +94,7 @@ const handleBattle = (
 		const battle: IBattle = createBattle(
 			battles.length.toString(),
 			[athlete1, athlete2],
+			battles.length,
 			hasRound,
 			hasTimer
 		)
@@ -158,6 +161,7 @@ export const generateTournamentBattlesFromAthletes = (
 		const battle: IBattle = createBattle(
 			battles.length.toString(),
 			[undefined, undefined],
+			battles.length,
 			hasRound,
 			hasTimer
 		)
@@ -269,20 +273,58 @@ export async function firebaseGetTournamentsCollection(): Promise<
 > {
 	const tournamentsCollectionReference = collection(firestore, 'tournaments')
 	const tournamentsDocuments = await getDocs(tournamentsCollectionReference)
-	console.log(tournamentsDocuments)
-	return tournamentsDocuments.docs.map(document => {
-		console.log(document)
-		return {
-			battles: document.data().battles as IBattle[],
-			winner: document.data().winner as IAthlete,
-			athletes: document.data().athletes as IAthlete[],
-			hasThirdPlaceBattle: document.data().hasThirdPlaceBattle as boolean,
-			isFinalDifferent: document.data().isFinalDifferent as boolean,
-			hostUID: document.data().hostUID as string,
-			id: document.id,
-			name: document.data().name as string
-		} as ITournament
-	})
+	const battlePromises = []
+	const athletePromises = []
+	// Retrieve athlete & battles Subcollections for each tournament
+	for (const document of tournamentsDocuments.docs) {
+		// Fetch battles subcollection
+		const battlesCollectionReference = collection(document.ref, 'battles')
+		battlePromises.push(
+			getDocs(battlesCollectionReference).catch((error: unknown) =>
+				console.log('Firebase Error:', error)
+			)
+		)
+
+		// Fetch athletes subcollection
+		const athletesCollectionReference = collection(document.ref, 'athletes')
+		athletePromises.push(
+			getDocs(athletesCollectionReference).catch((error: unknown) =>
+				console.log('Firebase Error:', error)
+			)
+		)
+	}
+	const battlesSnapshots = await Promise.all(battlePromises)
+	const battles = battlesSnapshots.map(
+		battlesSnapshot =>
+			battlesSnapshot &&
+			(battlesSnapshot.docs.map(battleDocument =>
+				battleDocument.data()
+			) as IBattle[])
+	)
+	const athltesSnapshots = await Promise.all(athletePromises)
+	const athletes = athltesSnapshots.map(
+		athletesSnapshot =>
+			athletesSnapshot &&
+			(athletesSnapshot.docs.map(athleteDocument =>
+				athleteDocument.data()
+			) as IAthlete[])
+	)
+
+	return tournamentsDocuments.docs.map(
+		(document, index) =>
+			({
+				battles: (battles[index] as IBattle[]).sort(
+					(a, b) => a.order - b.order
+				),
+				winner: document.data().winner as IAthlete,
+				athletes: athletes[index],
+				hasThirdPlaceBattle: document.data().hasThirdPlaceBattle as boolean,
+				isFinalDifferent: document.data().isFinalDifferent as boolean,
+				hostUID: document.data().hostUID as string,
+				id: document.id,
+				name: document.data().name as string
+			}) as ITournament
+	)
 }
 
 export async function addAthletesToTournament(
@@ -354,7 +396,6 @@ export async function setBattleInTournament(
 			battleDocumentReference,
 			sanitizeObjectForFirestore(updatedBattle)
 		)
-		console.log('Battle updated successfully!')
 	} catch (error) {
 		console.error('Error updating battle:', error)
 	}
