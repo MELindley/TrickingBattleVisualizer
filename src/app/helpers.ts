@@ -7,6 +7,7 @@ import {
 	getDocs,
 	setDoc
 } from 'firebase/firestore'
+import type { DocumentReference } from 'firebase/firestore'
 import { firestore } from '../../firebaseConfig'
 import type { User } from 'firebase/auth'
 import type { IRoundProps, ISeedProps } from '@sportsgram/brackets'
@@ -345,10 +346,10 @@ export async function firebaseGetTournamentsCollection(): Promise<
 	)
 }
 
-export async function addAthletesToTournament(
+export async function firebaseAddAthletesToTournament(
 	tournamentId: string,
 	athletes: IAthlete[]
-): Promise<void> {
+): Promise<IAthlete[]> {
 	const tournamentDocumentReference = doc(
 		firestore,
 		'tournaments',
@@ -366,12 +367,13 @@ export async function addAthletesToTournament(
 		)
 	}
 	await Promise.all(athletePromises)
+	return athletes
 }
 
-export async function addBattlesToTournament(
+export async function firebaseAddBattlesToTournament(
 	tournamentId: string,
 	battles: IBattle[]
-): Promise<void> {
+): Promise<IBattle[]> {
 	const tournamentDocumentReference = doc(
 		firestore,
 		'tournaments',
@@ -390,14 +392,19 @@ export async function addBattlesToTournament(
 			)
 		)
 	}
-	await Promise.all(battlePromises)
+	const battleDocuments = await Promise.all(battlePromises)
+	console.log(battleDocuments)
+	// update battles with BattleDocuments with IDs
+	return battles.map((battle, index) => ({
+		...battle,
+		id: battleDocuments[index].id
+	}))
 }
 
-export async function setBattleInTournament(
+export async function firebaseSetBattleInTournament(
 	tournamentId: string,
-	battleId: string,
 	updatedBattle: IBattle
-): Promise<void> {
+): Promise<IBattle | undefined> {
 	const tournamentDocumentReference = doc(
 		firestore,
 		'tournaments',
@@ -406,7 +413,7 @@ export async function setBattleInTournament(
 	const battleDocumentReference = doc(
 		tournamentDocumentReference,
 		'battles',
-		battleId
+		updatedBattle.id
 	)
 
 	try {
@@ -414,16 +421,18 @@ export async function setBattleInTournament(
 			battleDocumentReference,
 			sanitizeObjectForFirestore(updatedBattle)
 		)
+		return updatedBattle
 	} catch (error) {
 		console.error('Error updating battle:', error)
 	}
+	return undefined
 }
 
-export async function setAthleteInTournament(
+export async function firebaseSetAthleteInTournament(
 	tournamentId: string,
 	athleteId: string,
 	updatedAthlete: IAthlete
-): Promise<void> {
+): Promise<IAthlete | undefined> {
 	const tournamentDocumentReference = doc(
 		firestore,
 		'tournaments',
@@ -441,17 +450,19 @@ export async function setAthleteInTournament(
 			sanitizeObjectForFirestore(updatedAthlete)
 		)
 		console.log('Athlete updated successfully!')
+		return updatedAthlete
 	} catch (error) {
 		console.error('Error updating athlete:', error)
 	}
+	return undefined
 }
 
 export async function firebaseAddTournamentDocument(
 	tournament: ITournament
-): Promise<void> {
+): Promise<ITournament | undefined> {
 	const tournamentsCollectionReference = collection(firestore, 'tournaments')
 	try {
-		const tournamentDocumentReference = await addDoc(
+		const tournamentDocumentReference = (await addDoc(
 			tournamentsCollectionReference,
 			sanitizeObjectForFirestore({
 				name: tournament.name,
@@ -459,22 +470,24 @@ export async function firebaseAddTournamentDocument(
 				isFinalDifferent: tournament.isFinalDifferent,
 				hostUID: tournament.hostUID
 			})
-		)
+		)) as DocumentReference
 		console.log('Tournament created successfully')
-		await addAthletesToTournament(
+		await firebaseAddAthletesToTournament(
 			tournamentDocumentReference.id,
 			tournament.athletes
 		)
-		await addBattlesToTournament(
+		const battles = await firebaseAddBattlesToTournament(
 			tournamentDocumentReference.id,
 			tournament.battles
 		)
+		return { ...tournament, id: tournamentDocumentReference.id, battles }
 	} catch (error) {
 		console.log('Error creating Tournament', error)
 	}
+	return undefined
 }
 
-export async function getAthletesInTournament(
+export async function firebaseGetAthletesInTournament(
 	tournamentId: string
 ): Promise<IAthlete[]> {
 	const tournamentDocumentReference = doc(
@@ -495,7 +508,7 @@ export async function getAthletesInTournament(
 	return athletes
 }
 
-export async function getBattlesInTournament(
+export async function firebaseGetBattlesInTournament(
 	tournamentId: string
 ): Promise<IBattle[]> {
 	const tournamentDocumentReference = doc(

@@ -100,6 +100,9 @@ export const tournamentSlice = createSlice({
 		},
 		setIsFinalDifferent: (state, action: PayloadAction<boolean>) => {
 			state.isFinalDifferent = action.payload
+		},
+		setTournamentId: (state, action: PayloadAction<string>) => {
+			state.id = action.payload
 		}
 	}
 })
@@ -120,7 +123,8 @@ export const {
 	setIsFinalDifferent,
 	setHasThirdPlaceBattle,
 	setTournamentHostUID,
-	setTournament
+	setTournament,
+	setTournamentId
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type

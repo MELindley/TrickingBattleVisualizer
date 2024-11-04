@@ -19,6 +19,7 @@ import {
 	setNextTournamentBattleAthlete,
 	updateBattleInTournamentByID
 } from '../features/tournament/tournamentSlice'
+import { firebaseSetBattleInTournament } from '../app/helpers'
 
 export default function BattlePage(): ReactElement {
 	const activeBattle = useAppSelector((state: RootState) =>
@@ -43,8 +44,8 @@ export default function BattlePage(): ReactElement {
 				: `${accumulator} VS ${athlete?.name ?? 'TDB'}`,
 		''
 	)
-
-	const onContinueClick = (): void => {
+	// @ts-expect-error Handle function must return void
+	const onContinueClick = async (): void => {
 		window.scrollTo(0, 0)
 		if (
 			activeBattle.id === '-1' ||
@@ -72,7 +73,7 @@ export default function BattlePage(): ReactElement {
 					dispatch(setNextTournamentBattleAthlete(activeBattle.winner))
 				}
 			}
-
+			await firebaseSetBattleInTournament(tournament.id, activeBattle)
 			// Navigate to tournament home page
 			navigate(`/tournament/${tournament.name}/`)
 		}

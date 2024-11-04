@@ -9,7 +9,8 @@ const initialState: IBattle = {
 	id: '',
 	athletes: [],
 	winner: undefined,
-	losers: undefined
+	losers: undefined,
+	order: -1
 }
 
 export const battleSlice = createSlice({
