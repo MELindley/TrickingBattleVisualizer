@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import type { ChangeEvent, ReactElement } from 'react'
+import { useEffect, useState } from 'react'
 import Grid from '@mui/material/Unstable_Grid2'
 import {
 	Button,
@@ -24,6 +24,7 @@ import {
 	selectTournament,
 	setHasThirdPlaceBattle,
 	setIsFinalDifferent,
+	setTournament,
 	setTournamentHostUID,
 	setTournamentName
 } from '../../../features/tournament/tournamentSlice'
@@ -65,7 +66,10 @@ export default function TournamentConfig({
 	const onStartTournamentClick = async (): void => {
 		window.scrollTo(0, 0)
 		// eslint-disable-next-line unicorn/no-array-reduce
-		await firebaseAddTournamentDocument(tournament)
+		const tournamentDocument = await firebaseAddTournamentDocument(tournament)
+		if (tournamentDocument) {
+			dispatch(setTournament(tournamentDocument))
+		}
 		navigate(`/tournament/${tournament.name}/`)
 	}
 
