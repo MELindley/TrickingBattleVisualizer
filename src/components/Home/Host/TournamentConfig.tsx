@@ -124,7 +124,7 @@ export default function TournamentConfig({
 			</Grid>
 			<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
 				<Button variant='contained' onClick={onClickOpen}>
-					Start Tournament
+					Create Tournament
 				</Button>
 				<Dialog
 					open={open}
@@ -132,7 +132,9 @@ export default function TournamentConfig({
 					aria-labelledby='alert-dialog-title'
 					aria-describedby='alert-dialog-description'
 				>
-					<DialogTitle id='alert-dialog-title'>Start Tournament ?</DialogTitle>
+					<DialogTitle id='alert-dialog-title'>
+						Create New Tournament ?
+					</DialogTitle>
 					<DialogContent>
 						<DialogContentText id='alert-dialog-description'>
 							This will save current options and start the tournament

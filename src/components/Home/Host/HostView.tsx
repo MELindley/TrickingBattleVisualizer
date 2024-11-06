@@ -2,19 +2,29 @@ import AthleteList from '../AthleteList'
 import BattleConfig from './BattleConfig'
 import TournamentConfig from './TournamentConfig'
 import type { ReactElement } from 'react'
-import { useState, useEffect } from 'react'
-import type { IAthlete } from '../../../app/types'
+import { useEffect, useState } from 'react'
+import type { IAthlete, ITournament } from '../../../app/types'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import {
 	selectTournament,
 	setTournamentAthletes
 } from '../../../features/tournament/tournamentSlice'
-import { firebaseGetAthleteCollection } from '../../../app/helpers'
+import {
+	firebaseGetAthleteCollection,
+	firebaseGetTournamentsCollection
+} from '../../../app/helpers'
 import LoadingOrError from '../../common/LoadingOrError'
+import TournamentList from '../Spectator/TournamentList'
+import { selectUID } from '../../../features/auth/authSlice'
+import { where } from 'firebase/firestore'
+import { Typography } from '@mui/material'
+import Grid from '@mui/material/Unstable_Grid2'
 
 export default function HostView(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
+	const [tournaments, setTournaments] = useState<ITournament[]>([])
 	const tournament = useAppSelector(state => selectTournament(state))
+	const hostUID = useAppSelector(state => selectUID(state))
 	const dispatch = useAppDispatch()
 	const [isLoading, setIsLoading] = useState(false)
 	const [isError, setIsError] = useState<unknown>()
@@ -26,6 +36,10 @@ export default function HostView(): ReactElement {
 			try {
 				const athletes = await firebaseGetAthleteCollection()
 				dispatch(setTournamentAthletes(athletes))
+				const tournamentsData = await firebaseGetTournamentsCollection(
+					where('hostUID', '==', hostUID)
+				)
+				setTournaments(tournamentsData)
 			} catch (error) {
 				setIsError(error)
 			} finally {
@@ -41,7 +55,7 @@ export default function HostView(): ReactElement {
 				setIsError(false)
 			}, 60_000)
 		}
-	}, [dispatch, isError, isLoading, tournament.athletes])
+	}, [dispatch, hostUID, isError, isLoading, tournament.athletes])
 
 	if (isLoading || isError) {
 		return <LoadingOrError error={isError as Error} />
@@ -49,6 +63,10 @@ export default function HostView(): ReactElement {
 
 	return (
 		<>
+			<TournamentList tournaments={tournaments} title='Resume Tournament' />
+			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+				<Typography variant='h3'>Create a New Tournament</Typography>
+			</Grid>
 			<AthleteList
 				athletes={tournament.athletes}
 				selectedAthletes={selectedAthletes}

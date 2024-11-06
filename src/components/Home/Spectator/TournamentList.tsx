@@ -1,31 +1,48 @@
-import { Autocomplete, TextField, Typography } from '@mui/material'
+import { Autocomplete, Button, TextField, Typography } from '@mui/material'
 
 import Grid from '@mui/material/Unstable_Grid2'
 import type { ReactElement, SyntheticEvent } from 'react'
+import { useState } from 'react'
 import type { ITournament } from '../../../app/types'
 import { useAppDispatch } from '../../../app/hooks'
-import { setTournament } from '../../../features/tournament/tournamentSlice'
+import {
+	initialState,
+	setTournament
+} from '../../../features/tournament/tournamentSlice'
+import { useNavigate } from 'react-router-dom'
 
 interface Properties {
 	tournaments: ITournament[]
+	title?: string
 }
 
 export default function TournamentList({
-	tournaments
+	tournaments,
+	title
 }: Properties): ReactElement {
 	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
+	const [selectedTournament, setSelectedTournament] =
+		useState<ITournament>(initialState)
 
 	const onTextFieldChange = (
 		event: SyntheticEvent,
 		nextValue: ITournament | null
 	): void => {
-		if (nextValue) dispatch(setTournament(nextValue))
+		if (nextValue) {
+			setSelectedTournament(nextValue)
+			dispatch(setTournament(nextValue))
+		}
+	}
+
+	function onClick(): void {
+		navigate(`/tournament/${selectedTournament.name}/`)
 	}
 
 	return (
 		<Grid container spacing={4}>
 			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
-				<Typography variant='h3'>Select Tournament</Typography>
+				<Typography variant='h3'>{title}</Typography>
 			</Grid>
 			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
 				<Autocomplete
@@ -40,6 +57,14 @@ export default function TournamentList({
 					)}
 				/>
 			</Grid>
+			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+				<Button variant='contained' onClick={onClick}>
+					Start Tournament
+				</Button>
+			</Grid>
 		</Grid>
 	)
+}
+TournamentList.defaultProps = {
+	title: 'Select Tournament'
 }

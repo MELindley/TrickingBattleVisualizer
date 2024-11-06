@@ -1,13 +1,14 @@
 import type { IAthlete, IBattle, IFirebaseUserData, ITournament } from './types'
+import type { DocumentReference, QueryConstraint } from 'firebase/firestore'
 import {
 	addDoc,
 	collection,
 	doc,
 	getDoc,
 	getDocs,
+	query,
 	setDoc
 } from 'firebase/firestore'
-import type { DocumentReference } from 'firebase/firestore'
 import { firestore } from '../../firebaseConfig'
 import type { User } from 'firebase/auth'
 import type { IRoundProps, ISeedProps } from '@sportsgram/brackets'
@@ -269,58 +270,62 @@ export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {
 	)
 }
 
-export async function firebaseGetTournamentsCollection(): Promise<
-	ITournament[]
-> {
+export async function firebaseGetTournamentsCollection(
+	queryConstraint?: QueryConstraint
+): Promise<ITournament[]> {
 	const tournamentsCollectionReference = collection(firestore, 'tournaments')
-	const tournamentsDocuments = await getDocs(tournamentsCollectionReference)
-	const battlePromises = []
-	const athletePromises = []
-	// Retrieve athlete & battles Subcollections for each tournament
-	for (const document of tournamentsDocuments.docs) {
-		// Fetch battles subcollection
-		const battlesCollectionReference = collection(document.ref, 'battles')
-		battlePromises.push(
-			getDocs(battlesCollectionReference).catch((error: unknown) =>
-				console.log('Firebase Error:', error)
-			)
-		)
+	// if a query constraint was passed, filter the tournaments by query, else retrieve all
+	const tournamentsDocuments = await getDocs(
+		queryConstraint
+			? query(tournamentsCollectionReference, queryConstraint)
+			: tournamentsCollectionReference
+	)
 
-		// Fetch athletes subcollection
-		const athletesCollectionReference = collection(document.ref, 'athletes')
-		athletePromises.push(
-			getDocs(athletesCollectionReference).catch((error: unknown) =>
-				console.log('Firebase Error:', error)
-			)
+	const battlePromises = tournamentsDocuments.docs.map(async document => {
+		const battlesCollectionReference = collection(document.ref, 'battles')
+		return getDocs(battlesCollectionReference).catch((error: unknown) =>
+			console.log('Firebase Error:', error)
 		)
-	}
-	const battlesSnapshots = await Promise.all(battlePromises)
+	})
+
+	const athletePromises = tournamentsDocuments.docs.map(async document => {
+		const athletesCollectionReference = collection(document.ref, 'athletes')
+		return getDocs(athletesCollectionReference).catch((error: unknown) =>
+			console.log('Firebase Error:', error)
+		)
+	})
+
+	const [battlesSnapshots, athletesSnapshots] = await Promise.all([
+		Promise.all(battlePromises),
+		Promise.all(athletePromises)
+	])
+
 	const battles = battlesSnapshots.map(
 		battlesSnapshot =>
 			battlesSnapshot &&
-			battlesSnapshot.docs.map(
-				battleDocument =>
-					({
-						id: battleDocument.id,
-						athletes: Object.values(
-							battleDocument.data().athletes as ArrayLike<IAthlete | undefined>
-						),
-						winner: battleDocument.data().winner
-							? (battleDocument.data().winner as IAthlete)
-							: undefined,
-						losers: battleDocument.data().losers
-							? Object.values(
-									battleDocument.data().losers as ArrayLike<IAthlete>
-								)
-							: undefined,
-						hasRound: battleDocument.data().hasRound as number | undefined,
-						hasTimer: battleDocument.data().hasTimer as number | undefined,
-						order: battleDocument.data().order as number
-					}) as IBattle
-			)
+			battlesSnapshot.docs.map(battleDocument => {
+				const battleAthletes = Object.values(
+					battleDocument.data().athletes as ArrayLike<IAthlete>
+				)
+				return {
+					id: battleDocument.id,
+					athletes:
+						battleAthletes.length === 0
+							? [undefined, undefined]
+							: battleAthletes,
+					winner: battleDocument.data().winner
+						? (battleDocument.data().winner as IAthlete)
+						: undefined,
+					losers: battleDocument.data().losers
+						? Object.values(battleDocument.data().losers as ArrayLike<IAthlete>)
+						: undefined,
+					hasRound: battleDocument.data().hasRound as number | undefined,
+					hasTimer: battleDocument.data().hasTimer as number | undefined,
+					order: battleDocument.data().order as number
+				} as IBattle
+			})
 	)
 
-	const athletesSnapshots = await Promise.all(athletePromises)
 	const athletes = athletesSnapshots.map(
 		athletesSnapshot =>
 			athletesSnapshot &&
