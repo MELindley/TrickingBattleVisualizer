@@ -130,6 +130,7 @@ function AthleteCard({
 							onClick={onDetailButtonClick}
 							variant='outlined'
 							className='m-auto'
+							component='span'
 						>
 							Details
 						</Button>
