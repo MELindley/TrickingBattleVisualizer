@@ -26,8 +26,9 @@ export default function CustomSeed({
 		<Seed mobileBreakpoint={breakpoint} style={{ fontSize: 12 }}>
 			<SeedItem>
 				<Grid container rowSpacing={1}>
-					{(seed as ICustomSeedProperties).teams.map(team => (
-						<Grid xs={12} key={`${seed.id}-${team.name}`}>
+					{(seed as ICustomSeedProperties).teams.map((team, index) => (
+						// eslint-disable-next-line react/no-array-index-key
+						<Grid xs={12} key={`${seed.id}-${index}-${team.athlete?.id}`}>
 							<AthleteCard
 								athlete={team.athlete}
 								isClickable={false}
