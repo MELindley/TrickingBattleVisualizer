@@ -426,11 +426,11 @@ export async function firebaseSetBattleInTournament(
 			battleDocumentReference,
 			sanitizeObjectForFirestore(updatedBattle)
 		)
-		return updatedBattle
 	} catch (error) {
 		console.error('Error updating battle:', error)
+		return undefined
 	}
-	return undefined
+	return updatedBattle
 }
 
 export async function firebaseSetAthleteInTournament(

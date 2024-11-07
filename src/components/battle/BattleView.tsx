@@ -2,7 +2,7 @@ import type { IAthlete, IBattle } from '../../app/types'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Chip, Slide, Stack, Typography } from '@mui/material'
 import type { ReactElement } from 'react'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import AthleteCard from '../athlete/AthleteCard'
 import { setActiveBattleWinner } from '../../features/battle/battleSlice'
 import { useAppDispatch } from '../../app/hooks'
@@ -52,14 +52,8 @@ export default function BattleView({
 		<Stack spacing={4} justifyContent='center' alignItems='stretch'>
 			<Grid container sx={{ mt: 4 }}>
 				{battle.athletes.map((athlete, index) => (
-					<>
-						<Grid
-							xs
-							key={`AthleteInBattleCardGrid-${athlete?.name}`}
-							display='flex'
-							justifyContent='center'
-							alignItems='center'
-						>
+					<Fragment key={`AthleteInBattleCardGrid-${athlete?.name}`}>
+						<Grid xs display='flex' justifyContent='center' alignItems='center'>
 							<Slide
 								direction={index % 2 ? 'left' : 'right'}
 								in
@@ -92,7 +86,7 @@ export default function BattleView({
 								<Typography variant='h2'>VS</Typography>
 							</Grid>
 						)}
-					</>
+					</Fragment>
 				))}
 			</Grid>
 			{battle.hasRound && hasClickableAthleteCards ? (
