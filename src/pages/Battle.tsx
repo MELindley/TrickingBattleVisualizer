@@ -73,7 +73,11 @@ export default function BattlePage(): ReactElement {
 					dispatch(setNextTournamentBattleAthlete(activeBattle.winner))
 				}
 			}
-			await firebaseSetBattleInTournament(tournament.id, activeBattle)
+			const firebase = await firebaseSetBattleInTournament(
+				tournament.id,
+				activeBattle
+			)
+			console.log(firebase)
 			// Navigate to tournament home page
 			navigate(`/tournament/${tournament.name}/`)
 		}
