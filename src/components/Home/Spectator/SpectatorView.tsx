@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 import type { ITournament } from '../../../app/types'
 import { firebaseGetTournamentsCollection } from '../../../app/helpers'
-import TournamentList from './TournamentList'
+import TournamentList from '../TournamentList'
 import LoadingOrError from '../../common/LoadingOrError'
 
 export default function SpectatorView(): ReactElement {

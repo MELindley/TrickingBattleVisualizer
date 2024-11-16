@@ -1,4 +1,5 @@
 import AthleteList from '../AthleteList'
+import TournamentList from '../TournamentList'
 import BattleConfig from './BattleConfig'
 import TournamentConfig from './TournamentConfig'
 import type { ReactElement } from 'react'
@@ -14,7 +15,6 @@ import {
 	firebaseGetTournamentsCollection
 } from '../../../app/helpers'
 import LoadingOrError from '../../common/LoadingOrError'
-import TournamentList from '../Spectator/TournamentList'
 import { selectUID } from '../../../features/auth/authSlice'
 import { where } from 'firebase/firestore'
 import { Typography } from '@mui/material'

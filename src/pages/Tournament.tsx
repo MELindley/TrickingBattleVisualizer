@@ -46,7 +46,6 @@ export default function TournamentPage(): ReactElement {
 				tournament.battles.find(battle => battle.winner === undefined)
 			)
 		)
-		console.log('locationState:', locationState)
 		if (locationState?.updateFirebase) {
 			void updateTournament(tournament)
 		}
