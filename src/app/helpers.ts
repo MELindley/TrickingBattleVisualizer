@@ -312,7 +312,9 @@ export async function firebaseGetTournamentsCollection(
 					athletes:
 						battleAthletes.length === 0
 							? [undefined, undefined]
-							: battleAthletes,
+							: (battleAthletes.length === 1
+								? [...battleAthletes, undefined]
+								: battleAthletes),
 					winner: battleDocument.data().winner
 						? (battleDocument.data().winner as IAthlete)
 						: undefined,
@@ -406,6 +408,31 @@ export async function firebaseAddBattlesToTournament(
 	}))
 }
 
+export async function firebaseUpdateTournamentBattles(
+	tournamentId: string,
+	battles: IBattle[]
+): Promise<IBattle[]> {
+	const battlePromises = []
+	for (const battle of battles) {
+		const battleDocumentReference = doc(
+			firestore,
+			'tournaments',
+			tournamentId,
+			'battles',
+			battle.id
+		)
+		battlePromises.push(
+			setDoc(battleDocumentReference, sanitizeObjectForFirestore(battle, true))
+		)
+	}
+	try {
+		await Promise.all(battlePromises)
+	} catch (error) {
+		console.log('Error updating Tournament battle', error)
+	}
+	return battles
+}
+
 export async function firebaseSetBattleInTournament(
 	tournamentId: string,
 	updatedBattle: IBattle
@@ -490,6 +517,30 @@ export async function firebaseAddTournamentDocument(
 		console.log('Error creating Tournament', error)
 	}
 	return undefined
+}
+
+export async function firebaseUpdateTournamentDocument(
+	tournament: ITournament
+): Promise<ITournament | undefined> {
+	const tournamentDocumentReference = doc(
+		firestore,
+		'tournaments',
+		tournament.id
+	)
+	try {
+		await setDoc(
+			tournamentDocumentReference,
+			sanitizeObjectForFirestore(tournament, true)
+		)
+		await firebaseUpdateTournamentBattles(
+			tournamentDocumentReference.id,
+			tournament.battles
+		)
+	} catch (error) {
+		console.log('Error updating Tournament', error)
+		return undefined
+	}
+	return tournament
 }
 
 export async function firebaseGetAthletesInTournament(
@@ -653,11 +704,12 @@ function mapBattlesToSeeds(
 		return {
 			id,
 			date: new Date().toDateString(),
-			teams: battle.athletes.map(athlete =>
-				athlete
+			teams: battle.athletes.map(athlete => {
+				console.log(athlete)
+				return athlete
 					? { name: `${athlete.name} ${athlete.surname}`, athlete }
 					: { name: '', athlete: undefined }
-			),
+			}),
 			title
 		}
 	})
@@ -679,6 +731,7 @@ export function mapBattleListToReactBracketRoundList(
 			battle.athletes.filter((athlete): athlete is IAthlete => !!athlete)
 		)
 	)
+	console.log(athleteSet)
 
 	for (let roundIndex = 0; roundIndex < numberOfRounds; roundIndex += 1) {
 		const title = getRoundTitle(roundIndex, numberOfRounds)
@@ -691,6 +744,7 @@ export function mapBattleListToReactBracketRoundList(
 			// In the final round, include both the final and third place battles
 			roundBattles = [...roundBattles, tournament.battles.at(-1) as IBattle]
 		}
+		console.log(roundIndex, roundBattles)
 		const seeds: ISeedProps[] = mapBattlesToSeeds(
 			roundBattles,
 			tournament.battles,

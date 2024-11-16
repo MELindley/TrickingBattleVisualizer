@@ -19,7 +19,6 @@ import {
 	setNextTournamentBattleAthlete,
 	updateBattleInTournamentByID
 } from '../features/tournament/tournamentSlice'
-import { firebaseSetBattleInTournament } from '../app/helpers'
 
 export default function BattlePage(): ReactElement {
 	const activeBattle = useAppSelector((state: RootState) =>
@@ -73,13 +72,10 @@ export default function BattlePage(): ReactElement {
 					dispatch(setNextTournamentBattleAthlete(activeBattle.winner))
 				}
 			}
-			const firebase = await firebaseSetBattleInTournament(
-				tournament.id,
-				activeBattle
-			)
-			console.log(firebase)
 			// Navigate to tournament home page
-			navigate(`/tournament/${tournament.name}/`)
+			navigate(`/tournament/${tournament.name}/`, {
+				state: { updateFirebase: true }
+			})
 		}
 	}
 
