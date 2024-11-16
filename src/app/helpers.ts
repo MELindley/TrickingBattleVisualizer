@@ -400,7 +400,6 @@ export async function firebaseAddBattlesToTournament(
 		)
 	}
 	const battleDocuments = await Promise.all(battlePromises)
-	console.log(battleDocuments)
 	// update battles with BattleDocuments with IDs
 	return battles.map((battle, index) => ({
 		...battle,
@@ -715,6 +714,25 @@ function mapBattlesToSeeds(
 	})
 }
 
+function getUniqueAthleteArrayFromTournament(
+	tournament: ITournament
+): IAthlete[] {
+	return (
+		tournament.battles
+			.flatMap(battle =>
+				battle.athletes.filter((athlete): athlete is IAthlete => !!athlete)
+			)
+			// eslint-disable-next-line unicorn/no-array-reduce
+			.reduce((athletes, current) => {
+				const x = athletes.find(item => item.id === current.id)
+				if (x) {
+					return athletes
+				}
+				return [...athletes, current]
+			}, new Array<IAthlete>())
+	)
+}
+
 /**
  * Maps a list of battles to a list of React Bracket round properties.
  *
@@ -726,18 +744,14 @@ export function mapBattleListToReactBracketRoundList(
 ): IRoundProps[] {
 	const roundProperties: IRoundProps[] = []
 	const numberOfRounds = Math.ceil(Math.log2(tournament.battles.length))
-	const athleteSet = new Set<IAthlete>(
-		tournament.battles.flatMap(battle =>
-			battle.athletes.filter((athlete): athlete is IAthlete => !!athlete)
-		)
-	)
-	console.log(athleteSet)
+	const athleteArray = getUniqueAthleteArrayFromTournament(tournament)
+	console.log(athleteArray)
 
 	for (let roundIndex = 0; roundIndex < numberOfRounds; roundIndex += 1) {
 		const title = getRoundTitle(roundIndex, numberOfRounds)
 		let roundBattles = getRoundBattles(
 			tournament.battles,
-			athleteSet.size,
+			athleteArray.length,
 			roundIndex
 		)
 		if (roundIndex === numberOfRounds - 1 && tournament.hasThirdPlaceBattle) {
