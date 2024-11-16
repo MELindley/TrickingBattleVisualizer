@@ -1,0 +1,67 @@
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import {
+	selectTournament,
+	setTournamentBattles
+} from '../../../features/tournament/tournamentSlice'
+import type { ReactElement } from 'react'
+import { useEffect, useState } from 'react'
+import {
+	firebaseSetTournamentBattlesListener,
+	mapBattleListToReactBracketRoundList
+} from '../../../app/helpers'
+import { setActiveBattle } from '../../../features/battle/battleSlice'
+import LoadingOrError from '../../common/LoadingOrError'
+import WinnerView from '../../battle/WinnerView'
+import type { IAthlete } from '../../../app/types'
+import CustomSeed from '../../reactbracket/CustomSeed'
+import { Bracket } from '@sportsgram/brackets'
+
+export default function TournamentSpectatorView(): ReactElement {
+	const dispatch = useAppDispatch()
+	const tournament = useAppSelector(selectTournament)
+	const [isLoading, setIsLoading] = useState(false)
+	const [isError, setIsError] = useState<unknown>()
+
+	useEffect(() => {
+		const listenToTournamentBattles = async (): Promise<void> => {
+			setIsLoading(true)
+			try {
+				await firebaseSetTournamentBattlesListener(tournament.id, battles =>
+					dispatch(setTournamentBattles(battles))
+				)
+			} catch (error) {
+				setIsError(error)
+			} finally {
+				setIsLoading(false)
+			}
+		}
+
+		dispatch(
+			setActiveBattle(
+				tournament.battles.find(battle => battle.winner === undefined)
+			)
+		)
+
+		void listenToTournamentBattles()
+
+		if (isError) {
+			setTimeout(() => {
+				setIsError(false)
+			}, 60_000)
+		}
+	}, [dispatch, isError, tournament])
+
+	if (isLoading || isError) {
+		return <LoadingOrError error={isError as Error} />
+	}
+
+	return tournament.battles.some(battle => battle.winner === undefined) ? (
+		<Bracket
+			rounds={mapBattleListToReactBracketRoundList(tournament)}
+			renderSeedComponent={CustomSeed}
+			twoSided
+		/>
+	) : (
+		<WinnerView winner={tournament.battles.at(-1)?.winner as IAthlete} />
+	)
+}

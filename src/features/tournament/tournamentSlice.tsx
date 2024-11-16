@@ -29,7 +29,7 @@ export const tournamentSlice = createSlice({
 			// eslint-disable-next-line no-param-reassign
 			state.battles = state.battles.filter(a => a.id !== action.payload.id)
 		},
-		setBattles: (state, action: PayloadAction<IBattle[]>) => {
+		setTournamentBattles: (state, action: PayloadAction<IBattle[]>) => {
 			// eslint-disable-next-line no-param-reassign
 			state.battles = action.payload
 		},
@@ -110,7 +110,7 @@ export const tournamentSlice = createSlice({
 export const {
 	addBattle,
 	removeBattle,
-	setBattles,
+	setTournamentBattles,
 	setTournamentWinner,
 	setTournamentName,
 	setTournamentAthletes,

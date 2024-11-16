@@ -6,8 +6,8 @@ import { Stack, Typography } from '@mui/material'
 import { useAppSelector } from '../app/hooks'
 import { selectUserRole } from '../features/auth/authSlice'
 import { HOST_ROLE } from '../app/helpers'
-import HostView from '../components/Home/Host/HostView'
-import SpectatorView from '../components/Home/Spectator/SpectatorView'
+import HostView from '../components/home/host/HostView'
+import SpectatorView from '../components/home/spectator/SpectatorView'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },

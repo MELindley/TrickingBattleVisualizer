@@ -1,11 +1,16 @@
 import type { IAthlete, IBattle, IFirebaseUserData, ITournament } from './types'
-import type { DocumentReference, QueryConstraint } from 'firebase/firestore'
+import type {
+	DocumentReference,
+	QueryConstraint,
+	QueryDocumentSnapshot
+} from 'firebase/firestore'
 import {
 	addDoc,
 	collection,
 	doc,
 	getDoc,
 	getDocs,
+	onSnapshot,
 	query,
 	setDoc
 } from 'firebase/firestore'
@@ -270,6 +275,32 @@ export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {
 	)
 }
 
+function convertFirebaseBattleDocumentToIBattle(
+	battleDocument: QueryDocumentSnapshot
+): IBattle {
+	const battleAthletes = Object.values(
+		battleDocument.data().athletes as ArrayLike<IAthlete>
+	)
+	return {
+		id: battleDocument.id,
+		athletes:
+			battleAthletes.length === 0
+				? [undefined, undefined]
+				: (battleAthletes.length === 1
+					? [...battleAthletes, undefined]
+					: battleAthletes),
+		winner: battleDocument.data().winner
+			? (battleDocument.data().winner as IAthlete)
+			: undefined,
+		losers: battleDocument.data().losers
+			? Object.values(battleDocument.data().losers as ArrayLike<IAthlete>)
+			: undefined,
+		hasRound: battleDocument.data().hasRound as number | undefined,
+		hasTimer: battleDocument.data().hasTimer as number | undefined,
+		order: battleDocument.data().order as number
+	} as IBattle
+}
+
 export async function firebaseGetTournamentsCollection(
 	queryConstraint?: QueryConstraint
 ): Promise<ITournament[]> {
@@ -303,29 +334,9 @@ export async function firebaseGetTournamentsCollection(
 	const battles = battlesSnapshots.map(
 		battlesSnapshot =>
 			battlesSnapshot &&
-			battlesSnapshot.docs.map(battleDocument => {
-				const battleAthletes = Object.values(
-					battleDocument.data().athletes as ArrayLike<IAthlete>
-				)
-				return {
-					id: battleDocument.id,
-					athletes:
-						battleAthletes.length === 0
-							? [undefined, undefined]
-							: (battleAthletes.length === 1
-								? [...battleAthletes, undefined]
-								: battleAthletes),
-					winner: battleDocument.data().winner
-						? (battleDocument.data().winner as IAthlete)
-						: undefined,
-					losers: battleDocument.data().losers
-						? Object.values(battleDocument.data().losers as ArrayLike<IAthlete>)
-						: undefined,
-					hasRound: battleDocument.data().hasRound as number | undefined,
-					hasTimer: battleDocument.data().hasTimer as number | undefined,
-					order: battleDocument.data().order as number
-				} as IBattle
-			})
+			battlesSnapshot.docs.map(battleDocument =>
+				convertFirebaseBattleDocumentToIBattle(battleDocument)
+			)
 	)
 
 	const athletes = athletesSnapshots.map(
@@ -351,6 +362,29 @@ export async function firebaseGetTournamentsCollection(
 				name: document.data().name as string
 			}) as ITournament
 	)
+}
+
+export async function firebaseSetTournamentBattlesListener(
+	tournamentId: string,
+	callback: (battles: IBattle[]) => void // Callback for battles subcollection
+): Promise<void> {
+	const tournamentDocumentReference = doc(
+		firestore,
+		'tournaments',
+		tournamentId
+	)
+	const battlesCollectionReference = collection(
+		tournamentDocumentReference,
+		'battles'
+	)
+
+	// Listener for the battles subcollection
+	onSnapshot(battlesCollectionReference, snapshot => {
+		const battlesData = snapshot.docs.map(battleDocument =>
+			convertFirebaseBattleDocumentToIBattle(battleDocument)
+		)
+		callback(battlesData)
+	})
 }
 
 export async function firebaseAddAthletesToTournament(
