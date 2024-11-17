@@ -141,4 +141,7 @@ export const selectNextTournamentBattle = (
 export const selectTournamentWinner = (
 	state: RootState
 ): IAthlete | undefined => state.tournament.winner
+export const selectTournamentName = (state: RootState): string | undefined =>
+	state.tournament.name
+
 export default tournamentSlice.reducer

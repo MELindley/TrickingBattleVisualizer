@@ -189,7 +189,14 @@ export const generateTournamentBattlesFromAthletes = (
 	return battles
 }
 
-// Function to sanitize objects before uploading to Firestore
+/**
+ * Recursively sanitizes an object for Firestore by removing undefined, null, or empty string values.
+ * Optionally removes the `id` field if specified.
+ *
+ * @param object - The object to sanitize.
+ * @param removeID - Whether to remove the `id` field from the object. Default is `false`.
+ * @returns A sanitized object suitable for Firestore storage.
+ */
 const sanitizeObjectForFirestore = (object: object, removeID = false): object =>
 	// Recursively iterate through the object and its nested properties
 	// eslint-disable-next-line unicorn/no-array-reduce
@@ -255,6 +262,11 @@ export async function firebaseGetUserDocument(
 		: undefined
 }
 
+/**
+ * Retrieves the collection of athletes from Firestore.
+ *
+ * @returns A promise that resolves to an array of `IAthlete` objects.
+ */
 export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {
 	const athletesCollectionReference = collection(firestore, 'athletes')
 	const athletesDocuments = await getDocs(athletesCollectionReference)
@@ -275,6 +287,12 @@ export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {
 	)
 }
 
+/**
+ * Converts a Firebase battle document snapshot into an `IBattle` object.
+ *
+ * @param battleDocument - The Firebase document snapshot for a battle.
+ * @returns The converted `IBattle` object.
+ */
 function convertFirebaseBattleDocumentToIBattle(
 	battleDocument: QueryDocumentSnapshot
 ): IBattle {
@@ -301,6 +319,12 @@ function convertFirebaseBattleDocumentToIBattle(
 	} as IBattle
 }
 
+/**
+ * Retrieves the collection of tournaments from Firestore, optionally filtered by a query constraint.
+ *
+ * @param queryConstraint - Optional query constraint to filter the tournaments.
+ * @returns A promise that resolves to an array of `ITournament` objects.
+ */
 export async function firebaseGetTournamentsCollection(
 	queryConstraint?: QueryConstraint
 ): Promise<ITournament[]> {
@@ -380,9 +404,11 @@ export async function firebaseSetTournamentBattlesListener(
 
 	// Listener for the battles subcollection
 	onSnapshot(battlesCollectionReference, snapshot => {
-		const battlesData = snapshot.docs.map(battleDocument =>
-			convertFirebaseBattleDocumentToIBattle(battleDocument)
-		)
+		const battlesData = snapshot.docs
+			.map(battleDocument =>
+				convertFirebaseBattleDocumentToIBattle(battleDocument)
+			)
+			.sort((a, b) => a.order - b.order)
 		callback(battlesData)
 	})
 }

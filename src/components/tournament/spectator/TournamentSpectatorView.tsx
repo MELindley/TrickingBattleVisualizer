@@ -21,6 +21,7 @@ export default function TournamentSpectatorView(): ReactElement {
 	const tournament = useAppSelector(selectTournament)
 	const [isLoading, setIsLoading] = useState(false)
 	const [isError, setIsError] = useState<unknown>()
+	const [isListenerSet, setIsListenerSet] = useState(false)
 
 	useEffect(() => {
 		const listenToTournamentBattles = async (): Promise<void> => {
@@ -41,15 +42,17 @@ export default function TournamentSpectatorView(): ReactElement {
 				tournament.battles.find(battle => battle.winner === undefined)
 			)
 		)
-
-		void listenToTournamentBattles()
+		if (!isLoading && !isError && !isListenerSet) {
+			void listenToTournamentBattles()
+			setIsListenerSet(true)
+		}
 
 		if (isError) {
 			setTimeout(() => {
 				setIsError(false)
 			}, 60_000)
 		}
-	}, [dispatch, isError, tournament])
+	}, [dispatch, isError, isListenerSet, isLoading, tournament])
 
 	if (isLoading || isError) {
 		return <LoadingOrError error={isError as Error} />
