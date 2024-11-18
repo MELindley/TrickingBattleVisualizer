@@ -25,6 +25,7 @@ export default function TournamentHostView(): ReactElement {
 	const tournament = useAppSelector(selectTournament)
 	const [isLoading, setIsLoading] = useState(false)
 	const [isError, setIsError] = useState<unknown>()
+	const [tournamentUpdated, setTournamentUpdated] = useState(false)
 
 	useEffect(() => {
 		const updateTournament = async (): Promise<void> => {
@@ -43,9 +44,14 @@ export default function TournamentHostView(): ReactElement {
 				tournament.battles.find(battle => battle.winner === undefined)
 			)
 		)
-
-		if (!isLoading && !isError && locationState?.updateFirebase) {
+		if (
+			!isLoading &&
+			!isError &&
+			locationState?.updateFirebase &&
+			!tournamentUpdated
+		) {
 			void updateTournament()
+			setTournamentUpdated(true)
 		}
 
 		if (isError) {
@@ -53,7 +59,14 @@ export default function TournamentHostView(): ReactElement {
 				setIsError(false)
 			}, 60_000)
 		}
-	}, [dispatch, isError, isLoading, locationState, tournament])
+	}, [
+		dispatch,
+		isError,
+		isLoading,
+		locationState,
+		tournament,
+		tournamentUpdated
+	])
 
 	const onStartBattleClick = (): void => {
 		window.scrollTo(0, 0)
@@ -85,7 +98,14 @@ export default function TournamentHostView(): ReactElement {
 					twoSided
 				/>
 			) : (
-				<WinnerView winner={tournament.battles.at(-1)?.winner as IAthlete} />
+				<>
+					<WinnerView winner={tournament.battles.at(-1)?.winner as IAthlete} />
+					<Bracket
+						rounds={mapBattleListToReactBracketRoundList(tournament)}
+						renderSeedComponent={CustomSeed}
+						twoSided
+					/>
+				</>
 			)}
 		</>
 	)

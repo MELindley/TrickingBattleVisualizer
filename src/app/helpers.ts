@@ -484,18 +484,14 @@ export async function firebaseUpdateTournamentBattles(
 			setDoc(battleDocumentReference, sanitizeObjectForFirestore(battle, true))
 		)
 	}
-	try {
-		await Promise.all(battlePromises)
-	} catch (error) {
-		console.log('Error updating Tournament battle', error)
-	}
+	await Promise.all(battlePromises)
 	return battles
 }
 
 export async function firebaseSetBattleInTournament(
 	tournamentId: string,
 	updatedBattle: IBattle
-): Promise<IBattle | undefined> {
+): Promise<IBattle> {
 	const tournamentDocumentReference = doc(
 		firestore,
 		'tournaments',
@@ -506,16 +502,10 @@ export async function firebaseSetBattleInTournament(
 		'battles',
 		updatedBattle.id
 	)
-
-	try {
-		await setDoc(
-			battleDocumentReference,
-			sanitizeObjectForFirestore(updatedBattle)
-		)
-	} catch (error) {
-		console.error('Error updating battle:', error)
-		return undefined
-	}
+	await setDoc(
+		battleDocumentReference,
+		sanitizeObjectForFirestore(updatedBattle)
+	)
 	return updatedBattle
 }
 
@@ -523,7 +513,7 @@ export async function firebaseSetAthleteInTournament(
 	tournamentId: string,
 	athleteId: string,
 	updatedAthlete: IAthlete
-): Promise<IAthlete | undefined> {
+): Promise<IAthlete> {
 	const tournamentDocumentReference = doc(
 		firestore,
 		'tournaments',
@@ -534,71 +524,53 @@ export async function firebaseSetAthleteInTournament(
 		'athletes',
 		athleteId
 	)
-
-	try {
-		await setDoc(
-			athleteDocumentReference,
-			sanitizeObjectForFirestore(updatedAthlete)
-		)
-		console.log('Athlete updated successfully!')
-		return updatedAthlete
-	} catch (error) {
-		console.error('Error updating athlete:', error)
-	}
-	return undefined
+	await setDoc(
+		athleteDocumentReference,
+		sanitizeObjectForFirestore(updatedAthlete)
+	)
+	return updatedAthlete
 }
 
 export async function firebaseAddTournamentDocument(
 	tournament: ITournament
-): Promise<ITournament | undefined> {
+): Promise<ITournament> {
 	const tournamentsCollectionReference = collection(firestore, 'tournaments')
-	try {
-		const tournamentDocumentReference = (await addDoc(
-			tournamentsCollectionReference,
-			sanitizeObjectForFirestore({
-				name: tournament.name,
-				hasThirdPlaceBattle: tournament.hasThirdPlaceBattle,
-				isFinalDifferent: tournament.isFinalDifferent,
-				hostUID: tournament.hostUID
-			})
-		)) as DocumentReference
-		console.log('Tournament created successfully')
-		await firebaseAddAthletesToTournament(
-			tournamentDocumentReference.id,
-			tournament.athletes
-		)
-		const battles = await firebaseAddBattlesToTournament(
-			tournamentDocumentReference.id,
-			tournament.battles
-		)
-		return { ...tournament, id: tournamentDocumentReference.id, battles }
-	} catch (error) {
-		console.log('Error creating Tournament', error)
-	}
-	return undefined
+	const tournamentDocumentReference = (await addDoc(
+		tournamentsCollectionReference,
+		sanitizeObjectForFirestore({
+			name: tournament.name,
+			hasThirdPlaceBattle: tournament.hasThirdPlaceBattle,
+			isFinalDifferent: tournament.isFinalDifferent,
+			hostUID: tournament.hostUID
+		})
+	)) as DocumentReference
+	await firebaseAddAthletesToTournament(
+		tournamentDocumentReference.id,
+		tournament.athletes
+	)
+	const battles = await firebaseAddBattlesToTournament(
+		tournamentDocumentReference.id,
+		tournament.battles
+	)
+	return { ...tournament, id: tournamentDocumentReference.id, battles }
 }
 
 export async function firebaseUpdateTournamentDocument(
 	tournament: ITournament
-): Promise<ITournament | undefined> {
+): Promise<ITournament> {
 	const tournamentDocumentReference = doc(
 		firestore,
 		'tournaments',
 		tournament.id
 	)
-	try {
-		await setDoc(
-			tournamentDocumentReference,
-			sanitizeObjectForFirestore(tournament, true)
-		)
-		await firebaseUpdateTournamentBattles(
-			tournamentDocumentReference.id,
-			tournament.battles
-		)
-	} catch (error) {
-		console.log('Error updating Tournament', error)
-		return undefined
-	}
+	await setDoc(
+		tournamentDocumentReference,
+		sanitizeObjectForFirestore(tournament, true)
+	)
+	await firebaseUpdateTournamentBattles(
+		tournamentDocumentReference.id,
+		tournament.battles
+	)
 	return tournament
 }
 
@@ -763,12 +735,11 @@ function mapBattlesToSeeds(
 		return {
 			id,
 			date: new Date().toDateString(),
-			teams: battle.athletes.map(athlete => {
-				console.log(athlete)
-				return athlete
+			teams: battle.athletes.map(athlete =>
+				athlete
 					? { name: `${athlete.name} ${athlete.surname}`, athlete }
 					: { name: '', athlete: undefined }
-			}),
+			),
 			title
 		}
 	})
@@ -805,7 +776,6 @@ export function mapBattleListToReactBracketRoundList(
 	const roundProperties: IRoundProps[] = []
 	const numberOfRounds = Math.ceil(Math.log2(tournament.battles.length))
 	const athleteArray = getUniqueAthleteArrayFromTournament(tournament)
-	console.log(athleteArray)
 
 	for (let roundIndex = 0; roundIndex < numberOfRounds; roundIndex += 1) {
 		const title = getRoundTitle(roundIndex, numberOfRounds)
@@ -818,7 +788,6 @@ export function mapBattleListToReactBracketRoundList(
 			// In the final round, include both the final and third place battles
 			roundBattles = [...roundBattles, tournament.battles.at(-1) as IBattle]
 		}
-		console.log(roundIndex, roundBattles)
 		const seeds: ISeedProps[] = mapBattlesToSeeds(
 			roundBattles,
 			tournament.battles,

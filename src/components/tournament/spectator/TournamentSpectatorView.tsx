@@ -65,6 +65,13 @@ export default function TournamentSpectatorView(): ReactElement {
 			twoSided
 		/>
 	) : (
-		<WinnerView winner={tournament.battles.at(-1)?.winner as IAthlete} />
+		<>
+			<WinnerView winner={tournament.battles.at(-1)?.winner as IAthlete} />
+			<Bracket
+				rounds={mapBattleListToReactBracketRoundList(tournament)}
+				renderSeedComponent={CustomSeed}
+				twoSided
+			/>
+		</>
 	)
 }
