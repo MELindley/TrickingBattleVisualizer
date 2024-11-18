@@ -3,8 +3,8 @@ import type { ReactElement } from 'react'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useAppSelector } from './app/hooks'
-import { selectThemeOptions } from './features/theme/themeSlice'
 import { createTheme, ThemeProvider } from '@mui/material'
+import { selectTournamentThemeOptions } from './features/tournament/tournamentSlice'
 
 const Home = lazy(async () => import('pages/Home'))
 const Details = lazy(async () => import('pages/Details'))
@@ -13,7 +13,9 @@ const Tournament = lazy(async () => import('pages/Tournament'))
 const Login = lazy(async () => import('pages/auth/Login'))
 
 export default function App(): ReactElement {
-	const themeOptions = useAppSelector(state => selectThemeOptions(state))
+	const themeOptions = useAppSelector(state =>
+		selectTournamentThemeOptions(state)
+	)
 	const theme = createTheme(themeOptions)
 
 	return (

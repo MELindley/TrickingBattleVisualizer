@@ -36,9 +36,9 @@ export default function DetailsPage(): ReactElement {
 					<img
 						style={{
 							position: 'relative',
-							backgroundColor: athlete.image.color
+							backgroundColor: athlete.image?.color
 						}}
-						src={athlete.image.url}
+						src={athlete.image?.url}
 						alt={athlete.name}
 					/>
 				</Grid>

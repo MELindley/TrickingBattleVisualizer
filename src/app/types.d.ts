@@ -1,3 +1,8 @@
+/* eslint no-shadow: 0 */
+/* eslint @typescript-eslint/no-shadow: 0 */
+
+import type { ThemeOptions } from '@mui/material'
+
 export interface IAthlete {
 	id: string
 	name: string
@@ -19,6 +24,17 @@ export interface IBattle {
 	order: number
 }
 
+export interface IBackgroundOptions {
+	url: string
+}
+
+declare module '@mui/material/styles' {
+	// allow configuration using `createTheme()`
+	interface ThemeOptions {
+		background?: IBackgroundOptions
+	}
+}
+
 export interface ITournament {
 	id: string
 	battles: IBattle[]
@@ -28,23 +44,10 @@ export interface ITournament {
 	hasThirdPlaceBattle?: boolean
 	isFinalDifferent?: boolean
 	hostUID: string
+	themeOptions: ThemeOptions
 }
 
 export interface IFirebaseUserData {
 	id: string
 	role: string
-}
-
-export interface IBackgroundOptions {
-	url: string
-}
-
-declare module '@mui/material/styles' {
-	interface Theme {
-		background: IBackgroundOptions
-	}
-	// allow configuration using `createTheme()`
-	interface ThemeOptions {
-		background?: IBackgroundOptions
-	}
 }

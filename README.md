@@ -32,17 +32,6 @@ Then, install the dependencies:
 pnpm install
 ```
 
-### Before you start coding
-
-- [ ] If you don't plan to use GitHub Actions, delete the `.github` directory.
-- [ ] Clean up the `cypress/e2e/index.spec.ts` file.
-- [ ] Change the `favicon.png`, `apple-touch-icon.png`, `android-chrome-192x192.png` and `android-chrome-512x512.png`. [favicon.io](https://favicon.io) is a cool tool for generating these assets.
-- [ ] In the `src` folder, remove the `__tests__`, `api` and `components` folder and the `types.ts` file.
-- [ ] If you don't plan to use `react-query`, remove the query client logic in the `main.tsx` file.
-- [ ] Change the title, description and theme color in the `index.html` and `vite.config.ts`. The [Inter](https://rsms.me/inter/) font is included, so remove it if you want.
-- [ ] Modify or delete the `LICENSE` file.
-- [ ] Change the `name` field in package.json.
-
 ## Scripts
 
 - `pnpm dev` - start a development server with hot reload.
