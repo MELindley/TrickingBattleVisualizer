@@ -34,3 +34,17 @@ export interface IFirebaseUserData {
 	id: string
 	role: string
 }
+
+export interface IBackgroundOptions {
+	url: string
+}
+
+declare module '@mui/material/styles' {
+	interface Theme {
+		background: IBackgroundOptions
+	}
+	// allow configuration using `createTheme()`
+	interface ThemeOptions {
+		background?: IBackgroundOptions
+	}
+}
