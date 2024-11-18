@@ -338,16 +338,12 @@ export async function firebaseGetTournamentsCollection(
 
 	const battlePromises = tournamentsDocuments.docs.map(async document => {
 		const battlesCollectionReference = collection(document.ref, 'battles')
-		return getDocs(battlesCollectionReference).catch((error: unknown) =>
-			console.log('Firebase Error:', error)
-		)
+		return getDocs(battlesCollectionReference)
 	})
 
 	const athletePromises = tournamentsDocuments.docs.map(async document => {
 		const athletesCollectionReference = collection(document.ref, 'athletes')
-		return getDocs(athletesCollectionReference).catch((error: unknown) =>
-			console.log('Firebase Error:', error)
-		)
+		return getDocs(athletesCollectionReference)
 	})
 
 	const [battlesSnapshots, athletesSnapshots] = await Promise.all([
@@ -355,28 +351,23 @@ export async function firebaseGetTournamentsCollection(
 		Promise.all(athletePromises)
 	])
 
-	const battles = battlesSnapshots.map(
-		battlesSnapshot =>
-			battlesSnapshot &&
-			battlesSnapshot.docs.map(battleDocument =>
-				convertFirebaseBattleDocumentToIBattle(battleDocument)
-			)
+	const battles = battlesSnapshots.map(battlesSnapshot =>
+		battlesSnapshot.docs.map(battleDocument =>
+			convertFirebaseBattleDocumentToIBattle(battleDocument)
+		)
 	)
 
 	const athletes = athletesSnapshots.map(
 		athletesSnapshot =>
-			athletesSnapshot &&
-			(athletesSnapshot.docs.map(athleteDocument =>
+			athletesSnapshot.docs.map(athleteDocument =>
 				athleteDocument.data()
-			) as IAthlete[])
+			) as IAthlete[]
 	)
 
 	return tournamentsDocuments.docs.map(
 		(document, index) =>
 			({
-				battles: (battles[index] as IBattle[]).sort(
-					(a, b) => a.order - b.order
-				),
+				battles: battles[index].sort((a, b) => a.order - b.order),
 				winner: document.data().winner as IAthlete,
 				athletes: athletes[index],
 				hasThirdPlaceBattle: document.data().hasThirdPlaceBattle as boolean,

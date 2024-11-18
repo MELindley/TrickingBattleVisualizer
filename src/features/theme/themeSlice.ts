@@ -18,7 +18,7 @@ const initialState: ThemeOptions = {
 		}
 	},
 	typography: {
-		fontFamily: 'Nunito Sans',
+		fontFamily: 'Lato',
 		h1: {
 			fontFamily: 'Barlow'
 		},
@@ -65,14 +65,15 @@ export const { setPalette, setTypography, setBackground, resetTheme } =
 	themeSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectTheme = (state: RootState): ThemeOptions => state.theme
-export const selectThemePalette = (
+export const selectThemeOptions = (state: RootState): ThemeOptions =>
+	state.theme
+export const selectThemePaletteOptions = (
 	state: RootState
 ): PaletteOptions | undefined => state.theme.palette
-export const selectThemeBackground = (
+export const selectThemeBackgroundOptions = (
 	state: RootState
 ): IBackgroundOptions | undefined => state.theme.background
-export const selectThemeTypography = (
+export const selectThemeTypographyOptions = (
 	state: RootState
 ): TypographyOptions | ((palette: Palette) => TypographyOptions) | undefined =>
 	state.theme.typography
