@@ -17,7 +17,7 @@ import {
 	selectActiveBattle,
 	setActiveBattleAthletes,
 	setActiveBattleId
-} from '../../../features/battle/battleSlice'
+} from 'features/battle/battleSlice'
 import {
 	addBattle,
 	generateBattlesFromAthletes,
@@ -27,12 +27,12 @@ import {
 	setTournament,
 	setTournamentHostUID,
 	setTournamentName
-} from '../../../features/tournament/tournamentSlice'
+} from 'features/tournament/tournamentSlice'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
-import type { IAthlete } from '../../../app/types'
-import { firebaseAddTournamentDocument } from '../../../app/helpers'
-import { selectUID } from '../../../features/auth/authSlice'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
+import type { IAthlete } from 'app/types'
+import { firebaseAddTournamentDocument } from 'app/helpers'
+import { selectUID } from 'features/auth/authSlice'
 
 interface Properties {
 	selectedAthletes: IAthlete[]
@@ -65,11 +65,8 @@ export default function TournamentConfig({
 	// @ts-expect-error Handle function must return void
 	const onStartTournamentClick = async (): void => {
 		window.scrollTo(0, 0)
-		// eslint-disable-next-line unicorn/no-array-reduce
 		const tournamentDocument = await firebaseAddTournamentDocument(tournament)
-		if (tournamentDocument) {
-			dispatch(setTournament(tournamentDocument))
-		}
+		dispatch(setTournament(tournamentDocument))
 		navigate(`/tournament/${tournament.name}/`)
 	}
 

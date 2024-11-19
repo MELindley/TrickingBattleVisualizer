@@ -1,19 +1,19 @@
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
 import {
 	selectTournament,
 	setTournamentBattles
-} from '../../../features/tournament/tournamentSlice'
+} from 'features/tournament/tournamentSlice'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 import {
 	firebaseSetTournamentBattlesListener,
 	mapBattleListToReactBracketRoundList
-} from '../../../app/helpers'
-import { setActiveBattle } from '../../../features/battle/battleSlice'
-import LoadingOrError from '../../common/LoadingOrError'
-import WinnerView from '../../battle/WinnerView'
-import type { IAthlete } from '../../../app/types'
-import CustomSeed from '../../reactbracket/CustomSeed'
+} from 'app/helpers'
+import { setActiveBattle } from 'features/battle/battleSlice'
+import LoadingOrError from 'components/common/LoadingOrError'
+import WinnerView from 'components/battle/WinnerView'
+import type { IAthlete } from 'app/types'
+import CustomSeed from 'components/reactbracket/CustomSeed'
 import { Bracket } from '@sportsgram/brackets'
 
 export default function TournamentSpectatorView(): ReactElement {

@@ -1,14 +1,14 @@
 /* eslint no-param-reassign: 0 */
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
+import type { RootState } from 'app/store'
 import type {
 	IAthlete,
 	IBackgroundOptions,
 	IBattle,
 	ITournament
-} from '../../app/types'
-import { generateTournamentBattlesFromAthletes } from '../../app/helpers'
+} from 'app/types'
+import { generateTournamentBattlesFromAthletes } from 'app/helpers'
 import type { Palette, PaletteOptions, ThemeOptions } from '@mui/material'
 import type { TypographyOptions } from '@mui/material/styles/createTypography'
 

@@ -1,13 +1,13 @@
 import Head from 'components/common/Head'
 import type { ReactElement } from 'react'
-import NavBar, { type NavigationItem } from '../components/common/Navbar'
+import NavBar, { type NavigationItem } from 'components/common/Navbar'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Stack, Typography } from '@mui/material'
-import { useAppSelector } from '../app/hooks'
-import { selectUserRole } from '../features/auth/authSlice'
-import { HOST_ROLE } from '../app/helpers'
-import HostView from '../components/home/host/HostView'
-import SpectatorView from '../components/home/spectator/SpectatorView'
+import { useAppSelector } from 'app/hooks'
+import { selectUserRole } from 'features/auth/authSlice'
+import { HOST_ROLE } from 'app/helpers'
+import HostView from 'components/home/host/HostView'
+import SpectatorView from 'components/home/spectator/SpectatorView'
 
 export const mainNavigation: NavigationItem[] = [
 	{ name: 'Home', href: '/' },

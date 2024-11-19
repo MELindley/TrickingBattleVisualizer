@@ -1,20 +1,20 @@
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
-import { selectTournament } from '../../../features/tournament/tournamentSlice'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
+import { selectTournament } from 'features/tournament/tournamentSlice'
 import {
 	firebaseUpdateTournamentDocument,
 	mapBattleListToReactBracketRoundList
-} from '../../../app/helpers'
-import { setActiveBattle } from '../../../features/battle/battleSlice'
-import LoadingOrError from '../../common/LoadingOrError'
+} from 'app/helpers'
+import { setActiveBattle } from 'features/battle/battleSlice'
+import LoadingOrError from 'components/common/LoadingOrError'
 import { Button } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Bracket } from '@sportsgram/brackets'
-import CustomSeed from '../../reactbracket/CustomSeed'
-import WinnerView from '../../battle/WinnerView'
-import type { IAthlete } from '../../../app/types'
+import CustomSeed from 'components/reactbracket/CustomSeed'
+import WinnerView from 'components/battle/WinnerView'
+import type { IAthlete } from 'app/types'
 
 export default function TournamentHostView(): ReactElement {
 	const navigate = useNavigate()

@@ -1,6 +1,6 @@
 import { type KeyboardEvent, type ReactElement, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import type { IAthlete } from '../../app/types'
+import type { IAthlete } from 'app/types'
 import {
 	Button,
 	Card,

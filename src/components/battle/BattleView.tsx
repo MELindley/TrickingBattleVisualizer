@@ -1,13 +1,13 @@
-import type { IAthlete, IBattle } from '../../app/types'
+import type { IAthlete, IBattle } from 'app/types'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Chip, Slide, Stack, Typography } from '@mui/material'
 import type { ReactElement } from 'react'
 import { Fragment, useEffect, useState } from 'react'
-import AthleteCard from '../athlete/AthleteCard'
-import { setActiveBattleWinner } from '../../features/battle/battleSlice'
-import { useAppDispatch } from '../../app/hooks'
+import AthleteCard from 'components/athlete/AthleteCard'
+import { setActiveBattleWinner } from 'features/battle/battleSlice'
+import { useAppDispatch } from 'app/hooks'
 import Countdown from 'react-countdown'
-import { getUniqueArrayElementWithHighestOccurrence } from '../../app/helpers'
+import { getUniqueArrayElementWithHighestOccurrence } from 'app/helpers'
 
 interface Properties {
 	battle: IBattle

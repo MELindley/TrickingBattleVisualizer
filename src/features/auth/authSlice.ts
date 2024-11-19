@@ -1,9 +1,9 @@
 /* eslint no-param-reassign: 0 */
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
-import type { IFirebaseUserData } from '../../app/types'
-import { SPECTATOR_ROLE } from '../../app/helpers'
+import type { RootState } from 'app/store'
+import type { IFirebaseUserData } from 'app/types'
+import { SPECTATOR_ROLE } from 'app/helpers'
 
 // Define the initial state using that type
 const initialState: IFirebaseUserData = {

@@ -8,7 +8,7 @@ import { GoogleAuthProvider } from 'firebase/auth'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-	apiKey: 'AIzaSyB5GoO6U6zTFlVo_Zjh_qhni9v6AvqHD6s',
+	apiKey: 'AIzaSyBrUX8rXsEZ5vnESAfdHmNR22YboWWP62Q',
 	authDomain: 'trickscore-961d1.firebaseapp.com',
 	projectId: 'trickscore-961d1',
 	storageBucket: 'trickscore-961d1.appspot.com',

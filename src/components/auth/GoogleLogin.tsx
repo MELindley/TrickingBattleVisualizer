@@ -6,9 +6,9 @@ import {
 	firebaseAddUserDocument,
 	firebaseGetUserDocument,
 	SPECTATOR_ROLE
-} from '../../app/helpers'
-import { useAppDispatch } from '../../app/hooks'
-import { setAuth } from '../../features/auth/authSlice'
+} from 'app/helpers'
+import { useAppDispatch } from 'app/hooks'
+import { setAuth } from 'features/auth/authSlice'
 
 export default function GoogleLogIn(): ReactElement {
 	const navigate = useNavigate()

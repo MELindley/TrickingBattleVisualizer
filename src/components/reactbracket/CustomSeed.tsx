@@ -1,10 +1,10 @@
 import type { IRenderSeedProps } from '@sportsgram/brackets'
 import { Seed, SeedItem } from '@sportsgram/brackets'
 import type { ReactElement } from 'react'
-import AthleteCard from '../athlete/AthleteCard'
+import AthleteCard from 'components/athlete/AthleteCard'
 import Grid from '@mui/material/Unstable_Grid2'
 import type { ISeedProps } from '@sportsgram/brackets/dist/types/Seed'
-import type { IAthlete } from '../../app/types'
+import type { IAthlete } from 'app/types'
 import { Typography } from '@mui/material'
 
 interface ICustomSeedProperties extends ISeedProps {
