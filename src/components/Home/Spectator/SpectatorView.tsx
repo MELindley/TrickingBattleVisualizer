@@ -1,9 +1,9 @@
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
-import type { ITournament } from '../../../app/types'
-import { firebaseGetTournamentsCollection } from '../../../app/helpers'
-import TournamentList from '../TournamentList'
-import LoadingOrError from '../../common/LoadingOrError'
+import type { ITournament } from 'app/types'
+import { firebaseGetTournamentsCollection } from 'app/helpers'
+import TournamentList from 'components/home/TournamentList'
+import LoadingOrError from 'components/common/LoadingOrError'
 
 export default function SpectatorView(): ReactElement {
 	const [tournaments, setTournaments] = useState<ITournament[]>([])

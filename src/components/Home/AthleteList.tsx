@@ -1,8 +1,8 @@
 import Grid from '@mui/material/Unstable_Grid2'
 import { Typography } from '@mui/material'
-import type { IAthlete } from '../../app/types'
+import type { IAthlete } from 'app/types'
 import type { ReactElement, SetStateAction } from 'react'
-import AthleteCard from '../athlete/AthleteCard'
+import AthleteCard from 'components/athlete/AthleteCard'
 
 interface Properties {
 	athletes: IAthlete[]

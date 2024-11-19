@@ -1,21 +1,21 @@
-import AthleteList from '../AthleteList'
-import TournamentList from '../TournamentList'
-import BattleConfig from './BattleConfig'
-import TournamentConfig from './TournamentConfig'
+import AthleteList from 'components/home/AthleteList'
+import TournamentList from 'components/home/TournamentList'
+import BattleConfig from 'components/home/host/BattleConfig'
+import TournamentConfig from 'components/home/host/TournamentConfig'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
-import type { IAthlete, ITournament } from '../../../app/types'
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import type { IAthlete, ITournament } from 'app/types'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
 import {
 	selectTournament,
 	setTournamentAthletes
-} from '../../../features/tournament/tournamentSlice'
+} from 'features/tournament/tournamentSlice'
 import {
 	firebaseGetAthleteCollection,
 	firebaseGetTournamentsCollection
-} from '../../../app/helpers'
-import LoadingOrError from '../../common/LoadingOrError'
-import { selectUID } from '../../../features/auth/authSlice'
+} from 'app/helpers'
+import LoadingOrError from 'components/common/LoadingOrError'
+import { selectUID } from 'features/auth/authSlice'
 import { where } from 'firebase/firestore'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'

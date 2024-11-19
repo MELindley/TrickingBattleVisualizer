@@ -3,12 +3,12 @@ import { Autocomplete, Button, TextField, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import type { ReactElement, SyntheticEvent } from 'react'
 import { useState } from 'react'
-import type { ITournament } from '../../app/types'
-import { useAppDispatch } from '../../app/hooks'
+import type { ITournament } from 'app/types'
+import { useAppDispatch } from 'app/hooks'
 import {
 	initialState,
 	setTournament
-} from '../../features/tournament/tournamentSlice'
+} from 'features/tournament/tournamentSlice'
 import { useNavigate } from 'react-router-dom'
 
 interface Properties {

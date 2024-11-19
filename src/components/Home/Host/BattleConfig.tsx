@@ -14,10 +14,10 @@ import {
 	setActiveBattleAthletes,
 	setActiveBattleHasRound,
 	setActiveBattleHasTimer
-} from '../../../features/battle/battleSlice'
+} from 'features/battle/battleSlice'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../../app/hooks'
-import type { IAthlete } from '../../../app/types'
+import { useAppDispatch } from 'app/hooks'
+import type { IAthlete } from 'app/types'
 import type { ChangeEvent, ReactElement } from 'react'
 import { useState } from 'react'
 
