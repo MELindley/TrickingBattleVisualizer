@@ -161,13 +161,13 @@ export const tournamentSlice = createSlice({
 			state,
 			action: PayloadAction<PaletteOptions>
 		) => {
-			state.themeOptions.palette = action.payload
+			state.themeOptions = { ...state.themeOptions, palette: action.payload }
 		},
 		setTypography: (state, action: PayloadAction<TypographyOptions>) => {
-			state.themeOptions.typography = action.payload
+			state.themeOptions = { ...state.themeOptions, typography: action.payload }
 		},
 		setBackground: (state, action: PayloadAction<IBackgroundOptions>) => {
-			state.themeOptions.background = action.payload
+			state.themeOptions = { ...state.themeOptions, background: action.payload }
 		}
 	}
 })
@@ -214,16 +214,16 @@ export const selectTournamentWinner = (
 export const selectTournamentName = (state: RootState): string | undefined =>
 	state.tournament.name
 export const selectTournamentThemeOptions = (state: RootState): ThemeOptions =>
-	state.tournament.themeOptions
+	state.tournament.themeOptions ?? initialThemeOptions
 export const selectThemePaletteOptions = (
 	state: RootState
-): PaletteOptions | undefined => state.tournament.themeOptions.palette
+): PaletteOptions | undefined => state.tournament.themeOptions?.palette
 export const selectThemeBackgroundOptions = (
 	state: RootState
-): IBackgroundOptions | undefined => state.tournament.themeOptions.background
+): IBackgroundOptions | undefined => state.tournament.themeOptions?.background
 export const selectThemeTypographyOptions = (
 	state: RootState
 ): TypographyOptions | ((palette: Palette) => TypographyOptions) | undefined =>
-	state.tournament.themeOptions.typography
+	state.tournament.themeOptions?.typography
 
 export default tournamentSlice.reducer

@@ -44,7 +44,7 @@ export interface ITournament {
 	hasThirdPlaceBattle?: boolean
 	isFinalDifferent?: boolean
 	hostUID: string
-	themeOptions: ThemeOptions
+	themeOptions?: ThemeOptions
 }
 
 export interface IFirebaseUserData {
