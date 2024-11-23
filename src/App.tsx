@@ -20,6 +20,19 @@ export default function App(): ReactElement {
 
 	return (
 		<ThemeProvider theme={theme}>
+			<div className='absolute h-dvh w-dvw overflow-hidden'>
+				{/* eslint-disable-next-line react/iframe-missing-sandbox */}
+				<iframe
+					width='1920'
+					height='1080'
+					src={`${themeOptions.background?.url}&controls=0&showinfo=0&mute=1&disablekb=1&fs=0&loop=1&autoplay=1&modestbranding=1&color=white&iv_load_policy=3&rel=0`}
+					referrerPolicy='strict-origin-when-cross-origin'
+					title='ytplayer'
+					allowFullScreen
+					className='absolute left-1/2 top-1/2 -z-50 h-dvh w-dvw -translate-x-1/2 -translate-y-1/2 transform'
+				/>
+			</div>
+
 			<BrowserRouter>
 				<Suspense fallback={<LoadingOrError />}>
 					<Routes>

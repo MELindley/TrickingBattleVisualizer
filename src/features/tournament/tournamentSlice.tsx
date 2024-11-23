@@ -44,7 +44,7 @@ const initialThemeOptions: ThemeOptions = {
 		}
 	},
 	background: {
-		url: 'https://static.wixstatic.com/media/43c475_f81d2b034b944b048a095881dad7f69f~mv2.png'
+		url: 'https://www.youtube.com/embed/YpeqmLeIpZU?si=_2CO7RMlaCrTMQ-a'
 	}
 }
 
