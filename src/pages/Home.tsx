@@ -20,10 +20,10 @@ export default function HomePage(): ReactElement {
 
 	return (
 		<>
-			<Head title='Tricking Battle Visualizer' />
+			<Head title='Arena Forge' />
 			<NavBar navigation={mainNavigation} />
 			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
-				<Typography variant='h1'>Battle Visualizer</Typography>
+				<Typography variant='h1'>Arena Forge</Typography>
 			</Grid>
 			<Stack spacing={4} justifyContent='center' sx={{ p: 4 }}>
 				{userRole === HOST_ROLE ? <HostView /> : <SpectatorView />}

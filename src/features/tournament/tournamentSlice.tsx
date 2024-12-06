@@ -44,7 +44,7 @@ const initialThemeOptions: ThemeOptions = {
 		}
 	},
 	background: {
-		url: 'https://www.youtube.com/embed/YpeqmLeIpZU?si=_2CO7RMlaCrTMQ-a'
+		url: 'https://www.youtube.com/embed/YpeqmLeIpZU'
 	}
 }
 

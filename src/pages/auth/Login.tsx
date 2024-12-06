@@ -10,7 +10,7 @@ import { mainNavigation } from 'pages/Home'
 export default function LoginPage(): ReactElement {
 	return (
 		<>
-			<Head title='Tricking Battle Visualizer' />
+			<Head title='Arena Forge' />
 			<Stack spacing={4} justifyContent='center' alignItems='stretch'>
 				<NavBar navigation={mainNavigation} />
 				<EmailSignUp />

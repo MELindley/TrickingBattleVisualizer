@@ -16,7 +16,7 @@ export default function TournamentPage(): ReactElement {
 	const tournamentName = useAppSelector(state => selectTournamentName(state))
 	return (
 		<>
-			<Head title='Tricking Battle Visualizer' />
+			<Head title={tournamentName ?? 'Arena Forge'} />
 			<NavBar navigation={mainNavigation} />
 			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
 				<Typography variant='h1'>{tournamentName}</Typography>
