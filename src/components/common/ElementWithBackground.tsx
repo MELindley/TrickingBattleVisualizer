@@ -45,5 +45,5 @@ export default function ElementWithBackground({
 	)
 }
 ElementWithBackground.defaultProps = {
-	backgroundUrl: 'public/ArenaForgeLogo.png'
+	backgroundUrl: '/ArenaForgeLogo.png'
 }

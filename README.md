@@ -44,3 +44,4 @@ pnpm install
 - `pnpm format` - format all files with Prettier.
 - `pnpm lint` - runs TypeScript, ESLint and Stylelint.
 - `pnpm validate` - runs `lint`, `test:ci` and `test:e2e:ci`.
+- `pnpm deploy` - runs `build`, and `firebase deploy --only hosting`

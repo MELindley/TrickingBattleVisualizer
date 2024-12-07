@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1c2776-b31f-4f8d-9fb0-a550a9456881" name="Changes" comment="Refactored Home &amp; introduced new HostView component">
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Spectator/TournamentList.tsx" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="refactor: rebrand to &quot;Arena Forge&quot; and improve UI components&#10;&#10;- Updated site title, descriptions, and main headings to &quot;Arena Forge&quot;.&#10;- Introduced `ElementWithBackground` component for managing background elements with YouTube videos or static images.&#10;- Implemented default background image on the home page.&#10;- Created `ThemeConfig` component for configuring battle themes dynamically.&#10;- Added `youtubeVideoIdParser` helper function for extracting video IDs from URLs.&#10;- Removed unused error logging from `LoadingOrError` component.&#10;- Adjusted iframe configurations for a smoother user experience.">
+      <change beforePath="$PROJECT_DIR$/.firebase/hosting.ZGlzdA.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.ZGlzdA.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,21 +23,736 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "master",
-    "ts.external.directory.path": "D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\typescript\\lib"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MELindley&quot;
   }
-}]]></component>
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MELindley/TrickingBattleVisualizer.git&quot;,
+    &quot;accountId&quot;: &quot;80c51a19-5f2f-4269-abb4-46032f13bbf5&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/.pnpm/@firebase+firestore@4.7.1_@firebase+app@0.10.10/node_modules/@firebase/firestore/dist/index.d.ts" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+    &quot;customColor&quot;: &quot;&quot;,
+    &quot;associatedIndex&quot;: 7
+    }</component>
+  <component name="ProjectId" id="2kBumYtnRSiBm4BopBPVAUfpEEm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cypress.all tests in index.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marco/IdeaProjects/TrickingBattleVisualizer/src/components/home/host&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.deploy.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev host.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\home\host" />
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\features\theme" />
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\features\auth" />
+      <recent name="D:\IdeaProjects\trickbattlevisualiser\src\api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\public" />
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\home" />
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Common" />
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Athlete" />
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\app" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev host" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <arguments value="--host" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.dev host" />
+      <item itemvalue="npm.deploy" />
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.test" />
+      <item itemvalue="npm.dev" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="" />
+      <created>1722769452588</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722769452588</updated>
+      <workItem from="1722769455182" duration="5522000" />
+      <workItem from="1722787801623" duration="282000" />
+      <workItem from="1722788096575" duration="22525000" />
+      <workItem from="1722857914216" duration="2304000" />
+      <workItem from="1722861044854" duration="5942000" />
+      <workItem from="1722893938253" duration="25268000" />
+      <workItem from="1723038545283" duration="4788000" />
+      <workItem from="1723628062115" duration="271000" />
+      <workItem from="1723675632187" duration="394000" />
+      <workItem from="1723797747263" duration="8243000" />
+      <workItem from="1723890186154" duration="4853000" />
+      <workItem from="1725293645434" duration="143000" />
+      <workItem from="1725365448277" duration="5437000" />
+      <workItem from="1725371432474" duration="1657000" />
+      <workItem from="1725408641497" duration="607000" />
+      <workItem from="1725448007462" duration="10078000" />
+      <workItem from="1725475981710" duration="2000" />
+      <workItem from="1725622740511" duration="13887000" />
+      <workItem from="1725663800080" duration="1052000" />
+      <workItem from="1725674058495" duration="619000" />
+      <workItem from="1725715203781" duration="3083000" />
+      <workItem from="1725718330913" duration="2265000" />
+      <workItem from="1725974377533" duration="8324000" />
+      <workItem from="1725987685406" duration="7200000" />
+      <workItem from="1726000959906" duration="1881000" />
+      <workItem from="1726050972294" duration="5640000" />
+      <workItem from="1726063031003" duration="1409000" />
+      <workItem from="1726064473844" duration="2971000" />
+      <workItem from="1726144483223" duration="20814000" />
+      <workItem from="1726186165492" duration="1065000" />
+      <workItem from="1726233630867" duration="432000" />
+      <workItem from="1726234085528" duration="6602000" />
+      <workItem from="1726248116040" duration="3166000" />
+      <workItem from="1726318253150" duration="3504000" />
+      <workItem from="1726420608353" duration="1526000" />
+      <workItem from="1726422203209" duration="3099000" />
+      <workItem from="1726427977068" duration="7000" />
+      <workItem from="1726435311754" duration="602000" />
+      <workItem from="1726497631695" duration="954000" />
+      <workItem from="1726578258454" duration="15600000" />
+      <workItem from="1726701698598" duration="12000" />
+      <workItem from="1726757618174" duration="2902000" />
+      <workItem from="1726831868249" duration="4823000" />
+      <workItem from="1726851186563" duration="3835000" />
+      <workItem from="1726856131937" duration="4630000" />
+      <workItem from="1727143465877" duration="7000" />
+      <workItem from="1727543742824" duration="1210000" />
+      <workItem from="1727909047159" duration="10000" />
+      <workItem from="1728048227302" duration="3851000" />
+      <workItem from="1728053191931" duration="6607000" />
+      <workItem from="1728249394799" duration="650000" />
+      <workItem from="1728303648427" duration="5724000" />
+      <workItem from="1728385644538" duration="2903000" />
+      <workItem from="1728388605444" duration="9744000" />
+      <workItem from="1729261511666" duration="7763000" />
+      <workItem from="1729510060190" duration="485000" />
+      <workItem from="1729532806556" duration="1206000" />
+      <workItem from="1729557135047" duration="2000" />
+      <workItem from="1729600923238" duration="398000" />
+      <workItem from="1730198786529" duration="1566000" />
+      <workItem from="1730397525050" duration="2053000" />
+      <workItem from="1730652173355" duration="352000" />
+      <workItem from="1730721906342" duration="5105000" />
+      <workItem from="1730907017897" duration="4654000" />
+      <workItem from="1730912239533" duration="4078000" />
+      <workItem from="1730989492133" duration="8807000" />
+      <workItem from="1731095250910" duration="598000" />
+      <workItem from="1731119692714" duration="193000" />
+      <workItem from="1731183792503" duration="167000" />
+      <workItem from="1731277142778" duration="2000" />
+      <workItem from="1731341565789" duration="520000" />
+      <workItem from="1731777724921" duration="12441000" />
+      <workItem from="1731845060784" duration="1161000" />
+      <workItem from="1731867214205" duration="3237000" />
+      <workItem from="1731876267982" duration="666000" />
+      <workItem from="1731936743644" duration="3107000" />
+      <workItem from="1731941162092" duration="8885000" />
+      <workItem from="1731951659259" duration="2664000" />
+      <workItem from="1732013631124" duration="4928000" />
+      <workItem from="1732042115660" duration="656000" />
+      <workItem from="1732295952855" duration="5229000" />
+      <workItem from="1732385045104" duration="6552000" />
+      <workItem from="1732530656153" duration="5395000" />
+      <workItem from="1732541129496" duration="779000" />
+      <workItem from="1732708947062" duration="644000" />
+      <workItem from="1732718598460" duration="2441000" />
+      <workItem from="1732725726690" duration="633000" />
+      <workItem from="1732796494212" duration="594000" />
+      <workItem from="1733412007481" duration="3055000" />
+      <workItem from="1733504620114" duration="6174000" />
+      <workItem from="1733570057595" duration="173000" />
+    </task>
+    <task id="LOCAL-00034" summary="Fixed dsplaying battle type custom components when athlete cards are not clickable">
+      <option name="closed" value="true" />
+      <created>1726160718403</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1726160718403</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Refactored code to clean up Home.tsx&#10;&#10;Created folder to hold Home components, Moved buttons to their own component files">
+      <option name="closed" value="true" />
+      <created>1726163035534</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1726163035534</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Refactored code to clean up Home.tsx&#10;&#10;Moved Athlete List into it's own component &amp; file">
+      <option name="closed" value="true" />
+      <created>1726163959383</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1726163959383</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Imported type directly">
+      <option name="closed" value="true" />
+      <created>1726164101437</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1726164101437</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Added ability to remove round winner">
+      <option name="closed" value="true" />
+      <created>1726234789990</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1726234789990</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Added Bracket to tournament page">
+      <option name="closed" value="true" />
+      <created>1726249009123</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1726249009123</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Added ability to set timer and rounds for generated battles in Tournament">
+      <option name="closed" value="true" />
+      <created>1726321264285</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1726321264285</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fixed bug  :)">
+      <option name="closed" value="true" />
+      <created>1726421371943</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1726421371943</updated>
+    </task>
+    <task id="LOCAL-00042" summary="refacotred to follow naming convention">
+      <option name="closed" value="true" />
+      <created>1726422128009</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1726422128009</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Fixed inline AthleteCard.tsx display on Tournament.tsx page">
+      <option name="closed" value="true" />
+      <created>1726583152157</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1726583152157</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Refactored helper function and added AI generated doc">
+      <option name="closed" value="true" />
+      <created>1726587968978</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1726587968978</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added function to get battles in rounds">
+      <option name="closed" value="true" />
+      <created>1726590455315</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1726590455315</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Refactor AthleteCard layout and update TournamentPage logic&#10;&#10;1. Adjusted AthleteCard dimensions to improve responsive design.&#10;2. Enhanced TournamentPage:&#10;   - Introduced condition rendering for Bracket and WinnerView components.&#10;   - Simplified button text for better UX.">
+      <option name="closed" value="true" />
+      <created>1726592133681</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1726592133681</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Refactor AthleteCard layout and update TournamentPage logic">
+      <option name="closed" value="true" />
+      <created>1726593987672</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1726593987672</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Udpated some values for inline athlete cards">
+      <option name="closed" value="true" />
+      <created>1726833017100</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1726833017100</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Changed the generate from athletes to only update battles in tournament store">
+      <option name="closed" value="true" />
+      <created>1726834963123</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1726834963123</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Changed the generate from athletes to only update battles in tournament store">
+      <option name="closed" value="true" />
+      <created>1726835152010</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1726835152012</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Introduced constants for role string values">
+      <option name="closed" value="true" />
+      <created>1726835889365</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1726835889365</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Introduced constants for role string values">
+      <option name="closed" value="true" />
+      <created>1726853028498</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1726853028499</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions.">
+      <option name="closed" value="true" />
+      <created>1726860652502</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1726860652503</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Updated tournament Data structure to hold last battle &amp; third place battle info&#10;&#10;Added reducers to tournament slice:&#10; - setter for isFinalDifferent&#10; - setter for hasThirdPlaceBattle&#10; - setter for Athletes in Finale Battle&#10; - modified generateBattlesFromAthletes payload to accept a value to set for the final round or timer value&#10; &#10; Tournament Config now offers input to allow for third place battles &amp; final battle specifications&#10; &#10; generateTournamentBattlesFromAthletes now handles adding a battle for the third place and specifying a different round or timer value for the final battle">
+      <option name="closed" value="true" />
+      <created>1728056536729</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1728056536729</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice">
+      <option name="closed" value="true" />
+      <created>1728056740578</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1728056740578</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice&#10;&#10;Bracekt display works, third place battle is done before actual final, but a better way of displaying this should be found !">
+      <option name="closed" value="true" />
+      <created>1728321226327</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1728321226328</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Added two sided bracket, &#10;&#10;This breaks the display of the Third place Battle, a custom version of the bracket will need to be created to fix this issue. &#10;&#10;The third place battle is still in the Tournament it just is not displayed by the two sided bracket">
+      <option name="closed" value="true" />
+      <created>1728398606467</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1728398606467</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Switched default id values to empty string &#10;Updated Firestore object sanitasation">
+      <option name="closed" value="true" />
+      <created>1729267460358</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1729267460359</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Refactor battle and tournament data handling with Firebase updates&#10;&#10;    BattleSlice.ts: Added order property to manage battle order in state.&#10;    TournamentSlice.tsx: Introduced setTournamentId action for easier tournament ID management.&#10;    Helpers.ts:&#10;        Renamed Firebase interaction functions (e.g., addAthletesToTournament → firebaseAddAthletesToTournament) for clarity.&#10;        Modified functions to return data objects, enabling better handling of asynchronous operations.&#10;        Added return values for data updates to streamline feedback and logging.&#10;    Battle.tsx: Integrated firebaseSetBattleInTournament for asynchronous battle updates and addressed TypeScript errors.&#10;&#10;This patch improves Firebase data handling, enforces naming consistency, and enhances asynchronous functionality.">
+      <option name="closed" value="true" />
+      <created>1730727183753</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1730727183754</updated>
+    </task>
+    <task id="LOCAL-00060" summary="On Start tournament now updated the store with Id values from firebase">
+      <option name="closed" value="true" />
+      <created>1730908327281</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1730908327281</updated>
+    </task>
+    <task id="LOCAL-00061" summary="update HostView and SpectatorView to display and manage tournaments&#10;&#10;    HostView.tsx:&#10;        Added a TournamentList component to display hosted tournaments.&#10;        Fetched tournaments based on the current host's UID.&#10;        Improved layout with a title and centralized grid components.&#10;    TournamentConfig.tsx:&#10;        Updated text in the button and dialog to emphasize tournament creation.&#10;    SpectatorView.tsx:&#10;        Simplified layout, removing the redundant button and navigation logic.&#10;    TournamentList.tsx:&#10;        Refactored to include a title prop and an option to navigate to the selected tournament.&#10;        Enhanced navigation functionality using useNavigate.&#10;    helpers.ts:&#10;        Modified firebaseGetTournamentsCollection to accept query constraints.&#10;        Refactored the data fetching logic for better efficiency and error handling.">
+      <option name="closed" value="true" />
+      <created>1730915290885</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1730915290885</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Fixed Button within button spawning an JS error">
+      <option name="closed" value="true" />
+      <created>1730990410669</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1730990410670</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Fixed Key uniqueness error">
+      <option name="closed" value="true" />
+      <created>1730991326811</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1730991326811</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Fixed Key uniqueness error">
+      <option name="closed" value="true" />
+      <created>1730991341481</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1730991341481</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Fixed Key uniqueness error &amp; Streamlined the firebase battle update function">
+      <option name="closed" value="true" />
+      <created>1730995186483</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1730995186483</updated>
+    </task>
+    <task id="LOCAL-00066" summary="feat: add tournament update functionality with Firebase integration&#10;&#10;- Enhanced athlete handling in battles: Automatically fills missing athletes in battles with one participant.&#10;- Implemented `firebaseUpdateTournamentBattles` for bulk battle updates in Firebase.&#10;- Introduced `firebaseUpdateTournamentDocument` to update tournament details and associated battles in Firebase.&#10;- Updated `TournamentPage` to support conditional Firebase updates based on navigation state.&#10;- Adjusted battle navigation in `BattlePage` to trigger Firebase updates upon returning to the tournament view.&#10;&#10;This commit ensures seamless synchronization between the app's state and Firebase for tournaments and battles.">
+      <option name="closed" value="true" />
+      <created>1731779198645</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1731779198646</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Fixed bug created by trying to get a list of unique athletes from tournament by typecasting to Set with objects being equal but with different references, now using ID equality to check unicity">
+      <option name="closed" value="true" />
+      <created>1731783646474</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1731783646474</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Moved TournamentList to Home Components rather then Home/Spectator as it is now used in both spectator and host views&#10;Removed some debug console statements">
+      <option name="closed" value="true" />
+      <created>1731784200505</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1731784200505</updated>
+    </task>
+    <task id="LOCAL-00069" summary="feat: restructure tournament views and enhance battle data management&#10;&#10;- Split tournament page logic into `TournamentHostView` and `TournamentSpectatorView` components for clearer role-based separation.&#10;- Refactored Firebase battle document mapping into a reusable helper function `convertFirebaseBattleDocumentToIBattle`.&#10;- Added a real-time listener for tournament battles (`firebaseSetTournamentBattlesListener`) to keep spectators updated dynamically.&#10;- Renamed `setBattles` reducer to `setTournamentBattles` for better clarity.&#10;- Updated file imports to ensure consistent case-sensitive paths.&#10;- Simplified `TournamentPage` by delegating specific role views to separate components.">
+      <option name="closed" value="true" />
+      <created>1731792848899</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1731792848899</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Refactor and enhance tournament management components and helpers&#10;&#10;- Add state management to prevent duplicate tournament updates in `TournamentHostView`.&#10;- Display the tournament bracket alongside the winner in both `TournamentHostView` and `TournamentSpectatorView`.&#10;- Simplify Firebase helper functions by removing unnecessary try-catch blocks for better error propagation:&#10;  - `firebaseSetBattleInTournament`&#10;  - `firebaseUpdateTournamentDocument`&#10;  - `firebaseAddTournamentDocument`&#10;  - `firebaseUpdateTournamentAthlete`&#10;- Remove redundant console.log statements to clean up debug outputs.&#10;- Refine `mapBattleListToReactBracketRoundList` to streamline battle mapping.">
+      <option name="closed" value="true" />
+      <created>1731937384503</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1731937384504</updated>
+    </task>
+    <task id="LOCAL-00071" summary="feat: add theme management with background customization  &#10;&#10;- Introduced `themeSlice` to manage application themes using Redux Toolkit.  &#10;- Added support for dynamic palette, typography, and background configuration.  &#10;- Defined `IBackgroundOptions` interface for managing theme backgrounds with URLs.  &#10;- Updated `Theme` and `ThemeOptions` in Material-UI to include `background` property.  &#10;- Integrated `themeReducer` into the Redux store.  &#10;&#10;This feature enables centralized and customizable theme handling, improving scalability and maintainability.">
+      <option name="closed" value="true" />
+      <created>1731946163475</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1731946163476</updated>
+    </task>
+    <task id="LOCAL-00072" summary="refactor: update theme management and integrate ThemeProvider  &#10;&#10;- Updated default font family in `themeSlice` from &quot;Nunito Sans&quot; to &quot;Lato&quot;.  &#10;- Renamed selectors in `themeSlice` for improved clarity:  &#10;  - `selectTheme` → `selectThemeOptions`  &#10;  - `selectThemePalette` → `selectThemePaletteOptions`  &#10;  - `selectThemeBackground` → `selectThemeBackgroundOptions`  &#10;  - `selectThemeTypography` → `selectThemeTypographyOptions`.  &#10;- Removed redundant `.catch` blocks from Firebase `getDocs` calls in `helpers.ts`.  &#10;- Integrated Material-UI's `ThemeProvider` into `App.tsx`, using Redux state for theme configuration.  &#10;&#10;This refactor improves code readability, reduces error-prone redundancies, and centralizes theme configuration for a cleaner, more scalable architecture.">
+      <option name="closed" value="true" />
+      <created>1731948409158</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1731948409158</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Refactor theme management: Removed themeSlice and integrated theme options into tournamentSlice. Updated store and App components accordingly.">
+      <option name="closed" value="true" />
+      <created>1731951533981</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1731951533981</updated>
+    </task>
+    <task id="LOCAL-00074" summary="### Commit Message  &#10;**feat: Firebase hosting setup and theming enhancements**  &#10;&#10;### Description  &#10;- **Firebase Hosting**:  &#10;  - Added `.firebaserc` and `firebase.json` for Firebase project configuration.  &#10;  - Configured GitHub Actions workflows for Firebase hosting:  &#10;    - Deployment on `master` merges.  &#10;    - Previews for pull requests.  &#10;&#10;- **State Management**:  &#10;  - Introduced theming options to `ITournament` in `tournamentSlice`.  &#10;  - Added reducers and selectors for dynamic theme customization (palette, typography, background).  &#10;&#10;- **Refactor**:  &#10;  - Renamed `src/app/types.ts` to `src/app/types.d.ts` and added theme-related types.  &#10;&#10;- **UI Fix**:  &#10;  - Updated `Details.tsx` to safely access optional `image` properties of athletes.  &#10;&#10;- **Cleanup**:  &#10;  - Removed unused `themeSlice` from the store.  &#10;&#10;- **Assets**:  &#10;  - Added Firebase hosting cache for static assets.  &#10;&#10;This commit sets up Firebase Hosting and enhances theming capabilities for dynamic tournament customization.">
+      <option name="closed" value="true" />
+      <created>1731954003130</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1731954003131</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Fixed Github Workflow">
+      <option name="closed" value="true" />
+      <created>1732014067439</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1732014067439</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Testing githubworkflow">
+      <option name="closed" value="true" />
+      <created>1732019559488</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1732019559488</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Testing githubworkflow, refactoring imports to work well with Vite">
+      <option name="closed" value="true" />
+      <created>1732021260113</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1732021260113</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Testing githubworkflow, refactoring imports to work well with Vite">
+      <option name="closed" value="true" />
+      <created>1732021357597</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1732021357597</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Testing githubworkflow, running commands with PNPM">
+      <option name="closed" value="true" />
+      <created>1732023003768</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1732023003768</updated>
+    </task>
+    <task id="LOCAL-00080" summary="feat: integrate YouTube video as background and switch to npm for Firebase hosting workflow&#10;&#10;- Updated `tournamentSlice.tsx` to replace static background image URL with an embeddable YouTube video URL.&#10;- Modified `.github/workflows/firebase-hosting-merge.yml` to switch from `pnpm` to `npm` for dependency installation and build steps, simplifying CI workflow.&#10;- Enhanced `App.tsx` to render the YouTube video as a fullscreen background with autoplay, mute, and loop settings.">
+      <option name="closed" value="true" />
+      <created>1732390299972</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1732390299972</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Fixed bug where Tournaments with no theme would make the display crash, now automatically loading the default theme instead">
+      <option name="closed" value="true" />
+      <created>1732409596732</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1732409596732</updated>
+    </task>
+    <task id="LOCAL-00082" summary="refactor: rebrand to &quot;Arena Forge&quot; and improve UI components&#10;&#10;- Updated site title, descriptions, and main headings to &quot;Arena Forge&quot;.&#10;- Introduced `ElementWithBackground` component for managing background elements with YouTube videos or static images.&#10;- Implemented default background image on the home page.&#10;- Created `ThemeConfig` component for configuring battle themes dynamically.&#10;- Added `youtubeVideoIdParser` helper function for extracting video IDs from URLs.&#10;- Removed unused error logging from `LoadingOrError` component.&#10;- Adjusted iframe configurations for a smoother user experience.">
+      <option name="closed" value="true" />
+      <created>1733511337652</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1733511337653</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored Home &amp; introduced new HostView component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Home &amp; introduced new HostView component" />
+    <MESSAGE value="Refactor battle and tournament data handling with Firebase updates&#10;&#10;    BattleSlice.ts: Added order property to manage battle order in state.&#10;    TournamentSlice.tsx: Introduced setTournamentId action for easier tournament ID management.&#10;    Helpers.ts:&#10;        Renamed Firebase interaction functions (e.g., addAthletesToTournament → firebaseAddAthletesToTournament) for clarity.&#10;        Modified functions to return data objects, enabling better handling of asynchronous operations.&#10;        Added return values for data updates to streamline feedback and logging.&#10;    Battle.tsx: Integrated firebaseSetBattleInTournament for asynchronous battle updates and addressed TypeScript errors.&#10;&#10;This patch improves Firebase data handling, enforces naming consistency, and enhances asynchronous functionality." />
+    <MESSAGE value="On Start tournament now updated the store with Id values from firebase" />
+    <MESSAGE value="update HostView and SpectatorView to display and manage tournaments&#10;&#10;    HostView.tsx:&#10;        Added a TournamentList component to display hosted tournaments.&#10;        Fetched tournaments based on the current host's UID.&#10;        Improved layout with a title and centralized grid components.&#10;    TournamentConfig.tsx:&#10;        Updated text in the button and dialog to emphasize tournament creation.&#10;    SpectatorView.tsx:&#10;        Simplified layout, removing the redundant button and navigation logic.&#10;    TournamentList.tsx:&#10;        Refactored to include a title prop and an option to navigate to the selected tournament.&#10;        Enhanced navigation functionality using useNavigate.&#10;    helpers.ts:&#10;        Modified firebaseGetTournamentsCollection to accept query constraints.&#10;        Refactored the data fetching logic for better efficiency and error handling." />
+    <MESSAGE value="Fixed Button within button spawning an JS error" />
+    <MESSAGE value="Fixed Key uniqueness error" />
+    <MESSAGE value="Fixed Key uniqueness error &amp; Streamlined the firebase battle update function" />
+    <MESSAGE value="feat: add tournament update functionality with Firebase integration&#10;&#10;- Enhanced athlete handling in battles: Automatically fills missing athletes in battles with one participant.&#10;- Implemented `firebaseUpdateTournamentBattles` for bulk battle updates in Firebase.&#10;- Introduced `firebaseUpdateTournamentDocument` to update tournament details and associated battles in Firebase.&#10;- Updated `TournamentPage` to support conditional Firebase updates based on navigation state.&#10;- Adjusted battle navigation in `BattlePage` to trigger Firebase updates upon returning to the tournament view.&#10;&#10;This commit ensures seamless synchronization between the app's state and Firebase for tournaments and battles." />
+    <MESSAGE value="Fixed bug created by trying to get a list of unique athletes from tournament by typecasting to Set with objects being equal but with different references, now using ID equality to check unicity" />
+    <MESSAGE value="Moved TournamentList to Home Components rather then Home/Spectator as it is now used in both spectator and host views&#10;Removed some debug console statements" />
+    <MESSAGE value="feat: restructure tournament views and enhance battle data management&#10;&#10;- Split tournament page logic into `TournamentHostView` and `TournamentSpectatorView` components for clearer role-based separation.&#10;- Refactored Firebase battle document mapping into a reusable helper function `convertFirebaseBattleDocumentToIBattle`.&#10;- Added a real-time listener for tournament battles (`firebaseSetTournamentBattlesListener`) to keep spectators updated dynamically.&#10;- Renamed `setBattles` reducer to `setTournamentBattles` for better clarity.&#10;- Updated file imports to ensure consistent case-sensitive paths.&#10;- Simplified `TournamentPage` by delegating specific role views to separate components." />
+    <MESSAGE value="Refactor and enhance tournament management components and helpers&#10;&#10;- Add state management to prevent duplicate tournament updates in `TournamentHostView`.&#10;- Display the tournament bracket alongside the winner in both `TournamentHostView` and `TournamentSpectatorView`.&#10;- Simplify Firebase helper functions by removing unnecessary try-catch blocks for better error propagation:&#10;  - `firebaseSetBattleInTournament`&#10;  - `firebaseUpdateTournamentDocument`&#10;  - `firebaseAddTournamentDocument`&#10;  - `firebaseUpdateTournamentAthlete`&#10;- Remove redundant console.log statements to clean up debug outputs.&#10;- Refine `mapBattleListToReactBracketRoundList` to streamline battle mapping." />
+    <MESSAGE value="feat: add theme management with background customization  &#10;&#10;- Introduced `themeSlice` to manage application themes using Redux Toolkit.  &#10;- Added support for dynamic palette, typography, and background configuration.  &#10;- Defined `IBackgroundOptions` interface for managing theme backgrounds with URLs.  &#10;- Updated `Theme` and `ThemeOptions` in Material-UI to include `background` property.  &#10;- Integrated `themeReducer` into the Redux store.  &#10;&#10;This feature enables centralized and customizable theme handling, improving scalability and maintainability." />
+    <MESSAGE value="refactor: update theme management and integrate ThemeProvider  &#10;&#10;- Updated default font family in `themeSlice` from &quot;Nunito Sans&quot; to &quot;Lato&quot;.  &#10;- Renamed selectors in `themeSlice` for improved clarity:  &#10;  - `selectTheme` → `selectThemeOptions`  &#10;  - `selectThemePalette` → `selectThemePaletteOptions`  &#10;  - `selectThemeBackground` → `selectThemeBackgroundOptions`  &#10;  - `selectThemeTypography` → `selectThemeTypographyOptions`.  &#10;- Removed redundant `.catch` blocks from Firebase `getDocs` calls in `helpers.ts`.  &#10;- Integrated Material-UI's `ThemeProvider` into `App.tsx`, using Redux state for theme configuration.  &#10;&#10;This refactor improves code readability, reduces error-prone redundancies, and centralizes theme configuration for a cleaner, more scalable architecture." />
+    <MESSAGE value="Refactor theme management: Removed themeSlice and integrated theme options into tournamentSlice. Updated store and App components accordingly." />
+    <MESSAGE value="Refactor: Rename `types.ts` to `types.d.ts` and enhance theme-related type definitions  &#10;&#10;- Renamed `types.ts` to `types.d.ts` to follow TypeScript declaration file conventions.  &#10;- Added `ThemeOptions` from `@mui/material` for consistent theming across the application.  &#10;- Introduced `IBackgroundOptions` interface to define background customization.  &#10;- Augmented the `@mui/material/styles` module to include `background` in `Theme` and `ThemeOptions`.  &#10;- Updated `ITournament` interface to include a `themeOptions` property for tournament-specific theming.  &#10;- Removed redundant definitions of `IBackgroundOptions` and module augmentation for improved clarity.  &#10;&#10;These updates streamline type definitions and enhance theming capabilities in the application." />
+    <MESSAGE value="### Commit Message  &#10;**feat: Firebase hosting setup and theming enhancements**  &#10;&#10;### Description  &#10;- **Firebase Hosting**:  &#10;  - Added `.firebaserc` and `firebase.json` for Firebase project configuration.  &#10;  - Configured GitHub Actions workflows for Firebase hosting:  &#10;    - Deployment on `master` merges.  &#10;    - Previews for pull requests.  &#10;&#10;- **State Management**:  &#10;  - Introduced theming options to `ITournament` in `tournamentSlice`.  &#10;  - Added reducers and selectors for dynamic theme customization (palette, typography, background).  &#10;&#10;- **Refactor**:  &#10;  - Renamed `src/app/types.ts` to `src/app/types.d.ts` and added theme-related types.  &#10;&#10;- **UI Fix**:  &#10;  - Updated `Details.tsx` to safely access optional `image` properties of athletes.  &#10;&#10;- **Cleanup**:  &#10;  - Removed unused `themeSlice` from the store.  &#10;&#10;- **Assets**:  &#10;  - Added Firebase hosting cache for static assets.  &#10;&#10;This commit sets up Firebase Hosting and enhances theming capabilities for dynamic tournament customization." />
+    <MESSAGE value="Fixed Github Workflow" />
+    <MESSAGE value="Testing githubworkflow" />
+    <MESSAGE value="Testing githubworkflow, refactoring imports to work well with Vite" />
+    <MESSAGE value="Testing githubworkflow, running commands with PNPM" />
+    <MESSAGE value="youtube video background working" />
+    <MESSAGE value="feat: integrate YouTube video as background and switch to npm for Firebase hosting workflow&#10;&#10;- Updated `tournamentSlice.tsx` to replace static background image URL with an embeddable YouTube video URL.&#10;- Modified `.github/workflows/firebase-hosting-merge.yml` to switch from `pnpm` to `npm` for dependency installation and build steps, simplifying CI workflow.&#10;- Enhanced `App.tsx` to render the YouTube video as a fullscreen background with autoplay, mute, and loop settings." />
+    <MESSAGE value="Fixed bug where Tournaments with no theme would make the dispolay crash, now automatically loading the default theme instead" />
+    <MESSAGE value="Fixed bug where Tournaments with no theme would make the display crash, now automatically loading the default theme instead" />
+    <MESSAGE value="refactor: rebrand to &quot;Arena Forge&quot; and improve UI components&#10;&#10;- Updated site title, descriptions, and main headings to &quot;Arena Forge&quot;.&#10;- Introduced `ElementWithBackground` component for managing background elements with YouTube videos or static images.&#10;- Implemented default background image on the home page.&#10;- Created `ThemeConfig` component for configuring battle themes dynamically.&#10;- Added `youtubeVideoIdParser` helper function for extracting video IDs from URLs.&#10;- Removed unused error logging from `LoadingOrError` component.&#10;- Adjusted iframe configurations for a smoother user experience." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: rebrand to &quot;Arena Forge&quot; and improve UI components&#10;&#10;- Updated site title, descriptions, and main headings to &quot;Arena Forge&quot;.&#10;- Introduced `ElementWithBackground` component for managing background elements with YouTube videos or static images.&#10;- Implemented default background image on the home page.&#10;- Created `ThemeConfig` component for configuring battle themes dynamically.&#10;- Added `youtubeVideoIdParser` helper function for extracting video IDs from URLs.&#10;- Removed unused error logging from `LoadingOrError` component.&#10;- Adjusted iframe configurations for a smoother user experience." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/mocks/handlers.ts</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/Home.tsx</url>
+          <line>11</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/helpers.ts</url>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
