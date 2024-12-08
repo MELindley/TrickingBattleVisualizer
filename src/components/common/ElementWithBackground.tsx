@@ -15,25 +15,18 @@ export default function ElementWithBackground({
 	const youtubeID = youtubeVideoIdParser(backgroundUrl)
 	return (
 		<>
-			<Paper
-				sx={{
-					position: 'absolute',
-					height: '100%',
-					width: '100%',
-					overflow: 'hidden',
-					zIndex: -50
-				}}
-			>
+			<Paper>
 				{youtubeID ? (
 					// eslint-disable-next-line react/iframe-missing-sandbox
 					<iframe
-						width='1920'
-						height='1080'
-						src={`https://www.youtube.com/embed/${youtubeID}?controls=0&showinfo=0&mute=1&disablekb=1&fs=0&loop=1&autoplay=1&modestbranding=1&color=white&iv_load_policy=3&rel=0`}
+						width='100%'
+						height='100%'
+						src={`https://www.youtube.com/embed/${youtubeID}?controls=0&showinfo=0&mute=1&disablekb=1&fs=0&loop=1&autoplay=1&color=white&iv_load_policy=3&rel=0&playlist=${youtubeID}`}
 						referrerPolicy='strict-origin-when-cross-origin'
 						title='ytplayer'
 						allowFullScreen
-						className='fixed left-1/2 top-1/2 -z-50 h-dvh w-dvw -translate-x-1/2 -translate-y-1/2 transform'
+						allow='autoplay'
+						className='pointer-events-none fixed left-0 top-0 select-none bg-cover bg-no-repeat'
 					/>
 				) : (
 					<Box
