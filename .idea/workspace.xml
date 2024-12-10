@@ -7,12 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Meta Data Update">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Simplified ElementWithBackground.tsx css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress.config.mts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.mts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/host/ThemeConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/host/ThemeConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,23 +290,11 @@
       <workItem from="1733412007481" duration="3055000" />
       <workItem from="1733504620114" duration="6174000" />
       <workItem from="1733570057595" duration="173000" />
-      <workItem from="1733598757762" duration="1889000" />
-    </task>
-    <task id="LOCAL-00035" summary="Refactored code to clean up Home.tsx&#10;&#10;Created folder to hold Home components, Moved buttons to their own component files">
-      <option name="closed" value="true" />
-      <created>1726163035534</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1726163035534</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Refactored code to clean up Home.tsx&#10;&#10;Moved Athlete List into it's own component &amp; file">
-      <option name="closed" value="true" />
-      <created>1726163959383</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1726163959383</updated>
+      <workItem from="1733598757762" duration="2246000" />
+      <workItem from="1733660717597" duration="1247000" />
+      <workItem from="1733698898100" duration="107000" />
+      <workItem from="1733767513382" duration="2187000" />
+      <workItem from="1733850194948" duration="10284000" />
     </task>
     <task id="LOCAL-00037" summary="Imported type directly">
       <option name="closed" value="true" />
@@ -683,7 +672,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733598949465</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Paperized">
+      <option name="closed" value="true" />
+      <created>1733600776829</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1733600776829</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Simplified ElementWithBackground.tsx css">
+      <option name="closed" value="true" />
+      <created>1733661628603</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1733661628604</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -701,8 +706,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="On Start tournament now updated the store with Id values from firebase" />
-    <MESSAGE value="update HostView and SpectatorView to display and manage tournaments&#10;&#10;    HostView.tsx:&#10;        Added a TournamentList component to display hosted tournaments.&#10;        Fetched tournaments based on the current host's UID.&#10;        Improved layout with a title and centralized grid components.&#10;    TournamentConfig.tsx:&#10;        Updated text in the button and dialog to emphasize tournament creation.&#10;    SpectatorView.tsx:&#10;        Simplified layout, removing the redundant button and navigation logic.&#10;    TournamentList.tsx:&#10;        Refactored to include a title prop and an option to navigate to the selected tournament.&#10;        Enhanced navigation functionality using useNavigate.&#10;    helpers.ts:&#10;        Modified firebaseGetTournamentsCollection to accept query constraints.&#10;        Refactored the data fetching logic for better efficiency and error handling." />
     <MESSAGE value="Fixed Button within button spawning an JS error" />
     <MESSAGE value="Fixed Key uniqueness error" />
     <MESSAGE value="Fixed Key uniqueness error &amp; Streamlined the firebase battle update function" />
@@ -726,7 +729,9 @@
     <MESSAGE value="Fixed bug where Tournaments with no theme would make the display crash, now automatically loading the default theme instead" />
     <MESSAGE value="refactor: rebrand to &quot;Arena Forge&quot; and improve UI components&#10;&#10;- Updated site title, descriptions, and main headings to &quot;Arena Forge&quot;.&#10;- Introduced `ElementWithBackground` component for managing background elements with YouTube videos or static images.&#10;- Implemented default background image on the home page.&#10;- Created `ThemeConfig` component for configuring battle themes dynamically.&#10;- Added `youtubeVideoIdParser` helper function for extracting video IDs from URLs.&#10;- Removed unused error logging from `LoadingOrError` component.&#10;- Adjusted iframe configurations for a smoother user experience." />
     <MESSAGE value="Meta Data Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Meta Data Update" />
+    <MESSAGE value="Paperized" />
+    <MESSAGE value="Simplified ElementWithBackground.tsx css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified ElementWithBackground.tsx css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -747,6 +752,12 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/helpers.ts</url>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/home/host/ThemeConfig.tsx</url>
+          <line>69</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

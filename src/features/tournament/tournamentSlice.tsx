@@ -12,7 +12,7 @@ import { generateTournamentBattlesFromAthletes } from 'app/helpers'
 import type { Palette, PaletteOptions, ThemeOptions } from '@mui/material'
 import type { TypographyOptions } from '@mui/material/styles/createTypography'
 
-const initialThemeOptions: ThemeOptions = {
+export const initialThemeOptions: ThemeOptions = {
 	palette: {
 		mode: 'dark',
 		primary: {
@@ -163,8 +163,70 @@ export const tournamentSlice = createSlice({
 		) => {
 			state.themeOptions = { ...state.themeOptions, palette: action.payload }
 		},
+		setTournamentPalettePrimaryColor: (
+			state,
+			action: PayloadAction<string>
+		) => {
+			state.themeOptions = {
+				...state.themeOptions,
+				palette: {
+					...state.themeOptions?.palette,
+					primary: { main: action.payload }
+				}
+			}
+		},
+		setTournamentPaletteSecondaryColor: (
+			state,
+			action: PayloadAction<string>
+		) => {
+			state.themeOptions = {
+				...state.themeOptions,
+				palette: {
+					...state.themeOptions?.palette,
+					secondary: { main: action.payload }
+				}
+			}
+		},
 		setTypography: (state, action: PayloadAction<TypographyOptions>) => {
 			state.themeOptions = { ...state.themeOptions, typography: action.payload }
+		},
+		setTournamentTypographyBodyFont: (state, action: PayloadAction<string>) => {
+			state.themeOptions = {
+				...state.themeOptions,
+				typography: {
+					...state.themeOptions?.typography,
+					fontFamily: action.payload
+				}
+			}
+		},
+		setTournamentTypographyHeaderFont: (
+			state,
+			action: PayloadAction<string>
+		) => {
+			state.themeOptions = {
+				...state.themeOptions,
+				typography: {
+					...state.themeOptions?.typography,
+					h1: {
+						fontFamily: action.payload
+					},
+					h2: {
+						fontFamily: action.payload
+					},
+					h3: {
+						fontFamily: action.payload
+					},
+					h4: {
+						fontFamily: action.payload
+					},
+					h5: {
+						fontFamily: action.payload
+					},
+					h6: {
+						fontFamily: action.payload
+					}
+				}
+			}
 		},
 		setBackground: (state, action: PayloadAction<IBackgroundOptions>) => {
 			state.themeOptions = { ...state.themeOptions, background: action.payload }
@@ -194,7 +256,11 @@ export const {
 	resetTournamentThemeOptions,
 	setTournamentPaletteOptions,
 	setTypography,
-	setBackground
+	setBackground,
+	setTournamentPalettePrimaryColor,
+	setTournamentPaletteSecondaryColor,
+	setTournamentTypographyBodyFont,
+	setTournamentTypographyHeaderFont
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type

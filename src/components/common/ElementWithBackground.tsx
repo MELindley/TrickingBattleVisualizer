@@ -32,7 +32,7 @@ export default function ElementWithBackground({
 					<Box
 						sx={{
 							position: 'fixed',
-							Zindex: -50,
+							zIndex: -50,
 							height: '100%',
 							width: '100%',
 							backgroundImage: `url(${backgroundUrl})`,
