@@ -1,4 +1,4 @@
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import {
 	Button,
 	FormControl,
@@ -56,22 +56,19 @@ export default function BattleConfig({
 
 	return (
 		<Grid container sx={{ boxShadow: 3, borderRadius: 2, p: 4 }}>
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid size={12} container justifyContent='center' alignItems='center'>
 				<Typography variant='h3' sx={{ mb: 2 }}>
 					Battle Config
 				</Typography>
 			</Grid>
-			<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
+			<Grid size={3} display='flex' justifyContent='center' alignItems='center'>
 				<Button variant='contained' onClick={onStartBattleClick}>
 					Start Battle
 				</Button>
 			</Grid>
-			<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
+			<Grid size={3} display='flex' justifyContent='center' alignItems='center'>
 				<FormControl>
-					<FormLabel
-						id='battle-type-radio-buttons-group-label'
-						sx={{ color: 'white' }}
-					>
+					<FormLabel id='battle-type-radio-buttons-group-label'>
 						Battle Type
 					</FormLabel>
 					<RadioGroup
@@ -91,13 +88,16 @@ export default function BattleConfig({
 				</FormControl>
 			</Grid>
 			{(battleType === 'Timer' || battleType === 'Rounds') && (
-				<Grid xs={3} display='flex' justifyContent='center' alignItems='center'>
+				<Grid
+					size={3}
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+				>
 					<TextField
 						id='battleType-TextField'
 						label={`Set ${battleType}`}
 						onChange={onTextFieldChange}
-						InputLabelProps={{ sx: { color: 'white' } }}
-						sx={{ color: 'white' }}
 					/>
 				</Grid>
 			)}

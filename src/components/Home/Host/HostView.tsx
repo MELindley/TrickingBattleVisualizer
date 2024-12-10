@@ -18,7 +18,8 @@ import LoadingOrError from 'components/common/LoadingOrError'
 import { selectUID } from 'features/auth/authSlice'
 import { where } from 'firebase/firestore'
 import { Typography } from '@mui/material'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
+import ThemeConfig from './ThemeConfig'
 
 export default function HostView(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
@@ -64,7 +65,12 @@ export default function HostView(): ReactElement {
 	return (
 		<>
 			<TournamentList tournaments={tournaments} title='Resume Tournament' />
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
 				<Typography variant='h3'>Create a New Tournament</Typography>
 			</Grid>
 			<AthleteList
@@ -74,6 +80,7 @@ export default function HostView(): ReactElement {
 			/>
 			<BattleConfig selectedAthletes={selectedAthletes} />
 			<TournamentConfig selectedAthletes={selectedAthletes} />
+			<ThemeConfig />
 		</>
 	)
 }
