@@ -2,7 +2,7 @@ import type { IRenderSeedProps } from '@sportsgram/brackets'
 import { Seed, SeedItem } from '@sportsgram/brackets'
 import type { ReactElement } from 'react'
 import AthleteCard from 'components/athlete/AthleteCard'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import type { ISeedProps } from '@sportsgram/brackets/dist/types/Seed'
 import type { IAthlete } from 'app/types'
 import { Typography } from '@mui/material'
@@ -28,7 +28,7 @@ export default function CustomSeed({
 				<Grid container rowSpacing={1}>
 					{(seed as ICustomSeedProperties).teams.map((team, index) => (
 						// eslint-disable-next-line react/no-array-index-key
-						<Grid xs={12} key={`${seed.id}-${index}-${team.athlete?.id}`}>
+						<Grid size={12} key={`${seed.id}-${index}-${team.athlete?.id}`}>
 							<AthleteCard
 								athlete={team.athlete}
 								isClickable={false}
@@ -37,7 +37,7 @@ export default function CustomSeed({
 							/>
 						</Grid>
 					))}
-					<Grid xs={12}>
+					<Grid size={12}>
 						<Typography>{seed.title}</Typography>
 					</Grid>
 				</Grid>

@@ -10,7 +10,7 @@ import {
 import { setActiveBattle } from 'features/battle/battleSlice'
 import LoadingOrError from 'components/common/LoadingOrError'
 import { Button } from '@mui/material'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import { Bracket } from '@sportsgram/brackets'
 import CustomSeed from 'components/reactbracket/CustomSeed'
 import WinnerView from 'components/battle/WinnerView'
@@ -81,7 +81,7 @@ export default function TournamentHostView(): ReactElement {
 		<>
 			<Grid container>
 				<Grid
-					xs={12}
+					size={12}
 					display='flex'
 					justifyContent='center'
 					alignItems='center'

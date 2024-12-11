@@ -1,5 +1,5 @@
 import type { IAthlete, IBattle } from 'app/types'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import { Chip, Slide, Stack, Typography } from '@mui/material'
 import type { ReactElement } from 'react'
 import { Fragment, useEffect, useState } from 'react'
@@ -53,7 +53,7 @@ export default function BattleView({
 			<Grid container sx={{ mt: 4 }}>
 				{battle.athletes.map((athlete, index) => (
 					<Fragment key={`AthleteInBattleCardGrid-${athlete?.name}`}>
-						<Grid xs display='flex' justifyContent='center' alignItems='center'>
+						<Grid container justifyContent='center' alignItems='center'>
 							<Slide
 								direction={index % 2 ? 'left' : 'right'}
 								in
@@ -78,7 +78,7 @@ export default function BattleView({
 						</Grid>
 						{index !== battle.athletes.length - 1 && (
 							<Grid
-								xs={1}
+								size={1}
 								display='flex'
 								justifyContent='center'
 								alignItems='center'
@@ -93,7 +93,7 @@ export default function BattleView({
 				<>
 					<Grid container>
 						<Grid
-							xs={12}
+							size={12}
 							display='flex'
 							justifyContent='center'
 							alignItems='center'
@@ -106,7 +106,6 @@ export default function BattleView({
 					<Grid container>
 						{round.map((athlete, index) => (
 							<Grid
-								xs
 								key={`Round-${index + 1}-WinnerChip-${athlete.name}`}
 								display='flex'
 								justifyContent='center'
@@ -125,7 +124,7 @@ export default function BattleView({
 			{battle.hasTimer && hasClickableAthleteCards ? (
 				<Grid container>
 					<Grid
-						xs={12}
+						size={12}
 						display='flex'
 						justifyContent='center'
 						alignItems='center'

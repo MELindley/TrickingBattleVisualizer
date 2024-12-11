@@ -1,7 +1,7 @@
 import Head from 'components/common/Head'
 import type { ReactElement } from 'react'
 import NavBar, { type NavigationItem } from 'components/common/Navbar'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import { Stack, Typography } from '@mui/material'
 import { useAppSelector } from 'app/hooks'
 import { selectUserRole } from 'features/auth/authSlice'
@@ -22,7 +22,12 @@ export default function HomePage(): ReactElement {
 		<>
 			<Head title='Arena Forge' />
 			<NavBar navigation={mainNavigation} />
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
 				<Typography variant='h1'>Arena Forge</Typography>
 			</Grid>
 			<Stack spacing={4} justifyContent='center' sx={{ p: 4 }}>

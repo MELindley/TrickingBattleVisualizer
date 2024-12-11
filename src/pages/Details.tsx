@@ -6,7 +6,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import getAthletes from 'api/getAthletes'
 import NavBar from 'components/common/Navbar'
 import { mainNavigation } from './Home'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import { Stack, Typography } from '@mui/material'
 
 export default function DetailsPage(): ReactElement {
@@ -32,7 +32,7 @@ export default function DetailsPage(): ReactElement {
 			<Head title={athlete.name} />
 			<NavBar navigation={mainNavigation} />
 			<Grid container direction={{ xs: 'column', md: 'row' }}>
-				<Grid xs={6}>
+				<Grid size={6}>
 					<img
 						style={{
 							position: 'relative',
@@ -42,7 +42,12 @@ export default function DetailsPage(): ReactElement {
 						alt={athlete.name}
 					/>
 				</Grid>
-				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+				<Grid
+					size={6}
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+				>
 					<Stack>
 						<Link data-testid='BackLink' to='/' className='flex items-center'>
 							<img src='/icons/arrow-left.svg' alt='' className='h-5 w-5' />

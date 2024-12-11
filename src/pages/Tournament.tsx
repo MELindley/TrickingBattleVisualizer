@@ -8,7 +8,7 @@ import { selectUserRole } from 'features/auth/authSlice'
 import { HOST_ROLE } from 'app/helpers'
 import TournamentHostView from 'components/tournament/host/TournamentHostView'
 import TournamentSpectatorView from 'components/tournament/spectator/TournamentSpectatorView'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import { selectTournamentName } from 'features/tournament/tournamentSlice'
 
 export default function TournamentPage(): ReactElement {
@@ -18,7 +18,12 @@ export default function TournamentPage(): ReactElement {
 		<>
 			<Head title={tournamentName ?? 'Arena Forge'} />
 			<NavBar navigation={mainNavigation} />
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
 				<Typography variant='h1'>{tournamentName}</Typography>
 			</Grid>
 			<Stack spacing={4} justifyContent='center' alignItems='stretch'>

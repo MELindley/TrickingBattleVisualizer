@@ -12,7 +12,7 @@ import {
 } from 'features/battle/battleSlice'
 import BattleView from 'components/battle/BattleView'
 import WinnerView from 'components/battle/WinnerView'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import {
 	selectTournament,
 	setFinalBattleAthlete,
@@ -89,7 +89,7 @@ export default function BattlePage(): ReactElement {
 						<WinnerView winner={activeBattle.winner} />
 						<Grid container sx={{ mt: 4 }}>
 							<Grid
-								xs={12}
+								size={12}
 								display='flex'
 								justifyContent='center'
 								alignItems='center'
