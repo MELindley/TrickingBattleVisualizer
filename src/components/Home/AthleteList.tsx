@@ -1,4 +1,4 @@
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import { Typography } from '@mui/material'
 import type { IAthlete } from 'app/types'
 import type { ReactElement, SetStateAction } from 'react'
@@ -29,13 +29,17 @@ export default function AthleteList({
 
 	return (
 		<Grid container spacing={4}>
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
 				<Typography variant='h3'>Athletes</Typography>
 			</Grid>
 			{athletes.map(athlete => (
 				<Grid
-					xs={6}
-					md={3}
+					size={{ xs: 6, md: 3 }}
 					key={`AthleteCardGrid-${athlete.name}`}
 					display='flex'
 					justifyContent='center'

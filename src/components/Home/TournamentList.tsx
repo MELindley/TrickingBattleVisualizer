@@ -1,6 +1,5 @@
 import { Autocomplete, Button, TextField, Typography } from '@mui/material'
-
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import type { ReactElement, SyntheticEvent } from 'react'
 import { useState } from 'react'
 import type { ITournament } from 'app/types'
@@ -41,10 +40,20 @@ export default function TournamentList({
 
 	return (
 		<Grid container spacing={4}>
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
 				<Typography variant='h3'>{title}</Typography>
 			</Grid>
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
 				<Autocomplete
 					onChange={onTextFieldChange}
 					options={tournaments}
@@ -57,7 +66,12 @@ export default function TournamentList({
 					)}
 				/>
 			</Grid>
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
 				<Button variant='contained' onClick={onClick}>
 					Start Tournament
 				</Button>

@@ -1,6 +1,6 @@
 import type { ChangeEvent, ReactElement } from 'react'
 import { useEffect, useState } from 'react'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import {
 	Button,
 	Dialog,
@@ -105,12 +105,17 @@ export default function TournamentConfig({
 
 	return (
 		<Grid container rowSpacing={4} sx={{ boxShadow: 3, borderRadius: 2, p: 4 }}>
-			<Grid xs={12} display='flex' justifyContent='center' alignItems='center'>
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
 				<Typography variant='h3' sx={{ mb: 2 }}>
 					Tournament Config
 				</Typography>
 			</Grid>
-			<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+			<Grid size={6} display='flex' justifyContent='center' alignItems='center'>
 				<TextField
 					id='TournamentName-TextField'
 					label='Tournament Name'
@@ -119,7 +124,7 @@ export default function TournamentConfig({
 					sx={{ ml: 4 }}
 				/>
 			</Grid>
-			<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+			<Grid size={6} display='flex' justifyContent='center' alignItems='center'>
 				<Button variant='contained' onClick={onClickOpen}>
 					Create Tournament
 				</Button>
@@ -146,12 +151,12 @@ export default function TournamentConfig({
 				</Dialog>
 			</Grid>
 			<Grid
-				xs={12}
+				size={12}
 				container
 				sx={{ boxShadow: 3, borderRadius: 2, mt: 2, p: 4 }}
 			>
 				<Grid
-					xs={12}
+					size={12}
 					display='flex'
 					justifyContent='center'
 					alignItems='center'
@@ -160,17 +165,32 @@ export default function TournamentConfig({
 						Battles
 					</Typography>
 				</Grid>
-				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+				<Grid
+					size={6}
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+				>
 					<Button variant='contained' onClick={onAddToTournamentClick}>
 						Add selection to tournament
 					</Button>
 				</Grid>
-				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+				<Grid
+					size={6}
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+				>
 					<Button variant='contained' onClick={onGenerateTournamentClick}>
 						Generate Battles From Athletes
 					</Button>
 				</Grid>
-				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+				<Grid
+					size={6}
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+				>
 					<FormControlLabel
 						value='hasThirdPlaceBattle'
 						control={
@@ -184,7 +204,12 @@ export default function TournamentConfig({
 						labelPlacement='start'
 					/>
 				</Grid>
-				<Grid xs={6} display='flex' justifyContent='center' alignItems='center'>
+				<Grid
+					size={6}
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+				>
 					<FormControlLabel
 						value='lastBattleIsDifferent'
 						control={
