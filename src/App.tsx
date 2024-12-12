@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useAppSelector } from './app/hooks'
-import { createTheme, ThemeProvider } from '@mui/material'
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { selectTournamentThemeOptions } from './features/tournament/tournamentSlice'
 import ElementWithBackground from './components/common/ElementWithBackground'
 
@@ -20,6 +20,7 @@ export default function App(): ReactElement {
 	const theme = createTheme(themeOptions)
 	return (
 		<ThemeProvider theme={theme}>
+			<CssBaseline />
 			<BrowserRouter>
 				<Suspense fallback={<LoadingOrError />}>
 					<Routes>

@@ -7,17 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="feat(theme): implement display settings configuration&#10;&#10;- Added `ThemeConfig` component for managing tournament display settings.&#10;  - Includes primary and secondary color pickers using `@uiw/react-color-colorful`.&#10;  - Introduced typography customization with body and header font selectors using `react-fontpicker-ts-lite`.&#10;- Updated `HostView` to include `ThemeConfig` component.&#10;- Replaced `Unstable_Grid2` imports with `Grid2` for stable grid support.&#10;- Replaced `xs` prop with `size` for Grid components for improved compatibility and clarity.&#10;- Removed unused styles and redundant props in `BattleConfig`.&#10;&#10;This change enables organizers to configure the visual theme for tournaments, enhancing customization and user experience.">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Update all Grid2 to new packag">
+      <change afterPath="$PROJECT_DIR$/src/components/common/GoogleFontPicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.firebase/hosting.ZGlzdA.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.ZGlzdA.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/WinnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/WinnerView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/AthleteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AthleteList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/reactbracket/CustomSeed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reactbracket/CustomSeed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tournament/host/TournamentHostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tournament/host/TournamentHostView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,23 +297,8 @@
       <workItem from="1733698898100" duration="107000" />
       <workItem from="1733767513382" duration="2187000" />
       <workItem from="1733850194948" duration="10897000" />
-      <workItem from="1733927814921" duration="1062000" />
-    </task>
-    <task id="LOCAL-00039" summary="Added Bracket to tournament page">
-      <option name="closed" value="true" />
-      <created>1726249009123</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1726249009123</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Added ability to set timer and rounds for generated battles in Tournament">
-      <option name="closed" value="true" />
-      <created>1726321264285</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1726321264285</updated>
+      <workItem from="1733927814921" duration="2111000" />
+      <workItem from="1734007623465" duration="9942000" />
     </task>
     <task id="LOCAL-00041" summary="Fixed bug  :)">
       <option name="closed" value="true" />
@@ -693,7 +676,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733862733273</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Update all Grid2 to new packag">
+      <option name="closed" value="true" />
+      <created>1733929067496</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1733929067496</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Update all Grid2 to new packag">
+      <option name="closed" value="true" />
+      <created>1733929140113</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1733929140113</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -711,7 +710,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed Key uniqueness error &amp; Streamlined the firebase battle update function" />
     <MESSAGE value="feat: add tournament update functionality with Firebase integration&#10;&#10;- Enhanced athlete handling in battles: Automatically fills missing athletes in battles with one participant.&#10;- Implemented `firebaseUpdateTournamentBattles` for bulk battle updates in Firebase.&#10;- Introduced `firebaseUpdateTournamentDocument` to update tournament details and associated battles in Firebase.&#10;- Updated `TournamentPage` to support conditional Firebase updates based on navigation state.&#10;- Adjusted battle navigation in `BattlePage` to trigger Firebase updates upon returning to the tournament view.&#10;&#10;This commit ensures seamless synchronization between the app's state and Firebase for tournaments and battles." />
     <MESSAGE value="Fixed bug created by trying to get a list of unique athletes from tournament by typecasting to Set with objects being equal but with different references, now using ID equality to check unicity" />
     <MESSAGE value="Moved TournamentList to Home Components rather then Home/Spectator as it is now used in both spectator and host views&#10;Removed some debug console statements" />
@@ -736,7 +734,8 @@
     <MESSAGE value="Simplified ElementWithBackground.tsx css" />
     <MESSAGE value="feat(theme): add dynamic theme customization options and dependency updates&#10;&#10;- Introduced new theme customization actions in `tournamentSlice`:&#10;  - `setTournamentPalettePrimaryColor` and `setTournamentPaletteSecondaryColor` for palette customization.&#10;  - `setTournamentTypographyBodyFont` and `setTournamentTypographyHeaderFont` for typography customization.&#10;- Exported `initialThemeOptions` for external use.&#10;- Fixed `zIndex` typo in `ElementWithBackground.tsx`.&#10;- Updated dependencies in `package.json`, including `@mui/material` to v6.1.10 and added color/typography-related libraries:&#10;  - `@uiw/color-convert`&#10;  - `@uiw/react-color-colorful`&#10;  - `react-fontpicker-ts-lite`.&#10;- Updated IntelliJ workspace metadata for task tracking and simplifications." />
     <MESSAGE value="feat(theme): implement display settings configuration&#10;&#10;- Added `ThemeConfig` component for managing tournament display settings.&#10;  - Includes primary and secondary color pickers using `@uiw/react-color-colorful`.&#10;  - Introduced typography customization with body and header font selectors using `react-fontpicker-ts-lite`.&#10;- Updated `HostView` to include `ThemeConfig` component.&#10;- Replaced `Unstable_Grid2` imports with `Grid2` for stable grid support.&#10;- Replaced `xs` prop with `size` for Grid components for improved compatibility and clarity.&#10;- Removed unused styles and redundant props in `BattleConfig`.&#10;&#10;This change enables organizers to configure the visual theme for tournaments, enhancing customization and user experience." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(theme): implement display settings configuration&#10;&#10;- Added `ThemeConfig` component for managing tournament display settings.&#10;  - Includes primary and secondary color pickers using `@uiw/react-color-colorful`.&#10;  - Introduced typography customization with body and header font selectors using `react-fontpicker-ts-lite`.&#10;- Updated `HostView` to include `ThemeConfig` component.&#10;- Replaced `Unstable_Grid2` imports with `Grid2` for stable grid support.&#10;- Replaced `xs` prop with `size` for Grid components for improved compatibility and clarity.&#10;- Removed unused styles and redundant props in `BattleConfig`.&#10;&#10;This change enables organizers to configure the visual theme for tournaments, enhancing customization and user experience." />
+    <MESSAGE value="Update all Grid2 to new packag" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update all Grid2 to new packag" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -760,18 +759,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/home/host/ThemeConfig.tsx</url>
-          <line>64</line>
+          <line>136</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
           <line>8</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/home/AthleteList.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
