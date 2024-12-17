@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import Head from 'components/common/Head'
 import NavBar from 'components/common/Navbar'
 import { mainNavigation } from './Home'
-import { Button, Container } from '@mui/material'
+import { Button, Container, Typography } from '@mui/material'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import type { RootState } from 'app/store'
 import {
@@ -83,6 +83,17 @@ export default function BattlePage(): ReactElement {
 		<>
 			<Head title={title} />
 			<NavBar navigation={mainNavigation} />
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+				flexDirection='column'
+			>
+				<Typography variant='h1'>{tournament.name}</Typography>
+				<Typography variant='h2'>{`Battle ${activeBattle.order}`}</Typography>
+			</Grid>
+
 			<Container sx={{ p: 4 }}>
 				{activeBattle.winner ? (
 					<>

@@ -1,6 +1,6 @@
 import type { IAthlete, IBattle } from 'app/types'
 import Grid from '@mui/material/Grid2'
-import { Chip, Slide, Stack, Typography } from '@mui/material'
+import { Box, Chip, Slide, Stack, Typography } from '@mui/material'
 import type { ReactElement } from 'react'
 import { Fragment, useEffect, useState } from 'react'
 import AthleteCard from 'components/athlete/AthleteCard'
@@ -49,11 +49,11 @@ export default function BattleView({
 	}
 
 	return (
-		<Stack spacing={4} justifyContent='center' alignItems='stretch'>
+		<Stack spacing={4} justifyContent='center'>
 			<Grid container sx={{ mt: 4 }}>
 				{battle.athletes.map((athlete, index) => (
 					<Fragment key={`AthleteInBattleCardGrid-${athlete?.name}`}>
-						<Grid container justifyContent='center' alignItems='center'>
+						<Box margin='auto'>
 							<Slide
 								direction={index % 2 ? 'left' : 'right'}
 								in
@@ -75,7 +75,7 @@ export default function BattleView({
 									/>
 								</div>
 							</Slide>
-						</Grid>
+						</Box>
 						{index !== battle.athletes.length - 1 && (
 							<Grid
 								size={1}
