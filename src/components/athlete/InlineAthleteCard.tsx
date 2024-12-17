@@ -10,13 +10,14 @@ import {
 	Skeleton,
 	Typography
 } from '@mui/material'
+import { useWindowSize } from '@react-hook/window-size'
 
 type InlineAthleteCardProperties = AthleteCardProperties
 
-const PREFERRED_IMAGE_WIDTH = 300
+const PREFERRED_IMAGE_WIDTH = 200
 const MOBILE_PADDING = 0
-const ASPECT_RATIO_WIDTH = 21
-const ASPECT_RATIO_HEIGHT = 9
+const ASPECT_RATIO_WIDTH = 5
+const ASPECT_RATIO_HEIGHT = 4
 
 const calculateImageDimensions = (): {
 	imageWidth: number
@@ -44,11 +45,13 @@ function InlineAthleteCard({
 	}
 
 	const { imageWidth, imageHeight } = calculateImageDimensions()
+	const [windowWidth, windowHeight] = useWindowSize()
 
 	return (
 		<Card
 			sx={{
-				width: imageWidth * 1.25,
+				width: windowWidth / 8,
+				height: windowHeight / 12,
 				border: isSelected ? 'solid blue' : 'solid transparent',
 				display: 'flex'
 			}}
@@ -70,8 +73,8 @@ function InlineAthleteCard({
 							title={`${athlete.name} ${athlete.surname}`}
 							alt={athlete.name}
 						/>
-						<CardContent sx={{ margin: 'auto' }}>
-							<Typography gutterBottom variant='h5'>
+						<CardContent>
+							<Typography variant='h5'>
 								{athlete.name} {athlete.surname}
 							</Typography>
 						</CardContent>
@@ -81,7 +84,7 @@ function InlineAthleteCard({
 						<Skeleton
 							variant='rectangular'
 							height={imageHeight}
-							width={imageWidth}
+							width={windowWidth / 8}
 						/>
 						<CardContent sx={{ display: 'flex', flexGrow: 1 }}>
 							<Typography gutterBottom variant='h5' sx={{ margin: 'auto' }}>
