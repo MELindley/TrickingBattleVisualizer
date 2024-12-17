@@ -27,6 +27,7 @@
 		"@emotion/react": "^11.13.0",
 		"@emotion/styled": "^11.13.0",
 		"@mui/material": "^6.1.10",
+		"@react-hook/window-size": "^3.1.1",
 		"@reduxjs/toolkit": "^2.2.7",
 		"@remotion/google-fonts": "^4.0.239",
 		"@sportsgram/brackets": "^0.0.1",

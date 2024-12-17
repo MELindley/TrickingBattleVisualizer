@@ -1,32 +1,21 @@
+// InlineAthleteCard.tsx
+import type { AthleteCardProperties } from './AthleteCard'
+import type { ReactElement } from 'react'
+import { useState } from 'react'
 import {
-	type KeyboardEvent,
-	type ReactElement,
-	type MouseEvent,
-	useState
-} from 'react'
-import { useNavigate } from 'react-router-dom'
-import type { IAthlete } from 'app/types'
-import {
-	Button,
 	Card,
 	CardActionArea,
-	CardActions,
 	CardContent,
 	CardMedia,
 	Skeleton,
 	Typography
 } from '@mui/material'
 
-export interface AthleteCardProperties {
-	athlete?: IAthlete
-	onCardClick?: (athlete: IAthlete) => void
-	hasDetailsButton?: boolean
-	isClickable?: boolean
-}
+type InlineAthleteCardProperties = AthleteCardProperties
 
-const PREFERRED_IMAGE_WIDTH = 384
-const MOBILE_PADDING = 16
-const ASPECT_RATIO_WIDTH = 16
+const PREFERRED_IMAGE_WIDTH = 300
+const MOBILE_PADDING = 0
+const ASPECT_RATIO_WIDTH = 21
 const ASPECT_RATIO_HEIGHT = 9
 
 const calculateImageDimensions = (): {
@@ -41,21 +30,12 @@ const calculateImageDimensions = (): {
 	return { imageWidth, imageHeight }
 }
 
-function AthleteCard({
-	athlete = undefined,
-	onCardClick = undefined,
-	hasDetailsButton = false,
-	isClickable = true
-}: AthleteCardProperties): ReactElement {
-	const navigate = useNavigate()
+function InlineAthleteCard({
+	athlete,
+	onCardClick,
+	isClickable = false
+}: InlineAthleteCardProperties): ReactElement {
 	const [isSelected, setIsSelected] = useState(false)
-
-	const onDetailButtonClick = (event: MouseEvent): void => {
-		event.stopPropagation()
-		window.scrollTo(0, 0)
-		if (athlete) navigate(encodeURIComponent(athlete.name.toLowerCase()))
-	}
-
 	const onActionAreaClick = (): void => {
 		if (isClickable) {
 			setIsSelected(!isSelected)
@@ -63,24 +43,19 @@ function AthleteCard({
 		}
 	}
 
-	const onKeyDown = (event: KeyboardEvent): void => {
-		if (event.key === 'Enter') onActionAreaClick()
-	}
-
 	const { imageWidth, imageHeight } = calculateImageDimensions()
 
 	return (
 		<Card
 			sx={{
-				width: imageWidth,
+				width: imageWidth * 1.25,
 				border: isSelected ? 'solid blue' : 'solid transparent',
 				display: 'flex'
 			}}
 		>
 			<CardActionArea
 				onClick={onActionAreaClick}
-				onKeyDown={onKeyDown}
-				sx={{ display: 'flex', flexDirection: 'column' }}
+				sx={{ display: 'flex', flexDirection: 'row' }}
 			>
 				{athlete ? (
 					<>
@@ -96,7 +71,7 @@ function AthleteCard({
 							alt={athlete.name}
 						/>
 						<CardContent sx={{ margin: 'auto' }}>
-							<Typography gutterBottom variant='h4'>
+							<Typography gutterBottom variant='h5'>
 								{athlete.name} {athlete.surname}
 							</Typography>
 						</CardContent>
@@ -105,32 +80,18 @@ function AthleteCard({
 					<>
 						<Skeleton
 							variant='rectangular'
-							sx={{ marginRight: 'auto' }}
 							height={imageHeight}
 							width={imageWidth}
 						/>
 						<CardContent sx={{ display: 'flex', flexGrow: 1 }}>
-							<Typography gutterBottom variant='h3' sx={{ margin: 'auto' }}>
+							<Typography gutterBottom variant='h5' sx={{ margin: 'auto' }}>
 								TBA
 							</Typography>
 						</CardContent>
 					</>
 				)}
-				{hasDetailsButton ? (
-					<CardActions>
-						<Button
-							onClick={onDetailButtonClick}
-							variant='outlined'
-							className='m-auto'
-							component='span'
-						>
-							Details
-						</Button>
-					</CardActions>
-				) : undefined}
 			</CardActionArea>
 		</Card>
 	)
 }
-
-export default AthleteCard
+export default InlineAthleteCard

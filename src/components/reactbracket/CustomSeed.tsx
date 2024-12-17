@@ -1,11 +1,11 @@
 import type { IRenderSeedProps } from '@sportsgram/brackets'
 import { Seed, SeedItem } from '@sportsgram/brackets'
 import type { ReactElement } from 'react'
-import AthleteCard from 'components/athlete/AthleteCard'
 import Grid from '@mui/material/Grid2'
 import type { ISeedProps } from '@sportsgram/brackets/dist/types/Seed'
 import type { IAthlete } from 'app/types'
 import { Typography } from '@mui/material'
+import InlineAthleteCard from '../athlete/InlineAthleteCard'
 
 interface ICustomSeedProperties extends ISeedProps {
 	teams: {
@@ -29,12 +29,7 @@ export default function CustomSeed({
 					{(seed as ICustomSeedProperties).teams.map((team, index) => (
 						// eslint-disable-next-line react/no-array-index-key
 						<Grid size={12} key={`${seed.id}-${index}-${team.athlete?.id}`}>
-							<AthleteCard
-								athlete={team.athlete}
-								isClickable={false}
-								hasDetailsButton={false}
-								isInLine
-							/>
+							<InlineAthleteCard athlete={team.athlete} />
 						</Grid>
 					))}
 					<Grid size={12}>
