@@ -26,13 +26,13 @@ export default function ElementWithBackground({
 						title='ytplayer'
 						allowFullScreen
 						allow='autoplay'
-						className='pointer-events-none fixed left-0 top-0 select-none bg-cover bg-no-repeat'
+						className='pointer-events-none fixed left-0 top-0 -z-40 select-none bg-cover bg-no-repeat'
 					/>
 				) : (
 					<Box
 						sx={{
 							position: 'fixed',
-							zIndex: -50,
+							zIndex: -40,
 							height: '100%',
 							width: '100%',
 							backgroundImage: `url(${backgroundUrl})`,

@@ -26,7 +26,7 @@ export default function TournamentPage(): ReactElement {
 			>
 				<Typography variant='h1'>{tournamentName}</Typography>
 			</Grid>
-			<Stack spacing={4} justifyContent='center' alignItems='stretch'>
+			<Stack spacing={4} justifyContent='center' padding={4}>
 				{userRole === HOST_ROLE ? (
 					<TournamentHostView />
 				) : (
