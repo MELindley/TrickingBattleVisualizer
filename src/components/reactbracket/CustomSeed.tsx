@@ -23,7 +23,7 @@ export default function CustomSeed({
 
 	// mobileBreakpoint is required to be passed down to a seed
 	return (
-		<Seed mobileBreakpoint={breakpoint} style={{ fontSize: 12 }}>
+		<Seed mobileBreakpoint={breakpoint} style={{ minWidth: 0, padding: '1em' }}>
 			<SeedItem>
 				<Grid container rowSpacing={1}>
 					{(seed as ICustomSeedProperties).teams.map((team, index) => (

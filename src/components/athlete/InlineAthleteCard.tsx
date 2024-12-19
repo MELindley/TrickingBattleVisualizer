@@ -14,22 +14,8 @@ import { useWindowSize } from '@react-hook/window-size'
 
 type InlineAthleteCardProperties = AthleteCardProperties
 
-const PREFERRED_IMAGE_WIDTH = 200
-const MOBILE_PADDING = 0
 const ASPECT_RATIO_WIDTH = 5
 const ASPECT_RATIO_HEIGHT = 4
-
-const calculateImageDimensions = (): {
-	imageWidth: number
-	imageHeight: number
-} => {
-	const imageWidth = Math.min(
-		PREFERRED_IMAGE_WIDTH,
-		window.innerWidth - MOBILE_PADDING
-	)
-	const imageHeight = imageWidth / (ASPECT_RATIO_WIDTH / ASPECT_RATIO_HEIGHT)
-	return { imageWidth, imageHeight }
-}
 
 function InlineAthleteCard({
 	athlete,
@@ -44,14 +30,17 @@ function InlineAthleteCard({
 		}
 	}
 
-	const { imageWidth, imageHeight } = calculateImageDimensions()
 	const [windowWidth, windowHeight] = useWindowSize()
+	const cardWidth = windowWidth / 8.8
+	const cardHeight = windowHeight / 12
+	const imageWidth = cardWidth / 2
+	const imageHeight = imageWidth / (ASPECT_RATIO_WIDTH / ASPECT_RATIO_HEIGHT)
 
 	return (
 		<Card
 			sx={{
-				width: windowWidth / 8,
-				height: windowHeight / 12,
+				width: cardWidth,
+				height: cardHeight,
 				border: isSelected ? 'solid blue' : 'solid transparent',
 				display: 'flex'
 			}}
@@ -74,7 +63,10 @@ function InlineAthleteCard({
 							alt={athlete.name}
 						/>
 						<CardContent>
-							<Typography variant='h5'>
+							<Typography
+								component='h5'
+								sx={{ typography: { lg: 'h5', md: 'caption' } }}
+							>
 								{athlete.name} {athlete.surname}
 							</Typography>
 						</CardContent>
@@ -83,11 +75,14 @@ function InlineAthleteCard({
 					<>
 						<Skeleton
 							variant='rectangular'
-							height={imageHeight}
-							width={windowWidth / 8}
+							height={cardHeight}
+							width={imageWidth}
 						/>
 						<CardContent sx={{ display: 'flex', flexGrow: 1 }}>
-							<Typography gutterBottom variant='h5' sx={{ margin: 'auto' }}>
+							<Typography
+								gutterBottom
+								sx={{ margin: 'auto', typography: { lg: 'h5', md: 'caption' } }}
+							>
 								TBA
 							</Typography>
 						</CardContent>
