@@ -7,15 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Update all Grid2 to new packag">
-      <change afterPath="$PROJECT_DIR$/src/components/common/GoogleFontPicker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.firebase/hosting.ZGlzdA.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.ZGlzdA.cache" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Bug fixed on all views">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +39,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MELindley/TrickingBattleVisualizer.git&quot;,
-    &quot;accountId&quot;: &quot;80c51a19-5f2f-4269-abb4-46032f13bbf5&quot;
+    &quot;accountId&quot;: &quot;e493574e-1a5c-4ef5-a7a2-efdcec497fc3&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -75,6 +69,7 @@
   &quot;keyToString&quot;: {
     &quot;Cypress.all tests in index.spec.ts.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -95,10 +90,10 @@
     &quot;npm.dev host.executor&quot;: &quot;Run&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\prettier&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\prettier&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -188,8 +183,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -299,30 +294,9 @@
       <workItem from="1733850194948" duration="10897000" />
       <workItem from="1733927814921" duration="2111000" />
       <workItem from="1734007623465" duration="9942000" />
-    </task>
-    <task id="LOCAL-00041" summary="Fixed bug  :)">
-      <option name="closed" value="true" />
-      <created>1726421371943</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1726421371943</updated>
-    </task>
-    <task id="LOCAL-00042" summary="refacotred to follow naming convention">
-      <option name="closed" value="true" />
-      <created>1726422128009</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1726422128009</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Fixed inline AthleteCard.tsx display on Tournament.tsx page">
-      <option name="closed" value="true" />
-      <created>1726583152157</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1726583152157</updated>
+      <workItem from="1734614168883" duration="3800000" />
+      <workItem from="1734970023591" duration="561000" />
+      <workItem from="1734990825240" duration="2670000" />
     </task>
     <task id="LOCAL-00044" summary="Refactored helper function and added AI generated doc">
       <option name="closed" value="true" />
@@ -692,7 +666,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733929140113</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="inline athlete card is responsive  to viewport size">
+      <option name="closed" value="true" />
+      <created>1734617992123</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1734617992124</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Fixed more display bugs">
+      <option name="closed" value="true" />
+      <created>1734992297941</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1734992297942</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Bug fixed on all views">
+      <option name="closed" value="true" />
+      <created>1734995109654</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1734995109654</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -735,7 +733,10 @@
     <MESSAGE value="feat(theme): add dynamic theme customization options and dependency updates&#10;&#10;- Introduced new theme customization actions in `tournamentSlice`:&#10;  - `setTournamentPalettePrimaryColor` and `setTournamentPaletteSecondaryColor` for palette customization.&#10;  - `setTournamentTypographyBodyFont` and `setTournamentTypographyHeaderFont` for typography customization.&#10;- Exported `initialThemeOptions` for external use.&#10;- Fixed `zIndex` typo in `ElementWithBackground.tsx`.&#10;- Updated dependencies in `package.json`, including `@mui/material` to v6.1.10 and added color/typography-related libraries:&#10;  - `@uiw/color-convert`&#10;  - `@uiw/react-color-colorful`&#10;  - `react-fontpicker-ts-lite`.&#10;- Updated IntelliJ workspace metadata for task tracking and simplifications." />
     <MESSAGE value="feat(theme): implement display settings configuration&#10;&#10;- Added `ThemeConfig` component for managing tournament display settings.&#10;  - Includes primary and secondary color pickers using `@uiw/react-color-colorful`.&#10;  - Introduced typography customization with body and header font selectors using `react-fontpicker-ts-lite`.&#10;- Updated `HostView` to include `ThemeConfig` component.&#10;- Replaced `Unstable_Grid2` imports with `Grid2` for stable grid support.&#10;- Replaced `xs` prop with `size` for Grid components for improved compatibility and clarity.&#10;- Removed unused styles and redundant props in `BattleConfig`.&#10;&#10;This change enables organizers to configure the visual theme for tournaments, enhancing customization and user experience." />
     <MESSAGE value="Update all Grid2 to new packag" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update all Grid2 to new packag" />
+    <MESSAGE value="inline athlete card is responsive  to viewport size" />
+    <MESSAGE value="Fixed more display bugs" />
+    <MESSAGE value="Bug fixed on all views" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixed on all views" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
