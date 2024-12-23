@@ -65,7 +65,7 @@ function InlineAthleteCard({
 						<CardContent>
 							<Typography
 								component='h5'
-								sx={{ typography: { lg: 'h5', md: 'caption' } }}
+								sx={{ typography: { xl: 'h5', lg: 'h6', md: 'caption' } }}
 							>
 								{athlete.name} {athlete.surname}
 							</Typography>
@@ -81,7 +81,10 @@ function InlineAthleteCard({
 						<CardContent sx={{ display: 'flex', flexGrow: 1 }}>
 							<Typography
 								gutterBottom
-								sx={{ margin: 'auto', typography: { lg: 'h5', md: 'caption' } }}
+								sx={{
+									margin: 'auto',
+									typography: { xl: 'h5', lg: 'h6', md: 'caption' }
+								}}
 							>
 								TBA
 							</Typography>

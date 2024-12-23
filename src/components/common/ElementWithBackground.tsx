@@ -26,7 +26,7 @@ export default function ElementWithBackground({
 						title='ytplayer'
 						allowFullScreen
 						allow='autoplay'
-						className='pointer-events-none fixed left-0 top-0 -z-40 select-none bg-cover bg-no-repeat'
+						className='pointer-events-none fixed -z-40 select-none bg-cover bg-no-repeat'
 					/>
 				) : (
 					<Box
@@ -35,6 +35,7 @@ export default function ElementWithBackground({
 							zIndex: -40,
 							height: '100%',
 							width: '100%',
+							top: '2rem',
 							backgroundImage: `url(${backgroundUrl})`,
 							backgroundSize: 'contain',
 							backgroundRepeat: 'no-repeat',

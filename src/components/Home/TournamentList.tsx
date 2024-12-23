@@ -3,12 +3,14 @@ import Grid from '@mui/material/Grid2'
 import type { ReactElement, SyntheticEvent } from 'react'
 import { useState } from 'react'
 import type { ITournament } from 'app/types'
-import { useAppDispatch } from 'app/hooks'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
 import {
 	initialState,
 	setTournament
 } from 'features/tournament/tournamentSlice'
 import { useNavigate } from 'react-router-dom'
+import { selectUserRole } from '../../features/auth/authSlice'
+import { HOST_ROLE } from '../../app/helpers'
 
 interface Properties {
 	tournaments: ITournament[]
@@ -21,6 +23,7 @@ export default function TournamentList({
 }: Properties): ReactElement {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
+	const userRole = useAppSelector(state => selectUserRole(state))
 	const [selectedTournament, setSelectedTournament] =
 		useState<ITournament>(initialState)
 
@@ -73,7 +76,7 @@ export default function TournamentList({
 				alignItems='center'
 			>
 				<Button variant='contained' onClick={onClick}>
-					Start Tournament
+					{userRole === HOST_ROLE ? 'Start' : 'View'} Tournament
 				</Button>
 			</Grid>
 		</Grid>
