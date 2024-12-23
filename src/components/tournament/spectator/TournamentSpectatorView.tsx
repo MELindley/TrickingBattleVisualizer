@@ -72,6 +72,7 @@ export default function TournamentSpectatorView(): ReactElement {
 				rounds={mapBattleListToReactBracketRoundList(tournament)}
 				renderSeedComponent={CustomSeed}
 				twoSided
+				bracketClassName='w-min'
 			/>
 		</>
 	)

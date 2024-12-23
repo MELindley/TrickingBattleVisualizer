@@ -96,6 +96,7 @@ export default function TournamentHostView(): ReactElement {
 					rounds={mapBattleListToReactBracketRoundList(tournament)}
 					renderSeedComponent={CustomSeed}
 					twoSided
+					bracketClassName='w-min'
 				/>
 			) : (
 				<>
@@ -104,6 +105,7 @@ export default function TournamentHostView(): ReactElement {
 						rounds={mapBattleListToReactBracketRoundList(tournament)}
 						renderSeedComponent={CustomSeed}
 						twoSided
+						bracketClassName='w-min'
 					/>
 				</>
 			)}
