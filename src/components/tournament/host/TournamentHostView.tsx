@@ -3,10 +3,7 @@ import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { selectTournament } from 'features/tournament/tournamentSlice'
-import {
-	firebaseUpdateTournamentDocument,
-	mapBattleListToReactBracketRoundList
-} from 'app/helpers'
+import { mapBattleListToReactBracketRoundList } from 'app/helpers'
 import { setActiveBattle } from 'features/battle/battleSlice'
 import LoadingOrError from 'components/common/LoadingOrError'
 import { Button } from '@mui/material'
@@ -15,6 +12,7 @@ import { Bracket } from '@sportsgram/brackets'
 import CustomSeed from 'components/reactbracket/CustomSeed'
 import WinnerView from 'components/battle/WinnerView'
 import type { IAthlete } from 'app/types'
+import { firebaseUpdateTournamentDocument } from '../../../api/Tournament/tournamentApi'
 
 export default function TournamentHostView(): ReactElement {
 	const navigate = useNavigate()

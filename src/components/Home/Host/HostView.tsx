@@ -1,7 +1,8 @@
-import AthleteList from 'components/home/AthleteList'
-import TournamentList from 'components/home/TournamentList'
-import BattleConfig from 'components/home/host/BattleConfig'
-import TournamentConfig from 'components/home/host/TournamentConfig'
+import AthleteConfig from 'components/Home/AthleteConfig'
+import TournamentList from 'components/Home/TournamentList'
+import BattleConfig from 'components/Home/Host/BattleConfig'
+import TournamentConfig from 'components/Home/Host/TournamentConfig'
+import ThemeConfig from 'components/Home/Host/ThemeConfig'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 import type { IAthlete, ITournament } from 'app/types'
@@ -10,16 +11,13 @@ import {
 	selectTournament,
 	setTournamentAthletes
 } from 'features/tournament/tournamentSlice'
-import {
-	firebaseGetAthleteCollection,
-	firebaseGetTournamentsCollection
-} from 'app/helpers'
 import LoadingOrError from 'components/common/LoadingOrError'
 import { selectUID } from 'features/auth/authSlice'
 import { where } from 'firebase/firestore'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import ThemeConfig from './ThemeConfig'
+import firebaseGetAthleteCollection from '../../../api/Athlete/athleteApi'
+import { firebaseGetTournamentsCollection } from '../../../api/Tournament/tournamentApi'
 
 export default function HostView(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
@@ -73,7 +71,7 @@ export default function HostView(): ReactElement {
 			>
 				<Typography variant='h3'>Create a New Tournament</Typography>
 			</Grid>
-			<AthleteList
+			<AthleteConfig
 				athletes={tournament.athletes}
 				selectedAthletes={selectedAthletes}
 				setSelectedAthletes={setSelectedAthletes}

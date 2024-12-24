@@ -2,13 +2,13 @@ import type { ReactElement } from 'react'
 import { signInWithPopup } from 'firebase/auth'
 import { auth, provider } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom'
-import {
-	firebaseAddUserDocument,
-	firebaseGetUserDocument,
-	SPECTATOR_ROLE
-} from 'app/helpers'
+import { SPECTATOR_ROLE } from 'app/helpers'
 import { useAppDispatch } from 'app/hooks'
 import { setAuth } from 'features/auth/authSlice'
+import {
+	firebaseAddUserDocument,
+	firebaseGetUserDocument
+} from '../../api/User/userApi'
 
 export default function GoogleLogIn(): ReactElement {
 	const navigate = useNavigate()

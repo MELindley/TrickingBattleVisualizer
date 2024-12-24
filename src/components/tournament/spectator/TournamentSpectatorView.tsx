@@ -5,16 +5,14 @@ import {
 } from 'features/tournament/tournamentSlice'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
-import {
-	firebaseSetTournamentBattlesListener,
-	mapBattleListToReactBracketRoundList
-} from 'app/helpers'
+import { mapBattleListToReactBracketRoundList } from 'app/helpers'
 import { setActiveBattle } from 'features/battle/battleSlice'
 import LoadingOrError from 'components/common/LoadingOrError'
 import WinnerView from 'components/battle/WinnerView'
 import type { IAthlete } from 'app/types'
 import CustomSeed from 'components/reactbracket/CustomSeed'
 import { Bracket } from '@sportsgram/brackets'
+import { firebaseSetTournamentBattlesListener } from '../../../api/Tournament/tournamentApi'
 
 export default function TournamentSpectatorView(): ReactElement {
 	const dispatch = useAppDispatch()

@@ -31,8 +31,8 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import type { IAthlete } from 'app/types'
-import { firebaseAddTournamentDocument } from 'app/helpers'
 import { selectUID } from 'features/auth/authSlice'
+import { firebaseAddTournamentDocument } from '../../../api/Tournament/tournamentApi'
 
 interface Properties {
 	selectedAthletes: IAthlete[]

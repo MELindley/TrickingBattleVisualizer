@@ -7,7 +7,7 @@ import AthleteCard from 'components/athlete/AthleteCard'
 import { setActiveBattleWinner } from 'features/battle/battleSlice'
 import { useAppDispatch } from 'app/hooks'
 import Countdown from 'react-countdown'
-import { getUniqueArrayElementWithHighestOccurrence } from 'app/helpers'
+import { getUniqueArrayElementWithHighestOccurrence } from 'app/utils'
 
 interface Properties {
 	battle: IBattle

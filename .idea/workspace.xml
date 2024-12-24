@@ -7,9 +7,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Bug fixed on all views">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Remove mock data and related API handlers&#10;&#10;This commit deletes unused mock data files (athletes.json, fruits.json) and their associated handlers, server setup, and API file (getAthletes.ts). Additionally, it updates the pnpm-lock.yaml to reflect the removal of related dependencies. These changes aim to clean up the codebase by eliminating unused assets.">
+      <change afterPath="$PROJECT_DIR$/src/api/Athlete/athleteApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/Tournament/tournamentApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/User/userApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/EmailLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/EmailLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/EmailSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/EmailSignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/GoogleLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/GoogleLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tournament/host/TournamentHostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tournament/host/TournamentHostView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tournament/spectator/TournamentSpectatorView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tournament/spectator/TournamentSpectatorView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -296,15 +311,8 @@
       <workItem from="1734007623465" duration="9942000" />
       <workItem from="1734614168883" duration="3800000" />
       <workItem from="1734970023591" duration="561000" />
-      <workItem from="1734990825240" duration="2670000" />
-    </task>
-    <task id="LOCAL-00044" summary="Refactored helper function and added AI generated doc">
-      <option name="closed" value="true" />
-      <created>1726587968978</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1726587968978</updated>
+      <workItem from="1734990825240" duration="4293000" />
+      <workItem from="1735054630061" duration="3971000" />
     </task>
     <task id="LOCAL-00045" summary="Added function to get battles in rounds">
       <option name="closed" value="true" />
@@ -690,7 +698,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734995109654</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Remove mock data and related API handlers&#10;&#10;This commit deletes unused mock data files (athletes.json, fruits.json) and their associated handlers, server setup, and API file (getAthletes.ts). Additionally, it updates the pnpm-lock.yaml to reflect the removal of related dependencies. These changes aim to clean up the codebase by eliminating unused assets.">
+      <option name="closed" value="true" />
+      <created>1734996287075</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1734996287075</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -708,8 +724,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add tournament update functionality with Firebase integration&#10;&#10;- Enhanced athlete handling in battles: Automatically fills missing athletes in battles with one participant.&#10;- Implemented `firebaseUpdateTournamentBattles` for bulk battle updates in Firebase.&#10;- Introduced `firebaseUpdateTournamentDocument` to update tournament details and associated battles in Firebase.&#10;- Updated `TournamentPage` to support conditional Firebase updates based on navigation state.&#10;- Adjusted battle navigation in `BattlePage` to trigger Firebase updates upon returning to the tournament view.&#10;&#10;This commit ensures seamless synchronization between the app's state and Firebase for tournaments and battles." />
-    <MESSAGE value="Fixed bug created by trying to get a list of unique athletes from tournament by typecasting to Set with objects being equal but with different references, now using ID equality to check unicity" />
     <MESSAGE value="Moved TournamentList to Home Components rather then Home/Spectator as it is now used in both spectator and host views&#10;Removed some debug console statements" />
     <MESSAGE value="feat: restructure tournament views and enhance battle data management&#10;&#10;- Split tournament page logic into `TournamentHostView` and `TournamentSpectatorView` components for clearer role-based separation.&#10;- Refactored Firebase battle document mapping into a reusable helper function `convertFirebaseBattleDocumentToIBattle`.&#10;- Added a real-time listener for tournament battles (`firebaseSetTournamentBattlesListener`) to keep spectators updated dynamically.&#10;- Renamed `setBattles` reducer to `setTournamentBattles` for better clarity.&#10;- Updated file imports to ensure consistent case-sensitive paths.&#10;- Simplified `TournamentPage` by delegating specific role views to separate components." />
     <MESSAGE value="Refactor and enhance tournament management components and helpers&#10;&#10;- Add state management to prevent duplicate tournament updates in `TournamentHostView`.&#10;- Display the tournament bracket alongside the winner in both `TournamentHostView` and `TournamentSpectatorView`.&#10;- Simplify Firebase helper functions by removing unnecessary try-catch blocks for better error propagation:&#10;  - `firebaseSetBattleInTournament`&#10;  - `firebaseUpdateTournamentDocument`&#10;  - `firebaseAddTournamentDocument`&#10;  - `firebaseUpdateTournamentAthlete`&#10;- Remove redundant console.log statements to clean up debug outputs.&#10;- Refine `mapBattleListToReactBracketRoundList` to streamline battle mapping." />
@@ -736,7 +750,8 @@
     <MESSAGE value="inline athlete card is responsive  to viewport size" />
     <MESSAGE value="Fixed more display bugs" />
     <MESSAGE value="Bug fixed on all views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixed on all views" />
+    <MESSAGE value="Remove mock data and related API handlers&#10;&#10;This commit deletes unused mock data files (athletes.json, fruits.json) and their associated handlers, server setup, and API file (getAthletes.ts). Additionally, it updates the pnpm-lock.yaml to reflect the removal of related dependencies. These changes aim to clean up the codebase by eliminating unused assets." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove mock data and related API handlers&#10;&#10;This commit deletes unused mock data files (athletes.json, fruits.json) and their associated handlers, server setup, and API file (getAthletes.ts). Additionally, it updates the pnpm-lock.yaml to reflect the removal of related dependencies. These changes aim to clean up the codebase by eliminating unused assets." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -755,10 +770,6 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/helpers.ts</url>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/home/host/ThemeConfig.tsx</url>
           <line>136</line>
           <option name="timeStamp" value="6" />
@@ -771,6 +782,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/home/AthleteList.tsx</url>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

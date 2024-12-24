@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom'
-import { firebaseGetUserDocument } from 'app/helpers'
 import { setAuth } from 'features/auth/authSlice'
 import { useAppDispatch } from 'app/hooks'
+import { firebaseGetUserDocument } from '../../api/User/userApi'
 
 function EmailLogin(): ReactElement {
 	const [email, setEmail] = useState('')

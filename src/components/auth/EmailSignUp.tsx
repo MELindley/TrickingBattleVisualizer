@@ -3,9 +3,10 @@ import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom' // Import your Firebase configuration
-import { firebaseAddUserDocument, SPECTATOR_ROLE } from 'app/helpers'
+import { SPECTATOR_ROLE } from 'app/helpers'
 import { setAuth } from 'features/auth/authSlice'
 import { useAppDispatch } from 'app/hooks'
+import { firebaseAddUserDocument } from '../../api/User/userApi'
 
 export default function EmailSignUp(): ReactElement {
 	const [email, setEmail] = useState('')

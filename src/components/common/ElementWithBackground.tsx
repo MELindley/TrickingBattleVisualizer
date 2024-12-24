@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactElement } from 'react'
-import { youtubeVideoIdParser } from '../../app/helpers'
+import { youtubeVideoIdParser } from '../../app/utils'
 import { Box, Paper } from '@mui/material'
 
 interface ElementWithBackgroundProperties {

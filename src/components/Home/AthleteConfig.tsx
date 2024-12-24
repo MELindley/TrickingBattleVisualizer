@@ -10,7 +10,7 @@ interface Properties {
 	setSelectedAthletes: (value: SetStateAction<IAthlete[]>) => void
 }
 
-export default function AthleteList({
+export default function AthleteConfig({
 	athletes,
 	selectedAthletes,
 	setSelectedAthletes
