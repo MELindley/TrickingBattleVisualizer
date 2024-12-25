@@ -3,7 +3,7 @@ import TournamentList from 'components/Home/TournamentList'
 import BattleConfig from 'components/Home/Host/BattleConfig'
 import TournamentConfig from 'components/Home/Host/TournamentConfig'
 import ThemeConfig from 'components/Home/Host/ThemeConfig'
-import type { ReactElement } from 'react'
+import type { ReactElement, SyntheticEvent } from 'react'
 import { useEffect, useState } from 'react'
 import type { IAthlete, ITournament } from 'app/types'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
@@ -14,10 +14,11 @@ import {
 import LoadingOrError from 'components/common/LoadingOrError'
 import { selectUID } from 'features/auth/authSlice'
 import { where } from 'firebase/firestore'
-import { Typography } from '@mui/material'
+import { AppBar, Box, Tab, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { firebaseGetAthleteCollection } from '../../../api/Athlete/athleteApi'
 import { firebaseGetTournamentsCollection } from '../../../api/Tournament/tournamentApi'
+import { TabList, TabPanel, TabContext } from '@mui/lab'
 
 export default function HostView(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
@@ -27,6 +28,7 @@ export default function HostView(): ReactElement {
 	const dispatch = useAppDispatch()
 	const [isLoading, setIsLoading] = useState(false)
 	const [isError, setIsError] = useState<unknown>()
+	const [tab, setTab] = useState('1')
 
 	useEffect(() => {
 		// Add Athletes to athletes list
@@ -60,25 +62,46 @@ export default function HostView(): ReactElement {
 		return <LoadingOrError error={isError as Error} />
 	}
 
+	const onTabChange = (event: SyntheticEvent, value: string): void => {
+		setTab(value)
+	}
+
 	return (
-		<>
-			<TournamentList tournaments={tournaments} title='Resume Tournament' />
-			<Grid
-				size={12}
-				display='flex'
-				justifyContent='center'
-				alignItems='center'
-			>
-				<Typography variant='h3'>Create a New Tournament</Typography>
-			</Grid>
-			<AthleteConfig
-				athletes={tournament.athletes}
-				selectedAthletes={selectedAthletes}
-				setSelectedAthletes={setSelectedAthletes}
-			/>
-			<BattleConfig selectedAthletes={selectedAthletes} />
-			<TournamentConfig selectedAthletes={selectedAthletes} />
-			<ThemeConfig />
-		</>
+		<TabContext value={tab}>
+			<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+				<AppBar position='static'>
+					<TabList
+						onChange={onTabChange}
+						aria-label='Tournament Host Tabs'
+						centered
+						textColor='inherit'
+					>
+						<Tab label='Create Tournament' value='1' />
+						<Tab label='Resume Tournament' value='2' />
+					</TabList>
+				</AppBar>
+			</Box>
+			<TabPanel value='1'>
+				<Grid
+					size={12}
+					display='flex'
+					justifyContent='center'
+					alignItems='center'
+				>
+					<Typography variant='h3'>Create Tournament</Typography>
+				</Grid>
+				<AthleteConfig
+					athletes={tournament.athletes}
+					selectedAthletes={selectedAthletes}
+					setSelectedAthletes={setSelectedAthletes}
+				/>
+				<BattleConfig selectedAthletes={selectedAthletes} />
+				<TournamentConfig selectedAthletes={selectedAthletes} />
+				<ThemeConfig />
+			</TabPanel>
+			<TabPanel value='2'>
+				<TournamentList tournaments={tournaments} title='Resume Tournament' />
+			</TabPanel>
+		</TabContext>
 	)
 }

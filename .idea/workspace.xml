@@ -7,24 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Remove mock data and related API handlers&#10;&#10;This commit deletes unused mock data files (athletes.json, fruits.json) and their associated handlers, server setup, and API file (getAthletes.ts). Additionally, it updates the pnpm-lock.yaml to reflect the removal of related dependencies. These changes aim to clean up the codebase by eliminating unused assets.">
-      <change afterPath="$PROJECT_DIR$/src/api/Athlete/athleteApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/Tournament/tournamentApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/User/userApi.ts" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="feat: Add athlete creation API and enhance athlete data retrieval  &#10;&#10;- Added `firebaseAddAthleteDocument` to create athlete documents in Firestore with support for storing image metadata in a separate collection.  &#10;- Updated `firebaseGetAthleteCollection` to support named exports for better modularity.  &#10;- Refactored imports in `HostView.tsx` to align with updated athlete API structure.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/EmailLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/EmailLogin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/EmailSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/EmailSignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/GoogleLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/GoogleLogin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tournament/host/TournamentHostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tournament/host/TournamentHostView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tournament/spectator/TournamentSpectatorView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tournament/spectator/TournamentSpectatorView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,23 +301,8 @@
       <workItem from="1734614168883" duration="3800000" />
       <workItem from="1734970023591" duration="561000" />
       <workItem from="1734990825240" duration="4293000" />
-      <workItem from="1735054630061" duration="3971000" />
-    </task>
-    <task id="LOCAL-00045" summary="Added function to get battles in rounds">
-      <option name="closed" value="true" />
-      <created>1726590455315</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1726590455315</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Refactor AthleteCard layout and update TournamentPage logic&#10;&#10;1. Adjusted AthleteCard dimensions to improve responsive design.&#10;2. Enhanced TournamentPage:&#10;   - Introduced condition rendering for Bracket and WinnerView components.&#10;   - Simplified button text for better UX.">
-      <option name="closed" value="true" />
-      <created>1726592133681</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1726592133681</updated>
+      <workItem from="1735054630061" duration="5301000" />
+      <workItem from="1735163918849" duration="5449000" />
     </task>
     <task id="LOCAL-00047" summary="Refactor AthleteCard layout and update TournamentPage logic">
       <option name="closed" value="true" />
@@ -706,7 +680,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734996287075</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="Refactor Firebase API integration and clean helper functions&#10;&#10;Moved Firebase API functions to dedicated modules for better organization and maintainability. Updated import paths across the project to reflect these changes. This improves code modularity and simplifies future scalability.">
+      <option name="closed" value="true" />
+      <created>1735061600878</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1735061600878</updated>
+    </task>
+    <task id="LOCAL-00095" summary="feat: Add athlete creation API and enhance athlete data retrieval  &#10;&#10;- Added `firebaseAddAthleteDocument` to create athlete documents in Firestore with support for storing image metadata in a separate collection.  &#10;- Updated `firebaseGetAthleteCollection` to support named exports for better modularity.  &#10;- Refactored imports in `HostView.tsx` to align with updated athlete API structure.">
+      <option name="closed" value="true" />
+      <created>1735167253148</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1735167253148</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -724,11 +714,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Moved TournamentList to Home Components rather then Home/Spectator as it is now used in both spectator and host views&#10;Removed some debug console statements" />
-    <MESSAGE value="feat: restructure tournament views and enhance battle data management&#10;&#10;- Split tournament page logic into `TournamentHostView` and `TournamentSpectatorView` components for clearer role-based separation.&#10;- Refactored Firebase battle document mapping into a reusable helper function `convertFirebaseBattleDocumentToIBattle`.&#10;- Added a real-time listener for tournament battles (`firebaseSetTournamentBattlesListener`) to keep spectators updated dynamically.&#10;- Renamed `setBattles` reducer to `setTournamentBattles` for better clarity.&#10;- Updated file imports to ensure consistent case-sensitive paths.&#10;- Simplified `TournamentPage` by delegating specific role views to separate components." />
-    <MESSAGE value="Refactor and enhance tournament management components and helpers&#10;&#10;- Add state management to prevent duplicate tournament updates in `TournamentHostView`.&#10;- Display the tournament bracket alongside the winner in both `TournamentHostView` and `TournamentSpectatorView`.&#10;- Simplify Firebase helper functions by removing unnecessary try-catch blocks for better error propagation:&#10;  - `firebaseSetBattleInTournament`&#10;  - `firebaseUpdateTournamentDocument`&#10;  - `firebaseAddTournamentDocument`&#10;  - `firebaseUpdateTournamentAthlete`&#10;- Remove redundant console.log statements to clean up debug outputs.&#10;- Refine `mapBattleListToReactBracketRoundList` to streamline battle mapping." />
-    <MESSAGE value="feat: add theme management with background customization  &#10;&#10;- Introduced `themeSlice` to manage application themes using Redux Toolkit.  &#10;- Added support for dynamic palette, typography, and background configuration.  &#10;- Defined `IBackgroundOptions` interface for managing theme backgrounds with URLs.  &#10;- Updated `Theme` and `ThemeOptions` in Material-UI to include `background` property.  &#10;- Integrated `themeReducer` into the Redux store.  &#10;&#10;This feature enables centralized and customizable theme handling, improving scalability and maintainability." />
-    <MESSAGE value="refactor: update theme management and integrate ThemeProvider  &#10;&#10;- Updated default font family in `themeSlice` from &quot;Nunito Sans&quot; to &quot;Lato&quot;.  &#10;- Renamed selectors in `themeSlice` for improved clarity:  &#10;  - `selectTheme` → `selectThemeOptions`  &#10;  - `selectThemePalette` → `selectThemePaletteOptions`  &#10;  - `selectThemeBackground` → `selectThemeBackgroundOptions`  &#10;  - `selectThemeTypography` → `selectThemeTypographyOptions`.  &#10;- Removed redundant `.catch` blocks from Firebase `getDocs` calls in `helpers.ts`.  &#10;- Integrated Material-UI's `ThemeProvider` into `App.tsx`, using Redux state for theme configuration.  &#10;&#10;This refactor improves code readability, reduces error-prone redundancies, and centralizes theme configuration for a cleaner, more scalable architecture." />
     <MESSAGE value="Refactor theme management: Removed themeSlice and integrated theme options into tournamentSlice. Updated store and App components accordingly." />
     <MESSAGE value="Refactor: Rename `types.ts` to `types.d.ts` and enhance theme-related type definitions  &#10;&#10;- Renamed `types.ts` to `types.d.ts` to follow TypeScript declaration file conventions.  &#10;- Added `ThemeOptions` from `@mui/material` for consistent theming across the application.  &#10;- Introduced `IBackgroundOptions` interface to define background customization.  &#10;- Augmented the `@mui/material/styles` module to include `background` in `Theme` and `ThemeOptions`.  &#10;- Updated `ITournament` interface to include a `themeOptions` property for tournament-specific theming.  &#10;- Removed redundant definitions of `IBackgroundOptions` and module augmentation for improved clarity.  &#10;&#10;These updates streamline type definitions and enhance theming capabilities in the application." />
     <MESSAGE value="### Commit Message  &#10;**feat: Firebase hosting setup and theming enhancements**  &#10;&#10;### Description  &#10;- **Firebase Hosting**:  &#10;  - Added `.firebaserc` and `firebase.json` for Firebase project configuration.  &#10;  - Configured GitHub Actions workflows for Firebase hosting:  &#10;    - Deployment on `master` merges.  &#10;    - Previews for pull requests.  &#10;&#10;- **State Management**:  &#10;  - Introduced theming options to `ITournament` in `tournamentSlice`.  &#10;  - Added reducers and selectors for dynamic theme customization (palette, typography, background).  &#10;&#10;- **Refactor**:  &#10;  - Renamed `src/app/types.ts` to `src/app/types.d.ts` and added theme-related types.  &#10;&#10;- **UI Fix**:  &#10;  - Updated `Details.tsx` to safely access optional `image` properties of athletes.  &#10;&#10;- **Cleanup**:  &#10;  - Removed unused `themeSlice` from the store.  &#10;&#10;- **Assets**:  &#10;  - Added Firebase hosting cache for static assets.  &#10;&#10;This commit sets up Firebase Hosting and enhances theming capabilities for dynamic tournament customization." />
@@ -751,7 +736,10 @@
     <MESSAGE value="Fixed more display bugs" />
     <MESSAGE value="Bug fixed on all views" />
     <MESSAGE value="Remove mock data and related API handlers&#10;&#10;This commit deletes unused mock data files (athletes.json, fruits.json) and their associated handlers, server setup, and API file (getAthletes.ts). Additionally, it updates the pnpm-lock.yaml to reflect the removal of related dependencies. These changes aim to clean up the codebase by eliminating unused assets." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove mock data and related API handlers&#10;&#10;This commit deletes unused mock data files (athletes.json, fruits.json) and their associated handlers, server setup, and API file (getAthletes.ts). Additionally, it updates the pnpm-lock.yaml to reflect the removal of related dependencies. These changes aim to clean up the codebase by eliminating unused assets." />
+    <MESSAGE value="Refactor Firestore API handling and improve imports.&#10;&#10;Moved Firestore API functions (user, athlete, and tournament) to dedicated files for better modularity. Updated import paths throughout the project to reflect these changes. This cleanup enhances code maintainability and separates concerns effectively." />
+    <MESSAGE value="Refactor Firebase API integration and clean helper functions&#10;&#10;Moved Firebase API functions to dedicated modules for better organization and maintainability. Updated import paths across the project to reflect these changes. This improves code modularity and simplifies future scalability." />
+    <MESSAGE value="feat: Add athlete creation API and enhance athlete data retrieval  &#10;&#10;- Added `firebaseAddAthleteDocument` to create athlete documents in Firestore with support for storing image metadata in a separate collection.  &#10;- Updated `firebaseGetAthleteCollection` to support named exports for better modularity.  &#10;- Refactored imports in `HostView.tsx` to align with updated athlete API structure." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add athlete creation API and enhance athlete data retrieval  &#10;&#10;- Added `firebaseAddAthleteDocument` to create athlete documents in Firestore with support for storing image metadata in a separate collection.  &#10;- Updated `firebaseGetAthleteCollection` to support named exports for better modularity.  &#10;- Refactored imports in `HostView.tsx` to align with updated athlete API structure." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -780,12 +768,11 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/home/AthleteList.tsx</url>
+          <url>file://$PROJECT_DIR$/src/components/Home/AthleteConfig.tsx</url>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
