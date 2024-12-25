@@ -1,15 +1,14 @@
 import type { IAthlete } from '../../app/types'
-import { collection, getDoc, getDocs } from 'firebase/firestore'
+import { addDoc, collection, getDoc, getDocs } from 'firebase/firestore'
 import { firestore } from '../../../firebaseConfig'
+import { sanitizeObjectForFirestore } from '../../app/utils'
 
 /**
  * Retrieves the collection of athletes from Firestore.
  *
  * @returns A promise that resolves to an array of `IAthlete` objects.
  */
-export default async function firebaseGetAthleteCollection(): Promise<
-	IAthlete[]
-> {
+export async function firebaseGetAthleteCollection(): Promise<IAthlete[]> {
 	const athletesCollectionReference = collection(firestore, 'athletes')
 	const athletesDocuments = await getDocs(athletesCollectionReference)
 	const imagesPromises = []
@@ -27,4 +26,30 @@ export default async function firebaseGetAthleteCollection(): Promise<
 				image: images[index].data()
 			}) as IAthlete
 	)
+}
+
+export async function firebaseAddAthleteDocument(
+	athlete: IAthlete
+): Promise<IAthlete> {
+	const athletesCollectionReference = collection(firestore, 'athletes')
+	const athletesImageCollectionReference = collection(firestore, 'athleteImage')
+
+	const athleteImageDocumentReference = await addDoc(
+		athletesImageCollectionReference,
+		sanitizeObjectForFirestore({
+			color: athlete.image?.color,
+			url: athlete.image?.url
+		})
+	)
+
+	const athleteDocumentReference = await addDoc(
+		athletesCollectionReference,
+		sanitizeObjectForFirestore({
+			name: athlete.name,
+			surname: athlete.surname,
+			image: athleteImageDocumentReference
+		})
+	)
+
+	return { ...athlete, id: athleteDocumentReference.id }
 }

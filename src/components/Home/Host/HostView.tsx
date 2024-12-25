@@ -16,7 +16,7 @@ import { selectUID } from 'features/auth/authSlice'
 import { where } from 'firebase/firestore'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import firebaseGetAthleteCollection from '../../../api/Athlete/athleteApi'
+import { firebaseGetAthleteCollection } from '../../../api/Athlete/athleteApi'
 import { firebaseGetTournamentsCollection } from '../../../api/Tournament/tournamentApi'
 
 export default function HostView(): ReactElement {
