@@ -1,4 +1,5 @@
 import type { QueryDocumentSnapshot } from 'firebase/firestore'
+import { DocumentReference } from 'firebase/firestore'
 import type { IAthlete, IBattle } from './types'
 
 /**
@@ -18,8 +19,12 @@ export const sanitizeObjectForFirestore = (
 	Object.entries(object).reduce<object>((accumulator, [key, value]) => {
 		if (typeof value === 'object' && value !== null) {
 			// Recursively sanitize nested objects
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			// @ts-expect-error is any
-			accumulator[key] = sanitizeObjectForFirestore(value as object)
+			accumulator[key] =
+				value instanceof DocumentReference
+					? value
+					: sanitizeObjectForFirestore(value as object)
 		} else if (value && Array.isArray(value)) {
 			// Sanitize array elements
 			// @ts-expect-error is any
