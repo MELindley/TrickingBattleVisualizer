@@ -19,6 +19,7 @@ import Grid from '@mui/material/Grid2'
 import { firebaseGetAthleteCollection } from '../../../api/Athlete/athleteApi'
 import { firebaseGetTournamentsCollection } from '../../../api/Tournament/tournamentApi'
 import { TabList, TabPanel, TabContext } from '@mui/lab'
+import HorizontalLinearStepper from '../../common/HorizontalStepper'
 
 export default function HostView(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
@@ -90,14 +91,32 @@ export default function HostView(): ReactElement {
 				>
 					<Typography variant='h3'>Create Tournament</Typography>
 				</Grid>
-				<AthleteConfig
-					athletes={tournament.athletes}
-					selectedAthletes={selectedAthletes}
-					setSelectedAthletes={setSelectedAthletes}
+				<HorizontalLinearStepper
+					steps={[
+						'Athlete Selection',
+						'Battle Configuration',
+						'Tournament Configuration',
+						'Display Configuration'
+					]}
+					stepElements={[
+						<AthleteConfig
+							athletes={tournament.athletes}
+							selectedAthletes={selectedAthletes}
+							setSelectedAthletes={setSelectedAthletes}
+							key='tournament-config-step-1'
+						/>,
+						<BattleConfig
+							selectedAthletes={selectedAthletes}
+							key='tournament-config-step-2'
+						/>,
+						<TournamentConfig
+							selectedAthletes={selectedAthletes}
+							key='tournament-config-step-3'
+						/>,
+						<ThemeConfig key='tournament-config-step-4' />
+					]}
+					optionalSteps={[3]}
 				/>
-				<BattleConfig selectedAthletes={selectedAthletes} />
-				<TournamentConfig selectedAthletes={selectedAthletes} />
-				<ThemeConfig />
 			</TabPanel>
 			<TabPanel value='2'>
 				<TournamentList tournaments={tournaments} title='Resume Tournament' />
