@@ -7,10 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="feat: Add tabbed navigation for Tournament Host View and update dependencies  &#10;&#10;- Introduced tabbed navigation using `@mui/lab` components to separate &quot;Create Tournament&quot; and &quot;Resume Tournament&quot; views.  &#10;- Enhanced UI with `TabList`, `TabPanel`, and `TabContext` for improved organization of host features.  &#10;- Added new dependencies:  &#10;  - `@mui/lab@6.0.0-beta.21` for tab components.  &#10;  - Updated `@mui/material` to version `^6.3`.  &#10;- Refactored imports to follow updated folder casing conventions.  &#10;- Improved type imports for better type safety and event handling.">
-      <change afterPath="$PROJECT_DIR$/src/components/common/HorizontalStepper.tsx" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Fixed display bug on Battle view added more visual context to battle page">
+      <change afterPath="$PROJECT_DIR$/src/components/common/Footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +41,12 @@
     &quot;assignee&quot;: &quot;MELindley&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/MELindley/TrickingBattleVisualizer.git&quot;,
-    &quot;accountId&quot;: &quot;e493574e-1a5c-4ef5-a7a2-efdcec497fc3&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MELindley/TrickingBattleVisualizer.git",
+    "accountId": "80c51a19-5f2f-4269-abb4-46032f13bbf5"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/node_modules/.pnpm/@firebase+firestore@4.7.1_@firebase+app@0.10.10/node_modules/@firebase/firestore/dist/index.d.ts" root0="SKIP_INSPECTION" />
   </component>
@@ -91,10 +95,10 @@
     &quot;npm.dev host.executor&quot;: &quot;Run&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\prettier&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\prettier&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\IdeaProjects\\trickbattlevisualiser\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -184,8 +188,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -301,6 +305,7 @@
       <workItem from="1735054630061" duration="5301000" />
       <workItem from="1735163918849" duration="7485000" />
       <workItem from="1735209923477" duration="3283000" />
+      <workItem from="1735646333050" duration="2496000" />
     </task>
     <task id="LOCAL-00048" summary="Udpated some values for inline athlete cards">
       <option name="closed" value="true" />
@@ -747,23 +752,9 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/Home.tsx</url>
-          <line>11</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/home/host/ThemeConfig.tsx</url>
           <line>136</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/Details.tsx</url>
-          <line>8</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Home/AthleteConfig.tsx</url>

@@ -44,7 +44,7 @@ export const initialThemeOptions: ThemeOptions = {
 		}
 	},
 	background: {
-		url: 'https://www.youtube.com/embed/YpeqmLeIpZU'
+		url: '/ArenaForgeLogo.png'
 	}
 }
 

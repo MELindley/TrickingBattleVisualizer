@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useAppSelector } from './app/hooks'
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { selectTournamentThemeOptions } from './features/tournament/tournamentSlice'
-import ElementWithBackground from './components/common/ElementWithBackground'
+import Layout from './components/common/Layout'
 
 const Home = lazy(async () => import('pages/Home'))
 const Details = lazy(async () => import('pages/Details'))
@@ -24,50 +24,16 @@ export default function App(): ReactElement {
 			<BrowserRouter>
 				<Suspense fallback={<LoadingOrError />}>
 					<Routes>
-						<Route
-							path='/'
-							element={
-								<ElementWithBackground>
-									<Home />
-								</ElementWithBackground>
-							}
-						/>
-						<Route
-							path=':athleteName/'
-							element={
-								<ElementWithBackground>
-									<Details />
-								</ElementWithBackground>
-							}
-						/>
-						<Route
-							path='/battle/'
-							element={
-								<ElementWithBackground
-									backgroundUrl={themeOptions.background?.url}
-								>
-									<Battle />
-								</ElementWithBackground>
-							}
-						/>
-						<Route
-							path='/tournament/:tournamentName/'
-							element={
-								<ElementWithBackground
-									backgroundUrl={themeOptions.background?.url}
-								>
-									<Tournament />
-								</ElementWithBackground>
-							}
-						/>
-						<Route
-							path='/login/'
-							element={
-								<ElementWithBackground>
-									<Login />
-								</ElementWithBackground>
-							}
-						/>
+						<Route path='/' element={<Layout />}>
+							<Route path='' element={<Home />} />
+							<Route path=':athleteName/' element={<Details />} />
+							<Route path='battle/' element={<Battle />} />
+							<Route
+								path='tournament/:tournamentName/'
+								element={<Tournament />}
+							/>
+							<Route path='login/' element={<Login />} />
+						</Route>
 					</Routes>
 				</Suspense>
 			</BrowserRouter>
