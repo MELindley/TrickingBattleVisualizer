@@ -1,8 +1,8 @@
-import TournamentAthleteConfig from 'components/Home/TournamentAthleteConfig'
-import TournamentList from 'components/Home/TournamentList'
-import BattleConfig from 'components/Home/Host/BattleConfig'
-import TournamentConfig from 'components/Home/Host/TournamentConfig'
-import ThemeConfig from 'components/Home/Host/ThemeConfig'
+import TournamentAthleteConfig from 'components/home/TournamentAthleteConfig'
+import TournamentList from 'components/home/TournamentList'
+import BattleConfig from 'components/home/host/BattleConfig'
+import TournamentConfig from 'components/home/host/TournamentConfig'
+import ThemeConfig from 'components/home/host/ThemeConfig'
 import type { ReactElement, SyntheticEvent } from 'react'
 import { useEffect, useState } from 'react'
 import type { IAthlete, ITournament } from 'app/types'
@@ -76,20 +76,17 @@ export default function HostView(): ReactElement {
 				</AppBar>
 			</Box>
 			<TabPanel value='1'>
-				<Grid
-					size={12}
-					display='flex'
-					justifyContent='center'
-					alignItems='center'
-				>
-					<Typography variant='h3'>Create Tournament</Typography>
+				<Grid size={12} container justifyContent='center' alignItems='center'>
+					<Typography textAlign='center' variant='h3'>
+						Create Tournament
+					</Typography>
 				</Grid>
 				<HorizontalLinearStepper
 					steps={[
 						'Athlete Selection',
 						'Battle Configuration',
-						'Tournament Configuration',
-						'Display Configuration'
+						'Display Configuration',
+						'Tournament Configuration'
 					]}
 					stepElements={[
 						<TournamentAthleteConfig
@@ -101,13 +98,13 @@ export default function HostView(): ReactElement {
 							selectedAthletes={selectedAthletes}
 							key='tournament-config-step-2'
 						/>,
+						<ThemeConfig key='tournament-config-step-4' />,
 						<TournamentConfig
 							selectedAthletes={selectedAthletes}
 							key='tournament-config-step-3'
-						/>,
-						<ThemeConfig key='tournament-config-step-4' />
+						/>
 					]}
-					optionalSteps={[3]}
+					optionalSteps={[2]}
 				/>
 			</TabPanel>
 			<TabPanel value='2'>

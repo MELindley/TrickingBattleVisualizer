@@ -4,8 +4,9 @@ import type { IAthlete } from '../../app/types'
 import { firebaseAddAthleteDocument } from '../../api/Athlete/athleteApi'
 import Colorful from '@uiw/react-color-colorful'
 import type { ColorResult } from '@uiw/color-convert'
-import { Box, InputLabel, TextField } from '@mui/material'
+import { Box, InputLabel, Stack, TextField } from '@mui/material'
 import { LoadingButton } from '@mui/lab'
+import Grid from '@mui/material/Grid2'
 
 interface Properties {
 	callBack: (athlete: IAthlete) => void
@@ -58,18 +59,44 @@ export default function AthleteCreationForm({
 
 	return (
 		<Box component='form' onSubmit={onFormSubmit}>
-			<TextField value={surname} onChange={onSurnameChange} label='Surname' />
-			<TextField value={name} onChange={onNameChange} label='Name' />
-			<TextField
-				value={imageUrl}
-				onChange={onImageUrlChange}
-				label='Image Url'
-			/>
-			<InputLabel htmlFor='image-color'>Image color</InputLabel>
-			<Colorful color={imageColor} onChange={onImageColorChange} />
-			<LoadingButton loading={isLoading} variant='contained' type='submit'>
-				{isError ? (isError as Error).message : 'Add Athlete'}
-			</LoadingButton>
+			<Stack spacing={3}>
+				<Stack
+					direction={{ xs: 'column', lg: 'row' }}
+					spacing={3}
+					justifyContent='space-between'
+				>
+					<TextField
+						value={surname}
+						onChange={onSurnameChange}
+						label='Surname'
+					/>
+					<TextField value={name} onChange={onNameChange} label='Name' />
+				</Stack>
+				<Stack
+					direction={{ xs: 'column', lg: 'row' }}
+					spacing={3}
+					justifyContent='left'
+				>
+					<TextField
+						value={imageUrl}
+						onChange={onImageUrlChange}
+						label='Image Url'
+					/>
+					<Stack margin={0}>
+						<InputLabel htmlFor='image-color'>Image color</InputLabel>
+						<Colorful
+							color={imageColor}
+							onChange={onImageColorChange}
+							className='m-auto'
+						/>
+					</Stack>
+				</Stack>
+				<Grid size={12} container justifyContent='center'>
+					<LoadingButton loading={isLoading} variant='contained' type='submit'>
+						{isError ? (isError as Error).message : 'Create Athlete'}
+					</LoadingButton>
+				</Grid>
+			</Stack>
 		</Box>
 	)
 }

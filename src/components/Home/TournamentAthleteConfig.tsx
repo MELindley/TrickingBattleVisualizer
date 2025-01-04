@@ -1,12 +1,18 @@
 import Grid from '@mui/material/Grid2'
-import { Autocomplete, Stack, TextField, Typography } from '@mui/material'
+import {
+	Autocomplete,
+	Button,
+	Stack,
+	TextField,
+	Typography
+} from '@mui/material'
 import type { IAthlete } from 'app/types'
 import type { ReactElement, SetStateAction, SyntheticEvent } from 'react'
 import { useEffect, useState } from 'react'
-import AthleteCard from 'components/athlete/AthleteCard'
 import { firebaseGetAthleteCollection } from '../../api/Athlete/athleteApi'
 import LoadingOrError from '../common/LoadingOrError'
 import AthleteCreationForm from '../athlete/AthleteCreationForm'
+import AthleteGrid from '../athlete/AthleteGrid'
 
 interface Properties {
 	selectedAthletes: IAthlete[]
@@ -20,6 +26,7 @@ export default function TournamentAthleteConfig({
 	const [athletes, setAthletes] = useState<IAthlete[]>([])
 	const [isLoading, setIsLoading] = useState(false)
 	const [isError, setIsError] = useState<unknown>()
+	const [autocompleteValue, setAutocompleteValue] = useState<IAthlete[]>([])
 
 	useEffect(() => {
 		// Add Athletes to athletes list
@@ -63,10 +70,13 @@ export default function TournamentAthleteConfig({
 
 	const onAthleteSelection = (
 		event: SyntheticEvent,
-		value: { label: string; athlete: IAthlete } | null
+		values: { label: string; athlete: IAthlete }[] | undefined
 	): void => {
-		if (value) {
-			setSelectedAthletes([...selectedAthletes, value.athlete])
+		if (values) {
+			setAutocompleteValue([
+				...autocompleteValue,
+				...values.map(value => value.athlete)
+			])
 		}
 	}
 
@@ -74,22 +84,26 @@ export default function TournamentAthleteConfig({
 		setSelectedAthletes([...selectedAthletes, athlete])
 	}
 
+	const onAddAthleteClick = (): void => {
+		setSelectedAthletes([
+			...new Set([...selectedAthletes, ...autocompleteValue])
+		])
+	}
+
 	return (
 		<Grid container spacing={4}>
 			<Grid
-				size={12}
-				display='flex'
+				size={{ xs: 12, lg: 6 }}
+				container
 				justifyContent='center'
-				alignItems='center'
+				alignItems='top'
 			>
-				<Typography variant='h3'>Athletes</Typography>
-			</Grid>
-			<Grid size={6} display='flex' justifyContent='center' alignItems='center'>
-				<Stack textAlign='center'>
+				<Stack textAlign='center' spacing={2}>
 					<Typography variant='h5'>Select pre-existing athletes</Typography>
 					<Autocomplete
+						multiple
 						disablePortal
-						sx={{ width: 300 }}
+						sx={{ width: { xs: 300, xl: 500 } }}
 						onChange={onAthleteSelection}
 						options={athletes.map(athlete => ({
 							athlete,
@@ -100,29 +114,36 @@ export default function TournamentAthleteConfig({
 							<TextField {...parameters} label='Athletes' />
 						)}
 					/>
+					<Button variant='contained' onClick={onAddAthleteClick}>
+						Add To Tournament
+					</Button>
 				</Stack>
 			</Grid>
-			<Grid size={6} display='flex' justifyContent='center' alignItems='center'>
-				<Stack textAlign='center'>
-					<Typography variant='h5'>Or add a new Athlete</Typography>
+			<Grid
+				size={{ xs: 12, lg: 6 }}
+				container
+				justifyContent='center'
+				alignItems='top'
+			>
+				<Stack textAlign='center' spacing={2}>
+					<Typography variant='h5'>Or create new Athlete</Typography>
 					<AthleteCreationForm callBack={handleAthleteAdd} />
 				</Stack>
 			</Grid>
-			{selectedAthletes.map(athlete => (
-				<Grid
-					size={{ xs: 6, md: 3 }}
-					key={`Selected-Athlete-Card-Grid-${athlete.id}`}
-					display='flex'
-					justifyContent='center'
-					alignItems='center'
-				>
-					<AthleteCard
-						athlete={athlete}
-						onCardClick={onAthleteCardClick}
-						hasDetailsButton
-					/>
-				</Grid>
-			))}
+			<Grid
+				size={12}
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
+				<Typography variant='h3' textAlign='center'>
+					Selected Athletes
+				</Typography>
+			</Grid>
+			<AthleteGrid
+				selectedAthletes={selectedAthletes}
+				onAthleteCardClick={onAthleteCardClick}
+			/>
 		</Grid>
 	)
 }
