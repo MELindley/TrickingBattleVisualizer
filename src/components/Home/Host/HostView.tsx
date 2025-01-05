@@ -1,6 +1,6 @@
 import TournamentAthleteConfig from 'components/home/TournamentAthleteConfig'
 import TournamentList from 'components/home/TournamentList'
-import BattleConfig from 'components/home/host/BattleConfig'
+import TournamentBattleConfig from 'components/home/host/TournamentBattleConfig'
 import TournamentConfig from 'components/home/host/TournamentConfig'
 import ThemeConfig from 'components/home/host/ThemeConfig'
 import type { ReactElement, SyntheticEvent } from 'react'
@@ -94,7 +94,7 @@ export default function HostView(): ReactElement {
 							setSelectedAthletes={setSelectedAthletes}
 							key='tournament-config-step-1'
 						/>,
-						<BattleConfig
+						<TournamentBattleConfig
 							selectedAthletes={selectedAthletes}
 							key='tournament-config-step-2'
 						/>,

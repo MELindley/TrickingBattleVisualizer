@@ -11,7 +11,7 @@ export interface IAthlete {
 		color: string
 		url: string
 	}
-	seeding?: number
+	seed?: number
 }
 
 export interface IBattle {

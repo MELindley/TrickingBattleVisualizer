@@ -17,8 +17,8 @@ export default function AthleteCreationForm({
 }: Properties): ReactElement {
 	const [name, setName] = useState('')
 	const [surname, setSurname] = useState('')
-	const [imageUrl, setImageUrl] = useState('')
-	const [imageColor, setImageColor] = useState('')
+	const [imageUrl, setImageUrl] = useState<string | undefined>()
+	const [imageColor, setImageColor] = useState<string | undefined>()
 	const [isLoading, setIsLoading] = useState(false)
 	const [isError, setIsError] = useState<unknown>()
 
@@ -28,11 +28,15 @@ export default function AthleteCreationForm({
 		try {
 			setIsLoading(true)
 			// add the IAthlete to firebase, retrieve the athlete to use in callback
+			const image =
+				imageUrl && imageColor
+					? { color: imageColor, url: imageUrl }
+					: undefined
 			const athlete = await firebaseAddAthleteDocument({
 				id: 'temp',
 				name,
 				surname,
-				image: { color: imageColor, url: imageUrl }
+				image
 			})
 			callBack(athlete)
 		} catch (error) {

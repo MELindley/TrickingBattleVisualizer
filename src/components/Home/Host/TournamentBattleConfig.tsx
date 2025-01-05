@@ -25,7 +25,7 @@ interface Properties {
 	selectedAthletes: IAthlete[]
 }
 
-export default function BattleConfig({
+export default function TournamentBattleConfig({
 	selectedAthletes
 }: Properties): ReactElement {
 	const navigate = useNavigate()
