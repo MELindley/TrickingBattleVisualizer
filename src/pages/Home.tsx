@@ -1,6 +1,6 @@
-import Head from 'components/common/Head'
+import Head from 'components/Common/Head'
 import type { ReactElement } from 'react'
-import NavBar, { type NavigationItem } from 'components/common/Navbar'
+import NavBar, { type NavigationItem } from 'components/Common/Navbar'
 import Grid from '@mui/material/Grid2'
 import { Stack, Typography } from '@mui/material'
 import { useAppSelector } from 'app/hooks'
@@ -30,7 +30,7 @@ export default function HomePage(): ReactElement {
 			>
 				<Typography variant='h1'>Arena Forge</Typography>
 			</Grid>
-			<Stack spacing={4} justifyContent='center' sx={{ p: 4 }}>
+			<Stack spacing={4} justifyContent='center' padding={4}>
 				{userRole === HOST_ROLE ? <HostView /> : <SpectatorView />}
 			</Stack>
 		</>

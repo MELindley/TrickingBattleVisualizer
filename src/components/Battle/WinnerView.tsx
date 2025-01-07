@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid2'
 import { Grow, Typography } from '@mui/material'
 import type { IAthlete } from 'app/types'
 import type { ReactElement } from 'react'
-import AthleteCard from 'components/athlete/AthleteCard'
+import AthleteCard from 'components/Athlete/AthleteCard'
 
 interface Properties {
 	winner: IAthlete

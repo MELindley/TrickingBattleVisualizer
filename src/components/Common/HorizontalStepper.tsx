@@ -11,12 +11,16 @@ interface Properties {
 	steps: string[]
 	stepElements: ReactElement[]
 	optionalSteps: number[]
+	onFinish?: () => void
+	renderFinalButtonComponent?: ReactElement
 }
 
 export default function HorizontalLinearStepper({
 	steps,
 	stepElements,
-	optionalSteps
+	optionalSteps,
+	onFinish,
+	renderFinalButtonComponent
 }: Properties): ReactElement {
 	const [activeStep, setActiveStep] = React.useState(0)
 	const [skipped, setSkipped] = React.useState(new Set<number>())
@@ -31,6 +35,9 @@ export default function HorizontalLinearStepper({
 			setSkipped(new Set([...skipped].filter(x => x !== activeStep)))
 		}
 		setActiveStep(previousActiveStep => previousActiveStep + 1)
+		if (activeStep === steps.length - 1 && onFinish) {
+			onFinish()
+		}
 	}
 
 	const onBack = (): void => {
@@ -103,9 +110,17 @@ export default function HorizontalLinearStepper({
 								Skip
 							</Button>
 						)}
-						<Button onClick={onNext}>
-							{activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-						</Button>
+						{activeStep === steps.length - 1 ? (
+							renderFinalButtonComponent ?? (
+								<Button variant='contained' onClick={onNext}>
+									Finish
+								</Button>
+							)
+						) : (
+							<Button variant='contained' onClick={onNext}>
+								Next
+							</Button>
+						)}
 					</Box>
 				</>
 			)}

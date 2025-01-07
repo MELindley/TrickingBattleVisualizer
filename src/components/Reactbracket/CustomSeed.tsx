@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid2'
 import type { ISeedProps } from '@sportsgram/brackets/dist/types/Seed'
 import type { IAthlete } from 'app/types'
 import { Typography } from '@mui/material'
-import InlineAthleteCard from '../athlete/InlineAthleteCard'
+import InlineAthleteCard from '../Athlete/InlineAthleteCard'
 
 interface ICustomSeedProperties extends ISeedProps {
 	teams: {

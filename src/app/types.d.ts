@@ -19,6 +19,7 @@ export interface IBattle {
 	athletes: (IAthlete | undefined)[]
 	winner?: IAthlete
 	losers?: IAthlete[]
+	type?: string
 	hasRound?: number
 	hasTimer?: number
 	order: number

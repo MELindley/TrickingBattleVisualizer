@@ -7,15 +7,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="refactor(router): simplify route structure using Layout component&#10;&#10;    Replaced ElementWithBackground wrapper with a new Layout component for improved code organization.&#10;    Simplified route definitions by nesting them under a single Layout wrapper.&#10;    Maintained existing paths and components while enhancing readability and scalability">
-      <change afterPath="$PROJECT_DIR$/src/components/athlete/AthleteGrid.tsx" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Refactor BattleConfig and AthleteCreationForm components&#10;&#10;- Deleted `BattleConfig.tsx` and replaced it with `TournamentBattleConfig.tsx` &#10;- Updated references from `BattleConfig` to `TournamentBattleConfig` in `HostView.tsx`&#10;- Modified `AthleteCreationForm.tsx` to handle optional `imageUrl` and `imageColor` &#10;- Changed `seeding` to `seed` in `IAthlete` interface">
+      <change afterPath="$PROJECT_DIR$/src/components/Home/Host/StartTournamentButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/TournamentAthleteConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/TournamentAthleteConfig.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCreationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/athlete/AthleteCreationForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/HorizontalStepper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/HorizontalStepper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/AthleteCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCreationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/AthleteCreationForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/AthleteGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/athlete/InlineAthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/InlineAthleteCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/EmailLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/EmailSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/GoogleLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/WinnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/ElementWithBackground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/GoogleFontPicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/GoogleFontPicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Head.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/HorizontalStepper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/HorizontalStepper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/LoadingOrError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/LoadingOrError.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/reactbracket/CustomSeed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reactbracket/CustomSeed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tournament/host/TournamentHostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tournament/host/TournamentHostView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tournament/spectator/TournamentSpectatorView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tournament/spectator/TournamentSpectatorView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,38 +99,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cypress.all tests in index.spec.ts.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/marco/IdeaProjects/TrickingBattleVisualizer/src/components/home/host",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.build.executor": "Run",
-    "npm.deploy.executor": "Run",
-    "npm.dev host.executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.test.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cypress.all tests in index.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marco/IdeaProjects/TrickingBattleVisualizer/src/components/home/host&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.deploy.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev host.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\marco\\IdeaProjects\\TrickingBattleVisualizer\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\home\host" />
@@ -309,31 +337,10 @@
       <workItem from="1735646333050" duration="3214000" />
       <workItem from="1735649616240" duration="3584000" />
       <workItem from="1735907672830" duration="607000" />
-      <workItem from="1735991165545" duration="9375000" />
-    </task>
-    <task id="LOCAL-00049" summary="Changed the generate from athletes to only update battles in tournament store">
-      <option name="closed" value="true" />
-      <created>1726834963123</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1726834963123</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Changed the generate from athletes to only update battles in tournament store">
-      <option name="closed" value="true" />
-      <created>1726835152010</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1726835152012</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Introduced constants for role string values">
-      <option name="closed" value="true" />
-      <created>1726835889365</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1726835889365</updated>
+      <workItem from="1735991165545" duration="12527000" />
+      <workItem from="1736101620506" duration="5577000" />
+      <workItem from="1736266373729" duration="4708000" />
+      <workItem from="1736271961419" duration="2870000" />
     </task>
     <task id="LOCAL-00052" summary="Introduced constants for role string values">
       <option name="closed" value="true" />
@@ -703,7 +710,31 @@
       <option name="project" value="LOCAL" />
       <updated>1735649120384</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Refactor Athlete and Tournament configuration components&#10;&#10;- Standardized import paths to lowercase for consistency.&#10;- Rearranged steps in the horizontal stepper for better flow in the 'Create Tournament' process.&#10;- Added AthleteGrid component for improved rendering of selected athletes in the TournamentAthleteConfig component.&#10;- Refactored AthleteCreationForm layout using Material UI's Stack component for better responsive design.&#10;- Introduced multi-selection functionality in the TournamentAthleteConfig component to select multiple athletes.&#10;- Updated Firebase dependency from v10.13.1 to v11.1.0 for compatibility and features improvements.">
+      <option name="closed" value="true" />
+      <created>1736001314506</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1736001314506</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Refactor Athlete and Tournament configuration components&#10;&#10;- Standardized import paths to lowercase for consistency.&#10;- Rearranged steps in the horizontal stepper for better flow in the 'Create Tournament' process.&#10;- Added AthleteGrid component for improved rendering of selected athletes in the TournamentAthleteConfig component.&#10;- Refactored AthleteCreationForm layout using Material UI's Stack component for better responsive design.&#10;- Introduced multi-selection functionality in the TournamentAthleteConfig component to select multiple athletes.&#10;- Updated Firebase dependency from v10.13.1 to v11.1.0 for compatibility and features improvements.">
+      <option name="closed" value="true" />
+      <created>1736001341078</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1736001341078</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Refactor BattleConfig and AthleteCreationForm components&#10;&#10;- Deleted `BattleConfig.tsx` and replaced it with `TournamentBattleConfig.tsx` &#10;- Updated references from `BattleConfig` to `TournamentBattleConfig` in `HostView.tsx`&#10;- Modified `AthleteCreationForm.tsx` to handle optional `imageUrl` and `imageColor` &#10;- Changed `seeding` to `seed` in `IAthlete` interface">
+      <option name="closed" value="true" />
+      <created>1736103422564</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1736103422565</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -721,8 +752,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="### Commit Message  &#10;**feat: Firebase hosting setup and theming enhancements**  &#10;&#10;### Description  &#10;- **Firebase Hosting**:  &#10;  - Added `.firebaserc` and `firebase.json` for Firebase project configuration.  &#10;  - Configured GitHub Actions workflows for Firebase hosting:  &#10;    - Deployment on `master` merges.  &#10;    - Previews for pull requests.  &#10;&#10;- **State Management**:  &#10;  - Introduced theming options to `ITournament` in `tournamentSlice`.  &#10;  - Added reducers and selectors for dynamic theme customization (palette, typography, background).  &#10;&#10;- **Refactor**:  &#10;  - Renamed `src/app/types.ts` to `src/app/types.d.ts` and added theme-related types.  &#10;&#10;- **UI Fix**:  &#10;  - Updated `Details.tsx` to safely access optional `image` properties of athletes.  &#10;&#10;- **Cleanup**:  &#10;  - Removed unused `themeSlice` from the store.  &#10;&#10;- **Assets**:  &#10;  - Added Firebase hosting cache for static assets.  &#10;&#10;This commit sets up Firebase Hosting and enhances theming capabilities for dynamic tournament customization." />
-    <MESSAGE value="Fixed Github Workflow" />
     <MESSAGE value="Testing githubworkflow" />
     <MESSAGE value="Testing githubworkflow, refactoring imports to work well with Vite" />
     <MESSAGE value="Testing githubworkflow, running commands with PNPM" />
@@ -746,7 +775,9 @@
     <MESSAGE value="feat: Add athlete creation API and enhance athlete data retrieval  &#10;&#10;- Added `firebaseAddAthleteDocument` to create athlete documents in Firestore with support for storing image metadata in a separate collection.  &#10;- Updated `firebaseGetAthleteCollection` to support named exports for better modularity.  &#10;- Refactored imports in `HostView.tsx` to align with updated athlete API structure." />
     <MESSAGE value="feat: Add tabbed navigation for Tournament Host View and update dependencies  &#10;&#10;- Introduced tabbed navigation using `@mui/lab` components to separate &quot;Create Tournament&quot; and &quot;Resume Tournament&quot; views.  &#10;- Enhanced UI with `TabList`, `TabPanel`, and `TabContext` for improved organization of host features.  &#10;- Added new dependencies:  &#10;  - `@mui/lab@6.0.0-beta.21` for tab components.  &#10;  - Updated `@mui/material` to version `^6.3`.  &#10;- Refactored imports to follow updated folder casing conventions.  &#10;- Improved type imports for better type safety and event handling." />
     <MESSAGE value="refactor(router): simplify route structure using Layout component&#10;&#10;    Replaced ElementWithBackground wrapper with a new Layout component for improved code organization.&#10;    Simplified route definitions by nesting them under a single Layout wrapper.&#10;    Maintained existing paths and components while enhancing readability and scalability" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(router): simplify route structure using Layout component&#10;&#10;    Replaced ElementWithBackground wrapper with a new Layout component for improved code organization.&#10;    Simplified route definitions by nesting them under a single Layout wrapper.&#10;    Maintained existing paths and components while enhancing readability and scalability" />
+    <MESSAGE value="Refactor Athlete and Tournament configuration components&#10;&#10;- Standardized import paths to lowercase for consistency.&#10;- Rearranged steps in the horizontal stepper for better flow in the 'Create Tournament' process.&#10;- Added AthleteGrid component for improved rendering of selected athletes in the TournamentAthleteConfig component.&#10;- Refactored AthleteCreationForm layout using Material UI's Stack component for better responsive design.&#10;- Introduced multi-selection functionality in the TournamentAthleteConfig component to select multiple athletes.&#10;- Updated Firebase dependency from v10.13.1 to v11.1.0 for compatibility and features improvements." />
+    <MESSAGE value="Refactor BattleConfig and AthleteCreationForm components&#10;&#10;- Deleted `BattleConfig.tsx` and replaced it with `TournamentBattleConfig.tsx` &#10;- Updated references from `BattleConfig` to `TournamentBattleConfig` in `HostView.tsx`&#10;- Modified `AthleteCreationForm.tsx` to handle optional `imageUrl` and `imageColor` &#10;- Changed `seeding` to `seed` in `IAthlete` interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor BattleConfig and AthleteCreationForm components&#10;&#10;- Deleted `BattleConfig.tsx` and replaced it with `TournamentBattleConfig.tsx` &#10;- Updated references from `BattleConfig` to `TournamentBattleConfig` in `HostView.tsx`&#10;- Modified `AthleteCreationForm.tsx` to handle optional `imageUrl` and `imageColor` &#10;- Changed `seeding` to `seed` in `IAthlete` interface" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -756,7 +787,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/home/host/ThemeConfig.tsx</url>
+          <url>file://$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx</url>
           <line>136</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
@@ -769,9 +800,18 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/home/host/HostView.tsx</url>
-          <properties lambdaOrdinal="-1" />
+          <url>file://$PROJECT_DIR$/src/components/Home/Host/HostView.tsx</url>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/Home.tsx</url>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/node_modules/.pnpm/@sportsgram+brackets@0.0.1_react@18.2.0_styled-components@5.3.11_@babel+core@7.22.5_react-dom_cgra3sjayl3mpialkgtixkda6e/node_modules/@sportsgram/brackets/dist/brackets/index.d.ts</url>
+          <line>2</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

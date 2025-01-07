@@ -13,6 +13,10 @@ const initialState: IBattle = {
 	order: -1
 }
 
+export const TIMER_BATTLE_TYPE = 'TIMER'
+export const ROUND_BATTLE_TYPE = 'ROUNDS'
+export const TIMED_ROUND_BATTLE_TYPE = 'TIMED_ROUND'
+
 export const battleSlice = createSlice({
 	name: 'battle',
 	// `createSlice` will infer the state type from the `initialState` argument
@@ -41,13 +45,16 @@ export const battleSlice = createSlice({
 		setActiveBattleId: (state, action: PayloadAction<string>) => {
 			state.id = action.payload
 		},
+		setActiveBattleType: (state, action: PayloadAction<string>) => {
+			state.type = action.payload
+		},
 		setActiveBattleHasRound: (state, action: PayloadAction<number>) => {
 			state.hasRound = action.payload
-			state.hasTimer = undefined
+			state.type = ROUND_BATTLE_TYPE
 		},
 		setActiveBattleHasTimer: (state, action: PayloadAction<number>) => {
 			state.hasTimer = action.payload
-			state.hasRound = undefined
+			state.type = TIMER_BATTLE_TYPE
 		},
 		clearActiveBattleType: state => {
 			state.hasTimer = undefined
@@ -70,11 +77,14 @@ export const {
 	setActiveBattle,
 	setActiveBattleHasRound,
 	setActiveBattleHasTimer,
-	clearActiveBattleType
+	clearActiveBattleType,
+	setActiveBattleType
 } = battleSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectActiveBattle = (state: RootState): IBattle => state.battle
+export const selectActiveBattleType = (state: RootState): string | undefined =>
+	state.battle.type
 export const selectActiveBattleAthletes = (
 	state: RootState
 ): (IAthlete | undefined)[] => state.battle.athletes
@@ -86,5 +96,9 @@ export const selectActiveBattleLoser = (
 ): IAthlete[] | undefined => state.battle.losers
 export const selectActiveBattleIsReady = (state: RootState): boolean =>
 	!state.battle.athletes.includes(undefined)
+export const selectActiveBattleTimer = (state: RootState): number | undefined =>
+	state.battle.hasTimer
+export const selectActiveBattleRound = (state: RootState): number | undefined =>
+	state.battle.hasRound
 
 export default battleSlice.reducer

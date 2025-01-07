@@ -1,24 +1,27 @@
-import TournamentAthleteConfig from 'components/home/TournamentAthleteConfig'
-import TournamentList from 'components/home/TournamentList'
-import TournamentBattleConfig from 'components/home/host/TournamentBattleConfig'
-import TournamentConfig from 'components/home/host/TournamentConfig'
-import ThemeConfig from 'components/home/host/ThemeConfig'
+import TournamentAthleteConfig from 'components/Home/TournamentAthleteConfig'
+import TournamentList from 'components/Home/TournamentList'
+import TournamentBattleConfig from 'components/Home/Host/TournamentBattleConfig'
+import TournamentConfig from 'components/Home/Host/TournamentConfig'
+import ThemeConfig from 'components/Home/Host/ThemeConfig'
 import type { ReactElement, SyntheticEvent } from 'react'
 import { useEffect, useState } from 'react'
 import type { IAthlete, ITournament } from 'app/types'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-import LoadingOrError from 'components/common/LoadingOrError'
+import LoadingOrError from 'components/Common/LoadingOrError'
 import { selectUID } from 'features/auth/authSlice'
 import { where } from 'firebase/firestore'
 import { AppBar, Box, Tab, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { firebaseGetTournamentsCollection } from '../../../api/Tournament/tournamentApi'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
-import HorizontalLinearStepper from '../../common/HorizontalStepper'
+import HorizontalLinearStepper from '../../Common/HorizontalStepper'
+import StartTournamentButton from './StartTournamentButton'
 
 export default function HostView(): ReactElement {
 	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
-	const [tournaments, setTournaments] = useState<ITournament[]>([])
+	const [existingTournamentsList, setExistingTournamentsList] = useState<
+		ITournament[]
+	>([])
 	const hostUID = useAppSelector(state => selectUID(state))
 	const dispatch = useAppDispatch()
 	const [isLoading, setIsLoading] = useState(false)
@@ -33,14 +36,14 @@ export default function HostView(): ReactElement {
 				const tournamentsData = await firebaseGetTournamentsCollection(
 					where('hostUID', '==', hostUID)
 				)
-				setTournaments(tournamentsData)
+				setExistingTournamentsList(tournamentsData)
 			} catch (error) {
 				setIsError(error)
 			} finally {
 				setIsLoading(false)
 			}
 		}
-		if (!isLoading && !isError && tournaments.length === 0) {
+		if (!isLoading && !isError && existingTournamentsList.length === 0) {
 			void fetchTournaments()
 		}
 		if (isError) {
@@ -49,7 +52,7 @@ export default function HostView(): ReactElement {
 				setIsError(false)
 			}, 60_000)
 		}
-	}, [dispatch, hostUID, isError, isLoading, tournaments.length])
+	}, [dispatch, hostUID, isError, isLoading, existingTournamentsList.length])
 
 	if (isLoading || isError) {
 		return <LoadingOrError error={isError as Error} />
@@ -99,16 +102,17 @@ export default function HostView(): ReactElement {
 							key='tournament-config-step-2'
 						/>,
 						<ThemeConfig key='tournament-config-step-4' />,
-						<TournamentConfig
-							selectedAthletes={selectedAthletes}
-							key='tournament-config-step-3'
-						/>
+						<TournamentConfig key='tournament-config-step-3' />
 					]}
 					optionalSteps={[2]}
+					renderFinalButtonComponent={<StartTournamentButton />}
 				/>
 			</TabPanel>
 			<TabPanel value='2'>
-				<TournamentList tournaments={tournaments} title='Resume Tournament' />
+				<TournamentList
+					tournaments={existingTournamentsList}
+					title='Resume Tournament'
+				/>
 			</TabPanel>
 		</TabContext>
 	)

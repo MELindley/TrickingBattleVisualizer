@@ -1,11 +1,11 @@
-import LoadingOrError from 'components/common/LoadingOrError'
+import LoadingOrError from 'components/Common/LoadingOrError'
 import type { ReactElement } from 'react'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useAppSelector } from './app/hooks'
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { selectTournamentThemeOptions } from './features/tournament/tournamentSlice'
-import Layout from './components/common/Layout'
+import Layout from './components/Common/Layout'
 
 const Home = lazy(async () => import('pages/Home'))
 const Details = lazy(async () => import('pages/Details'))

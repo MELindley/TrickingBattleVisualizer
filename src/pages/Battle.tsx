@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import Head from 'components/common/Head'
-import NavBar from 'components/common/Navbar'
+import Head from 'components/Common/Head'
+import NavBar from 'components/Common/Navbar'
 import { mainNavigation } from './Home'
 import { Button, Container, Typography } from '@mui/material'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
@@ -10,8 +10,8 @@ import {
 	resetActiveBattle,
 	selectActiveBattle
 } from 'features/battle/battleSlice'
-import BattleView from 'components/battle/BattleView'
-import WinnerView from 'components/battle/WinnerView'
+import BattleView from 'components/Battle/BattleView'
+import WinnerView from 'components/Battle/WinnerView'
 import Grid from '@mui/material/Grid2'
 import {
 	selectTournament,

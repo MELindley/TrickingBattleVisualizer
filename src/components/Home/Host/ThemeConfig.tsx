@@ -22,7 +22,7 @@ import {
 import Colorful from '@uiw/react-color-colorful'
 import type { ColorResult } from '@uiw/color-convert'
 import type { TypographyOptions } from '@mui/material/styles/createTypography'
-import GoogleFontPicker from '../../common/GoogleFontPicker'
+import GoogleFontPicker from '../../Common/GoogleFontPicker'
 
 export default function ThemeConfig(): ReactElement {
 	const dispatch = useAppDispatch()
