@@ -9,12 +9,12 @@ import {
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 import Grid from '@mui/material/Grid2'
-import { firebaseAddTournamentDocument } from '../../../api/Tournament/tournamentApi'
+import { firebaseAddTournamentDocument } from '../../../../api/Tournament/tournamentApi'
 import {
 	selectTournament,
 	setTournament
-} from '../../../features/tournament/tournamentSlice'
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+} from '../../../../features/tournament/tournamentSlice'
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks'
 import { useNavigate } from 'react-router-dom'
 
 export default function StartTournamentButton(): ReactElement {

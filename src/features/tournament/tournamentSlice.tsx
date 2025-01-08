@@ -92,6 +92,21 @@ export const tournamentSlice = createSlice({
 		addAthleteToTournament: (state, action: PayloadAction<IAthlete>) => {
 			state.athletes.push(action.payload)
 		},
+		removeAthleteFromTournament: (state, action: PayloadAction<IAthlete>) => {
+			const index = state.athletes.findIndex(
+				athlete => athlete.id === action.payload.id
+			)
+			state.athletes.splice(index, 1)
+		},
+		setTournamentAthleteSeed: (
+			state,
+			action: PayloadAction<{ athlete: IAthlete; seed: number }>
+		) => {
+			const index = state.athletes.findIndex(
+				athlete => athlete.id === action.payload.athlete.id
+			)
+			state.athletes[index].seed = action.payload.seed
+		},
 		updateBattleInTournamentByID: (state, action: PayloadAction<IBattle>) => {
 			// find the battle that has the same id as payload and update it with payload value
 			state.battles[
@@ -123,7 +138,9 @@ export const tournamentSlice = createSlice({
 		) => {
 			const nextBattle = state.battles.find(b => b.athletes.includes(undefined))
 			if (nextBattle) {
-				const battleIndex = state.battles.indexOf(nextBattle)
+				const battleIndex = state.battles.findIndex(
+					battle => battle.id === nextBattle.id
+				)
 				// eslint-disable-next-line unicorn/no-useless-undefined
 				const athleteIndex = nextBattle.athletes.indexOf(undefined)
 				nextBattle.athletes[athleteIndex] = action.payload
@@ -242,6 +259,7 @@ export const {
 	setTournamentName,
 	setTournamentAthletes,
 	addAthleteToTournament,
+	removeAthleteFromTournament,
 	resetTournament,
 	updateBattleInTournamentByID,
 	generateBattlesFromAthletes,
@@ -260,7 +278,8 @@ export const {
 	setTournamentPalettePrimaryColor,
 	setTournamentPaletteSecondaryColor,
 	setTournamentTypographyBodyFont,
-	setTournamentTypographyHeaderFont
+	setTournamentTypographyHeaderFont,
+	setTournamentAthleteSeed
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type

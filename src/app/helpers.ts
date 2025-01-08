@@ -267,25 +267,6 @@ function mapBattlesToSeeds(
 	})
 }
 
-function getUniqueAthleteArrayFromTournament(
-	tournament: ITournament
-): IAthlete[] {
-	return (
-		tournament.battles
-			.flatMap(battle =>
-				battle.athletes.filter((athlete): athlete is IAthlete => !!athlete)
-			)
-			// eslint-disable-next-line unicorn/no-array-reduce
-			.reduce((athletes, current) => {
-				const x = athletes.find(item => item.id === current.id)
-				if (x) {
-					return athletes
-				}
-				return [...athletes, current]
-			}, new Array<IAthlete>())
-	)
-}
-
 /**
  * Maps a list of battles to a list of React Bracket round properties.
  *
@@ -297,23 +278,19 @@ export function mapBattleListToReactBracketRoundList(
 ): IRoundProps[] {
 	const roundProperties: IRoundProps[] = []
 	const numberOfRounds = Math.ceil(Math.log2(tournament.battles.length))
-	const athleteArray = getUniqueAthleteArrayFromTournament(tournament)
+	const { athletes, battles, hasThirdPlaceBattle } = tournament
 
 	for (let roundIndex = 0; roundIndex < numberOfRounds; roundIndex += 1) {
 		const title = getRoundTitle(roundIndex, numberOfRounds)
-		let roundBattles = getRoundBattles(
-			tournament.battles,
-			athleteArray.length,
-			roundIndex
-		)
-		if (roundIndex === numberOfRounds - 1 && tournament.hasThirdPlaceBattle) {
+		let roundBattles = getRoundBattles(battles, athletes.length, roundIndex)
+		if (roundIndex === numberOfRounds - 1 && hasThirdPlaceBattle) {
 			// In the final round, include both the final and third place battles
-			roundBattles = [...roundBattles, tournament.battles.at(-1) as IBattle]
+			roundBattles = [...roundBattles, battles.at(-1) as IBattle]
 		}
 		const seeds: ISeedProps[] = mapBattlesToSeeds(
 			roundBattles,
-			tournament.battles,
-			tournament.hasThirdPlaceBattle
+			battles,
+			hasThirdPlaceBattle
 		)
 
 		roundProperties.push({ title, seeds })

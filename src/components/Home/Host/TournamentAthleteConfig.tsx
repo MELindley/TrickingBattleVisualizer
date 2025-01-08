@@ -7,29 +7,32 @@ import {
 	Typography
 } from '@mui/material'
 import type { IAthlete } from 'app/types'
-import type { ReactElement, SetStateAction, SyntheticEvent } from 'react'
-import { useMemo, useEffect, useState } from 'react'
-import { firebaseGetAthleteCollection } from '../../api/Athlete/athleteApi'
-import LoadingOrError from '../Common/LoadingOrError'
-import AthleteCreationForm from '../Athlete/AthleteCreationForm'
-import AthleteGrid from '../Athlete/AthleteGrid'
+import type { ReactElement, SyntheticEvent } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { firebaseGetAthleteCollection } from '../../../api/Athlete/athleteApi'
+import LoadingOrError from '../../Common/LoadingOrError'
+import AthleteCreationForm from '../../Athlete/AthleteCreationForm'
+import AthleteGrid from '../../Athlete/AthleteGrid'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import {
+	addAthleteToTournament,
+	removeAthleteFromTournament,
+	selectTournamentAthletes,
+	setTournamentAthletes
+} from '../../../features/tournament/tournamentSlice'
 
-interface Properties {
-	selectedAthletes: IAthlete[]
-	setSelectedAthletes: (value: SetStateAction<IAthlete[]>) => void
-}
-
-export default function TournamentAthleteConfig({
-	selectedAthletes,
-	setSelectedAthletes
-}: Properties): ReactElement {
+export default function TournamentAthleteConfig(): ReactElement {
+	const dispatch = useAppDispatch()
+	const tournamentAthletes = useAppSelector(state =>
+		selectTournamentAthletes(state)
+	)
 	const [existingAthletesList, setExistingAthletesList] = useState<IAthlete[]>(
 		[]
 	)
 	const [isLoading, setIsLoading] = useState(false)
 	const [isError, setIsError] = useState<unknown>()
 	const [autocompleteValue, setAutocompleteValue] =
-		useState<IAthlete[]>(selectedAthletes)
+		useState<IAthlete[]>(tournamentAthletes)
 
 	useEffect(() => {
 		// Add Athletes to athletes list
@@ -58,9 +61,9 @@ export default function TournamentAthleteConfig({
 	const options = useMemo(
 		() =>
 			existingAthletesList.filter(
-				v => !selectedAthletes.map(s => s.id).includes(v.id)
+				v => !tournamentAthletes.map(s => s.id).includes(v.id)
 			),
-		[existingAthletesList, selectedAthletes]
+		[existingAthletesList, tournamentAthletes]
 	)
 
 	if (isLoading || isError) {
@@ -68,12 +71,7 @@ export default function TournamentAthleteConfig({
 	}
 
 	const onAthleteCardClick = (athlete: IAthlete): void => {
-		// Check if the athlete is in the array of selected athletes
-		const index = selectedAthletes.indexOf(athlete)
-		if (index >= 0) {
-			// if so remove him
-			setSelectedAthletes(selectedAthletes.toSpliced(index, 1))
-		}
+		dispatch(removeAthleteFromTournament(athlete))
 	}
 
 	const onAthleteSelection = (
@@ -86,13 +84,15 @@ export default function TournamentAthleteConfig({
 	}
 
 	const handleAthleteAdd = (athlete: IAthlete): void => {
-		setSelectedAthletes([...new Set([...selectedAthletes, athlete])])
+		dispatch(addAthleteToTournament(athlete))
 	}
 
 	const onAddAthleteClick = (): void => {
-		setSelectedAthletes([
-			...new Set([...selectedAthletes, ...autocompleteValue])
-		])
+		dispatch(
+			setTournamentAthletes([
+				...new Set([...tournamentAthletes, ...autocompleteValue])
+			])
+		)
 	}
 
 	return (
@@ -162,7 +162,7 @@ export default function TournamentAthleteConfig({
 				</Stack>
 			</Grid>
 			<AthleteGrid
-				selectedAthletes={selectedAthletes}
+				selectedAthletes={tournamentAthletes}
 				onAthleteCardClick={onAthleteCardClick}
 			/>
 		</Grid>

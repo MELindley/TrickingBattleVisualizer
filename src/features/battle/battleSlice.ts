@@ -45,7 +45,7 @@ export const battleSlice = createSlice({
 		setActiveBattleId: (state, action: PayloadAction<string>) => {
 			state.id = action.payload
 		},
-		setActiveBattleType: (state, action: PayloadAction<string>) => {
+		setActiveBattleType: (state, action: PayloadAction<string | undefined>) => {
 			state.type = action.payload
 		},
 		setActiveBattleHasRound: (state, action: PayloadAction<number>) => {

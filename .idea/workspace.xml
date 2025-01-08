@@ -7,43 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Refactor BattleConfig and AthleteCreationForm components&#10;&#10;- Deleted `BattleConfig.tsx` and replaced it with `TournamentBattleConfig.tsx` &#10;- Updated references from `BattleConfig` to `TournamentBattleConfig` in `HostView.tsx`&#10;- Modified `AthleteCreationForm.tsx` to handle optional `imageUrl` and `imageColor` &#10;- Changed `seeding` to `seed` in `IAthlete` interface">
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Host/StartTournamentButton.tsx" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="feat: modularize tournament configuration and add battle type customization**  &#10;&#10;- Refactor Components&#10;  - Moved `StartTournamentButton` to `Elements/` directory for better structure.  &#10;  - Updated imports and paths to reflect the new component hierarchy.  &#10;&#10;- Battle Type Configuration &#10;  - Added `BattleTypeForm` component to support selecting and customizing battle types (Rounds, Timer, Open).  &#10;  - Enhanced `battleSlice` to handle optional battle type.  &#10;&#10;- Podium and Final Configuration  &#10;  - Introduced `PodiumAndFinalForm` for third-place and final battle customization.  &#10;  - Supports distinct configurations for final battles with specific rules.  &#10;&#10;- Code Simplifications &#10;  - Removed `getUniqueAthleteArrayFromTournament` utility to optimize data handling in rounds generation.  &#10;  - Refactored tournament data handling to use destructuring for better readability.  &#10;&#10;Refactor Tournament Configuration Components and Add Athlete Removal Feature  &#10;&#10;- Modularized TournamentBattleConfig by extracting BattleTypeForm and PodiumAndFinalForm.  &#10;- Simplified TournamentBattleConfig by removing redundant handlers and logic related to battle settings.  &#10;- Integrated `removeAthleteFromTournament` reducer in tournamentSlice to allow athlete removal.  &#10;- Updated TournamentAthleteConfig to use Redux state for athlete selection instead of local state.  &#10;- Renamed and reorganized TournamentAthleteConfig component under 'Host' folder for better structure.  &#10;- Enhanced usability with unified athlete selection logic and dispatch-based state updates.">
+      <change afterPath="$PROJECT_DIR$/src/components/Home/Host/Elements/BattleTypeForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Home/Host/Elements/PodiumAndFinalForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Home/Host/Elements/SeedingTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/HostView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/ThemeConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/StartTournamentButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/Elements/StartTournamentButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Spectator/SpectatorView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/TournamentAthleteConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/TournamentAthleteConfig.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/AthleteCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteCreationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/AthleteCreationForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/athlete/AthleteGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/AthleteGrid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/athlete/InlineAthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/InlineAthleteCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/EmailLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/EmailLogin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/EmailSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/EmailSignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/GoogleLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/GoogleLogin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/BattleView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/WinnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Battle/WinnerView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/ElementWithBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/ElementWithBackground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/GoogleFontPicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/GoogleFontPicker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Head.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/HorizontalStepper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/HorizontalStepper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/LoadingOrError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/LoadingOrError.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/reactbracket/CustomSeed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reactbracket/CustomSeed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tournament/host/TournamentHostView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tournament/host/TournamentHostView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tournament/spectator/TournamentSpectatorView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tournament/spectator/TournamentSpectatorView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/TournamentAthleteConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentAthleteConfig.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/battle/battleSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Battle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Battle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,11 +114,11 @@
       <recent name="D:\IdeaProjects\trickbattlevisualiser\src\api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Home\Host\Elements" />
+      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Home\Host" />
       <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\public" />
       <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\home" />
       <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Common" />
-      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Athlete" />
-      <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\app" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -340,15 +315,8 @@
       <workItem from="1735991165545" duration="12527000" />
       <workItem from="1736101620506" duration="5577000" />
       <workItem from="1736266373729" duration="4708000" />
-      <workItem from="1736271961419" duration="2870000" />
-    </task>
-    <task id="LOCAL-00052" summary="Introduced constants for role string values">
-      <option name="closed" value="true" />
-      <created>1726853028498</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1726853028499</updated>
+      <workItem from="1736271961419" duration="3704000" />
+      <workItem from="1736337800203" duration="14766000" />
     </task>
     <task id="LOCAL-00053" summary="Fetch athlete data from Firestore.&#10;&#10;Updated the HomePage to fetch athlete data from the Firestore athletes collection using a new helper function. Modified relevant type definitions and constants, and replaced the query-based approach with Firebase functions.">
       <option name="closed" value="true" />
@@ -734,7 +702,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736103422565</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Finished Athlete Step &#10;Started Batttle Step&#10;Refined HorizontalStepper.tsx to accept a final button componenent and/or have a call back function">
+      <option name="closed" value="true" />
+      <created>1736275360014</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1736275360014</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -752,10 +728,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Testing githubworkflow" />
-    <MESSAGE value="Testing githubworkflow, refactoring imports to work well with Vite" />
-    <MESSAGE value="Testing githubworkflow, running commands with PNPM" />
-    <MESSAGE value="youtube video background working" />
     <MESSAGE value="feat: integrate YouTube video as background and switch to npm for Firebase hosting workflow&#10;&#10;- Updated `tournamentSlice.tsx` to replace static background image URL with an embeddable YouTube video URL.&#10;- Modified `.github/workflows/firebase-hosting-merge.yml` to switch from `pnpm` to `npm` for dependency installation and build steps, simplifying CI workflow.&#10;- Enhanced `App.tsx` to render the YouTube video as a fullscreen background with autoplay, mute, and loop settings." />
     <MESSAGE value="Fixed bug where Tournaments with no theme would make the dispolay crash, now automatically loading the default theme instead" />
     <MESSAGE value="Fixed bug where Tournaments with no theme would make the display crash, now automatically loading the default theme instead" />
@@ -777,7 +749,11 @@
     <MESSAGE value="refactor(router): simplify route structure using Layout component&#10;&#10;    Replaced ElementWithBackground wrapper with a new Layout component for improved code organization.&#10;    Simplified route definitions by nesting them under a single Layout wrapper.&#10;    Maintained existing paths and components while enhancing readability and scalability" />
     <MESSAGE value="Refactor Athlete and Tournament configuration components&#10;&#10;- Standardized import paths to lowercase for consistency.&#10;- Rearranged steps in the horizontal stepper for better flow in the 'Create Tournament' process.&#10;- Added AthleteGrid component for improved rendering of selected athletes in the TournamentAthleteConfig component.&#10;- Refactored AthleteCreationForm layout using Material UI's Stack component for better responsive design.&#10;- Introduced multi-selection functionality in the TournamentAthleteConfig component to select multiple athletes.&#10;- Updated Firebase dependency from v10.13.1 to v11.1.0 for compatibility and features improvements." />
     <MESSAGE value="Refactor BattleConfig and AthleteCreationForm components&#10;&#10;- Deleted `BattleConfig.tsx` and replaced it with `TournamentBattleConfig.tsx` &#10;- Updated references from `BattleConfig` to `TournamentBattleConfig` in `HostView.tsx`&#10;- Modified `AthleteCreationForm.tsx` to handle optional `imageUrl` and `imageColor` &#10;- Changed `seeding` to `seed` in `IAthlete` interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor BattleConfig and AthleteCreationForm components&#10;&#10;- Deleted `BattleConfig.tsx` and replaced it with `TournamentBattleConfig.tsx` &#10;- Updated references from `BattleConfig` to `TournamentBattleConfig` in `HostView.tsx`&#10;- Modified `AthleteCreationForm.tsx` to handle optional `imageUrl` and `imageColor` &#10;- Changed `seeding` to `seed` in `IAthlete` interface" />
+    <MESSAGE value="Finished Athlete Step &#10;Started Batttle Step&#10;Refined HorizontalStepper.tsx to accept a final button componenent and/or have a call back function" />
+    <MESSAGE value="Refactor Tournament Configuration Components  &#10;&#10;- Moved `TournamentAthleteConfig` to `Host` directory for better modularity.  &#10;- Removed `selectedAthletes` state in `HostView` and `TournamentBattleConfig`.  &#10;- Replaced local state management of athletes with centralized Redux store for consistency.  &#10;- Added support for removing athletes from the tournament via Redux action `removeAthleteFromTournament`.  &#10;- Improved Battle Configuration UI with dynamic input handling for battle types and final configurations.  &#10;- Integrated `ReactBracket` for visualizing tournament trees.  &#10;- Fixed `setActiveBattleType` to handle undefined values in Redux slice.  &#10;- Enhanced the modular design of form controls and grid layouts for improved readability and maintainability." />
+    <MESSAGE value="Refactor Tournament Configuration Components  &#10;&#10;- Moved `TournamentAthleteConfig` to `Host` directory for better modularity.  &#10;- Removed `selectedAthletes` state in `HostView` and `TournamentBattleConfig`.  &#10;- Removed getUniqueAthleteArrayFromTournament as it is now hold by the athlete parameter of ITournament&#10;- Replaced local state management of athletes with centralized Redux store for consistency.  &#10;- Added support for removing athletes from the tournament via Redux action `removeAthleteFromTournament`.  &#10;- Improved Battle Configuration UI with dynamic input handling for battle types and final configurations.  &#10;- Integrated `ReactBracket` for visualizing tournament trees.  &#10;- Fixed `setActiveBattleType` to handle undefined values in Redux slice.  &#10;- Enhanced the modular design of form controls and grid layouts for improved readability and maintainability." />
+    <MESSAGE value="feat: modularize tournament configuration and add battle type customization**  &#10;&#10;- Refactor Components&#10;  - Moved `StartTournamentButton` to `Elements/` directory for better structure.  &#10;  - Updated imports and paths to reflect the new component hierarchy.  &#10;&#10;- Battle Type Configuration &#10;  - Added `BattleTypeForm` component to support selecting and customizing battle types (Rounds, Timer, Open).  &#10;  - Enhanced `battleSlice` to handle optional battle type.  &#10;&#10;- Podium and Final Configuration  &#10;  - Introduced `PodiumAndFinalForm` for third-place and final battle customization.  &#10;  - Supports distinct configurations for final battles with specific rules.  &#10;&#10;- Code Simplifications &#10;  - Removed `getUniqueAthleteArrayFromTournament` utility to optimize data handling in rounds generation.  &#10;  - Refactored tournament data handling to use destructuring for better readability.  &#10;&#10;Refactor Tournament Configuration Components and Add Athlete Removal Feature  &#10;&#10;- Modularized TournamentBattleConfig by extracting BattleTypeForm and PodiumAndFinalForm.  &#10;- Simplified TournamentBattleConfig by removing redundant handlers and logic related to battle settings.  &#10;- Integrated `removeAthleteFromTournament` reducer in tournamentSlice to allow athlete removal.  &#10;- Updated TournamentAthleteConfig to use Redux state for athlete selection instead of local state.  &#10;- Renamed and reorganized TournamentAthleteConfig component under 'Host' folder for better structure.  &#10;- Enhanced usability with unified athlete selection logic and dispatch-based state updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: modularize tournament configuration and add battle type customization**  &#10;&#10;- Refactor Components&#10;  - Moved `StartTournamentButton` to `Elements/` directory for better structure.  &#10;  - Updated imports and paths to reflect the new component hierarchy.  &#10;&#10;- Battle Type Configuration &#10;  - Added `BattleTypeForm` component to support selecting and customizing battle types (Rounds, Timer, Open).  &#10;  - Enhanced `battleSlice` to handle optional battle type.  &#10;&#10;- Podium and Final Configuration  &#10;  - Introduced `PodiumAndFinalForm` for third-place and final battle customization.  &#10;  - Supports distinct configurations for final battles with specific rules.  &#10;&#10;- Code Simplifications &#10;  - Removed `getUniqueAthleteArrayFromTournament` utility to optimize data handling in rounds generation.  &#10;  - Refactored tournament data handling to use destructuring for better readability.  &#10;&#10;Refactor Tournament Configuration Components and Add Athlete Removal Feature  &#10;&#10;- Modularized TournamentBattleConfig by extracting BattleTypeForm and PodiumAndFinalForm.  &#10;- Simplified TournamentBattleConfig by removing redundant handlers and logic related to battle settings.  &#10;- Integrated `removeAthleteFromTournament` reducer in tournamentSlice to allow athlete removal.  &#10;- Updated TournamentAthleteConfig to use Redux state for athlete selection instead of local state.  &#10;- Renamed and reorganized TournamentAthleteConfig component under 'Host' folder for better structure.  &#10;- Enhanced usability with unified athlete selection logic and dispatch-based state updates." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -810,8 +786,19 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/.pnpm/@sportsgram+brackets@0.0.1_react@18.2.0_styled-components@5.3.11_@babel+core@7.22.5_react-dom_cgra3sjayl3mpialkgtixkda6e/node_modules/@sportsgram/brackets/dist/brackets/index.d.ts</url>
           <line>2</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx</url>
+          <line>80</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx</url>
+          <line>62</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

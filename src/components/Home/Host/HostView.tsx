@@ -1,11 +1,11 @@
-import TournamentAthleteConfig from 'components/Home/TournamentAthleteConfig'
+import TournamentAthleteConfig from 'components/Home/Host/TournamentAthleteConfig'
 import TournamentList from 'components/Home/TournamentList'
 import TournamentBattleConfig from 'components/Home/Host/TournamentBattleConfig'
 import TournamentConfig from 'components/Home/Host/TournamentConfig'
 import ThemeConfig from 'components/Home/Host/ThemeConfig'
 import type { ReactElement, SyntheticEvent } from 'react'
 import { useEffect, useState } from 'react'
-import type { IAthlete, ITournament } from 'app/types'
+import type { ITournament } from 'app/types'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import LoadingOrError from 'components/Common/LoadingOrError'
 import { selectUID } from 'features/auth/authSlice'
@@ -15,10 +15,9 @@ import Grid from '@mui/material/Grid2'
 import { firebaseGetTournamentsCollection } from '../../../api/Tournament/tournamentApi'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import HorizontalLinearStepper from '../../Common/HorizontalStepper'
-import StartTournamentButton from './StartTournamentButton'
+import StartTournamentButton from './Elements/StartTournamentButton'
 
 export default function HostView(): ReactElement {
-	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
 	const [existingTournamentsList, setExistingTournamentsList] = useState<
 		ITournament[]
 	>([])
@@ -92,15 +91,8 @@ export default function HostView(): ReactElement {
 						'Tournament Configuration'
 					]}
 					stepElements={[
-						<TournamentAthleteConfig
-							selectedAthletes={selectedAthletes}
-							setSelectedAthletes={setSelectedAthletes}
-							key='tournament-config-step-1'
-						/>,
-						<TournamentBattleConfig
-							selectedAthletes={selectedAthletes}
-							key='tournament-config-step-2'
-						/>,
+						<TournamentAthleteConfig key='tournament-config-step-1' />,
+						<TournamentBattleConfig key='tournament-config-step-2' />,
 						<ThemeConfig key='tournament-config-step-4' />,
 						<TournamentConfig key='tournament-config-step-3' />
 					]}
