@@ -18,12 +18,7 @@ export default function TournamentPage(): ReactElement {
 		<>
 			<Head title={tournamentName ?? 'Arena Forge'} />
 			<NavBar navigation={mainNavigation} />
-			<Grid
-				size={12}
-				display='flex'
-				justifyContent='center'
-				alignItems='center'
-			>
+			<Grid size={12} container justifyContent='center' alignItems='center'>
 				<Typography variant='h1'>{tournamentName}</Typography>
 			</Grid>
 			<Stack alignItems='center' spacing={4}>

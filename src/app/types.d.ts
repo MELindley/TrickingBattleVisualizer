@@ -46,6 +46,7 @@ export interface ITournament {
 	isFinalDifferent?: boolean
 	hostUID: string
 	themeOptions?: ThemeOptions
+	seedingMethod?: string
 }
 
 export interface IFirebaseUserData {

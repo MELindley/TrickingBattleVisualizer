@@ -8,7 +8,10 @@ import type {
 	IBattle,
 	ITournament
 } from 'app/types'
-import { generateTournamentBattlesFromAthletes } from 'app/helpers'
+import {
+	generateTournamentBattlesFromAthletes,
+	TOP_TO_BOTTOM_SEEDING
+} from 'app/helpers'
 import type { Palette, PaletteOptions, ThemeOptions } from '@mui/material'
 import type { TypographyOptions } from '@mui/material/styles/createTypography'
 
@@ -58,7 +61,8 @@ export const initialState: ITournament = {
 	hasThirdPlaceBattle: false,
 	isFinalDifferent: false,
 	hostUID: '',
-	themeOptions: initialThemeOptions
+	themeOptions: initialThemeOptions,
+	seedingMethod: TOP_TO_BOTTOM_SEEDING
 }
 
 export const tournamentSlice = createSlice({
@@ -247,6 +251,9 @@ export const tournamentSlice = createSlice({
 		},
 		setBackground: (state, action: PayloadAction<IBackgroundOptions>) => {
 			state.themeOptions = { ...state.themeOptions, background: action.payload }
+		},
+		setTournamentSeedingMethod: (state, action: PayloadAction<string>) => {
+			state.seedingMethod = action.payload
 		}
 	}
 })
@@ -279,7 +286,8 @@ export const {
 	setTournamentPaletteSecondaryColor,
 	setTournamentTypographyBodyFont,
 	setTournamentTypographyHeaderFont,
-	setTournamentAthleteSeed
+	setTournamentAthleteSeed,
+	setTournamentSeedingMethod
 } = tournamentSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
@@ -310,5 +318,8 @@ export const selectThemeTypographyOptions = (
 	state: RootState
 ): TypographyOptions | ((palette: Palette) => TypographyOptions) | undefined =>
 	state.tournament.themeOptions?.typography
+export const selectTournamentSeedingMethod = (
+	state: RootState
+): string | undefined => state.tournament.seedingMethod
 
 export default tournamentSlice.reducer

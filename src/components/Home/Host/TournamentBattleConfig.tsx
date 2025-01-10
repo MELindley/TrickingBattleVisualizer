@@ -6,20 +6,25 @@ import {
 	setActiveBattleId
 } from 'features/battle/battleSlice'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-import type { IAthlete } from 'app/types'
+import type { IAthlete, IBattle } from 'app/types'
 import type { ReactElement } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
 	addBattle,
 	generateBattlesFromAthletes,
-	selectTournament
+	selectTournament,
+	setTournamentBattles
 } from '../../../features/tournament/tournamentSlice'
 import { Bracket } from '@sportsgram/brackets'
-import { mapBattleListToReactBracketRoundList } from '../../../app/helpers'
+import {
+	createBattle,
+	mapBattleListToReactBracketRoundList
+} from '../../../app/helpers'
 import CustomSeed from '../../Reactbracket/CustomSeed'
 import BattleTypeForm from './Elements/BattleTypeForm'
 import PodiumAndFinalForm from './Elements/PodiumAndFinalForm'
 import SeedingTable from './Elements/SeedingTable'
+import SeedingMethodForm from './Elements/SeedingMethodForm'
 
 export default function TournamentBattleConfig(): ReactElement {
 	const dispatch = useAppDispatch()
@@ -27,7 +32,6 @@ export default function TournamentBattleConfig(): ReactElement {
 	const activeBattle = useAppSelector(state => selectActiveBattle(state))
 	const [lastBattleSpec, setLastBattleSpec] = useState<number | undefined>()
 	const tournament = useAppSelector(state => selectTournament(state))
-	// remove this later
 	setSelectedAthletes([])
 	/* USE this code in Call-out-battles
 const onStartBattleClick = (): void => {
@@ -36,6 +40,24 @@ const onStartBattleClick = (): void => {
 		// eslint-disable-next-line unicorn/no-array-reduce
 		navigate(`/battle/`)
 	} */
+
+	useEffect(() => {
+		// Tournament Rounds are the number of stages in the tournament ( eg: 4 (8th, 4th,Semi final, Final rounds), for 16 athletes)
+		const numberOfTournamentRounds = Math.ceil(
+			Math.log2(tournament.athletes.length)
+		)
+		// Total number of battles in the tournament
+		const numberOfBattles = 2 ** numberOfTournamentRounds
+
+		const battles = Array.from<IBattle>({ length: numberOfBattles })
+		dispatch(
+			setTournamentBattles(
+				battles.map((battle, index) =>
+					createBattle(index.toString(), [undefined, undefined], index)
+				)
+			)
+		)
+	}, [dispatch, tournament.athletes])
 
 	const onAddToTournamentClick = (): void => {
 		dispatch(setActiveBattleAthletes(selectedAthletes))
@@ -88,9 +110,18 @@ const onStartBattleClick = (): void => {
 						<Stack spacing={2}>
 							<Typography variant='h6'>Seeding & Generation</Typography>
 							<SeedingTable />
+							<Grid
+								size={12}
+								container
+								justifyContent='center'
+								alignItems='center'
+								textAlign='center'
+							>
+								<SeedingMethodForm />
+							</Grid>
 							<Grid container justifyContent='center' alignItems='center'>
 								<Button variant='contained' onClick={onGenerateTournamentClick}>
-									Generate Battles From Athletes
+									Generate Battle Tree from Seeds
 								</Button>
 							</Grid>
 						</Stack>
@@ -107,11 +138,14 @@ const onStartBattleClick = (): void => {
 					</Button>
 				</Grid>
 			</Grid>
-			<Bracket
-				rounds={mapBattleListToReactBracketRoundList(tournament)}
-				renderSeedComponent={CustomSeed}
-				twoSided
-			/>
+			<Grid container size={12} padding={4}>
+				<Bracket
+					rounds={mapBattleListToReactBracketRoundList(tournament)}
+					renderSeedComponent={CustomSeed}
+					twoSided
+					bracketClassName='m-auto w-min'
+				/>
+			</Grid>
 		</Grid>
 	)
 }

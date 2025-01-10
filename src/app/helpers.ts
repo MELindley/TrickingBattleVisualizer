@@ -3,6 +3,8 @@ import type { IRoundProps, ISeedProps } from '@sportsgram/brackets'
 
 export const HOST_ROLE = 'host'
 export const SPECTATOR_ROLE = 'spectator'
+export const TOP_TO_MIDDLE_SEEDING = 'TOP_TO_MIDDLE_SEEDING'
+export const TOP_TO_BOTTOM_SEEDING = 'TOP_TO_BOTTOM_SEEDING'
 /**
  * Creates a battle instance with specified id and athletes.
  * Optionally, the battle can have rounds and/or a timer.
@@ -14,7 +16,7 @@ export const SPECTATOR_ROLE = 'spectator'
  * @param {number} [hasTimer] - Optional duration of the timer for the battle.
  * @returns {IBattle} - The created battle object.
  */
-const createBattle = (
+export const createBattle = (
 	id: string,
 	athletes: [IAthlete | undefined, IAthlete | undefined],
 	order: number,
@@ -93,6 +95,37 @@ const handleBattle = (
 	}
 }
 
+export function createRandomizedArray(n: number): number[] {
+	// Create an array from 1 to n
+	const array = Array.from({ length: n }, (_, index) => index + 1)
+
+	// Fisher-Yates shuffle
+	for (let index = array.length - 1; index > 0; index -= 1) {
+		const secondIndex = Math.floor(Math.random() * (index + 1)) // Get a random index
+		;[array[index], array[secondIndex]] = [array[secondIndex], array[index]] // Swap elements
+	}
+
+	return array
+}
+
+function sortArrayByIndices<Type>(array: Type[]): Type[] {
+	// Create two arrays: one for even indices and one for odd indices
+	const evenIndexArray = []
+	const oddIndexArray = []
+
+	// Loop through the input array and separate elements by their indices
+	for (const [index, element] of array.entries()) {
+		if (index % 2 === 0) {
+			evenIndexArray.push(element)
+		} else {
+			oddIndexArray.push(element)
+		}
+	}
+
+	// Concatenate the two arrays: even index elements first, then odd index elements
+	return [...evenIndexArray, ...oddIndexArray]
+}
+
 /**
  * Generates a tournament structure from a list of athletes.
  *
@@ -101,6 +134,7 @@ const handleBattle = (
  * @param {number} [hasTimer] - Optional parameter indicating the timer value.
  * @param finalIsDifferent - Optional parameter indicating that the format of the final is different
  * @param hasThirdPlaceBattle - Optional parameter indicating that the tournament has a battle for third place
+ * @param seeedingMethod - Optional parameter indicating the seeding method to use
  * @returns {ITournament} Returns the constructed tournament.
  */
 export const generateTournamentBattlesFromAthletes = (
@@ -108,28 +142,40 @@ export const generateTournamentBattlesFromAthletes = (
 	hasRound?: number,
 	hasTimer?: number,
 	finalIsDifferent?: number,
-	hasThirdPlaceBattle?: boolean
+	hasThirdPlaceBattle?: boolean,
+	seeedingMethod?: string
 	// eslint-disable-next-line @typescript-eslint/max-params
 ): IBattle[] => {
 	if (athletes.length === 0) {
 		return []
 	}
+	// Tournament Rounds are the number of stages in the tournament ( eg: 4 (8th, 4th,Semi final, Final rounds), for 16 athletes)
+	const numberOfTournamentRounds = Math.ceil(Math.log2(athletes.length))
+	// Total number of battles in the tournament
+	const numberOfBattles = 2 ** numberOfTournamentRounds
+	// In sports, bye refers to a team automatically advancing to the next round of tournament play without competing
+	const numberOfByes = numberOfBattles - athletes.length
 
-	const nextHigherPowerOfTwo = 2 ** Math.ceil(Math.log2(athletes.length))
-	const numberOfByes = nextHigherPowerOfTwo - athletes.length
+	// Sort participants by seed and add nulls to simulate bye
 	let participants: (IAthlete | null)[] = [
-		...athletes,
+		...athletes.sort((a, b) => {
+			if (a.seed && b.seed) return a.seed - b.seed
+			return 0
+		}),
 		...Array.from<null>({ length: numberOfByes })
 	]
 
-	const battles: IBattle[] = []
+	const battles = Array.from<IBattle>({ length: numberOfBattles })
 
 	while (participants.length > 1) {
 		const nextRoundParticipants: (IAthlete | null)[] = []
 		const halfLength = participants.length / 2
 		const firstHalf = participants.slice(0, halfLength)
-		const secondHalf = participants.slice(halfLength).reverse()
+		const secondHalf = participants.slice(halfLength)
 
+		if (seeedingMethod === TOP_TO_BOTTOM_SEEDING) secondHalf.reverse()
+
+		// Generate all battles
 		for (const [index, athlete] of firstHalf.entries()) {
 			const opponentPair = [athlete, secondHalf[index]] as [
 				IAthlete | null,
@@ -143,9 +189,9 @@ export const generateTournamentBattlesFromAthletes = (
 				hasTimer
 			)
 		}
-
 		participants = nextRoundParticipants
 	}
+
 	if (hasThirdPlaceBattle) {
 		// Insert extra battle at the end
 		const battle: IBattle = createBattle(
@@ -168,8 +214,8 @@ export const generateTournamentBattlesFromAthletes = (
 			battles.push(battle)
 		}
 	}
-
-	return battles
+	// We now need to put the battles in order for 1 & 2 to be at opposites sides of the bracket
+	return sortArrayByIndices(battles)
 }
 
 /**
@@ -276,14 +322,21 @@ function mapBattlesToSeeds(
 export function mapBattleListToReactBracketRoundList(
 	tournament: ITournament
 ): IRoundProps[] {
+	console.log(tournament)
 	const roundProperties: IRoundProps[] = []
-	const numberOfRounds = Math.ceil(Math.log2(tournament.battles.length))
+	const numberOfTournamentRounds = Math.ceil(
+		Math.log2(tournament.athletes.length)
+	)
 	const { athletes, battles, hasThirdPlaceBattle } = tournament
 
-	for (let roundIndex = 0; roundIndex < numberOfRounds; roundIndex += 1) {
-		const title = getRoundTitle(roundIndex, numberOfRounds)
+	for (
+		let roundIndex = 0;
+		roundIndex < numberOfTournamentRounds;
+		roundIndex += 1
+	) {
+		const title = getRoundTitle(roundIndex, numberOfTournamentRounds)
 		let roundBattles = getRoundBattles(battles, athletes.length, roundIndex)
-		if (roundIndex === numberOfRounds - 1 && hasThirdPlaceBattle) {
+		if (roundIndex === numberOfTournamentRounds - 1 && hasThirdPlaceBattle) {
 			// In the final round, include both the final and third place battles
 			roundBattles = [...roundBattles, battles.at(-1) as IBattle]
 		}
