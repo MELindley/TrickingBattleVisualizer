@@ -114,7 +114,12 @@ const onStartBattleClick = (): void => {
 						Tournament tree creation
 					</Typography>
 				</Grid>
-				<Grid size={6} container justifyContent='center' alignItems='center'>
+				<Grid
+					size={6}
+					container
+					justifyContent='center'
+					alignItems='flex-start'
+				>
 					<Grid size={12} textAlign='center'>
 						<Stack spacing={2}>
 							<Typography variant='h6'>Seeding & Generation</Typography>
@@ -136,13 +141,18 @@ const onStartBattleClick = (): void => {
 						</Stack>
 					</Grid>
 				</Grid>
-				<Grid size={6} container justifyContent='center' alignItems='center'>
+				<Grid
+					size={6}
+					container
+					justifyContent='center'
+					alignItems='flex-start'
+				>
 					<Grid size={12} textAlign='center'>
-						<Typography variant='h6' p={2}>
-							Manual creation
-						</Typography>
+						<Stack spacing={2}>
+							<Typography variant='h6'>Manual creation</Typography>
+							<ManualTournamentCreation />
+						</Stack>
 					</Grid>
-					<ManualTournamentCreation />
 				</Grid>
 			</Grid>
 			<Grid container size={12} padding={4}>

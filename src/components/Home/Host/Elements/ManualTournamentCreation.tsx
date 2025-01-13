@@ -10,6 +10,7 @@ import {
 import { initialBattleState } from '../../../../features/battle/battleSlice'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
+import Grid from '@mui/material/Grid2'
 
 export default function ManualTournamentCreation(): ReactElement {
 	const tournament = useAppSelector(state => selectTournament(state))
@@ -39,7 +40,7 @@ export default function ManualTournamentCreation(): ReactElement {
 	}
 
 	return (
-		<>
+		<Grid size={12} container spacing={1.5}>
 			<AthleteGrid
 				athletes={tournament.athletes.filter(
 					value => !assignedAthletes.includes(value)
@@ -47,9 +48,11 @@ export default function ManualTournamentCreation(): ReactElement {
 				onAthleteCardClick={onAthleteCardClick}
 				selectedAthletes={selectedAthletes}
 			/>
-			<Button variant='contained' onClick={onAddToTournamentClick}>
-				Add selection to tournament
-			</Button>
-		</>
+			<Grid size={12}>
+				<Button variant='contained' onClick={onAddToTournamentClick}>
+					Add selection to tournament
+				</Button>
+			</Grid>
+		</Grid>
 	)
 }
