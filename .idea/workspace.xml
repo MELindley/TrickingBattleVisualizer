@@ -7,10 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="feat: add manual battle creation for tournaments&#10;&#10;- Introduced `ManualTournamentCreation` component to enable manual battle assignments in tournaments.&#10;- Updated `AthleteCard` to support controlled selected state.&#10;- Refactored `AthleteGrid` to control selected stateof athleteCards if necessary.&#10;- Improved battle slice with explicit `initialBattleState` for better state management.&#10;- Enhanced tournament slice to automatically sort battles by order when a battle is added.&#10;- Removed deprecated functions and streamlined battle creation in `TournamentBattleConfig`.">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="feat(TournamentBattleConfig): Update layout and add nested grids&#10;&#10;- Align tournament battle grid items to 'flex-start'&#10;- Wrap 'Seeding &amp; Generation' and 'Manual creation' sections in Stack components&#10;- Add ManualTournamentCreation component within Stack for 'Manual creation' section&#10;&#10;fix(ManualTournamentCreation): Add Grid and adjust layout&#10;&#10;- Replace fragment with Grid container for consistent layout&#10;- Add Grid around Add button for improved spacing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/Elements/ManualTournamentCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/Elements/ManualTournamentCreation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,15 +313,7 @@
       <workItem from="1736523003584" duration="10465000" />
       <workItem from="1736616310880" duration="6341000" />
       <workItem from="1736765484594" duration="9226000" />
-      <workItem from="1736779318166" duration="2175000" />
-    </task>
-    <task id="LOCAL-00057" summary="Added two sided bracket, &#10;&#10;This breaks the display of the Third place Battle, a custom version of the bracket will need to be created to fix this issue. &#10;&#10;The third place battle is still in the Tournament it just is not displayed by the two sided bracket">
-      <option name="closed" value="true" />
-      <created>1728398606467</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1728398606467</updated>
+      <workItem from="1736779318166" duration="2404000" />
     </task>
     <task id="LOCAL-00058" summary="Switched default id values to empty string &#10;Updated Firestore object sanitasation">
       <option name="closed" value="true" />
@@ -708,7 +699,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736780498487</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="feat(TournamentBattleConfig): Update layout and add nested grids&#10;&#10;- Align tournament battle grid items to 'flex-start'&#10;- Wrap 'Seeding &amp; Generation' and 'Manual creation' sections in Stack components&#10;- Add ManualTournamentCreation component within Stack for 'Manual creation' section&#10;&#10;fix(ManualTournamentCreation): Add Grid and adjust layout&#10;&#10;- Replace fragment with Grid container for consistent layout&#10;- Add Grid around Add button for improved spacing">
+      <option name="closed" value="true" />
+      <created>1736781701758</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1736781701758</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -726,7 +725,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Simplified ElementWithBackground.tsx css" />
     <MESSAGE value="feat(theme): add dynamic theme customization options and dependency updates&#10;&#10;- Introduced new theme customization actions in `tournamentSlice`:&#10;  - `setTournamentPalettePrimaryColor` and `setTournamentPaletteSecondaryColor` for palette customization.&#10;  - `setTournamentTypographyBodyFont` and `setTournamentTypographyHeaderFont` for typography customization.&#10;- Exported `initialThemeOptions` for external use.&#10;- Fixed `zIndex` typo in `ElementWithBackground.tsx`.&#10;- Updated dependencies in `package.json`, including `@mui/material` to v6.1.10 and added color/typography-related libraries:&#10;  - `@uiw/color-convert`&#10;  - `@uiw/react-color-colorful`&#10;  - `react-fontpicker-ts-lite`.&#10;- Updated IntelliJ workspace metadata for task tracking and simplifications." />
     <MESSAGE value="feat(theme): implement display settings configuration&#10;&#10;- Added `ThemeConfig` component for managing tournament display settings.&#10;  - Includes primary and secondary color pickers using `@uiw/react-color-colorful`.&#10;  - Introduced typography customization with body and header font selectors using `react-fontpicker-ts-lite`.&#10;- Updated `HostView` to include `ThemeConfig` component.&#10;- Replaced `Unstable_Grid2` imports with `Grid2` for stable grid support.&#10;- Replaced `xs` prop with `size` for Grid components for improved compatibility and clarity.&#10;- Removed unused styles and redundant props in `BattleConfig`.&#10;&#10;This change enables organizers to configure the visual theme for tournaments, enhancing customization and user experience." />
     <MESSAGE value="Update all Grid2 to new packag" />
@@ -751,7 +749,8 @@
     <MESSAGE value="Commit message:&#10;&#10;- Added Seeding Method Form and randomization functionality&#10;- Introduced a `SeedingMethodForm` component to allow users to select seeding distribution (Top to Middle or Top to Bottom).&#10;- Implemented random seed assignment using the `createRandomizedArray` helper function and integrated it into the `SeedingTable` component.&#10;- Updated the `TournamentBattleConfig` to handle seeding method and display the form.&#10;- Updated `tournamentSlice` to handle seeding method state and added corresponding action/reducer.&#10;- Refined battle generation logic to consider the selected seeding method.&#10;- Enhanced the UI with additional components for better user interaction and seeding management." />
     <MESSAGE value="finalised first tournament seeding techniques, refactor tournament seeding and battle generation logic. &#10;&#10;- Replaced the `createRandomizedArray` function with `shuffleArray` for randomizing seeds in `SeedingTable.tsx` and `helpers.ts`.&#10;- Removed unnecessary `useEffect` in `SeedingTable.tsx` for setting default seeds; implemented seed assignment directly in the `onRandomizeSeeds` handler.&#10;- Added logic to set default athlete seeds in `TournamentBattleConfig.tsx` when the tournament is initialized.&#10;- Refactored battle generation logic in `TournamentBattleConfig.tsx` to use the updated `generateTournamentBattlesFromAthletes` method.&#10;- Simplified array sorting for tournament participants by using `sortArrayForTournament` to generate the appropriate battle order.&#10;- Removed unused `generateBattlesFromAthletes` method from `tournamentSlice.tsx`.&#10;- Adjusted battle creation logic to account for a potential third-place battle.&#10;- Updated `HorizontalStepper.tsx` to scroll to the top on step changes for better UX." />
     <MESSAGE value="feat: add manual battle creation for tournaments&#10;&#10;- Introduced `ManualTournamentCreation` component to enable manual battle assignments in tournaments.&#10;- Updated `AthleteCard` to support controlled selected state.&#10;- Refactored `AthleteGrid` to control selected stateof athleteCards if necessary.&#10;- Improved battle slice with explicit `initialBattleState` for better state management.&#10;- Enhanced tournament slice to automatically sort battles by order when a battle is added.&#10;- Removed deprecated functions and streamlined battle creation in `TournamentBattleConfig`." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add manual battle creation for tournaments&#10;&#10;- Introduced `ManualTournamentCreation` component to enable manual battle assignments in tournaments.&#10;- Updated `AthleteCard` to support controlled selected state.&#10;- Refactored `AthleteGrid` to control selected stateof athleteCards if necessary.&#10;- Improved battle slice with explicit `initialBattleState` for better state management.&#10;- Enhanced tournament slice to automatically sort battles by order when a battle is added.&#10;- Removed deprecated functions and streamlined battle creation in `TournamentBattleConfig`." />
+    <MESSAGE value="feat(TournamentBattleConfig): Update layout and add nested grids&#10;&#10;- Align tournament battle grid items to 'flex-start'&#10;- Wrap 'Seeding &amp; Generation' and 'Manual creation' sections in Stack components&#10;- Add ManualTournamentCreation component within Stack for 'Manual creation' section&#10;&#10;fix(ManualTournamentCreation): Add Grid and adjust layout&#10;&#10;- Replace fragment with Grid container for consistent layout&#10;- Add Grid around Add button for improved spacing" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(TournamentBattleConfig): Update layout and add nested grids&#10;&#10;- Align tournament battle grid items to 'flex-start'&#10;- Wrap 'Seeding &amp; Generation' and 'Manual creation' sections in Stack components&#10;- Add ManualTournamentCreation component within Stack for 'Manual creation' section&#10;&#10;fix(ManualTournamentCreation): Add Grid and adjust layout&#10;&#10;- Replace fragment with Grid container for consistent layout&#10;- Add Grid around Add button for improved spacing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

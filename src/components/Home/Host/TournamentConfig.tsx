@@ -28,17 +28,12 @@ export default function TournamentConfig(): ReactElement {
 
 	return (
 		<Grid container rowSpacing={4} sx={{ boxShadow: 3, borderRadius: 2, p: 4 }}>
-			<Grid
-				size={12}
-				display='flex'
-				justifyContent='center'
-				alignItems='center'
-			>
+			<Grid size={12} container justifyContent='center' alignItems='center'>
 				<Typography variant='h3' sx={{ mb: 2 }}>
 					Tournament Configuration
 				</Typography>
 			</Grid>
-			<Grid size={6} display='flex' justifyContent='center' alignItems='center'>
+			<Grid size={12} container justifyContent='center' alignItems='center'>
 				<TextField
 					id='TournamentName-TextField'
 					label='Tournament Name'
