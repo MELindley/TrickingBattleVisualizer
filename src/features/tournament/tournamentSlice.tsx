@@ -69,6 +69,7 @@ export const tournamentSlice = createSlice({
 	reducers: {
 		addBattle: (state, action: PayloadAction<IBattle>) => {
 			state.battles.push(action.payload)
+			state.battles.sort((a, b) => a.order - b.order)
 		},
 		removeBattle: (state, action: PayloadAction<IBattle>) => {
 			// eslint-disable-next-line no-param-reassign

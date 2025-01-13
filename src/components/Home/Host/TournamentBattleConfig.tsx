@@ -1,16 +1,11 @@
 import Grid from '@mui/material/Grid2'
 import { Button, Stack, Typography } from '@mui/material'
-import {
-	selectActiveBattle,
-	setActiveBattleAthletes,
-	setActiveBattleId
-} from 'features/battle/battleSlice'
+import { selectActiveBattle } from 'features/battle/battleSlice'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-import type { IAthlete, IBattle } from 'app/types'
+import type { IBattle } from 'app/types'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 import {
-	addBattle,
 	selectTournament,
 	setTournamentAthleteSeed,
 	setTournamentBattles
@@ -26,14 +21,13 @@ import BattleTypeForm from './Elements/BattleTypeForm'
 import PodiumAndFinalForm from './Elements/PodiumAndFinalForm'
 import SeedingTable from './Elements/SeedingTable'
 import SeedingMethodForm from './Elements/SeedingMethodForm'
+import ManualTournamentCreation from './Elements/ManualTournamentCreation'
 
 export default function TournamentBattleConfig(): ReactElement {
 	const dispatch = useAppDispatch()
-	const [selectedAthletes, setSelectedAthletes] = useState<IAthlete[]>([])
 	const activeBattle = useAppSelector(state => selectActiveBattle(state))
 	const [lastBattleSpec, setLastBattleSpec] = useState<number | undefined>()
 	const tournament = useAppSelector(state => selectTournament(state))
-	setSelectedAthletes([])
 	/* USE this code in Call-out-battles
 const onStartBattleClick = (): void => {
 		dispatch(setActiveBattleAthletes(selectedAthletes))
@@ -53,7 +47,6 @@ const onStartBattleClick = (): void => {
 					})
 				)
 		}
-
 		// Tournament Rounds are the number of stages in the tournament ( eg: 4 (8th, 4th,Semi final, Final rounds), for 16 athletes)
 		const numberOfTournamentRounds = Math.ceil(
 			Math.log2(tournament.athletes.length)
@@ -70,12 +63,6 @@ const onStartBattleClick = (): void => {
 			)
 		)
 	}, [dispatch, tournament.athletes, tournament.hasThirdPlaceBattle])
-
-	const onAddToTournamentClick = (): void => {
-		dispatch(setActiveBattleAthletes(selectedAthletes))
-		dispatch(setActiveBattleId(tournament.battles.length.toString()))
-		dispatch(addBattle(activeBattle))
-	}
 
 	const onGenerateTournamentClick = (): void => {
 		const battles = generateTournamentBattlesFromAthletes(
@@ -96,7 +83,14 @@ const onStartBattleClick = (): void => {
 					Battle Configuration
 				</Typography>
 			</Grid>
-			<Grid container size={12} boxShadow={3} borderRadius={2} padding={4}>
+			<Grid
+				container
+				size={12}
+				boxShadow={3}
+				borderRadius={2}
+				padding={4}
+				columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+			>
 				<Grid
 					size={12}
 					container
@@ -148,9 +142,7 @@ const onStartBattleClick = (): void => {
 							Manual creation
 						</Typography>
 					</Grid>
-					<Button variant='contained' onClick={onAddToTournamentClick}>
-						Add selection to tournament
-					</Button>
+					<ManualTournamentCreation />
 				</Grid>
 			</Grid>
 			<Grid container size={12} padding={4}>

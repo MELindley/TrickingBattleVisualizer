@@ -22,6 +22,7 @@ export interface AthleteCardProperties {
 	onCardClick?: (athlete: IAthlete) => void
 	hasDetailsButton?: boolean
 	isClickable?: boolean
+	isSelected?: boolean
 }
 
 const PREFERRED_IMAGE_WIDTH = 384
@@ -45,10 +46,11 @@ function AthleteCard({
 	athlete = undefined,
 	onCardClick = undefined,
 	hasDetailsButton = false,
-	isClickable = true
+	isClickable = true,
+	isSelected = false
 }: AthleteCardProperties): ReactElement {
 	const navigate = useNavigate()
-	const [isSelected, setIsSelected] = useState(false)
+	const [selected, setSelected] = useState(isSelected)
 
 	const onDetailButtonClick = (event: MouseEvent): void => {
 		event.stopPropagation()
@@ -58,7 +60,7 @@ function AthleteCard({
 
 	const onActionAreaClick = (): void => {
 		if (isClickable) {
-			setIsSelected(!isSelected)
+			setSelected(!selected)
 			if (athlete && onCardClick) onCardClick(athlete)
 		}
 	}
@@ -73,7 +75,7 @@ function AthleteCard({
 		<Card
 			sx={{
 				width: imageWidth,
-				border: isSelected ? 'solid blue' : 'solid transparent',
+				border: selected ? 'solid blue' : 'solid transparent',
 				display: 'flex'
 			}}
 		>

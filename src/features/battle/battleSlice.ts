@@ -5,7 +5,7 @@ import type { RootState } from 'app/store'
 import type { IAthlete, IBattle } from 'app/types'
 
 // Define the initial state using that type
-const initialState: IBattle = {
+export const initialBattleState: IBattle = {
 	id: '',
 	athletes: [],
 	winner: undefined,
@@ -20,7 +20,7 @@ export const TIMED_ROUND_BATTLE_TYPE = 'TIMED_ROUND'
 export const battleSlice = createSlice({
 	name: 'battle',
 	// `createSlice` will infer the state type from the `initialState` argument
-	initialState,
+	initialState: initialBattleState,
 	reducers: {
 		addAthleteToActiveBattle: (state, action: PayloadAction<IAthlete>) => {
 			state.athletes.push(action.payload)
@@ -60,9 +60,9 @@ export const battleSlice = createSlice({
 			state.hasTimer = undefined
 			state.hasRound = undefined
 		},
-		resetActiveBattle: () => initialState,
+		resetActiveBattle: () => initialBattleState,
 		setActiveBattle: (state, action: PayloadAction<IBattle | undefined>) =>
-			action.payload ?? initialState
+			action.payload ?? initialBattleState
 	}
 })
 

@@ -146,12 +146,7 @@ export default function TournamentAthleteConfig(): ReactElement {
 					</Stack>
 				</Grid>
 			</Grid>
-			<Grid
-				size={12}
-				display='flex'
-				justifyContent='center'
-				alignItems='center'
-			>
+			<Grid size={12} container justifyContent='center' alignItems='center'>
 				<Stack>
 					<Typography variant='h3' textAlign='center'>
 						Selected Athletes
@@ -162,7 +157,7 @@ export default function TournamentAthleteConfig(): ReactElement {
 				</Stack>
 			</Grid>
 			<AthleteGrid
-				selectedAthletes={tournamentAthletes}
+				athletes={tournamentAthletes}
 				onAthleteCardClick={onAthleteCardClick}
 			/>
 		</Grid>
