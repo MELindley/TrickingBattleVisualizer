@@ -7,15 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="**Commit message:**&#10;&#10;- Added Seeding Method Form and randomization functionality&#10;- Introduced a `SeedingMethodForm` component to allow users to select seeding distribution (Top to Middle or Top to Bottom).&#10;- Implemented random seed assignment using the `createRandomizedArray` helper function and integrated it into the `SeedingTable` component.&#10;- Updated the `TournamentBattleConfig` to handle seeding method and display the form.&#10;- Updated `tournamentSlice` to handle seeding method state and added corresponding action/reducer.&#10;- Refined battle generation logic to consider the selected seeding method.&#10;- Enhanced the UI with additional components for better user interaction and seeding management.">
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Host/Elements/SeedingMethodForm.tsx" afterDir="false" />
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Commit message:&#10;&#10;- Added Seeding Method Form and randomization functionality&#10;- Introduced a `SeedingMethodForm` component to allow users to select seeding distribution (Top to Middle or Top to Bottom).&#10;- Implemented random seed assignment using the `createRandomizedArray` helper function and integrated it into the `SeedingTable` component.&#10;- Updated the `TournamentBattleConfig` to handle seeding method and display the form.&#10;- Updated `tournamentSlice` to handle seeding method state and added corresponding action/reducer.&#10;- Refined battle generation logic to consider the selected seeding method.&#10;- Enhanced the UI with additional components for better user interaction and seeding management.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Athlete/InlineAthleteCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/InlineAthleteCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/HorizontalStepper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/HorizontalStepper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/Host/Elements/SeedingTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/Elements/SeedingTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentBattleConfig.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tournament/tournamentSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tournament.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tournament.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,15 +314,9 @@
       <workItem from="1736271961419" duration="3704000" />
       <workItem from="1736337800203" duration="19969000" />
       <workItem from="1736438572280" duration="3693000" />
-      <workItem from="1736523003584" duration="4182000" />
-    </task>
-    <task id="LOCAL-00054" summary="Updated tournament Data structure to hold last battle &amp; third place battle info&#10;&#10;Added reducers to tournament slice:&#10; - setter for isFinalDifferent&#10; - setter for hasThirdPlaceBattle&#10; - setter for Athletes in Finale Battle&#10; - modified generateBattlesFromAthletes payload to accept a value to set for the final round or timer value&#10; &#10; Tournament Config now offers input to allow for third place battles &amp; final battle specifications&#10; &#10; generateTournamentBattlesFromAthletes now handles adding a battle for the third place and specifying a different round or timer value for the final battle">
-      <option name="closed" value="true" />
-      <created>1728056536729</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1728056536729</updated>
+      <workItem from="1736523003584" duration="10465000" />
+      <workItem from="1736616310880" duration="6341000" />
+      <workItem from="1736765484594" duration="4594000" />
     </task>
     <task id="LOCAL-00055" summary="Updated Battles to handle the third place battle feature&#10;&#10;Winning now doesn't just put the winnner in next battle it also takes into account the looser potentially going to third place battle&#10;&#10;&#10;Setting the winner of a battle now automatically sets the loosers in battleSlice">
       <option name="closed" value="true" />
@@ -709,7 +702,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736356986827</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="Commit message:&#10;&#10;- Added Seeding Method Form and randomization functionality&#10;- Introduced a `SeedingMethodForm` component to allow users to select seeding distribution (Top to Middle or Top to Bottom).&#10;- Implemented random seed assignment using the `createRandomizedArray` helper function and integrated it into the `SeedingTable` component.&#10;- Updated the `TournamentBattleConfig` to handle seeding method and display the form.&#10;- Updated `tournamentSlice` to handle seeding method state and added corresponding action/reducer.&#10;- Refined battle generation logic to consider the selected seeding method.&#10;- Enhanced the UI with additional components for better user interaction and seeding management.">
+      <option name="closed" value="true" />
+      <created>1736527361060</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1736527361060</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -727,7 +728,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: rebrand to &quot;Arena Forge&quot; and improve UI components&#10;&#10;- Updated site title, descriptions, and main headings to &quot;Arena Forge&quot;.&#10;- Introduced `ElementWithBackground` component for managing background elements with YouTube videos or static images.&#10;- Implemented default background image on the home page.&#10;- Created `ThemeConfig` component for configuring battle themes dynamically.&#10;- Added `youtubeVideoIdParser` helper function for extracting video IDs from URLs.&#10;- Removed unused error logging from `LoadingOrError` component.&#10;- Adjusted iframe configurations for a smoother user experience." />
     <MESSAGE value="Meta Data Update" />
     <MESSAGE value="Paperized" />
     <MESSAGE value="Simplified ElementWithBackground.tsx css" />
@@ -752,7 +752,8 @@
     <MESSAGE value="Refactor tournament battle generation and update seeding logic&#10;&#10;- Removed temporary code for resetting selected athletes in TournamentBattleConfig.tsx.&#10;- Added constants for seeding methods in helpers.ts: `TOP_TO_MIDDLE_SEEDING` and `TOP_TO_BOTTOM_SEEDING`.&#10;- Implemented `sortArrayByIndices` function to reorder battles, placing those with even indices first followed by odd indices.&#10;- Enhanced `generateTournamentBattlesFromAthletes` to accept an optional `seedingMethod` parameter to control seeding order.&#10;- Updated tournament battle generation logic to reverse the second half of participants based on the chosen seeding method (`TOP_TO_BOTTOM_SEEDING`).&#10;- Ensured battles are returned in the correct order for the tournament bracket after adjustments." />
     <MESSAGE value="Add Seeding Method Selection to Tournament Battle Configuration&#10;&#10;    Implemented a new form control to allow users to select the seeding distribution method (Top to Middle or Top to Bottom) for tournament battles.&#10;    Integrated the seeding method into the tournament state and updated the logic for generating tournament battles based on the selected seeding method.&#10;    Introduced new constants (TOP_TO_MIDDLE_SEEDING, TOP_TO_BOTTOM_SEEDING) to represent the available seeding options.&#10;    Updated the generateTournamentBattlesFromAthletes function to support different seeding methods during battle generation.&#10;    Added corresponding Redux actions and selectors to manage the seeding method in the tournament slice." />
     <MESSAGE value="**Commit message:**&#10;&#10;- Added Seeding Method Form and randomization functionality&#10;- Introduced a `SeedingMethodForm` component to allow users to select seeding distribution (Top to Middle or Top to Bottom).&#10;- Implemented random seed assignment using the `createRandomizedArray` helper function and integrated it into the `SeedingTable` component.&#10;- Updated the `TournamentBattleConfig` to handle seeding method and display the form.&#10;- Updated `tournamentSlice` to handle seeding method state and added corresponding action/reducer.&#10;- Refined battle generation logic to consider the selected seeding method.&#10;- Enhanced the UI with additional components for better user interaction and seeding management." />
-    <option name="LAST_COMMIT_MESSAGE" value="**Commit message:**&#10;&#10;- Added Seeding Method Form and randomization functionality&#10;- Introduced a `SeedingMethodForm` component to allow users to select seeding distribution (Top to Middle or Top to Bottom).&#10;- Implemented random seed assignment using the `createRandomizedArray` helper function and integrated it into the `SeedingTable` component.&#10;- Updated the `TournamentBattleConfig` to handle seeding method and display the form.&#10;- Updated `tournamentSlice` to handle seeding method state and added corresponding action/reducer.&#10;- Refined battle generation logic to consider the selected seeding method.&#10;- Enhanced the UI with additional components for better user interaction and seeding management." />
+    <MESSAGE value="Commit message:&#10;&#10;- Added Seeding Method Form and randomization functionality&#10;- Introduced a `SeedingMethodForm` component to allow users to select seeding distribution (Top to Middle or Top to Bottom).&#10;- Implemented random seed assignment using the `createRandomizedArray` helper function and integrated it into the `SeedingTable` component.&#10;- Updated the `TournamentBattleConfig` to handle seeding method and display the form.&#10;- Updated `tournamentSlice` to handle seeding method state and added corresponding action/reducer.&#10;- Refined battle generation logic to consider the selected seeding method.&#10;- Enhanced the UI with additional components for better user interaction and seeding management." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit message:&#10;&#10;- Added Seeding Method Form and randomization functionality&#10;- Introduced a `SeedingMethodForm` component to allow users to select seeding distribution (Top to Middle or Top to Bottom).&#10;- Implemented random seed assignment using the `createRandomizedArray` helper function and integrated it into the `SeedingTable` component.&#10;- Updated the `TournamentBattleConfig` to handle seeding method and display the form.&#10;- Updated `tournamentSlice` to handle seeding method state and added corresponding action/reducer.&#10;- Refined battle generation logic to consider the selected seeding method.&#10;- Enhanced the UI with additional components for better user interaction and seeding management." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

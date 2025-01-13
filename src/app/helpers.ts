@@ -95,7 +95,7 @@ const handleBattle = (
 	}
 }
 
-export function createRandomizedArray(n: number): number[] {
+export function shuffleArray(n: number): number[] {
 	// Create an array from 1 to n
 	const array = Array.from({ length: n }, (_, index) => index + 1)
 
@@ -108,22 +108,18 @@ export function createRandomizedArray(n: number): number[] {
 	return array
 }
 
-function sortArrayByIndices<Type>(array: Type[]): Type[] {
-	// Create two arrays: one for even indices and one for odd indices
-	const evenIndexArray = []
-	const oddIndexArray = []
-
-	// Loop through the input array and separate elements by their indices
-	for (const [index, element] of array.entries()) {
-		if (index % 2 === 0) {
-			evenIndexArray.push(element)
-		} else {
-			oddIndexArray.push(element)
-		}
+function sortArrayForTournament<Type>(array: Type[]): Type[] {
+	const orderedArray: Type[] = []
+	let battlesInRound = Math.ceil(Math.log2(array.length))
+	const evenArray = array.filter((_, index) => index % 2 === 0)
+	const oddArray = array.filter((_, index) => index % 2 !== 0)
+	while (evenArray.length > 0 || oddArray.length > 0) {
+		const roundEvens = evenArray.splice(0, battlesInRound)
+		const roundOdds = oddArray.splice(0, battlesInRound)
+		orderedArray.push(...roundEvens, ...roundOdds)
+		battlesInRound = Math.ceil(Math.log2(battlesInRound)) || 1
 	}
-
-	// Concatenate the two arrays: even index elements first, then odd index elements
-	return [...evenIndexArray, ...oddIndexArray]
+	return orderedArray
 }
 
 /**
@@ -149,23 +145,25 @@ export const generateTournamentBattlesFromAthletes = (
 	if (athletes.length === 0) {
 		return []
 	}
+
 	// Tournament Rounds are the number of stages in the tournament ( eg: 4 (8th, 4th,Semi final, Final rounds), for 16 athletes)
 	const numberOfTournamentRounds = Math.ceil(Math.log2(athletes.length))
 	// Total number of battles in the tournament
-	const numberOfBattles = 2 ** numberOfTournamentRounds
+	const numberOfBattles =
+		2 ** numberOfTournamentRounds + (hasThirdPlaceBattle ? 0 : -1)
 	// In sports, bye refers to a team automatically advancing to the next round of tournament play without competing
 	const numberOfByes = numberOfBattles - athletes.length
 
 	// Sort participants by seed and add nulls to simulate bye
 	let participants: (IAthlete | null)[] = [
-		...athletes.sort((a, b) => {
+		...[...athletes].sort((a, b) => {
 			if (a.seed && b.seed) return a.seed - b.seed
 			return 0
 		}),
 		...Array.from<null>({ length: numberOfByes })
 	]
 
-	const battles = Array.from<IBattle>({ length: numberOfBattles })
+	const battles: IBattle[] = []
 
 	while (participants.length > 1) {
 		const nextRoundParticipants: (IAthlete | null)[] = []
@@ -191,7 +189,6 @@ export const generateTournamentBattlesFromAthletes = (
 		}
 		participants = nextRoundParticipants
 	}
-
 	if (hasThirdPlaceBattle) {
 		// Insert extra battle at the end
 		const battle: IBattle = createBattle(
@@ -215,7 +212,7 @@ export const generateTournamentBattlesFromAthletes = (
 		}
 	}
 	// We now need to put the battles in order for 1 & 2 to be at opposites sides of the bracket
-	return sortArrayByIndices(battles)
+	return sortArrayForTournament(battles)
 }
 
 /**
@@ -322,7 +319,6 @@ function mapBattlesToSeeds(
 export function mapBattleListToReactBracketRoundList(
 	tournament: ITournament
 ): IRoundProps[] {
-	console.log(tournament)
 	const roundProperties: IRoundProps[] = []
 	const numberOfTournamentRounds = Math.ceil(
 		Math.log2(tournament.athletes.length)

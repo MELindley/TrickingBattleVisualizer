@@ -47,7 +47,11 @@ function InlineAthleteCard({
 		>
 			<CardActionArea
 				onClick={onActionAreaClick}
-				sx={{ display: 'flex', flexDirection: 'row' }}
+				sx={{
+					display: 'flex',
+					flexDirection: 'row',
+					justifyContent: 'flex-start'
+				}}
 			>
 				{athlete ? (
 					<>

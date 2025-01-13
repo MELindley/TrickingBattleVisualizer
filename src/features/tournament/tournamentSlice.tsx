@@ -8,10 +8,7 @@ import type {
 	IBattle,
 	ITournament
 } from 'app/types'
-import {
-	generateTournamentBattlesFromAthletes,
-	TOP_TO_BOTTOM_SEEDING
-} from 'app/helpers'
+import { TOP_TO_BOTTOM_SEEDING } from 'app/helpers'
 import type { Palette, PaletteOptions, ThemeOptions } from '@mui/material'
 import type { TypographyOptions } from '@mui/material/styles/createTypography'
 
@@ -121,21 +118,6 @@ export const tournamentSlice = createSlice({
 		resetTournament: () => initialState,
 		setTournament: (state, action: PayloadAction<ITournament>) =>
 			action.payload,
-		generateBattlesFromAthletes: (
-			state,
-			action: PayloadAction<{
-				battle: IBattle
-				finalIsDifferent?: number
-			}>
-		) => {
-			state.battles = generateTournamentBattlesFromAthletes(
-				state.athletes,
-				action.payload.battle.hasRound,
-				action.payload.battle.hasTimer,
-				action.payload.finalIsDifferent,
-				state.hasThirdPlaceBattle
-			)
-		},
 		setNextTournamentBattleAthlete: (
 			state,
 			action: PayloadAction<IAthlete>
@@ -269,7 +251,6 @@ export const {
 	removeAthleteFromTournament,
 	resetTournament,
 	updateBattleInTournamentByID,
-	generateBattlesFromAthletes,
 	setNextTournamentBattleAthlete,
 	setFinalBattleAthlete,
 	setIsFinalDifferent,

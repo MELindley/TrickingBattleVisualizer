@@ -11,13 +11,14 @@ import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 import {
 	addBattle,
-	generateBattlesFromAthletes,
 	selectTournament,
+	setTournamentAthleteSeed,
 	setTournamentBattles
 } from '../../../features/tournament/tournamentSlice'
 import { Bracket } from '@sportsgram/brackets'
 import {
 	createBattle,
+	generateTournamentBattlesFromAthletes,
 	mapBattleListToReactBracketRoundList
 } from '../../../app/helpers'
 import CustomSeed from '../../Reactbracket/CustomSeed'
@@ -42,22 +43,33 @@ const onStartBattleClick = (): void => {
 	} */
 
 	useEffect(() => {
+		// Set default seeds as index
+		for (const [index, athlete] of tournament.athletes.entries()) {
+			if (athlete.seed === undefined)
+				dispatch(
+					setTournamentAthleteSeed({
+						athlete,
+						seed: index + 1
+					})
+				)
+		}
+
 		// Tournament Rounds are the number of stages in the tournament ( eg: 4 (8th, 4th,Semi final, Final rounds), for 16 athletes)
 		const numberOfTournamentRounds = Math.ceil(
 			Math.log2(tournament.athletes.length)
 		)
 		// Total number of battles in the tournament
-		const numberOfBattles = 2 ** numberOfTournamentRounds
-
+		const numberOfBattles =
+			2 ** numberOfTournamentRounds + (tournament.hasThirdPlaceBattle ? 0 : -1)
 		const battles = Array.from<IBattle>({ length: numberOfBattles })
 		dispatch(
 			setTournamentBattles(
-				battles.map((battle, index) =>
+				battles.map((_battle, index) =>
 					createBattle(index.toString(), [undefined, undefined], index)
 				)
 			)
 		)
-	}, [dispatch, tournament.athletes])
+	}, [dispatch, tournament.athletes, tournament.hasThirdPlaceBattle])
 
 	const onAddToTournamentClick = (): void => {
 		dispatch(setActiveBattleAthletes(selectedAthletes))
@@ -66,12 +78,15 @@ const onStartBattleClick = (): void => {
 	}
 
 	const onGenerateTournamentClick = (): void => {
-		dispatch(
-			generateBattlesFromAthletes({
-				battle: activeBattle,
-				finalIsDifferent: lastBattleSpec
-			})
+		const battles = generateTournamentBattlesFromAthletes(
+			tournament.athletes,
+			activeBattle.hasRound,
+			activeBattle.hasTimer,
+			lastBattleSpec,
+			tournament.hasThirdPlaceBattle,
+			tournament.seedingMethod
 		)
+		dispatch(setTournamentBattles(battles))
 	}
 
 	return (

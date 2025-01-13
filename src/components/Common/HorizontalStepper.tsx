@@ -30,6 +30,7 @@ export default function HorizontalLinearStepper({
 	const isStepSkipped = (step: number): boolean => skipped.has(step)
 
 	const onNext = (): void => {
+		window.scrollTo(0, 0)
 		if (isStepSkipped(activeStep)) {
 			// if this step had been skipped but is the current active step remove it from the skipped set
 			setSkipped(new Set([...skipped].filter(x => x !== activeStep)))
@@ -41,6 +42,7 @@ export default function HorizontalLinearStepper({
 	}
 
 	const onBack = (): void => {
+		window.scrollTo(0, 0)
 		setActiveStep(previousActiveStep => previousActiveStep - 1)
 	}
 
@@ -50,7 +52,7 @@ export default function HorizontalLinearStepper({
 			// it should never occur unless someone's actively trying to break something.
 			throw new Error("You can't skip a step that isn't optional.")
 		}
-
+		window.scrollTo(0, 0)
 		setActiveStep(previousActiveStep => previousActiveStep + 1)
 		setSkipped(skipped.add(activeStep))
 	}

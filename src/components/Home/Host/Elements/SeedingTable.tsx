@@ -14,29 +14,16 @@ import {
 	setTournamentAthleteSeed
 } from '../../../../features/tournament/tournamentSlice'
 import type { ReactElement } from 'react'
-import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks'
 import Grid from '@mui/material/Grid2'
-import { createRandomizedArray } from '../../../../app/helpers'
+import { shuffleArray } from '../../../../app/helpers'
 
 export default function SeedingTable(): ReactElement {
 	const dispatch = useAppDispatch()
 	const tournament = useAppSelector(state => selectTournament(state))
 
-	useEffect(() => {
-		for (const [index, athlete] of tournament.athletes.entries()) {
-			if (athlete.seed === undefined)
-				dispatch(
-					setTournamentAthleteSeed({
-						athlete,
-						seed: index + 1
-					})
-				)
-		}
-	}, [dispatch, tournament.athletes])
-
 	const onRandomizeSeeds = (): void => {
-		const randomSeeds = createRandomizedArray(tournament.athletes.length)
+		const randomSeeds = shuffleArray(tournament.athletes.length)
 		for (const [index, athlete] of tournament.athletes.entries()) {
 			dispatch(
 				setTournamentAthleteSeed({
