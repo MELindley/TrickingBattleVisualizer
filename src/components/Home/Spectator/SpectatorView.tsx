@@ -38,5 +38,5 @@ export default function SpectatorView(): ReactElement {
 		return <LoadingOrError error={isError as Error} />
 	}
 
-	return <TournamentList tournaments={tournaments} />
+	return <TournamentList title="" tournaments={tournaments} />
 }

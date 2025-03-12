@@ -24,8 +24,8 @@ export default function App(): ReactElement {
 			<BrowserRouter>
 				<Suspense fallback={<LoadingOrError />}>
 					<Routes>
+						<Route index element={<Home />} />
 						<Route path='/' element={<Layout />}>
-							<Route path='' element={<Home />} />
 							<Route path=':athleteName/' element={<Details />} />
 							<Route path='battle/' element={<Battle />} />
 							<Route

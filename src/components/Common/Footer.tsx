@@ -42,16 +42,6 @@ export default function Footer(): ReactElement {
 								Home
 							</Link>
 						</Box>
-						<Box marginTop={1}>
-							<Link href='/events' color='inherit' underline='hover'>
-								Events
-							</Link>
-						</Box>
-						<Box marginTop={1}>
-							<Link href='/features' color='inherit' underline='hover'>
-								Features
-							</Link>
-						</Box>
 					</Grid>
 
 					{/* Social Media Section */}
