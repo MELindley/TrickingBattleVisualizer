@@ -10,7 +10,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { selectUID } from 'features/auth/authSlice'
 
-export default function TournamentConfig(): ReactElement {
+export default function EventConfig(): ReactElement {
 	const dispatch = useAppDispatch()
 	const tournament = useAppSelector(state => selectTournament(state))
 	const hostUID = useAppSelector(state => selectUID(state))
@@ -30,7 +30,7 @@ export default function TournamentConfig(): ReactElement {
 		<Grid container rowSpacing={4} sx={{ boxShadow: 3, borderRadius: 2, p: 4 }}>
 			<Grid size={12} container justifyContent='center' alignItems='center'>
 				<Typography variant='h3' sx={{ mb: 2 }}>
-					Tournament Configuration
+					Event Configuration
 				</Typography>
 			</Grid>
 			<Grid size={12} container justifyContent='center' alignItems='center'>

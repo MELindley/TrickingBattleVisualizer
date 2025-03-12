@@ -23,7 +23,7 @@ export default function HomePage(): ReactElement {
 			<Head title='Arena Forge' />
 			<NavBar navigation={mainNavigation} />
 			<Grid
-				size={12}
+				container
 				display='flex'
 				justifyContent='center'
 				alignItems='center'

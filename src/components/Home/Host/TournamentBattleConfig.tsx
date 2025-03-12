@@ -80,7 +80,7 @@ const onStartBattleClick = (): void => {
 		<Grid container padding={4}>
 			<Grid size={12} container justifyContent='center' alignItems='center'>
 				<Typography variant='h3' sx={{ mb: 2 }}>
-					Battle Configuration
+					Tournament Configuration
 				</Typography>
 			</Grid>
 			<Grid

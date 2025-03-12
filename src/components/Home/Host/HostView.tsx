@@ -1,7 +1,7 @@
 import TournamentAthleteConfig from 'components/Home/Host/TournamentAthleteConfig'
 import TournamentList from 'components/Home/TournamentList'
 import TournamentBattleConfig from 'components/Home/Host/TournamentBattleConfig'
-import TournamentConfig from 'components/Home/Host/TournamentConfig'
+import EventConfig from 'components/Home/Host/EventConfig'
 import ThemeConfig from 'components/Home/Host/ThemeConfig'
 import type { ReactElement, SyntheticEvent } from 'react'
 import { useEffect, useState } from 'react'
@@ -86,15 +86,15 @@ export default function HostView(): ReactElement {
 				<HorizontalLinearStepper
 					steps={[
 						'Athlete Selection',
-						'Battle Configuration',
+						'Tournament Configuration',
 						'Display Configuration',
-						'Tournament Configuration'
+						'Event Configuration'
 					]}
 					stepElements={[
 						<TournamentAthleteConfig key='tournament-config-step-1' />,
 						<TournamentBattleConfig key='tournament-config-step-2' />,
 						<ThemeConfig key='tournament-config-step-4' />,
-						<TournamentConfig key='tournament-config-step-3' />
+						<EventConfig key='tournament-config-step-3' />
 					]}
 					optionalSteps={[2]}
 					renderFinalButtonComponent={<StartTournamentButton />}
