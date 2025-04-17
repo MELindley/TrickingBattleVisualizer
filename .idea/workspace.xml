@@ -7,9 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="feat(TournamentBattleConfig): Update layout and add nested grids&#10;&#10;- Align tournament battle grid items to 'flex-start'&#10;- Wrap 'Seeding &amp; Generation' and 'Manual creation' sections in Stack components&#10;- Add ManualTournamentCreation component within Stack for 'Manual creation' section&#10;&#10;fix(ManualTournamentCreation): Add Grid and adjust layout&#10;&#10;- Replace fragment with Grid container for consistent layout&#10;- Add Grid around Add button for improved spacing">
+    <list default="true" id="241a2fdf-5ae7-4290-9588-949ba182f1c9" name="Changes" comment="Add TopLayer component for homepage layout and improve user flow&#10;&#10;- Created a reusable TopLayer component with title, subtitle, call-to-action, and background image for a dynamic homepage presentation.&#10;- Updated the Home page to integrate the TopLayer with a call-to-action section for both spectators and hosts, guiding users to login or spectate.&#10;- Added feature sections for Host and Spectator roles with descriptions and icons to highlight platform capabilities.&#10;- Removed unnecessary links from the footer to streamline navigation.&#10;- Refactored SpectatorView component to display tournaments without title.&#10;- Updated ESLint rules to disable `jsx-handler-names` for improved flexibility.&#10;- Adjusted route structure in `App.tsx` to correctly handle the homepage and routing paths.">
+      <change beforePath="$PROJECT_DIR$/.firebase/hosting.ZGlzdA.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.ZGlzdA.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Host/TournamentConfig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Athlete/AthleteCreationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Athlete/AthleteCreationForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +114,7 @@
       <recent name="C:\Users\marco\IdeaProjects\TrickingBattleVisualizer\src\components\Common" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.deploy">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -174,8 +175,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.test" />
       </list>
@@ -313,31 +314,12 @@
       <workItem from="1736523003584" duration="10465000" />
       <workItem from="1736616310880" duration="6341000" />
       <workItem from="1736765484594" duration="9226000" />
-      <workItem from="1736779318166" duration="2404000" />
-    </task>
-    <task id="LOCAL-00058" summary="Switched default id values to empty string &#10;Updated Firestore object sanitasation">
-      <option name="closed" value="true" />
-      <created>1729267460358</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1729267460359</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Refactor battle and tournament data handling with Firebase updates&#10;&#10;    BattleSlice.ts: Added order property to manage battle order in state.&#10;    TournamentSlice.tsx: Introduced setTournamentId action for easier tournament ID management.&#10;    Helpers.ts:&#10;        Renamed Firebase interaction functions (e.g., addAthletesToTournament → firebaseAddAthletesToTournament) for clarity.&#10;        Modified functions to return data objects, enabling better handling of asynchronous operations.&#10;        Added return values for data updates to streamline feedback and logging.&#10;    Battle.tsx: Integrated firebaseSetBattleInTournament for asynchronous battle updates and addressed TypeScript errors.&#10;&#10;This patch improves Firebase data handling, enforces naming consistency, and enhances asynchronous functionality.">
-      <option name="closed" value="true" />
-      <created>1730727183753</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1730727183754</updated>
-    </task>
-    <task id="LOCAL-00060" summary="On Start tournament now updated the store with Id values from firebase">
-      <option name="closed" value="true" />
-      <created>1730908327281</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1730908327281</updated>
+      <workItem from="1736779318166" duration="2713000" />
+      <workItem from="1736867181549" duration="1368000" />
+      <workItem from="1737072736214" duration="597000" />
+      <workItem from="1740586175024" duration="9000" />
+      <workItem from="1741783879566" duration="7845000" />
+      <workItem from="1744885750708" duration="2054000" />
     </task>
     <task id="LOCAL-00061" summary="update HostView and SpectatorView to display and manage tournaments&#10;&#10;    HostView.tsx:&#10;        Added a TournamentList component to display hosted tournaments.&#10;        Fetched tournaments based on the current host's UID.&#10;        Improved layout with a title and centralized grid components.&#10;    TournamentConfig.tsx:&#10;        Updated text in the button and dialog to emphasize tournament creation.&#10;    SpectatorView.tsx:&#10;        Simplified layout, removing the redundant button and navigation logic.&#10;    TournamentList.tsx:&#10;        Refactored to include a title prop and an option to navigate to the selected tournament.&#10;        Enhanced navigation functionality using useNavigate.&#10;    helpers.ts:&#10;        Modified firebaseGetTournamentsCollection to accept query constraints.&#10;        Refactored the data fetching logic for better efficiency and error handling.">
       <option name="closed" value="true" />
@@ -707,7 +689,31 @@
       <option name="project" value="LOCAL" />
       <updated>1736781701758</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="centered Tournament name field">
+      <option name="closed" value="true" />
+      <created>1736781799472</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1736781799472</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Refactor tournament configuration to event-based structure&#10;&#10;- Renamed `TournamentConfig.tsx` to `EventConfig.tsx` to align with broader event-based terminology.&#10;- Updated references in `HostView.tsx` and stepper navigation labels to reflect the change.&#10;- Adjusted `TournamentBattleConfig.tsx` title to &quot;Tournament Configuration&quot; for consistency.&#10;- Fixed a layout issue in `Home.tsx` by properly using `Grid container`.&#10;&#10;This refactor improves naming consistency and prepares for future event-level features.">
+      <option name="closed" value="true" />
+      <created>1741785252549</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1741785252549</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Add TopLayer component for homepage layout and improve user flow&#10;&#10;- Created a reusable TopLayer component with title, subtitle, call-to-action, and background image for a dynamic homepage presentation.&#10;- Updated the Home page to integrate the TopLayer with a call-to-action section for both spectators and hosts, guiding users to login or spectate.&#10;- Added feature sections for Host and Spectator roles with descriptions and icons to highlight platform capabilities.&#10;- Removed unnecessary links from the footer to streamline navigation.&#10;- Refactored SpectatorView component to display tournaments without title.&#10;- Updated ESLint rules to disable `jsx-handler-names` for improved flexibility.&#10;- Adjusted route structure in `App.tsx` to correctly handle the homepage and routing paths.">
+      <option name="closed" value="true" />
+      <created>1741791625861</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1741791625861</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -725,9 +731,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat(theme): add dynamic theme customization options and dependency updates&#10;&#10;- Introduced new theme customization actions in `tournamentSlice`:&#10;  - `setTournamentPalettePrimaryColor` and `setTournamentPaletteSecondaryColor` for palette customization.&#10;  - `setTournamentTypographyBodyFont` and `setTournamentTypographyHeaderFont` for typography customization.&#10;- Exported `initialThemeOptions` for external use.&#10;- Fixed `zIndex` typo in `ElementWithBackground.tsx`.&#10;- Updated dependencies in `package.json`, including `@mui/material` to v6.1.10 and added color/typography-related libraries:&#10;  - `@uiw/color-convert`&#10;  - `@uiw/react-color-colorful`&#10;  - `react-fontpicker-ts-lite`.&#10;- Updated IntelliJ workspace metadata for task tracking and simplifications." />
-    <MESSAGE value="feat(theme): implement display settings configuration&#10;&#10;- Added `ThemeConfig` component for managing tournament display settings.&#10;  - Includes primary and secondary color pickers using `@uiw/react-color-colorful`.&#10;  - Introduced typography customization with body and header font selectors using `react-fontpicker-ts-lite`.&#10;- Updated `HostView` to include `ThemeConfig` component.&#10;- Replaced `Unstable_Grid2` imports with `Grid2` for stable grid support.&#10;- Replaced `xs` prop with `size` for Grid components for improved compatibility and clarity.&#10;- Removed unused styles and redundant props in `BattleConfig`.&#10;&#10;This change enables organizers to configure the visual theme for tournaments, enhancing customization and user experience." />
-    <MESSAGE value="Update all Grid2 to new packag" />
     <MESSAGE value="inline athlete card is responsive  to viewport size" />
     <MESSAGE value="Fixed more display bugs" />
     <MESSAGE value="Bug fixed on all views" />
@@ -750,7 +753,10 @@
     <MESSAGE value="finalised first tournament seeding techniques, refactor tournament seeding and battle generation logic. &#10;&#10;- Replaced the `createRandomizedArray` function with `shuffleArray` for randomizing seeds in `SeedingTable.tsx` and `helpers.ts`.&#10;- Removed unnecessary `useEffect` in `SeedingTable.tsx` for setting default seeds; implemented seed assignment directly in the `onRandomizeSeeds` handler.&#10;- Added logic to set default athlete seeds in `TournamentBattleConfig.tsx` when the tournament is initialized.&#10;- Refactored battle generation logic in `TournamentBattleConfig.tsx` to use the updated `generateTournamentBattlesFromAthletes` method.&#10;- Simplified array sorting for tournament participants by using `sortArrayForTournament` to generate the appropriate battle order.&#10;- Removed unused `generateBattlesFromAthletes` method from `tournamentSlice.tsx`.&#10;- Adjusted battle creation logic to account for a potential third-place battle.&#10;- Updated `HorizontalStepper.tsx` to scroll to the top on step changes for better UX." />
     <MESSAGE value="feat: add manual battle creation for tournaments&#10;&#10;- Introduced `ManualTournamentCreation` component to enable manual battle assignments in tournaments.&#10;- Updated `AthleteCard` to support controlled selected state.&#10;- Refactored `AthleteGrid` to control selected stateof athleteCards if necessary.&#10;- Improved battle slice with explicit `initialBattleState` for better state management.&#10;- Enhanced tournament slice to automatically sort battles by order when a battle is added.&#10;- Removed deprecated functions and streamlined battle creation in `TournamentBattleConfig`." />
     <MESSAGE value="feat(TournamentBattleConfig): Update layout and add nested grids&#10;&#10;- Align tournament battle grid items to 'flex-start'&#10;- Wrap 'Seeding &amp; Generation' and 'Manual creation' sections in Stack components&#10;- Add ManualTournamentCreation component within Stack for 'Manual creation' section&#10;&#10;fix(ManualTournamentCreation): Add Grid and adjust layout&#10;&#10;- Replace fragment with Grid container for consistent layout&#10;- Add Grid around Add button for improved spacing" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(TournamentBattleConfig): Update layout and add nested grids&#10;&#10;- Align tournament battle grid items to 'flex-start'&#10;- Wrap 'Seeding &amp; Generation' and 'Manual creation' sections in Stack components&#10;- Add ManualTournamentCreation component within Stack for 'Manual creation' section&#10;&#10;fix(ManualTournamentCreation): Add Grid and adjust layout&#10;&#10;- Replace fragment with Grid container for consistent layout&#10;- Add Grid around Add button for improved spacing" />
+    <MESSAGE value="centered Tournament name field" />
+    <MESSAGE value="Refactor tournament configuration to event-based structure&#10;&#10;- Renamed `TournamentConfig.tsx` to `EventConfig.tsx` to align with broader event-based terminology.&#10;- Updated references in `HostView.tsx` and stepper navigation labels to reflect the change.&#10;- Adjusted `TournamentBattleConfig.tsx` title to &quot;Tournament Configuration&quot; for consistency.&#10;- Fixed a layout issue in `Home.tsx` by properly using `Grid container`.&#10;&#10;This refactor improves naming consistency and prepares for future event-level features." />
+    <MESSAGE value="Add TopLayer component for homepage layout and improve user flow&#10;&#10;- Created a reusable TopLayer component with title, subtitle, call-to-action, and background image for a dynamic homepage presentation.&#10;- Updated the Home page to integrate the TopLayer with a call-to-action section for both spectators and hosts, guiding users to login or spectate.&#10;- Added feature sections for Host and Spectator roles with descriptions and icons to highlight platform capabilities.&#10;- Removed unnecessary links from the footer to streamline navigation.&#10;- Refactored SpectatorView component to display tournaments without title.&#10;- Updated ESLint rules to disable `jsx-handler-names` for improved flexibility.&#10;- Adjusted route structure in `App.tsx` to correctly handle the homepage and routing paths." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add TopLayer component for homepage layout and improve user flow&#10;&#10;- Created a reusable TopLayer component with title, subtitle, call-to-action, and background image for a dynamic homepage presentation.&#10;- Updated the Home page to integrate the TopLayer with a call-to-action section for both spectators and hosts, guiding users to login or spectate.&#10;- Added feature sections for Host and Spectator roles with descriptions and icons to highlight platform capabilities.&#10;- Removed unnecessary links from the footer to streamline navigation.&#10;- Refactored SpectatorView component to display tournaments without title.&#10;- Updated ESLint rules to disable `jsx-handler-names` for improved flexibility.&#10;- Adjusted route structure in `App.tsx` to correctly handle the homepage and routing paths." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -784,6 +790,11 @@
           <url>file://$PROJECT_DIR$/node_modules/.pnpm/@sportsgram+brackets@0.0.1_react@18.2.0_styled-components@5.3.11_@babel+core@7.22.5_react-dom_cgra3sjayl3mpialkgtixkda6e/node_modules/@sportsgram/brackets/dist/brackets/index.d.ts</url>
           <line>2</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/App.tsx</url>
+          <line>28</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

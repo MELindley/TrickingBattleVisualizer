@@ -69,12 +69,12 @@ export default function AthleteCreationForm({
 					spacing={3}
 					justifyContent='space-between'
 				>
+					<TextField value={name} onChange={onNameChange} label='Name' />
 					<TextField
 						value={surname}
 						onChange={onSurnameChange}
 						label='Surname'
 					/>
-					<TextField value={name} onChange={onNameChange} label='Name' />
 				</Stack>
 				<Stack
 					direction={{ xs: 'column', lg: 'row' }}
